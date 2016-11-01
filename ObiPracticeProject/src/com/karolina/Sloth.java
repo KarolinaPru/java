@@ -45,5 +45,9 @@ public class Sloth extends Animal {
 		return super.toString() + "[favorite food=" + favoriteFood + ", natural habitat=" + naturalHabitat + "]";
 	}
 	
+	@Override
+	public int hashCode(){
+		return super.hashCode() + favoriteFood.hashCode() + naturalHabitat.hashCode();
+	}
 	
 }
