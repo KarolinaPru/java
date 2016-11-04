@@ -1,12 +1,12 @@
 package com.karolina;
 
-public class Sloth extends Animal {
+public class Sloth extends Animal implements Cloneable {
 	private static String naturalHabitat = "trees";
 	private String favoriteFood;
 
 	public Sloth(String name, int age, String favoriteFood) {
 		super(name, age);
-		this.favoriteFood = favoriteFood;
+		this.setFavoriteFood(favoriteFood);
 	}
 	
 	public String getFavoriteFood(){
@@ -37,17 +37,27 @@ public class Sloth extends Animal {
 		Sloth other = (Sloth)otherObject;
 		// super.equals checked that this and other belong to the same class
 		
-		return this.favoriteFood == other.favoriteFood;
+		return this.getFavoriteFood() == other.getFavoriteFood();
 			}
 	
 	@Override
 	public String toString(){
-		return super.toString() + "[favorite food=" + favoriteFood + ", natural habitat=" + naturalHabitat + "]";
+		return super.toString() + "[favorite food=" + getFavoriteFood() + ", natural habitat=" + naturalHabitat + "]";
 	}
 	
 	@Override
 	public int hashCode(){
-		return super.hashCode() + favoriteFood.hashCode() + naturalHabitat.hashCode();
+		return super.hashCode() + getFavoriteFood().hashCode() + naturalHabitat.hashCode();
 	}
 	
+	public Sloth clone() throws CloneNotSupportedException {
+		Sloth cloned = (Sloth) super.clone();
+		return cloned;
+		
+	}
+
+	public void setFavoriteFood(String favoriteFood) {
+		this.favoriteFood = favoriteFood;
+	}
+
 }

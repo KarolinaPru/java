@@ -2,14 +2,14 @@ package com.karolina;
 
 import java.util.Objects;
 
-public abstract class Animal {
+public abstract class Animal implements Cloneable {
 	private String name;
 	private int age;
 	
 	public abstract String getDescription();
 	
 	public Animal(String name, int age){
-		this.name = name;
+		this.setName(name);
 		this.age = age;
 	}
 
@@ -36,17 +36,31 @@ public abstract class Animal {
 		
 		Animal other = (Animal)otherObject;
 		
-		return Objects.equals(name, other.name) && age == other.age;
+		return Objects.equals(getName(), other.getName()) && age == other.age;
 		}
 
 	@Override
 	public String toString() {
-		return getClass().getName() + "[name=" + name + ", age=" + age + "]";
+		return getClass().getName() + "[name=" + getName() + ", age=" + age + "]";
 	}
 	
 	@Override
 	public int hashCode(){
-		return Objects.hash(name, age);
+		return Objects.hash(getName(), age);
+	}
+	
+	public Animal clone() throws CloneNotSupportedException {
+		Animal cloned = (Animal) super.clone();
+		return cloned;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setAge(int age) {
+		this.age = age;
+		
 	}
 	
 }
