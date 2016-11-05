@@ -4,22 +4,17 @@ import java.util.Objects;
 
 public abstract class Animal implements Cloneable {
 	private String name;
-	private int age;
 	
 	public abstract String getDescription();
 	
-	public Animal(String name, int age){
+	public Animal(String name){
 		this.setName(name);
-		this.age = age;
 	}
 
 	public String getName(){
 		return name;
 	}
 	
-	public int getAge(){
-		return age;
-	}
 	
 	@Override
 	// Typem parametru musi być Object - w innym przypadku tworzymy zupełnie nową metodę, a nie przedefiniowujemy
@@ -36,17 +31,17 @@ public abstract class Animal implements Cloneable {
 		
 		Animal other = (Animal)otherObject;
 		
-		return Objects.equals(getName(), other.getName()) && age == other.age;
+		return Objects.equals(name, other.name);
 		}
 
 	@Override
 	public String toString() {
-		return getClass().getName() + "[name=" + getName() + ", age=" + age + "]";
+		return getClass().getName() + "[name=" + getName() + "]";
 	}
 	
 	@Override
 	public int hashCode(){
-		return Objects.hash(getName(), age);
+		return Objects.hash(getName());
 	}
 	
 	public Animal clone() throws CloneNotSupportedException {
@@ -56,11 +51,6 @@ public abstract class Animal implements Cloneable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-	
-	public void setAge(int age) {
-		this.age = age;
-		
 	}
 	
 }

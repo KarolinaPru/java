@@ -1,12 +1,13 @@
 package com.karolina;
 
+
 public class AnimalsTest {
 
 	public static void main(String[] args) {
 		
-		Sloth stefan = new Sloth("Stefan", 5, "leaves");
-		Sloth benek = new Sloth("Stefan", 5, "leaves");
-		Sloth kristoff = new Sloth("Kristoff", 3, "passion fruit");
+		Sloth stefan = new Sloth("Stefan", "leaves", 1999, 12, 06);
+		Sloth benek = new Sloth("Stefan", "leaves", 1999, 12, 06);
+		Sloth kristoff = new Sloth("Kristoff", "passion fruit", 2005, 06, 01);
 		Sloth jozek = stefan;
 		Animal zdenek = kristoff;
 				
