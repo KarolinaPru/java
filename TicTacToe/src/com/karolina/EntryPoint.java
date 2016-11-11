@@ -15,10 +15,9 @@ public class EntryPoint {
 			ticTacToe.move(1, 0); //x
 			ticTacToe.move(1, 1); //o
 			ticTacToe.move(2, 0); //x
+			// x should win (first row crossed)
 		} catch (GameFinishedException e) {
 			System.err.println("Game finished, move not allowed.");
 		}
-		// x should win (first row crossed)
 	}
-
 }
