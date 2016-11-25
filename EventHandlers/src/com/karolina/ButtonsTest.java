@@ -10,6 +10,6 @@ public class ButtonsTest {
 				new ActionFrame();
 			}
 		});
-		
 	}
 }
+ 

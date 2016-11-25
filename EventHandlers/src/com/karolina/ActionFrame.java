@@ -13,5 +13,4 @@ public class ActionFrame extends JFrame {
 		pack();
 		setVisible(true);
 	}
-
 }
