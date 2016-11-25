@@ -9,7 +9,10 @@ import javax.swing.UIManager;
 
 
 public class SecondButton extends JButton implements ActionListener{
+	
 	private boolean clicked = false;
+	
+	//pobiera domyœlny kolor panelu
 	Color defaultColor = UIManager.getColor ( "Panel.background" );
 	
 	
