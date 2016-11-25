@@ -1,12 +1,13 @@
-package com.karolina;
+package com.buttonPractice;
+
 import javax.swing.*;
 
 public class ActionFrame extends JFrame {
-	
-	public ActionFrame(){
+
+	public ActionFrame() {
 		super("Action test");
 		
-		ButtonPanel2 buttonPanel = new ButtonPanel2();
+		JPanel buttonPanel = new ButtonPanel3();
 		add(buttonPanel);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
