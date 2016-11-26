@@ -1,0 +1,32 @@
+package com.Layouts;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+
+public class MyFrame extends JFrame {
+	
+	public MyFrame() {
+		super("Border layout, check it out!");
+		setSize(300, 250);
+		setLocation(200, 150);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JButton north = new JButton ("North");
+		JButton east = new JButton ("East");
+		JButton west = new JButton ("West");
+		JButton south = new JButton ("South");
+		JButton center = new JButton ("Center");		
+	
+		add(north, BorderLayout.NORTH);
+		add(east, BorderLayout.EAST);
+		add(west, BorderLayout.WEST);
+		add(south, BorderLayout.SOUTH);
+		add(center, BorderLayout.CENTER);
+		
+		setVisible(true);
+	}
+}
+
