@@ -29,7 +29,7 @@ public class GridFrameInnerClass extends JFrame {
 		});		
 	}
 	public static void main (String[] args){
-		new GridFrameInnerClass().run();
+		new GridFrameInnerClass();
 	}
 }
 

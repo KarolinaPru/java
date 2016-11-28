@@ -9,7 +9,7 @@ public class BorderLayoutTest {
 				@Override
 				public void run() {
 					new MyFrame();
-				}
+			}
 		});
 	}	
 }
