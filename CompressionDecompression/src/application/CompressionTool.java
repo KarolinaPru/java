@@ -122,6 +122,8 @@ public class CompressionTool extends Application {
 							compress();
 
 						} else if (input.matches("[A-Za-z0-9]+") && toggle.getSelectedToggle() == rbtn2){
+							
+							
 
 						} else {
 							System.out.println("Only letters are allowed");
