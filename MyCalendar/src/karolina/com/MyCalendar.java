@@ -2,7 +2,7 @@ package karolina.com;
 
 import java.text.DateFormatSymbols;
 import java.util.*;
-//import org.apache.commons.lang3.StringUtils;
+
 
 public class MyCalendar {
 
@@ -39,7 +39,6 @@ public class MyCalendar {
 
 		do {
 			System.out.printf("%12s", weekdayNames[weekday]);
-
 			date.add(Calendar.DAY_OF_MONTH, 1);
 			weekday = date.get(Calendar.DAY_OF_WEEK);
 
@@ -64,15 +63,7 @@ public class MyCalendar {
 			else 
 				System.out.print("    ");
 			
-		//	System.out.printf("%2d", day);
-			
-		//	if (day == today)
-		//		System.out.print("*    ");
-			//else
-				// System.out.print("    ");
-			
-			
-		// Ustawienie date na kolejny dzień
+			// Ustawienie date na kolejny dzień
 			date.add(Calendar.DAY_OF_MONTH, 1);
 			weekday = date.get(Calendar.DAY_OF_WEEK);
 			
