@@ -9,5 +9,16 @@
 	-fx-background-color: #FFFFCC;
 	-fx-text-fill: blue;
 	-fx-pref-width: 250px;
+	-fx-pref-height: 35px;
 	-fx-alignment: baseline-center;
+}
+
+.labels {
+	-fx-font-family: sans-serif;
+	-fx-font-size: 18  p;
+	-fx-font-weight: normal;
+}
+
+.buttons {
+
 }
