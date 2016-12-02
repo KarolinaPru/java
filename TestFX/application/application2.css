@@ -1,0 +1,11 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.root {
+	-fx-background-color:  rgb(123, 200, 135);
+}
+
+.my-field {
+	-fx-background-color:#ffe699;
+	-fx-text-fill: blue;
+	-fx-pref-width: 120px;
+}
