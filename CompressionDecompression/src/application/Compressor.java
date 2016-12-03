@@ -19,6 +19,7 @@ public class Compressor
 		c.unitTest("aabbbccc", "a2b3c3");
 		c.unitTest("aabbccccd", "a2b2c4d");
 		c.unitTest("AAbCCccc", "A2bC2c3");
+		c.unitTest("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "a100");
 	}
 	
 	public void unitTest (String test, String result)

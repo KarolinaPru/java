@@ -20,10 +20,10 @@ public class Decompressor
 		d.unitTest("a5b3", "aaaaabbb");
 		d.unitTest("a2bc3d", "aabcccd");  
 		d.unitTest("a10", "aaaaaaaaaa");
-		d.unitTest("a100", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		d.unitTest("ab10c12", "abbbbbbbbbbcccccccccccc");
 		d.unitTest("a11c3b", "aaaaaaaaaaacccb");
 		d.unitTest("A5b2C", "AAAAAbbC");
+		d.unitTest("a100", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 	}   
 
 	public void unitTest(String test, String result) {
