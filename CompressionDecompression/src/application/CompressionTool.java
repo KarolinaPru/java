@@ -20,7 +20,7 @@ import javafx.scene.layout.VBox;
 public class CompressionTool extends Application {
 	TextField textField1;
 	TextField textField2;
-	String input;
+	String inputText;
 	String outputText;
 
 	@Override
@@ -110,29 +110,29 @@ public class CompressionTool extends Application {
 			calculateButton.setLayoutX(-60);
 			calculateButton.setLayoutY(40);
 			centerGroup.getChildren().add(calculateButton);
-			calculateButton.getStyleClass().add("buttnons");
+			calculateButton.getStyleClass().add("buttons");
 
 			calculateButton.setOnAction(
 					event -> 
 					{
-						input = textField1.getText();
+						inputText = textField1.getText();
 
-						if (input.matches("[A-Za-z]+") && toggle.getSelectedToggle() == rbtn1)
+						if (inputText.matches("[A-Za-z]+") && toggle.getSelectedToggle() == rbtn1)
 						{	
-							compress();
+							Compressor c = new Compressor();
+							String compressedString = c.compress(inputText);
+							textField2.setText(compressedString);
 
-						} else if (input.matches("[A-Za-z0-9]+") && toggle.getSelectedToggle() == rbtn2){
+						} else if (inputText.matches("[A-Za-z0-9]+") && toggle.getSelectedToggle() == rbtn2){
 							
 							Decompressor d = new Decompressor();
-							String decompressedString = d.decompress(input);
+							String decompressedString = d.decompress(inputText);
 							textField2.setText(decompressedString);
 
 						} else {
 							System.out.println("Only letters are allowed");
 						}
 					});
-
-
 
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -142,37 +142,7 @@ public class CompressionTool extends Application {
 		}
 	}
 
-	private void compress() {
-		StringBuilder str = new StringBuilder();
-		char lastChar = input.charAt(0);
-		int count = 1;
-
-		for (int i = 1; i < input.length(); i++)
-		{	
-			if (input.charAt(i) == lastChar)
-				count++;
-			else {
-				if (count > 1)			
-					str.append("" + lastChar + count);
-				else 
-					str.append(lastChar);
-
-				count = 1;
-				lastChar = input.charAt(i);
-			}
-		}
-
-		if (count > 1)
-			str.append("" + lastChar + count);
-		else
-			str.append(lastChar);		
-
-		String compressedString = str.toString();
-
-		textField2.setText(compressedString);
-		System.out.println(compressedString);
-	}
-
+	
 	public static void main(String[] args) {
 		launch(args);
 	}

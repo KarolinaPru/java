@@ -23,6 +23,7 @@ public class Decompressor
 		d.unitTest("a100", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		d.unitTest("ab10c12", "abbbbbbbbbbcccccccccccc");
 		d.unitTest("a11c3b", "aaaaaaaaaaacccb");
+		d.unitTest("A5b2C", "AAAAAbbC");
 	}   
 
 	public void unitTest(String test, String result) {
@@ -30,9 +31,13 @@ public class Decompressor
 		System.out.print("Test: " + test + " Result: " + decompressedText + " - ");
 
 		if (decompressedText.equals(result))
+		{
 			System.out.println("ok");
+		}
 		else
+		{
 			System.out.println("error");
+		}
 	}
 	
 	public String decompress (String input)
