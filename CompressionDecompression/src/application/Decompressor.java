@@ -34,51 +34,74 @@ public class Decompressor
 		StringBuilder outputText = new StringBuilder();
 		for (int i = 0; i < inputText.length(); i++) 
 		{
-			boolean isNextCharAvailable = (i+1) < inputText.length();
 			char currentChar = inputText.charAt(i);
-
+			
 			if (Character.isLetter(currentChar))
 			{
-				if (isNextCharAvailable)
-				{
-					char nextChar = inputText.charAt(i+1);
-	
-					if(Character.isDigit(nextChar))
-					{
-						StringBuilder currentCharCountBuilder = new StringBuilder();
-						currentCharCountBuilder.append(nextChar);
-
-						for (int k = i+2; k < inputText.length(); k++)
-						{
-							char followingNumber = inputText.charAt(k);
-							
-							if (Character.isDigit(followingNumber))
-							{
-								currentCharCountBuilder.append(followingNumber);
-							}
-							else
-							{
-								break;
-							}
-						}
-						
-						int currentCharCount = Integer.parseInt(currentCharCountBuilder.toString());
-						for (int j = 0; j < currentCharCount; j++)
-						{
-							outputText.append(currentChar);	
-						}
-					}
-					else 
-					{
-						outputText.append(currentChar);
-					}
-				} 
-				else			
-				{
-					outputText.append(currentChar);
-				}
+				appendCurrentLetter(inputText, outputText, i, currentChar);
 			}
 		}
 		return outputText.toString();
+	}
+
+	private void appendCurrentLetter(String inputText, StringBuilder outputText, int i, char currentChar) {
+		boolean isNextCharAvailable = (i+1) < inputText.length();
+		if (isNextCharAvailable)
+		{
+			appendLetterOnceOrMoreIfNeeded(inputText, outputText, i, currentChar);
+		} 
+		else			
+		{
+			outputText.append(currentChar);
+		}
+	}
+
+	private void appendLetterOnceOrMoreIfNeeded(String inputText, StringBuilder outputText, int i, char currentChar) {
+		char nextChar = inputText.charAt(i+1);
+
+		if(Character.isDigit(nextChar))
+		{
+			handleCaseWhenLetterShouldBeAppendedMoreThanOnce(inputText, outputText, i, currentChar, nextChar);
+		}
+		else 
+		{
+			outputText.append(currentChar);
+		}
+	}
+
+	private void handleCaseWhenLetterShouldBeAppendedMoreThanOnce(String inputText, StringBuilder outputText, int i, char currentChar, char nextChar) 
+	{
+		int currentLetterCount = prepareLetterCount(inputText, i, nextChar);
+		appendLetterAppropriateNumberOfTimes(outputText, currentChar, currentLetterCount);
+	}
+
+	private int prepareLetterCount(String inputText, int i, char nextChar) {
+		StringBuilder currentCharCountBuilder = new StringBuilder();
+		currentCharCountBuilder.append(nextChar);
+
+		for (int k = i+2; k < inputText.length(); k++)
+		{
+			char followingNumber = inputText.charAt(k);
+			
+			if (Character.isDigit(followingNumber))
+			{
+				currentCharCountBuilder.append(followingNumber);
+			}
+			else
+			{
+				break;
+			}
+		}
+		
+		int currentLetterCount = Integer.parseInt(currentCharCountBuilder.toString());
+		return currentLetterCount;
+	}
+
+	private void appendLetterAppropriateNumberOfTimes(StringBuilder outputText, char currentChar, int currentCharCount)
+	{
+		for (int j = 0; j < currentCharCount; j++)
+		{
+			outputText.append(currentChar);	
+		}
 	}
 }
