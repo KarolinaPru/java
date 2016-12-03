@@ -2,23 +2,41 @@
 
 
 .root {
-	-fx-background-color: #6699CC;
+	    -fx-background-color: 
+        rgba(0,0,0,0.08),
+        linear-gradient(#9a9a9a, #909090),
+        linear-gradient(white 0%, #f3f3f3 50%, #ececec 51%, #f2f2f2 100%);
 	}
 
 .my-field {
-	-fx-background-color: #FFFFCC;
+	 -fx-background-color: #ecebe9,
+        rgba(0,0,0,0.05),
+        linear-gradient(#dcca8a, #c7a740),
+        linear-gradient(#f9f2d6 0%, #f4e5bc 20%, #e6c75d 80%, #e2c045 100%),
+        linear-gradient(#f6ebbe, #e6c34d);
+    -fx-background-insets: 0,9 9 8 9,9,10,11;
+    -fx-background-radius: 50;
+	
 	-fx-text-fill: blue;
-	-fx-pref-width: 250px;
-	-fx-pref-height: 35px;
-	-fx-alignment: baseline-center;
+	-fx-pref-width: 350px;
+	-fx-pref-height: 50px;
+	-fx-alignment: center;
 }
 
 .labels {
 	-fx-font-family: sans-serif;
-	-fx-font-size: 18  p;
+	-fx-font-size: 17  p;
 	-fx-font-weight: normal;
 }
 
 .buttons {
-
+	-fx-background-color: #000000,
+        linear-gradient(#7ebcea, #2f4b8f),
+        linear-gradient(#426ab7, #263e75),
+        linear-gradient(#395cab, #223768);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-padding: 10 25 10 25;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
 }
