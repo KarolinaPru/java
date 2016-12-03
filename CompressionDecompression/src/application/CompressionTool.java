@@ -1,7 +1,6 @@
 package application;
 
 import java.util.Optional;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -17,22 +16,28 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.VBox;
 
-
-public class CompressionTool extends Application 
+public class CompressionTool extends Application
 {
-	private TextField textField1;
-	private TextField textField2;
+	private TextField inputTextField;
+	private TextField outputTextField;
 	private String inputText;
 	private String outputText;
-	private RadioButton rbtn1;
+	private RadioButton compressButton;
+	private RadioButton decompressButton;
+	private Button calculateButton;
+	private ToggleGroup toggle;
+	private Label yourTextLabel;
+	private Label outputLabel;
+	private Group centerGroup;
+	private Button copyButton;
 
 	@Override
-	public void start(Stage primaryStage) 
+	public void start(Stage primaryStage)
 	{
-		try 
+		try
 		{
 			BorderPane root = new BorderPane();
-			Scene scene = new Scene(root,500,500);
+			Scene scene = new Scene(root, 500, 500);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("Compression tool");
 			primaryStage.setMinWidth(500);
@@ -40,198 +45,193 @@ public class CompressionTool extends Application
 			primaryStage.setMaxWidth(600);
 			primaryStage.setMaxHeight(600);
 
-			rbtn1 = createRadioButton1();
-			RadioButton rbtn2 = createRadioButton2();
+			createCompressButton();
+			createDecompressButton();
 
-			Group centerGroup = createCenterGroup(root);
+			createCenterGroup(root);
 
-			createVBoxWithRadioButtons(centerGroup, rbtn1, rbtn2);
+			createVBoxWithRadioButtons();
 
-			ToggleGroup toggle = createToggleGroup(rbtn1, rbtn2);
-			toggle.selectToggle(rbtn1);
-			addListenerToToggle(toggle);
+			createToggleGroup();
+			toggle.selectToggle(compressButton);
+			addListenerToToggle();
 
-			Label yourTextLabel = createYourTextLabel();
-			Label outputLabel = createOutputLabel();
-			addLabelsToCenterGroup(centerGroup, yourTextLabel, outputLabel);
+			createYourTextLabel();
+			createOutputLabel();
+			addLabelsToCenterGroup();
 
-			createTextField1();
-			createTextField2();
-			addTextFieldsToCenterGroup(centerGroup);
+			createInputTextField();
+			createOutputTextField();
+			addTextFieldsToCenterGroup();
 
-			Button copyButton = createCopyButton();
+			createCopyButton();
 			centerGroup.getChildren().add(copyButton);
-			setCopyButtonOnAction(copyButton);
+			setCopyButtonOnAction();
 
-			Button calculateButton = createCalculateButton();
+			createCalculateButton();
 			centerGroup.getChildren().add(calculateButton);
-			setCalculateButtonOnAction(rbtn1, rbtn2, toggle, calculateButton);
+			setCalculateButtonOnAction();
 
 			primaryStage.setScene(scene);
 			primaryStage.show();
+		}
 
-		} 
-		catch(Exception e) 
+		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
 
-	private void setCalculateButtonOnAction(RadioButton rbtn1, RadioButton rbtn2, ToggleGroup toggle, Button calculateButton) 
+	private void setCalculateButtonOnAction()
 	{
-		calculateButton.setOnAction(
-				event -> 
-				{
-					inputText = textField1.getText();
-					if (inputText.isEmpty())
-					{
-						Alert alert = new Alert(
-								AlertType.INFORMATION, 
-								"Please enter text.");
-						Optional<ButtonType> result = alert.showAndWait();
-					}
-					else if (inputText.matches("[A-Za-z]+") && toggle.getSelectedToggle() == rbtn1)
-					{	
-						Compressor c = new Compressor();
-						String compressedString = c.compress(inputText);
-						textField2.setText(compressedString);
-					} 
-					else if (Character.isLetter(inputText.charAt(0)) && inputText.matches("[A-Za-z0-9]+") && toggle.getSelectedToggle() == rbtn2){
+		calculateButton.setOnAction(event ->
+		{
+			inputText = inputTextField.getText();
+			if (inputText.isEmpty())
+			{
+				Alert alert = new Alert(AlertType.INFORMATION, "Please enter text.");
+				Optional<ButtonType> result = alert.showAndWait();
+			} else if (inputText.matches("[A-Za-z]+") && toggle.getSelectedToggle() == compressButton)
+			{
+				Compressor c = new Compressor();
+				String compressedString = c.compress(inputText);
+				outputTextField.setText(compressedString);
+			} else if (Character.isLetter(inputText.charAt(0)) && inputText.matches("[A-Za-z0-9]+")
+					&& toggle.getSelectedToggle() == decompressButton)
+			{
 
-						Decompressor d = new Decompressor();
-						String decompressedString = d.decompress(inputText);
-						textField2.setText(decompressedString);
-					} 
-					else 
-					{
-						Alert alert = new Alert(
-								AlertType.INFORMATION, 
-								"Please enter valid characters.");
-						Optional<ButtonType> result = alert.showAndWait();
-					}
-				}
-				);}
+				Decompressor d = new Decompressor();
+				String decompressedString = d.decompress(inputText);
+				outputTextField.setText(decompressedString);
+			} else
+			{
+				Alert alert = new Alert(AlertType.INFORMATION, "Please enter valid characters.");
+				Optional<ButtonType> result = alert.showAndWait();
+			}
+		});
+	}
 
-
-	private Button createCalculateButton() {
-		Button calculateButton = new Button();
+	private void createCalculateButton()
+	{
+		calculateButton = new Button();
 		calculateButton.setText("Calculate");
-	//	calculateButton.setPrefWidth(120);
 		calculateButton.setLayoutX(-60);
 		calculateButton.setLayoutY(80);
 		calculateButton.getStyleClass().add("buttons");
-		return calculateButton;
 	}
 
-	private void setCopyButtonOnAction(Button copyButton) {
-		copyButton.setOnAction(
-				event ->
-				{
-					outputText = textField2.getText();
-					if (!outputText.isEmpty())
-						textField1.setText(outputText);	
-				});
+	private void setCopyButtonOnAction()
+	{
+		copyButton.setOnAction(event ->
+		{
+			outputText = outputTextField.getText();
+			if (!outputText.isEmpty())
+				inputTextField.setText(outputText);
+		});
 	}
 
-	private Button createCopyButton() {
-		Button copyButton = new Button();
+	private void createCopyButton()
+	{
+		copyButton = new Button();
 		copyButton.setText("Copy output");
-		//copyButton.setPrefWidth(120);
 		copyButton.setLayoutX(80);
 		copyButton.setLayoutY(-60);
 		copyButton.getStyleClass().add("buttons");
-		return copyButton;
 	}
 
-	private void addTextFieldsToCenterGroup(Group centerGroup) {
-		centerGroup.getChildren().add(textField1);
-		centerGroup.getChildren().add(textField2);
+	private void addTextFieldsToCenterGroup()
+	{
+		centerGroup.getChildren().add(inputTextField);
+		centerGroup.getChildren().add(outputTextField);
 	}
 
-	private void createTextField2() {
-		textField2 = new TextField();
-		textField2.setLayoutX(-20);
-		textField2.setLayoutY(-5);	
-		textField2.getStyleClass().add("my-field");
+	private void createOutputTextField()
+	{
+		outputTextField = new TextField();
+		outputTextField.setLayoutX(-20);
+		outputTextField.setLayoutY(-5);
+		outputTextField.getStyleClass().add("my-field");
 	}
 
-	private void createTextField1() {
-		textField1 = new TextField();
-		textField1.setPromptText("Enter text here");
-		textField1.setLayoutX(-20);
-		textField1.setLayoutY(-120);
-		textField1.getStyleClass().add("my-field");
+	private void createInputTextField()
+	{
+		inputTextField = new TextField();
+		inputTextField.setPromptText("Enter text here");
+		inputTextField.setLayoutX(-20);
+		inputTextField.setLayoutY(-120);
+		inputTextField.getStyleClass().add("my-field");
 	}
 
-	private void addLabelsToCenterGroup(Group centerGroup, Label yourTextLabel, Label outputLabel) {
+	private void addLabelsToCenterGroup()
+	{
 		centerGroup.getChildren().add(yourTextLabel);
 		centerGroup.getChildren().add(outputLabel);
 	}
 
-	private Label createOutputLabel() {
-		Label outputLabel = new Label("Output text:");
+	private void createOutputLabel()
+	{
+		outputLabel = new Label("Output text:");
 		outputLabel.getStyleClass().add("labels");
-		outputLabel.setLayoutX(-115);
-		outputLabel.setLayoutY(10);
-		return outputLabel;
+		outputLabel.setLayoutX(-118);
+		outputLabel.setLayoutY(7);
 	}
 
-	private Label createYourTextLabel() {
-		Label yourTextLabel = new Label("Your text:");
+	private void createYourTextLabel()
+	{
+		yourTextLabel = new Label("Your text:");
 		yourTextLabel.getStyleClass().add("labels");
-		yourTextLabel.setLayoutX(-115);
-		yourTextLabel.setLayoutY(-105);
-		return yourTextLabel;
+		yourTextLabel.setLayoutX(-117);
+		yourTextLabel.setLayoutY(-108);
 	}
 
-	private Group createCenterGroup(BorderPane root) {
-		Group centerGroup = new Group();
+	private void createCenterGroup(BorderPane root)
+	{
+		centerGroup = new Group();
 		root.setCenter(centerGroup);
-		return centerGroup;
 	}
 
-	private void addListenerToToggle(ToggleGroup toggle) {
-		toggle.selectedToggleProperty().addListener(
-				(ov, oldToggle, newToggle) -> 
-				{
-					if (toggle.getSelectedToggle() != null)
-						System.out.println(
-								toggle.getSelectedToggle().getUserData().toString()
-								);		
-				});
+	private void addListenerToToggle()
+	{
+		toggle.selectedToggleProperty().addListener((ov, oldToggle, newToggle) ->
+		{
+			if (toggle.getSelectedToggle() != null)
+				System.out.println(toggle.getSelectedToggle().getUserData().toString());
+		});
 	}
 
-	private ToggleGroup createToggleGroup(RadioButton rbtn1, RadioButton rbtn2) {
-		ToggleGroup toggle = new ToggleGroup();
-		rbtn1.setToggleGroup(toggle);
-		rbtn2.setToggleGroup(toggle);
-		return toggle;
+	private void createToggleGroup()
+	{
+		toggle = new ToggleGroup();
+		compressButton.setToggleGroup(toggle);
+		decompressButton.setToggleGroup(toggle);
 	}
 
-	private RadioButton createRadioButton2() {
-		RadioButton rbtn2 = new RadioButton("Decompress");
-		rbtn2.setUserData("Decompression in progress");
-		rbtn2.getStyleClass().add("labels");
-		return rbtn2;
+	private void createDecompressButton()
+	{
+		decompressButton = new RadioButton("Decompress");
+		decompressButton.setUserData("Decompression in progress");
+		decompressButton.getStyleClass().add("labels");
 	}
 
-	private RadioButton createRadioButton1() {
-		RadioButton rbtn1 = new RadioButton("Compress");
-		rbtn1.setUserData("Compression in progress");	
-		rbtn1.getStyleClass().add("labels");
-		return rbtn1;
+	private void createCompressButton()
+	{
+		compressButton = new RadioButton("Compress");
+		compressButton.setUserData("Compression in progress");
+		compressButton.getStyleClass().add("labels");
+
 	}
 
-	private void createVBoxWithRadioButtons(Group centerGroup, RadioButton rbtn1, RadioButton rbtn2) {
+	private void createVBoxWithRadioButtons()
+	{
 		VBox vbox = new VBox(10);
-		vbox.getChildren().add(rbtn1);
-		vbox.getChildren().add(rbtn2);
+		vbox.getChildren().add(compressButton);
+		vbox.getChildren().add(decompressButton);
 		vbox.setLayoutX(140);
 		vbox.setLayoutY(60);
 		centerGroup.getChildren().add(vbox);
 	}
 
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
 		launch(args);
 	}

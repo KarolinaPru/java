@@ -3,30 +3,31 @@
 
 .root {
 	    -fx-background-color: 
-        rgba(0,0,0,0.08),
+        rgba(0.0,0.0,0.0,0.08),
         linear-gradient(#9a9a9a, #909090),
-        linear-gradient(white 0%, #f3f3f3 50%, #ececec 51%, #f2f2f2 100%);
+        linear-gradient(white 0.0%, #f3f3f3 50.0%, #ececec 51.0%, #f2f2f2 100.0%);
 	}
 
 .my-field {
 	 -fx-background-color: #ecebe9,
-        rgba(0,0,0,0.05),
+        rgba(0.0,0.0,0.0,0.05),
         linear-gradient(#dcca8a, #c7a740),
-        linear-gradient(#f9f2d6 0%, #f4e5bc 20%, #e6c75d 80%, #e2c045 100%),
+        linear-gradient(#f9f2d6 0.0%, #f4e5bc 20.0%, #e6c75d 80.0%, #e2c045 100.0%),
         linear-gradient(#f6ebbe, #e6c34d);
-    -fx-background-insets: 0,9 9 8 9,9,10,11;
-    -fx-background-radius: 50;
-	
-	-fx-text-fill: blue;
-	-fx-pref-width: 350px;
-	-fx-pref-height: 50px;
+    -fx-background-insets: 0.0,9.0 9.0 8.0 9.0,9.0,10.0,11.0;
+    -fx-background-radius: 40.0;
+	-fx-text-fill: black;
+	-fx-pref-width: 350.0px;
+	-fx-pref-height: 50.0px;
 	-fx-alignment: center;
-}
+	
+	}
 
 .labels {
-	-fx-font-family: sans-serif;
-	-fx-font-size: 17  p;
-	-fx-font-weight: normal;
+	-fx-font-family: "Helvetica";
+    -fx-font-size: 17.0px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
 }
 
 .buttons {
@@ -34,9 +35,11 @@
         linear-gradient(#7ebcea, #2f4b8f),
         linear-gradient(#426ab7, #263e75),
         linear-gradient(#395cab, #223768);
-    -fx-background-insets: 0,1,2,3;
-    -fx-background-radius: 3,2,2,2;
-    -fx-padding: 10 25 10 25;
+    -fx-background-insets: 0.0,1.0,2.0,3.0;
+    -fx-background-radius: 3.0,2.0,2.0,2.0;
+    -fx-padding: 10.0 25.0 10.0 25.0;
+    -fx-font-family: "Helvetica";
     -fx-text-fill: white;
-    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-font-size: 16.0px;
 }
