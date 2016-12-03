@@ -5,7 +5,7 @@ public class Compressor
 	private String inputText;
 	private StringBuilder outputText;
 	private char lastChar;
-	private int occurrencesOfCurrentLetter;
+	private int lastLetterCount;
 
 	public static void main (String[] args)
 	{
@@ -41,37 +41,36 @@ public class Compressor
 		inputText = input;
 		outputText = new StringBuilder();
 		lastChar = inputText.charAt(0);
-		occurrencesOfCurrentLetter = 1;
+		lastLetterCount = 1;
 
 		for (int i = 1; i < inputText.length(); i++)
 		{	
-			if (inputText.charAt(i) == lastChar)
+			char currentChar = inputText.charAt(i);
+			
+			if (currentChar == lastChar)
 			{
-				occurrencesOfCurrentLetter++;	
+				lastLetterCount++;	
 			}
 			else 
 			{
-				if (occurrencesOfCurrentLetter > 1)	
-				{
-					outputText.append(lastChar + Integer.toString(occurrencesOfCurrentLetter));
-				}
-				else 
-				{
-					outputText.append(lastChar);
-				}
-				occurrencesOfCurrentLetter = 1;
-				lastChar = inputText.charAt(i);
+				appendLastLetterWithNumberOfOccurrences();
+				lastLetterCount = 1;
+				lastChar = currentChar;
 			}
 		}
+		appendLastLetterWithNumberOfOccurrences();
+		return outputText.toString();
+	}
 
-		if (occurrencesOfCurrentLetter > 1)
+	private void appendLastLetterWithNumberOfOccurrences() 
+	{
+		if (lastLetterCount > 1)
 		{
-			outputText.append(lastChar + Integer.toString(occurrencesOfCurrentLetter));
+			outputText.append(lastChar + Integer.toString(lastLetterCount));
 		}
 		else
 		{
 			outputText.append(lastChar);		
 		}
-		return outputText.toString();
 	}
 }
