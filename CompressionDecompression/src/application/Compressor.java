@@ -5,7 +5,7 @@ public class Compressor
 	private String inputText;
 	private StringBuilder outputText;
 	private char lastChar;
-	private int count;
+	private int occurrencesOfCurrentLetter;
 
 	public static void main (String[] args)
 	{
@@ -21,45 +21,6 @@ public class Compressor
 		c.unitTest("AAbCCccc", "A2bC2c3");
 	}
 	
-	public String compress(String input) 
-	{
-		inputText = input;
-		outputText = new StringBuilder();
-		lastChar = inputText.charAt(0);
-		count = 1;
-
-		for (int i = 1; i < inputText.length(); i++)
-		{	
-			if (inputText.charAt(i) == lastChar)
-			{
-				count++;	
-			}
-			else 
-			{
-				if (count > 1)	
-				{
-					outputText.append("" + lastChar + count);
-				}
-				else 
-				{
-					outputText.append(lastChar);
-				}
-				count = 1;
-				lastChar = inputText.charAt(i);
-			}
-		}
-
-		if (count > 1)
-		{
-			outputText.append("" + lastChar + count);
-		}
-		else
-		{
-			outputText.append(lastChar);		
-		}
-		return outputText.toString();
-	}
-	
 	public void unitTest (String test, String result)
 	{
 		String compressedText = this.compress(test);
@@ -73,5 +34,44 @@ public class Compressor
 		{
 			System.out.println("error");
 		}
+	}
+	
+	public String compress(String input) 
+	{
+		inputText = input;
+		outputText = new StringBuilder();
+		lastChar = inputText.charAt(0);
+		occurrencesOfCurrentLetter = 1;
+
+		for (int i = 1; i < inputText.length(); i++)
+		{	
+			if (inputText.charAt(i) == lastChar)
+			{
+				occurrencesOfCurrentLetter++;	
+			}
+			else 
+			{
+				if (occurrencesOfCurrentLetter > 1)	
+				{
+					outputText.append(lastChar + Integer.toString(occurrencesOfCurrentLetter));
+				}
+				else 
+				{
+					outputText.append(lastChar);
+				}
+				occurrencesOfCurrentLetter = 1;
+				lastChar = inputText.charAt(i);
+			}
+		}
+
+		if (occurrencesOfCurrentLetter > 1)
+		{
+			outputText.append(lastChar + Integer.toString(occurrencesOfCurrentLetter));
+		}
+		else
+		{
+			outputText.append(lastChar);		
+		}
+		return outputText.toString();
 	}
 }
