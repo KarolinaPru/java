@@ -123,7 +123,9 @@ public class CompressionTool extends Application {
 
 						} else if (input.matches("[A-Za-z0-9]+") && toggle.getSelectedToggle() == rbtn2){
 							
-							
+							Decompressor d = new Decompressor();
+							String decompressedString = d.decompress(input);
+							textField2.setText(decompressedString);
 
 						} else {
 							System.out.println("Only letters are allowed");
