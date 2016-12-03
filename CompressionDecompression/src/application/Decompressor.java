@@ -2,49 +2,33 @@ package application;
 
 public class Decompressor 
 {
-
-	public Decompressor()
+	public static void main(String[] args) 
 	{
+		Decompressor d = new Decompressor();
+		d.unitTest("a", "a");
+		d.unitTest("a2", "aa");
+		d.unitTest("ab", "ab");
+		d.unitTest("abc", "abc");
+		d.unitTest("ab2", "abb");
+		d.unitTest("a2b", "aab");
+		d.unitTest("a5b3", "aaaaabbb");
+		d.unitTest("a2bc3d", "aabcccd");  
+		d.unitTest("a10", "aaaaaaaaaa");
+		d.unitTest("a100", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+		d.unitTest("ab10c12", "abbbbbbbbbbcccccccccccc");
+		d.unitTest("a11c3b", "aaaaaaaaaaacccb");
+	}   
 
+	public void unitTest(String test, String result) {
+		String decompressedText = this.decompress(test);
+		System.out.print("Test: " + test + " Result: " + decompressedText + " - ");
+
+		if (decompressedText.equals(result))
+			System.out.println("ok");
+		else
+			System.out.println("error");
 	}
-
-	public static void run() {
-
-		String input = "";
-
-		if (input.matches("[A-Za-z0-9]+"))  //&& toggle.getSelectedToggle() == rbtn2){
-
-		{ 			
-			StringBuffer str = new StringBuffer();
-			char  lastChar = input.charAt(0);
-
-			int count = 1;
-
-			for (int i = 1; i < str.length(); i++){
-				char currentChar = input.charAt(i);
-				char nextChar = input.charAt(i+1);
-
-				if (Character.isDigit(currentChar))
-					if (!Character.isWhitespace(nextChar) && Character.isDigit(nextChar))
-						count = Character.getNumericValue(currentChar);
-
-
-				//str.append("" + lastChar * ??????);
-
-					else
-						str.append("" + lastChar);
-
-				//lastChar = inputCharAt(i);
-			}
-
-			String decompressedString = str.toString();
-			//textField1.setText(decompressedString);
-			System.out.println(decompressedString);
-
-		}
-	}
-
-
+	
 	public String decompress (String inputText)
 	{
 		StringBuilder outputText = new StringBuilder();
@@ -66,11 +50,11 @@ public class Decompressor
 
 						for (int k = i+2; k < inputText.length(); k++)
 						{
-							char followingChar = inputText.charAt(k);
+							char followingNumber = inputText.charAt(k);
 							
-							if (Character.isDigit(followingChar))
+							if (Character.isDigit(followingNumber))
 							{
-								currentCharCountBuilder.append(followingChar);
+								currentCharCountBuilder.append(followingNumber);
 							}
 							else
 							{
@@ -96,30 +80,5 @@ public class Decompressor
 			}
 		}
 		return outputText.toString();
-	}
-
-	public static void main(String[] args) 
-	{
-		fact("a", "a");
-		fact("a2", "aa");
-		fact("ab", "ab");
-		fact("abc", "abc");
-		fact("ab2", "abb");
-		fact("a2b", "aab");
-		fact("a5b3", "aaaaabbb");
-		fact("a2bc3d", "aabcccd");
-		fact("a10", "aaaaaaaaaa");
-		fact("a100", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-	}
-
-	private static void fact(String test, String result) {
-		Decompressor decompressor = new Decompressor();
-		String decompressedText = decompressor.decompress(test);
-		System.out.print("Test: " + test + " Result: " + decompressedText + " - ");
-
-		if (decompressedText.equals(result))
-			System.out.println("ok");
-		else
-			System.out.println("error");
 	}
 }
