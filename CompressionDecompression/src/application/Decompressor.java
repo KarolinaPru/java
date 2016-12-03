@@ -61,7 +61,24 @@ public class Decompressor
 	
 					if(Character.isDigit(nextChar))
 					{
-						int currentCharCount = Character.getNumericValue(nextChar);
+						StringBuilder currentCharCountBuilder = new StringBuilder();
+						currentCharCountBuilder.append(nextChar);
+
+						for (int k = i+2; k < inputText.length(); k++)
+						{
+							char followingChar = inputText.charAt(k);
+							
+							if (Character.isDigit(followingChar))
+							{
+								currentCharCountBuilder.append(followingChar);
+							}
+							else
+							{
+								break;
+							}
+						}
+						
+						int currentCharCount = Integer.parseInt(currentCharCountBuilder.toString());
 						for (int j = 0; j < currentCharCount; j++)
 						{
 							outputText.append(currentChar);	
@@ -92,12 +109,13 @@ public class Decompressor
 		fact("a5b3", "aaaaabbb");
 		fact("a2bc3d", "aabcccd");
 		fact("a10", "aaaaaaaaaa");
+		fact("a100", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 	}
 
 	private static void fact(String test, String result) {
 		Decompressor decompressor = new Decompressor();
 		String decompressedText = decompressor.decompress(test);
-		System.out.print(decompressedText + " - ");
+		System.out.print("Test: " + test + " Result: " + decompressedText + " - ");
 
 		if (decompressedText.equals(result))
 			System.out.println("ok");
