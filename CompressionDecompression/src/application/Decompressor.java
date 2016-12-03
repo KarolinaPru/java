@@ -66,7 +66,10 @@ public class Decompressor
 						{
 							outputText.append(currentChar);	
 						}
-	
+					}
+					else 
+					{
+						outputText.append(currentChar);
 					}
 				} 
 				else			
@@ -80,19 +83,24 @@ public class Decompressor
 
 	public static void main(String[] args) 
 	{
-
 		fact("a", "a");
 		fact("a2", "aa");
 		fact("ab", "ab");
+		fact("abc", "abc");
+		fact("ab2", "abb");
+		fact("a2b", "aab");
+		fact("a5b3", "aaaaabbb");
+		fact("a2bc3d", "aabcccd");
+		fact("a10", "aaaaaaaaaa");
 	}
 
 	private static void fact(String test, String result) {
 		Decompressor decompressor = new Decompressor();
-		String result1 = decompressor.decompress(test);
-		System.out.println(result1);
+		String decompressedText = decompressor.decompress(test);
+		System.out.print(decompressedText + " - ");
 
-		if (result1.equals(result))
-			System.out.println("OK");
+		if (decompressedText.equals(result))
+			System.out.println("ok");
 		else
 			System.out.println("error");
 	}
