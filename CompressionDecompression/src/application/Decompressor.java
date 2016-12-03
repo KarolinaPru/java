@@ -2,6 +2,12 @@ package application;
 
 public class Decompressor 
 {
+	private StringBuilder outputText;
+	private String inputText;
+	private char currentChar;
+	private boolean isNextCharAvailable;
+	private char nextChar;
+
 	public static void main(String[] args) 
 	{
 		Decompressor d = new Decompressor();
@@ -29,26 +35,27 @@ public class Decompressor
 			System.out.println("error");
 	}
 	
-	public String decompress (String inputText)
+	public String decompress (String input)
 	{
-		StringBuilder outputText = new StringBuilder();
+		inputText = input;
+		outputText = new StringBuilder();
 		for (int i = 0; i < inputText.length(); i++) 
 		{
-			char currentChar = inputText.charAt(i);
+			currentChar = inputText.charAt(i);
 			
 			if (Character.isLetter(currentChar))
 			{
-				appendCurrentLetter(inputText, outputText, i, currentChar);
+				appendCurrentLetter(i);
 			}
 		}
 		return outputText.toString();
 	}
 
-	private void appendCurrentLetter(String inputText, StringBuilder outputText, int i, char currentChar) {
-		boolean isNextCharAvailable = (i+1) < inputText.length();
+	private void appendCurrentLetter(int i) {
+		isNextCharAvailable = (i+1) < inputText.length();
 		if (isNextCharAvailable)
 		{
-			appendLetterOnceOrMoreIfNeeded(inputText, outputText, i, currentChar);
+			appendLetterOnceOrMoreIfNeeded(i);
 		} 
 		else			
 		{
@@ -56,12 +63,12 @@ public class Decompressor
 		}
 	}
 
-	private void appendLetterOnceOrMoreIfNeeded(String inputText, StringBuilder outputText, int i, char currentChar) {
-		char nextChar = inputText.charAt(i+1);
-
+	private void appendLetterOnceOrMoreIfNeeded(int i) {
+		nextChar = inputText.charAt(i+1);
+		
 		if(Character.isDigit(nextChar))
 		{
-			handleCaseWhenLetterShouldBeAppendedMoreThanOnce(inputText, outputText, i, currentChar, nextChar);
+			handleCaseWhenLetterShouldBeAppendedMoreThanOnce(i);
 		}
 		else 
 		{
@@ -69,16 +76,15 @@ public class Decompressor
 		}
 	}
 
-	private void handleCaseWhenLetterShouldBeAppendedMoreThanOnce(String inputText, StringBuilder outputText, int i, char currentChar, char nextChar) 
-	{
-		int currentLetterCount = prepareLetterCount(inputText, i, nextChar);
-		appendLetterAppropriateNumberOfTimes(outputText, currentChar, currentLetterCount);
+	private void handleCaseWhenLetterShouldBeAppendedMoreThanOnce(int i) {
+		int currentLetterCount = prepareLetterCount(i);
+		appendLetterAppropriateNumberOfTimes(currentLetterCount);
 	}
 
-	private int prepareLetterCount(String inputText, int i, char nextChar) {
+	private int prepareLetterCount(int i) {
 		StringBuilder currentCharCountBuilder = new StringBuilder();
 		currentCharCountBuilder.append(nextChar);
-
+		
 		for (int k = i+2; k < inputText.length(); k++)
 		{
 			char followingNumber = inputText.charAt(k);
@@ -93,13 +99,11 @@ public class Decompressor
 			}
 		}
 		
-		int currentLetterCount = Integer.parseInt(currentCharCountBuilder.toString());
-		return currentLetterCount;
+		return Integer.parseInt(currentCharCountBuilder.toString());
 	}
 
-	private void appendLetterAppropriateNumberOfTimes(StringBuilder outputText, char currentChar, int currentCharCount)
-	{
-		for (int j = 0; j < currentCharCount; j++)
+	private void appendLetterAppropriateNumberOfTimes(int currentLetterCount) {
+		for (int j = 0; j < currentLetterCount; j++)
 		{
 			outputText.append(currentChar);	
 		}
