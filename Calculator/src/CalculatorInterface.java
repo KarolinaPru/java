@@ -6,6 +6,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,10 +18,10 @@ public class CalculatorInterface implements ActionListener
 {
 	final static double WEIGHT_X = 0.2;
 	final static double WEIGHT_Y = 0.2;
-	final static Dimension MAX_SIZE = new Dimension (1000, 1000);
-	final static Dimension MIN_SIZE = new Dimension (300, 300);
-	final static Dimension BTN_MAX_SIZE = new Dimension (160, 160);
-	final static Dimension BTN_MIN_SIZE = new Dimension (60, 60);
+	final static Dimension MAX_SIZE = new Dimension(1000, 1000);
+	final static Dimension MIN_SIZE = new Dimension(300, 300);
+	final static Dimension BTN_MAX_SIZE = new Dimension(160, 160);
+	final static Dimension BTN_MIN_SIZE = new Dimension(60, 60);
 	final static Font BUTTON_FONT = new Font("Verdana", Font.BOLD, 18);
 	private JTextField calculationField;
 	private JButton one;
@@ -35,15 +37,14 @@ public class CalculatorInterface implements ActionListener
 	private JButton clear;
 	private JButton division;
 	private JButton multiplication;
-	private JButton	subtraction;
+	private JButton subtraction;
 	private JButton addition;
 	private JButton squareRoot;
 	private JButton percent;
-	private JButton equals;
+	private JButton equalsSign;
 	private JButton decimalSeparator;
-	private JButton plusMinusSign;
+	private JButton negation;
 
-	
 	public void addComponentsToPane(Container container)
 	{
 		container.setLayout(new GridBagLayout());
@@ -54,16 +55,17 @@ public class CalculatorInterface implements ActionListener
 		c.weighty = WEIGHT_Y;
 		c.ipadx = 40;
 		c.ipady = 40;
-		
+
 		calculationField = new JTextField();
 		c.gridwidth = 4;
 		c.gridx = 0;
 		c.gridy = 0;
-		calculationField.setFont(new Font ("Tahoma", Font.PLAIN, 24));
-		calculationField.setHorizontalAlignment(SwingConstants.RIGHT);;
-		
+		calculationField.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		calculationField.setHorizontalAlignment(SwingConstants.RIGHT);
 		container.add(calculationField, c);
 		
+		disableEnteringNonDigitCharacters();
+
 		zero = new JButton("0");
 		c.gridwidth = 1;
 		c.gridx = 0;
@@ -72,7 +74,7 @@ public class CalculatorInterface implements ActionListener
 		zero.setMinimumSize(BTN_MIN_SIZE);
 		zero.setMaximumSize(BTN_MAX_SIZE);
 		container.add(zero, c);
-		
+
 		one = new JButton("1");
 		c.gridx = 0;
 		c.gridy = 3;
@@ -80,6 +82,7 @@ public class CalculatorInterface implements ActionListener
 		one.setMinimumSize(BTN_MIN_SIZE);
 		one.setMaximumSize(BTN_MAX_SIZE);
 		container.add(one, c);
+		one.addActionListener(this);
 
 		two = new JButton("2");
 		c.gridx = 1;
@@ -88,6 +91,7 @@ public class CalculatorInterface implements ActionListener
 		two.setMinimumSize(BTN_MIN_SIZE);
 		two.setMaximumSize(BTN_MAX_SIZE);
 		container.add(two, c);
+		two.addActionListener(this);
 
 		three = new JButton("3");
 		c.gridx = 2;
@@ -96,7 +100,8 @@ public class CalculatorInterface implements ActionListener
 		three.setMinimumSize(BTN_MIN_SIZE);
 		three.setMaximumSize(BTN_MAX_SIZE);
 		container.add(three, c);
-		
+		three.addActionListener(this);
+
 		four = new JButton("4");
 		c.gridx = 0;
 		c.gridy = 2;
@@ -104,6 +109,7 @@ public class CalculatorInterface implements ActionListener
 		four.setMinimumSize(BTN_MIN_SIZE);
 		four.setMaximumSize(BTN_MAX_SIZE);
 		container.add(four, c);
+		four.addActionListener(this);
 
 		five = new JButton("5");
 		c.gridx = 1;
@@ -112,6 +118,7 @@ public class CalculatorInterface implements ActionListener
 		five.setMinimumSize(BTN_MIN_SIZE);
 		five.setMaximumSize(BTN_MAX_SIZE);
 		container.add(five, c);
+		five.addActionListener(this);
 
 		six = new JButton("6");
 		c.gridx = 2;
@@ -120,7 +127,8 @@ public class CalculatorInterface implements ActionListener
 		six.setMinimumSize(BTN_MIN_SIZE);
 		six.setMaximumSize(BTN_MAX_SIZE);
 		container.add(six, c);
-				
+		six.addActionListener(this);
+
 		seven = new JButton("7");
 		c.gridx = 0;
 		c.gridy = 1;
@@ -128,6 +136,7 @@ public class CalculatorInterface implements ActionListener
 		seven.setMinimumSize(BTN_MIN_SIZE);
 		seven.setMaximumSize(BTN_MAX_SIZE);
 		container.add(seven, c);
+		seven.addActionListener(this);
 
 		eight = new JButton("8");
 		c.gridx = 1;
@@ -136,6 +145,7 @@ public class CalculatorInterface implements ActionListener
 		eight.setMinimumSize(BTN_MIN_SIZE);
 		eight.setMaximumSize(BTN_MAX_SIZE);
 		container.add(eight, c);
+		eight.addActionListener(this);
 
 		nine = new JButton("9");
 		c.gridx = 2;
@@ -144,7 +154,8 @@ public class CalculatorInterface implements ActionListener
 		nine.setMinimumSize(BTN_MIN_SIZE);
 		nine.setMaximumSize(BTN_MAX_SIZE);
 		container.add(nine, c);
-		
+		nine.addActionListener(this);
+
 		decimalSeparator = new JButton(".");
 		c.gridx = 1;
 		c.gridy = 4;
@@ -152,15 +163,17 @@ public class CalculatorInterface implements ActionListener
 		decimalSeparator.setMinimumSize(BTN_MIN_SIZE);
 		decimalSeparator.setMaximumSize(BTN_MAX_SIZE);
 		container.add(decimalSeparator, c);
-		
-		plusMinusSign = new JButton("+/-");
+		decimalSeparator.addActionListener(this);
+
+		negation = new JButton("+/-");
 		c.gridx = 2;
 		c.gridy = 4;
-		plusMinusSign.setFont(BUTTON_FONT);
-		plusMinusSign.setMinimumSize(BTN_MIN_SIZE);
-		plusMinusSign.setMaximumSize(BTN_MAX_SIZE);
-		container.add(plusMinusSign, c);
-		
+		negation.setFont(BUTTON_FONT);
+		negation.setMinimumSize(BTN_MIN_SIZE);
+		negation.setMaximumSize(BTN_MAX_SIZE);
+		container.add(negation, c);
+		negation.addActionListener(this);
+
 		clear = new JButton("C");
 		c.gridx = 4;
 		c.gridy = 0;
@@ -169,7 +182,7 @@ public class CalculatorInterface implements ActionListener
 		clear.setMaximumSize(BTN_MAX_SIZE);
 		container.add(clear, c);
 		clear.addActionListener(this);
-				
+
 		division = new JButton("/");
 		c.gridx = 3;
 		c.gridy = 1;
@@ -178,7 +191,7 @@ public class CalculatorInterface implements ActionListener
 		division.setMaximumSize(BTN_MAX_SIZE);
 		container.add(division, c);
 		division.addActionListener(this);
-		
+
 		multiplication = new JButton("*");
 		c.gridx = 3;
 		c.gridy = 2;
@@ -187,7 +200,7 @@ public class CalculatorInterface implements ActionListener
 		multiplication.setMaximumSize(BTN_MAX_SIZE);
 		container.add(multiplication, c);
 		multiplication.addActionListener(this);
-		
+
 		subtraction = new JButton("-");
 		c.gridx = 3;
 		c.gridy = 3;
@@ -196,7 +209,7 @@ public class CalculatorInterface implements ActionListener
 		subtraction.setMaximumSize(BTN_MAX_SIZE);
 		container.add(subtraction, c);
 		subtraction.addActionListener(this);
-		
+
 		addition = new JButton("+");
 		c.gridx = 3;
 		c.gridy = 4;
@@ -205,16 +218,16 @@ public class CalculatorInterface implements ActionListener
 		addition.setMaximumSize(BTN_MAX_SIZE);
 		container.add(addition, c);
 		addition.addActionListener(this);
-		
+
 		squareRoot = new JButton("sqrt");
 		c.gridx = 4;
 		c.gridy = 1;
 		squareRoot.setFont(BUTTON_FONT);
 		squareRoot.setMinimumSize(BTN_MIN_SIZE);
 		squareRoot.setMaximumSize(BTN_MAX_SIZE);
-		container.add(squareRoot, c);	
+		container.add(squareRoot, c);
 		squareRoot.addActionListener(this);
-		
+
 		percent = new JButton("%");
 		c.gridx = 4;
 		c.gridy = 2;
@@ -223,17 +236,27 @@ public class CalculatorInterface implements ActionListener
 		percent.setMaximumSize(BTN_MAX_SIZE);
 		container.add(percent, c);
 		percent.addActionListener(this);
-		
-		equals = new JButton("=");
+
+		equalsSign = new JButton("=");
 		c.gridheight = 2;
 		c.gridx = 4;
 		c.gridy = 3;
-		equals.setFont(BUTTON_FONT);
-		equals.setMinimumSize(new Dimension(60, 120));
-		equals.setMaximumSize(new Dimension (160, 320));
-		container.add(equals, c);
-		equals.addActionListener(this);
-		
+		equalsSign.setFont(BUTTON_FONT);
+		equalsSign.setMinimumSize(new Dimension(60, 120));
+		equalsSign.setMaximumSize(new Dimension(160, 320));
+		container.add(equalsSign, c);
+		equalsSign.addActionListener(this);
+
+	}
+
+	private void disableEnteringNonDigitCharacters()
+	{
+		calculationField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                if (!Character.isDigit(e.getKeyChar()))
+                    e.consume();
+            }
+        });
 	}
 
 	public void createInterface()
@@ -245,7 +268,7 @@ public class CalculatorInterface implements ActionListener
 		frame.setPreferredSize(new Dimension(400, 500));
 		frame.setLocation(200, 200);
 		frame.setMinimumSize(MIN_SIZE);
-		// Ta metoda niestety nie dzia�a
+		// Ta metoda niestety nie działa
 		frame.setMaximumSize(MAX_SIZE);
 		frame.pack();
 		frame.setVisible(true);
@@ -255,38 +278,144 @@ public class CalculatorInterface implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
+		if (e.getSource() == one)
+		{
+			calculationField.setText(calculationField.getText() + "1");
+		}
+
+		if (e.getSource() == two)
+		{
+			calculationField.setText(calculationField.getText() + "2");
+		}
+
+		if (e.getSource() == three)
+		{
+			calculationField.setText(calculationField.getText() + "3");
+		}
+
+		if (e.getSource() == four)
+		{
+			calculationField.setText(calculationField.getText() + "4");
+		}
+
+		if (e.getSource() == five)
+		{
+			calculationField.setText(calculationField.getText() + "5");
+		}
+
+		if (e.getSource() == six)
+		{
+
+			calculationField.setText(calculationField.getText() +"6");
+		}
+
+		if (e.getSource() == seven)
+
+		{
+			calculationField.setText(calculationField.getText() + "7");
+		}
+		
+		if (e.getSource() == eight)
+		{
+			calculationField.setText(calculationField.getText() + "8");
+		}
+		
+		if (e.getSource() == nine)
+		{
+			calculationField.setText(calculationField.getText() + "9");
+		}
+		
+		if (e.getSource() == zero)
+		{
+			calculationField.setText(calculationField.getText() + "0");
+		}
+		
+		if (e.getSource() == decimalSeparator)
+		{
+			calculationField.setText(calculationField.getText() + ",");
+		}
+		
+		if (e.getSource() == negation)
+		{
+			boolean negate = false;
+			
+			if (negate) 
+			{
+				//char firstChar = calculationField.getText().charAt(0);
+			}
+			else
+			{
+				
+			}
+		}
+		
+		if (e.getSource() == clear)
+		{
+			calculationField.setText("");
+		}
+
 		if (e.getSource() == addition)
 		{
-		//	add();
+			calculationField.setText(calculationField.getText() + "+");
+			// add();
 		}
-		
+
 		if (e.getSource() == subtraction)
 		{
-		//	subtract();
+			calculationField.setText(calculationField.getText() + "-");		
+			// subtract();
 		}
-		
+
 		if (e.getSource() == multiplication)
 		{
+			calculationField.setText(calculationField.getText() + "*");
 			// multiply();
 		}
-		
+
 		if (e.getSource() == division)
-			
 		{
-			//divide();
+			calculationField.setText(calculationField.getText() + "/");
+			// divide();
 		}
-		
+
 		if (e.getSource() == percent)
 		{
+			calculationField.setText(calculationField.getText() + "%");
 			// calculatePercent();
 		}
-		
+
 		if (e.getSource() == squareRoot)
 		{
-			//calculateSquareRoot();
+			calculationField.setText(calculationField.getText() + "√");
+			// calculateSquareRoot();
 		}
 	}
-	
+
+	private void disableControls() 
+	{
+		boolean disable = false;
+		
+		calculationField.setEnabled(disable);
+		one.setEnabled(disable);
+		two.setEnabled(disable);
+		three.setEnabled(disable);
+		four.setEnabled(disable);
+		five.setEnabled(disable);
+		six.setEnabled(disable);
+		seven.setEnabled(disable);
+		eight.setEnabled(disable);
+		nine.setEnabled(disable);
+		zero.setEnabled(disable);
+		addition.setEnabled(disable);
+		subtraction.setEnabled(disable);
+		multiplication.setEnabled(disable);
+		division.setEnabled(disable);
+		squareRoot.setEnabled(disable);
+		negation.setEnabled(disable);
+		percent.setEnabled(disable);
+		decimalSeparator.setEnabled(disable);
+		equalsSign.setEnabled(disable);
+	}
 	
 	public static void main(String[] args)
 	{
@@ -296,8 +425,12 @@ public class CalculatorInterface implements ActionListener
 			@Override
 			public void run()
 			{
-				new CalculatorInterface().createInterface();
-
+				CalculatorInterface calc = new CalculatorInterface();
+				calc.createInterface();
+				
+				// Testing if disableControls() works
+				//	calc.disableControls();
+				
 			}
 
 		});
