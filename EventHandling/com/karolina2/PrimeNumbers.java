@@ -1,4 +1,4 @@
-package zda;
+package com.karolina2;
 
 class Primers extends Thread {
 	static  boolean   isPrime(int n) {
