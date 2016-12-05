@@ -249,16 +249,6 @@ public class CalculatorInterface implements ActionListener
 
 	}
 
-	private void disableEnteringNonDigitCharacters()
-	{
-		calculationField.addKeyListener(new KeyAdapter() {
-            public void keyTyped(KeyEvent e) {
-                if (!Character.isDigit(e.getKeyChar()))
-                    e.consume();
-            }
-        });
-	}
-
 	public void createInterface()
 	{
 		JFrame frame = new JFrame();
@@ -272,80 +262,87 @@ public class CalculatorInterface implements ActionListener
 		frame.setMaximumSize(MAX_SIZE);
 		frame.pack();
 		frame.setVisible(true);
-
 	}
 
+	private void disableEnteringNonDigitCharacters()
+	{
+		calculationField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                if (!Character.isDigit(e.getKeyChar()))
+                    e.consume();
+            }
+        });
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
+		String enteredText = calculationField.getText();
 		if (e.getSource() == one)
 		{
-			calculationField.setText(calculationField.getText() + "1");
+			calculationField.setText(enteredText + "1");
 		}
 
 		if (e.getSource() == two)
 		{
-			calculationField.setText(calculationField.getText() + "2");
+			calculationField.setText(enteredText + "2");
 		}
 
 		if (e.getSource() == three)
 		{
-			calculationField.setText(calculationField.getText() + "3");
+			calculationField.setText(enteredText + "3");
 		}
 
 		if (e.getSource() == four)
 		{
-			calculationField.setText(calculationField.getText() + "4");
+			calculationField.setText(enteredText + "4");
 		}
 
 		if (e.getSource() == five)
 		{
-			calculationField.setText(calculationField.getText() + "5");
+			calculationField.setText(enteredText + "5");
 		}
 
 		if (e.getSource() == six)
 		{
 
-			calculationField.setText(calculationField.getText() +"6");
+			calculationField.setText(enteredText + "6");
 		}
 
 		if (e.getSource() == seven)
 
 		{
-			calculationField.setText(calculationField.getText() + "7");
+			calculationField.setText(enteredText + "7");
 		}
 		
 		if (e.getSource() == eight)
 		{
-			calculationField.setText(calculationField.getText() + "8");
+			calculationField.setText(enteredText + "8");
 		}
 		
 		if (e.getSource() == nine)
 		{
-			calculationField.setText(calculationField.getText() + "9");
+			calculationField.setText(enteredText + "9");
 		}
 		
 		if (e.getSource() == zero)
 		{
-			calculationField.setText(calculationField.getText() + "0");
+			calculationField.setText(enteredText + "0");
 		}
 		
 		if (e.getSource() == decimalSeparator)
 		{
-			calculationField.setText(calculationField.getText() + ",");
+			calculationField.setText(enteredText + ",");
 		}
 		
+		boolean clicked = false;
 		if (e.getSource() == negation)
-		{
-			boolean negate = false;
-			
-			if (negate) 
+		{		
+			clicked = !clicked;
+			if (clicked)
 			{
-				//char firstChar = calculationField.getText().charAt(0);
-			}
-			else
-			{
-				
+				calculationField.setText("-" + enteredText);
+				clicked = !clicked;	
 			}
 		}
 		
@@ -356,37 +353,37 @@ public class CalculatorInterface implements ActionListener
 
 		if (e.getSource() == addition)
 		{
-			calculationField.setText(calculationField.getText() + "+");
+			calculationField.setText(enteredText + "+");
 			// add();
 		}
 
 		if (e.getSource() == subtraction)
 		{
-			calculationField.setText(calculationField.getText() + "-");		
+			calculationField.setText(enteredText + "-");		
 			// subtract();
 		}
 
 		if (e.getSource() == multiplication)
 		{
-			calculationField.setText(calculationField.getText() + "*");
+			calculationField.setText(enteredText + "*");
 			// multiply();
 		}
 
 		if (e.getSource() == division)
 		{
-			calculationField.setText(calculationField.getText() + "/");
+			calculationField.setText(enteredText + "/");
 			// divide();
 		}
 
 		if (e.getSource() == percent)
 		{
-			calculationField.setText(calculationField.getText() + "%");
+			calculationField.setText(enteredText + "%");
 			// calculatePercent();
 		}
 
 		if (e.getSource() == squareRoot)
 		{
-			calculationField.setText(calculationField.getText() + "√");
+			calculationField.setText("√" + enteredText);
 			// calculateSquareRoot();
 		}
 	}
@@ -429,7 +426,7 @@ public class CalculatorInterface implements ActionListener
 				calc.createInterface();
 				
 				// Testing if disableControls() works
-				//	calc.disableControls();
+				//calc.disableControls();
 				
 			}
 
