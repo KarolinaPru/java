@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.EventObject;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,7 +24,8 @@ public class CalculatorInterface implements ActionListener
 	final static Dimension BTN_MAX_SIZE = new Dimension(160, 160);
 	final static Dimension BTN_MIN_SIZE = new Dimension(60, 60);
 	final static Font BUTTON_FONT = new Font("Verdana", Font.BOLD, 18);
-	private JTextField calculationField;
+	private JTextField txtField;
+	private String enteredText;
 	private JButton one;
 	private JButton two;
 	private JButton three;
@@ -56,13 +58,13 @@ public class CalculatorInterface implements ActionListener
 		c.ipadx = 40;
 		c.ipady = 40;
 
-		calculationField = new JTextField();
+		txtField = new JTextField();
 		c.gridwidth = 4;
 		c.gridx = 0;
 		c.gridy = 0;
-		calculationField.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		calculationField.setHorizontalAlignment(SwingConstants.RIGHT);
-		container.add(calculationField, c);
+		txtField.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		txtField.setHorizontalAlignment(SwingConstants.RIGHT);
+		container.add(txtField, c);
 		
 		disableEnteringNonDigitCharacters();
 
@@ -74,7 +76,7 @@ public class CalculatorInterface implements ActionListener
 		zero.setMinimumSize(BTN_MIN_SIZE);
 		zero.setMaximumSize(BTN_MAX_SIZE);
 		container.add(zero, c);
-
+		
 		one = new JButton("1");
 		c.gridx = 0;
 		c.gridy = 3;
@@ -263,10 +265,10 @@ public class CalculatorInterface implements ActionListener
 		frame.pack();
 		frame.setVisible(true);
 	}
-
+	
 	private void disableEnteringNonDigitCharacters()
 	{
-		calculationField.addKeyListener(new KeyAdapter() {
+		txtField.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e) {
                 if (!Character.isDigit(e.getKeyChar()))
                     e.consume();
@@ -277,159 +279,160 @@ public class CalculatorInterface implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		String enteredText = calculationField.getText();
-		if (e.getSource() == one)
-		{
-			calculationField.setText(enteredText + "1");
-		}
-
-		if (e.getSource() == two)
-		{
-			calculationField.setText(enteredText + "2");
-		}
-
-		if (e.getSource() == three)
-		{
-			calculationField.setText(enteredText + "3");
-		}
-
-		if (e.getSource() == four)
-		{
-			calculationField.setText(enteredText + "4");
-		}
-
-		if (e.getSource() == five)
-		{
-			calculationField.setText(enteredText + "5");
-		}
-
-		if (e.getSource() == six)
-		{
-
-			calculationField.setText(enteredText + "6");
-		}
-
-		if (e.getSource() == seven)
-
-		{
-			calculationField.setText(enteredText + "7");
-		}
+		enteredText = txtField.getText();
 		
-		if (e.getSource() == eight)
-		{
-			calculationField.setText(enteredText + "8");
-		}
-		
-		if (e.getSource() == nine)
-		{
-			calculationField.setText(enteredText + "9");
-		}
-		
-		if (e.getSource() == zero)
-		{
-			calculationField.setText(enteredText + "0");
-		}
-		
-		if (e.getSource() == decimalSeparator)
-		{
-			calculationField.setText(enteredText + ",");
-		}
-		
-		boolean clicked = false;
-		if (e.getSource() == negation)
-		{		
-			clicked = !clicked;
-			if (clicked)
-			{
-				calculationField.setText("-" + enteredText);
-				clicked = !clicked;	
-			}
-		}
-		
-		if (e.getSource() == clear)
-		{
-			calculationField.setText("");
-		}
-
-		if (e.getSource() == addition)
-		{
-			calculationField.setText(enteredText + "+");
-			// add();
-		}
-
-		if (e.getSource() == subtraction)
-		{
-			calculationField.setText(enteredText + "-");		
-			// subtract();
-		}
-
-		if (e.getSource() == multiplication)
-		{
-			calculationField.setText(enteredText + "*");
-			// multiply();
-		}
-
-		if (e.getSource() == division)
-		{
-			calculationField.setText(enteredText + "/");
-			// divide();
-		}
-
-		if (e.getSource() == percent)
-		{
-			calculationField.setText(enteredText + "%");
-			// calculatePercent();
-		}
-
-		if (e.getSource() == squareRoot)
-		{
-			calculationField.setText("√" + enteredText);
-			// calculateSquareRoot();
-		}
+	if (e.getSource() == one)
+	{
+		txtField.setText(enteredText + "1");
 	}
 
-	private void disableControls() 
+	if (e.getSource() == two)
 	{
-		boolean disable = false;
-		
-		calculationField.setEnabled(disable);
-		one.setEnabled(disable);
-		two.setEnabled(disable);
-		three.setEnabled(disable);
-		four.setEnabled(disable);
-		five.setEnabled(disable);
-		six.setEnabled(disable);
-		seven.setEnabled(disable);
-		eight.setEnabled(disable);
-		nine.setEnabled(disable);
-		zero.setEnabled(disable);
-		addition.setEnabled(disable);
-		subtraction.setEnabled(disable);
-		multiplication.setEnabled(disable);
-		division.setEnabled(disable);
-		squareRoot.setEnabled(disable);
-		negation.setEnabled(disable);
-		percent.setEnabled(disable);
-		decimalSeparator.setEnabled(disable);
-		equalsSign.setEnabled(disable);
+		txtField.setText(enteredText + "2");
+	}
+
+	if (e.getSource() == three)
+	{
+		txtField.setText(enteredText + "3");
+	}
+
+	if (e.getSource() == four)
+	{
+		txtField.setText(enteredText + "4");
+	}
+
+	if (e.getSource() == five)
+	{
+		txtField.setText(enteredText + "5");
+	}
+
+	if (e.getSource() == six)
+	{
+
+		txtField.setText(enteredText + "6");
+	}
+
+	if (e.getSource() == seven)
+
+	{
+		txtField.setText(enteredText + "7");
 	}
 	
-	public static void main(String[] args)
+	if (e.getSource() == eight)
 	{
-		EventQueue.invokeLater(new Runnable()
-		{
-
-			@Override
-			public void run()
-			{
-				CalculatorInterface calc = new CalculatorInterface();
-				calc.createInterface();
-				
-				// Testing if disableControls() works
-				//calc.disableControls();
-				
-			}
-
-		});
+		txtField.setText(enteredText + "8");
 	}
+	
+	if (e.getSource() == nine)
+	{
+		txtField.setText(enteredText + "9");
+	}
+	
+	if (e.getSource() == zero)
+	{
+		txtField.setText(enteredText + "0");
+	}
+	
+	if (e.getSource() == decimalSeparator)
+	{
+		txtField.setText(enteredText + ",");
+	}
+	
+	boolean clicked = false;
+	if (e.getSource() == negation)
+	{		
+		clicked = !clicked;
+		if (clicked)
+		{
+			txtField.setText("-" + enteredText);
+			clicked = !clicked;	
+		}
+	}
+	
+	if (e.getSource() == clear)
+	{
+		txtField.setText("");
+	}
+
+	if (e.getSource() == addition)
+	{
+		txtField.setText(enteredText + "+");
+		// add();
+	}
+
+	if (e.getSource() == subtraction)
+	{
+		txtField.setText(enteredText + "-");		
+		// subtract();
+	}
+
+	if (e.getSource() == multiplication)
+	{
+		txtField.setText(enteredText + "*");
+		// multiply();
+	}
+
+	if (e.getSource() == division)
+	{
+		txtField.setText(enteredText + "/");
+		// divide();
+	}
+
+	if (e.getSource() == percent)
+	{
+		txtField.setText(enteredText + "%");
+		// calculatePercent();
+	}
+
+	if (e.getSource() == squareRoot)
+	{
+		txtField.setText("√" + enteredText);
+		// calculateSquareRoot();
+	}
+}
+
+private void disableControls() 
+{
+	boolean disable = false;
+	
+	txtField.setEnabled(disable);
+	one.setEnabled(disable);
+	two.setEnabled(disable);
+	three.setEnabled(disable);
+	four.setEnabled(disable);
+	five.setEnabled(disable);
+	six.setEnabled(disable);
+	seven.setEnabled(disable);
+	eight.setEnabled(disable);
+	nine.setEnabled(disable);
+	zero.setEnabled(disable);
+	addition.setEnabled(disable);
+	subtraction.setEnabled(disable);
+	multiplication.setEnabled(disable);
+	division.setEnabled(disable);
+	squareRoot.setEnabled(disable);
+	negation.setEnabled(disable);
+	percent.setEnabled(disable);
+	decimalSeparator.setEnabled(disable);
+	equalsSign.setEnabled(disable);
+}
+
+public static void main(String[] args)
+{
+	EventQueue.invokeLater(new Runnable()
+	{
+
+		@Override
+		public void run()
+		{
+			CalculatorInterface calc = new CalculatorInterface();
+			calc.createInterface();
+			
+			// Testing if disableControls() works
+			//calc.disableControls();
+			
+		}
+
+	});
+}
 }
