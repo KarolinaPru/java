@@ -46,6 +46,9 @@ public class CalculatorInterface implements ActionListener
 	private JButton equalsSign;
 	private JButton decimalSeparator;
 	private JButton negation;
+	private boolean isNegationClicked = false;
+	private InputValidator validator = new InputValidator();
+	private Calculator calc = new Calculator();
 
 	public void addComponentsToPane(Container container)
 	{
@@ -65,8 +68,10 @@ public class CalculatorInterface implements ActionListener
 		txtField.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		txtField.setHorizontalAlignment(SwingConstants.RIGHT);
 		container.add(txtField, c);
-		
+
 		disableEnteringNonDigitCharacters();
+
+		enteredText = txtField.getText();
 
 		zero = new JButton("0");
 		c.gridwidth = 1;
@@ -74,15 +79,14 @@ public class CalculatorInterface implements ActionListener
 		c.gridy = 4;
 		zero.setFont(BUTTON_FONT);
 		zero.setMinimumSize(BTN_MIN_SIZE);
-		zero.setMaximumSize(BTN_MAX_SIZE);
 		container.add(zero, c);
-		
+		zero.addActionListener(this);
+
 		one = new JButton("1");
 		c.gridx = 0;
 		c.gridy = 3;
 		one.setFont(BUTTON_FONT);
 		one.setMinimumSize(BTN_MIN_SIZE);
-		one.setMaximumSize(BTN_MAX_SIZE);
 		container.add(one, c);
 		one.addActionListener(this);
 
@@ -91,7 +95,6 @@ public class CalculatorInterface implements ActionListener
 		c.gridy = 3;
 		two.setFont(BUTTON_FONT);
 		two.setMinimumSize(BTN_MIN_SIZE);
-		two.setMaximumSize(BTN_MAX_SIZE);
 		container.add(two, c);
 		two.addActionListener(this);
 
@@ -100,7 +103,6 @@ public class CalculatorInterface implements ActionListener
 		c.gridy = 3;
 		three.setFont(BUTTON_FONT);
 		three.setMinimumSize(BTN_MIN_SIZE);
-		three.setMaximumSize(BTN_MAX_SIZE);
 		container.add(three, c);
 		three.addActionListener(this);
 
@@ -109,7 +111,6 @@ public class CalculatorInterface implements ActionListener
 		c.gridy = 2;
 		four.setFont(BUTTON_FONT);
 		four.setMinimumSize(BTN_MIN_SIZE);
-		four.setMaximumSize(BTN_MAX_SIZE);
 		container.add(four, c);
 		four.addActionListener(this);
 
@@ -118,7 +119,6 @@ public class CalculatorInterface implements ActionListener
 		c.gridy = 2;
 		five.setFont(BUTTON_FONT);
 		five.setMinimumSize(BTN_MIN_SIZE);
-		five.setMaximumSize(BTN_MAX_SIZE);
 		container.add(five, c);
 		five.addActionListener(this);
 
@@ -127,7 +127,6 @@ public class CalculatorInterface implements ActionListener
 		c.gridy = 2;
 		six.setFont(BUTTON_FONT);
 		six.setMinimumSize(BTN_MIN_SIZE);
-		six.setMaximumSize(BTN_MAX_SIZE);
 		container.add(six, c);
 		six.addActionListener(this);
 
@@ -136,7 +135,6 @@ public class CalculatorInterface implements ActionListener
 		c.gridy = 1;
 		seven.setFont(BUTTON_FONT);
 		seven.setMinimumSize(BTN_MIN_SIZE);
-		seven.setMaximumSize(BTN_MAX_SIZE);
 		container.add(seven, c);
 		seven.addActionListener(this);
 
@@ -145,7 +143,6 @@ public class CalculatorInterface implements ActionListener
 		c.gridy = 1;
 		eight.setFont(BUTTON_FONT);
 		eight.setMinimumSize(BTN_MIN_SIZE);
-		eight.setMaximumSize(BTN_MAX_SIZE);
 		container.add(eight, c);
 		eight.addActionListener(this);
 
@@ -154,7 +151,6 @@ public class CalculatorInterface implements ActionListener
 		c.gridy = 1;
 		nine.setFont(BUTTON_FONT);
 		nine.setMinimumSize(BTN_MIN_SIZE);
-		nine.setMaximumSize(BTN_MAX_SIZE);
 		container.add(nine, c);
 		nine.addActionListener(this);
 
@@ -163,7 +159,6 @@ public class CalculatorInterface implements ActionListener
 		c.gridy = 4;
 		decimalSeparator.setFont(BUTTON_FONT);
 		decimalSeparator.setMinimumSize(BTN_MIN_SIZE);
-		decimalSeparator.setMaximumSize(BTN_MAX_SIZE);
 		container.add(decimalSeparator, c);
 		decimalSeparator.addActionListener(this);
 
@@ -172,7 +167,6 @@ public class CalculatorInterface implements ActionListener
 		c.gridy = 4;
 		negation.setFont(BUTTON_FONT);
 		negation.setMinimumSize(BTN_MIN_SIZE);
-		negation.setMaximumSize(BTN_MAX_SIZE);
 		container.add(negation, c);
 		negation.addActionListener(this);
 
@@ -181,16 +175,15 @@ public class CalculatorInterface implements ActionListener
 		c.gridy = 0;
 		clear.setFont(BUTTON_FONT);
 		clear.setMinimumSize(BTN_MIN_SIZE);
-		clear.setMaximumSize(BTN_MAX_SIZE);
 		container.add(clear, c);
 		clear.addActionListener(this);
+		// TODO: zrób metodę enableControls()
 
 		division = new JButton("/");
 		c.gridx = 3;
 		c.gridy = 1;
 		division.setFont(BUTTON_FONT);
 		division.setMinimumSize(BTN_MIN_SIZE);
-		division.setMaximumSize(BTN_MAX_SIZE);
 		container.add(division, c);
 		division.addActionListener(this);
 
@@ -199,7 +192,6 @@ public class CalculatorInterface implements ActionListener
 		c.gridy = 2;
 		multiplication.setFont(BUTTON_FONT);
 		multiplication.setMinimumSize(BTN_MIN_SIZE);
-		multiplication.setMaximumSize(BTN_MAX_SIZE);
 		container.add(multiplication, c);
 		multiplication.addActionListener(this);
 
@@ -208,7 +200,6 @@ public class CalculatorInterface implements ActionListener
 		c.gridy = 3;
 		subtraction.setFont(BUTTON_FONT);
 		subtraction.setMinimumSize(BTN_MIN_SIZE);
-		subtraction.setMaximumSize(BTN_MAX_SIZE);
 		container.add(subtraction, c);
 		subtraction.addActionListener(this);
 
@@ -217,7 +208,6 @@ public class CalculatorInterface implements ActionListener
 		c.gridy = 4;
 		addition.setFont(BUTTON_FONT);
 		addition.setMinimumSize(BTN_MIN_SIZE);
-		addition.setMaximumSize(BTN_MAX_SIZE);
 		container.add(addition, c);
 		addition.addActionListener(this);
 
@@ -226,7 +216,6 @@ public class CalculatorInterface implements ActionListener
 		c.gridy = 1;
 		squareRoot.setFont(BUTTON_FONT);
 		squareRoot.setMinimumSize(BTN_MIN_SIZE);
-		squareRoot.setMaximumSize(BTN_MAX_SIZE);
 		container.add(squareRoot, c);
 		squareRoot.addActionListener(this);
 
@@ -235,7 +224,6 @@ public class CalculatorInterface implements ActionListener
 		c.gridy = 2;
 		percent.setFont(BUTTON_FONT);
 		percent.setMinimumSize(BTN_MIN_SIZE);
-		percent.setMaximumSize(BTN_MAX_SIZE);
 		container.add(percent, c);
 		percent.addActionListener(this);
 
@@ -265,174 +253,194 @@ public class CalculatorInterface implements ActionListener
 		frame.pack();
 		frame.setVisible(true);
 	}
-	
+
 	private void disableEnteringNonDigitCharacters()
 	{
-		txtField.addKeyListener(new KeyAdapter() {
-            public void keyTyped(KeyEvent e) {
-                if (!Character.isDigit(e.getKeyChar()))
-                    e.consume();
-            }
-        });
+		txtField.addKeyListener(new KeyAdapter()
+		{
+			public void keyTyped(KeyEvent e)
+			{
+				if (!Character.isDigit(e.getKeyChar()))
+					e.consume();
+			}
+		});
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
 		enteredText = txtField.getText();
+
+		if (e.getSource() == one)
+		{
+			if (validator.isValid("1"))
+				txtField.setText(enteredText + "1");
+		}
+
+		if (e.getSource() == two)
+		{
+			if (validator.isValid("2"))
+				txtField.setText(enteredText + "2");
+		}
+
+		if (e.getSource() == three)
+		{
+			if (validator.isValid("3"))
+				txtField.setText(enteredText + "3");
+		}
+
+		if (e.getSource() == four)
+		{
+			if (validator.isValid("4"))
+				txtField.setText(enteredText + "4");
+		}
+
+		if (e.getSource() == five)
+		{
+			if (validator.isValid("5"))
+				txtField.setText(enteredText + "5");
+		}
+
+		if (e.getSource() == six)
+		{
+			if (validator.isValid("6"))
+				txtField.setText(enteredText + "6");
+		}
+
+		if (e.getSource() == seven)
+		{
+			if (validator.isValid("7"))
+				txtField.setText(enteredText + "7");
+		}
+
+		if (e.getSource() == eight)
+		{
+			if (validator.isValid("8"))
+				txtField.setText(enteredText + "8");
+		}
+
+		if (e.getSource() == nine)
+		{
+			if (validator.isValid("9"))
+				txtField.setText(enteredText + "9");
+		}
+		if (e.getSource() == zero)
+		{
+			if (validator.isValid("0"))
+				txtField.setText(enteredText + "0");
+		}
+
+		if (e.getSource() == decimalSeparator)
+		{
+			if (validator.isValid(","))
+				txtField.setText(enteredText + ",");
+		}
+
+		if (e.getSource() == negation)
+		{
+			if (isNegationClicked)
+			{
+				txtField.setText("-" + enteredText);
+
+			} else
+			{
+				txtField.setText("" + enteredText);
+			}
+			isNegationClicked = !isNegationClicked;
+		}
+
+		if (e.getSource() == clear)
+		{
+			validator.clear();
+			txtField.setText("");
+		}
+
+		if (e.getSource() == addition)
+		{
+			if (validator.isValid("+"))
+				txtField.setText(enteredText + "+");
+		}
+
+		if (e.getSource() == subtraction)
+		{
+			if (validator.isValid("-"))
+				txtField.setText(enteredText + "-");
+		}
+
+		if (e.getSource() == multiplication)
+		{
+			if (validator.isValid("*"))
+				txtField.setText(enteredText + "*");
+		}
+
+		if (e.getSource() == division)
+		{
+			if (validator.isValid("/"))
+				txtField.setText(enteredText + "/");
+		}
+
+		if (e.getSource() == percent)
+		{
+			if (validator.isValid("%"))
+				txtField.setText(enteredText + "%");
+		}
+
+		if (e.getSource() == squareRoot)
+		{
+			if (validator.isValid("√"))
+				txtField.setText("√" + enteredText);
+		}
 		
-	if (e.getSource() == one)
-	{
-		txtField.setText(enteredText + "1");
-	}
-
-	if (e.getSource() == two)
-	{
-		txtField.setText(enteredText + "2");
-	}
-
-	if (e.getSource() == three)
-	{
-		txtField.setText(enteredText + "3");
-	}
-
-	if (e.getSource() == four)
-	{
-		txtField.setText(enteredText + "4");
-	}
-
-	if (e.getSource() == five)
-	{
-		txtField.setText(enteredText + "5");
-	}
-
-	if (e.getSource() == six)
-	{
-
-		txtField.setText(enteredText + "6");
-	}
-
-	if (e.getSource() == seven)
-
-	{
-		txtField.setText(enteredText + "7");
-	}
-	
-	if (e.getSource() == eight)
-	{
-		txtField.setText(enteredText + "8");
-	}
-	
-	if (e.getSource() == nine)
-	{
-		txtField.setText(enteredText + "9");
-	}
-	
-	if (e.getSource() == zero)
-	{
-		txtField.setText(enteredText + "0");
-	}
-	
-	if (e.getSource() == decimalSeparator)
-	{
-		txtField.setText(enteredText + ",");
-	}
-	
-	boolean clicked = false;
-	if (e.getSource() == negation)
-	{		
-		clicked = !clicked;
-		if (clicked)
+		if (e.getSource() == equalsSign)
 		{
-			txtField.setText("-" + enteredText);
-			clicked = !clicked;	
+			String result = calc.calculate(enteredText);
+			txtField.setText(result);
 		}
 	}
-	
-	if (e.getSource() == clear)
+
+	private void disableControls()
 	{
-		txtField.setText("");
+		boolean disable = false;
+
+		txtField.setEnabled(disable);
+		one.setEnabled(disable);
+		two.setEnabled(disable);
+		three.setEnabled(disable);
+		four.setEnabled(disable);
+		five.setEnabled(disable);
+		six.setEnabled(disable);
+		seven.setEnabled(disable);
+		eight.setEnabled(disable);
+		nine.setEnabled(disable);
+		zero.setEnabled(disable);
+		addition.setEnabled(disable);
+		subtraction.setEnabled(disable);
+		multiplication.setEnabled(disable);
+		division.setEnabled(disable);
+		squareRoot.setEnabled(disable);
+		negation.setEnabled(disable);
+		percent.setEnabled(disable);
+		decimalSeparator.setEnabled(disable);
+		equalsSign.setEnabled(disable);
 	}
 
-	if (e.getSource() == addition)
+	public JTextField getTxtField()
 	{
-		txtField.setText(enteredText + "+");
-		// add();
+		return txtField;
 	}
 
-	if (e.getSource() == subtraction)
+	public static void main(String[] args)
 	{
-		txtField.setText(enteredText + "-");		
-		// subtract();
-	}
-
-	if (e.getSource() == multiplication)
-	{
-		txtField.setText(enteredText + "*");
-		// multiply();
-	}
-
-	if (e.getSource() == division)
-	{
-		txtField.setText(enteredText + "/");
-		// divide();
-	}
-
-	if (e.getSource() == percent)
-	{
-		txtField.setText(enteredText + "%");
-		// calculatePercent();
-	}
-
-	if (e.getSource() == squareRoot)
-	{
-		txtField.setText("√" + enteredText);
-		// calculateSquareRoot();
-	}
-}
-
-private void disableControls() 
-{
-	boolean disable = false;
-	
-	txtField.setEnabled(disable);
-	one.setEnabled(disable);
-	two.setEnabled(disable);
-	three.setEnabled(disable);
-	four.setEnabled(disable);
-	five.setEnabled(disable);
-	six.setEnabled(disable);
-	seven.setEnabled(disable);
-	eight.setEnabled(disable);
-	nine.setEnabled(disable);
-	zero.setEnabled(disable);
-	addition.setEnabled(disable);
-	subtraction.setEnabled(disable);
-	multiplication.setEnabled(disable);
-	division.setEnabled(disable);
-	squareRoot.setEnabled(disable);
-	negation.setEnabled(disable);
-	percent.setEnabled(disable);
-	decimalSeparator.setEnabled(disable);
-	equalsSign.setEnabled(disable);
-}
-
-public static void main(String[] args)
-{
-	EventQueue.invokeLater(new Runnable()
-	{
-
-		@Override
-		public void run()
+		EventQueue.invokeLater(new Runnable()
 		{
-			CalculatorInterface calc = new CalculatorInterface();
-			calc.createInterface();
-			
-			// Testing if disableControls() works
-			//calc.disableControls();
-			
-		}
+			@Override
+			public void run()
+			{
+				CalculatorInterface calc = new CalculatorInterface();
+				calc.createInterface();
 
-	});
-}
+				// TODO: Test calc.disableControls();
+			}
+		});
+	}
 }
