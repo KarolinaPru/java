@@ -38,6 +38,7 @@ public enum Operation
 	},
 	SQUARE_ROOT
 	{	
+		//TODO: check if works
 		double apply(double x, double y)
 		{
 			return Math.sqrt(x);
