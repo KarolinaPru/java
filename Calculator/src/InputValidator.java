@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class InputValidator
 {
 	private String input = "";
@@ -50,13 +47,17 @@ public class InputValidator
 			return false;
 		}
 		
+		if (input.matches("[^0-9]$") && !Character.isDigit(character))
+		{
+			return false;
+		}
 		
 		if (Character.valueOf(character) == ',' && input.contains(Character.toString(character)))
 		{
 			return false;
 		}
 		
-		if (!Character.isDigit(character) && input.matches("[^0-9]$"))
+		if (!Character.isDigit(character) && input.contains(Character.toString(character)))
 		{
 			return false;
 		}

@@ -21,7 +21,7 @@ public class CalculatorInterface implements ActionListener
 	final static double WEIGHT_Y = 0.2;
 	final static Dimension MAX_SIZE = new Dimension(1000, 1000);
 	final static Dimension MIN_SIZE = new Dimension(300, 300);
-	final static Dimension BTN_MAX_SIZE = new Dimension(160, 160);
+//	final static Dimension BTN_MAX_SIZE = new Dimension(160, 160);
 	final static Dimension BTN_MIN_SIZE = new Dimension(60, 60);
 	final static Font BUTTON_FONT = new Font("Verdana", Font.BOLD, 18);
 	private JTextField txtField;
