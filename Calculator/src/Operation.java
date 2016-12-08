@@ -1,7 +1,16 @@
 
 public enum Operation
 {
-	ADDITION
+	
+	ADDITION,
+	SUBTRACTION,
+	MULTIPLICATION,
+	DIVISION,
+	PERCENTAGE,
+	SQUARE_ROOT;
+}
+	
+/*	ADDITION
 	{
 		double apply(double x, double y)
 		{
@@ -51,5 +60,6 @@ public enum Operation
 	}
 
 	abstract double apply(double x, double y);
-	
-}
+
+	*/
+
