@@ -49,6 +49,7 @@ public class CalculatorInterface implements ActionListener
 	private boolean isNegationClicked = false;
 	private InputValidator validator = new InputValidator();
 	private Calculator calc = new Calculator();
+	private String number;
 
 	public void addComponentsToPane(Container container)
 	{
@@ -335,7 +336,9 @@ public class CalculatorInterface implements ActionListener
 			if (validator.isValid(","))
 				txtField.setText(enteredText + ",");
 		}
-
+		
+		//TODO Zbierz tekst z negacją
+		
 		if (e.getSource() == negation)
 		{
 			if (isNegationClicked)
@@ -358,37 +361,54 @@ public class CalculatorInterface implements ActionListener
 		if (e.getSource() == addition)
 		{
 			if (validator.isValid("+"))
-				txtField.setText(enteredText + "+");
-		}
+			{
+				number = txtField.getText();
+				txtField.setText(number + "+");
+			}
 
 		if (e.getSource() == subtraction)
 		{
 			if (validator.isValid("-"))
-				txtField.setText(enteredText + "-");
+			{
+				number = txtField.getText();
+				txtField.setText(number + "-");
+			}
 		}
 
 		if (e.getSource() == multiplication)
 		{
 			if (validator.isValid("*"))
-				txtField.setText(enteredText + "*");
+			{
+				number = txtField.getText();
+				txtField.setText(number + "*");
+			}
 		}
 
 		if (e.getSource() == division)
 		{
 			if (validator.isValid("/"))
-				txtField.setText(enteredText + "/");
+			{
+				number = txtField.getText();
+				txtField.setText(number + "/");
+			}
 		}
 
 		if (e.getSource() == percent)
 		{
 			if (validator.isValid("%"))
-				txtField.setText(enteredText + "%");
+			{
+			//	number = txtField.getText();
+				txtField.setText(number + "%");
+			}
 		}
 
 		if (e.getSource() == squareRoot)
 		{
 			if (validator.isValid("√"))
-				txtField.setText("√" + enteredText);
+			{
+				number = txtField.getText();
+				txtField.setText("√" + number);
+			}
 		}
 		
 		if (e.getSource() == equalsSign)
@@ -396,6 +416,7 @@ public class CalculatorInterface implements ActionListener
 			String result = calc.calculate(enteredText);
 			txtField.setText(result);
 		}
+	}
 	}
 
 	private void disableControls()
