@@ -1,4 +1,3 @@
-import java.util.Optional;
 
 public class Calculator
 {
@@ -7,19 +6,13 @@ public class Calculator
 	private double y;
 	private double result;
 	private String strResult;
-	Calculator c;
 		
-	public String parse(String input)
+		public String calculate (String input)
 	{
-		double enteredOperation = Double.parseDouble(input);
-		
-		// 1. parse input, eg. "4+2323" -> [4, plus, 2323]
-		// 2. calculate 4 + 2323
-		// 3. convert result to String and return
-		return "0";
+		return null;
 	}
 	
-	public String performOperation(char operator, double x, double y)
+	private String performOperation(char operator, double x, double y)
 	{
 		this.operator = operator;
 		this.x = x;
@@ -63,7 +56,7 @@ public class Calculator
 	
 	public void unitTest(char operator, double x, double y, double expectedOutcome)
 	{
-		c = new Calculator();
+		Calculator c = new Calculator();
 		String test = c.performOperation(operator, x, y);
 		System.out.print (operator + ":  " + x + ", " + y + " = " + expectedOutcome + ": ");
 		
@@ -80,12 +73,12 @@ public class Calculator
 	
 	public static void main (String[] args)
 	{
-		Calculator calc = new Calculator();
-		calc.unitTest('-', 23.33, 33.33, -10);
-		calc.unitTest('/', 100, 5, 20);
-		calc.unitTest('*', -100, 50, -5000);
-		calc.unitTest('%', 25, 200, 50);
-		calc.unitTest('√', 9, 0, 3);
+		Calculator c = new Calculator();
+		c.unitTest('-', 23.33, 33.33, -10);
+		c.unitTest('/', 100, 5, 20);
+		c.unitTest('*', -100, 50, -5000);
+		c.unitTest('%', 25, 200, 50);
+		c.unitTest('√', 9, 0, 3);
 	}
 }
 

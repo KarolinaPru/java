@@ -9,7 +9,9 @@ public class InputValidator
 		v.unitTest("0", true);
 		v.unitTest("20/4", true);
 		v.unitTest("10*4/2", true);
-
+		v.unitTest("√9", true);
+		v.unitTest("√√9", false);
+		v.unitTest("√9√", false);
 		v.unitTest("32*23", true);
 		v.unitTest("2+2", true);
 		v.unitTest("2+2+", true);
@@ -48,15 +50,11 @@ public class InputValidator
 
 	public boolean isValid(char character)
 	{
-			// Pierwszy znak nie może być znakiem lub zerem
-			if (input.length() == 0 && !Character.isDigit(character))						 // || Character.valueOf(character) == '0')
+
+			if (input.length() == 0 && !Character.isDigit(character))
 			{
 				return false;
 			}
-
-			// Jeśli input nie jest pusty i ostatni znak jest operatorem i nowy
-			// też
-			// Ignoruj nowy znak
 			
 			if (input.length()!= 0 && !Character.isDigit(input.charAt(input.length() - 1))
 					&& !Character.isDigit(character))
@@ -64,6 +62,10 @@ public class InputValidator
 				return false;
 			}
 
+			if (input.length() != 0 && input.contains("√") && Character.valueOf(character) == '√')
+			{
+				return false;
+			}
 
 		input += character;
 		return true;

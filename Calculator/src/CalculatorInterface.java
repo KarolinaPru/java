@@ -48,7 +48,6 @@ public class CalculatorInterface implements ActionListener
 	private JButton negation;
 	private InputValidator validator = new InputValidator();
 	private Calculator calc = new Calculator();
-	private String number;
 
 	public void addComponentsToPane(Container container)
 	{
@@ -312,7 +311,7 @@ public class CalculatorInterface implements ActionListener
 			if (validator.isValid("7"))
 				txtField.setText(enteredText + "7");
 		}
-		
+
 		if (e.getSource() == eight)
 		{
 			if (validator.isValid("8"))
@@ -344,17 +343,16 @@ public class CalculatorInterface implements ActionListener
 		if (e.getSource() == negation)
 		{
 			char firstChar = enteredText.charAt(0);
-			if(Character.isDigit(firstChar))
-				{
-					txtField.setText("-" + enteredText);
-				}
-			
+			if (Character.isDigit(firstChar))
+			{
+				txtField.setText("-" + enteredText);
+			}
+
 			else if (Character.valueOf(firstChar) == '-')
 			{
 				enteredText = enteredText.replace(firstChar, '+');
 				txtField.setText(enteredText);
-			}
-			else if (Character.valueOf(firstChar) == '+')
+			} else if (Character.valueOf(firstChar) == '+')
 			{
 				enteredText = enteredText.replace(firstChar, '-');
 				txtField.setText(enteredText);
@@ -372,29 +370,29 @@ public class CalculatorInterface implements ActionListener
 			if (validator.isValid("+"))
 			{
 				txtField.setText(enteredText + "+");
-				number = txtField.getText();
+				validator.clear();
 				enableDecimalSeparator();
 			}
 		}
 		if (e.getSource() == subtraction)
 		{
+
 			if (validator.isValid("-"))
 			{
 				txtField.setText(enteredText + "-");
-				number = txtField.getText();
+				validator.clear();
 				enableDecimalSeparator();
 			}
 		}
 
 		if (e.getSource() == multiplication)
 		{
-			enableDecimalSeparator();
 
 			if (validator.isValid("*"))
 			{
 				txtField.setText(enteredText + "*");
-				number = txtField.getText();
-
+				validator.clear();
+				enableDecimalSeparator();
 			}
 		}
 
@@ -403,8 +401,7 @@ public class CalculatorInterface implements ActionListener
 			if (validator.isValid("/"))
 			{
 				txtField.setText(enteredText + "/");
-				number = txtField.getText();
-
+				validator.clear();
 				enableDecimalSeparator();
 			}
 		}
@@ -413,8 +410,8 @@ public class CalculatorInterface implements ActionListener
 		{
 			if (validator.isValid("%"))
 			{
-				// number = txtField.getText();
 				txtField.setText(enteredText + "%");
+				validator.clear();
 				enableDecimalSeparator();
 			}
 		}
@@ -423,14 +420,17 @@ public class CalculatorInterface implements ActionListener
 		{
 			if (validator.isValid("√"))
 			{
-				number = txtField.getText();
-				txtField.setText("√" + enteredText);
+				if (Character.valueOf(enteredText.charAt(0)) != '√')
+				{
+					txtField.setText("√" + enteredText);
+					validator.clear();
+				}
 			}
 		}
 
 		if (e.getSource() == equalsSign)
 		{
-			String result = calc.parse(enteredText);
+			String result = calc.calculate(enteredText);
 			txtField.setText(result);
 			enableDecimalSeparator();
 		}
@@ -471,12 +471,6 @@ public class CalculatorInterface implements ActionListener
 		decimalSeparator.setEnabled(enable);
 		equalsSign.setEnabled(enable);
 	}
-
-
-	// public JTextField getTxtField()
-	// {
-	// return txtField;
-	// }
 
 	public static void main(String[] args)
 	{
