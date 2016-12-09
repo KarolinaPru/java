@@ -21,7 +21,7 @@ public class CalculatorInterface implements ActionListener
 	final static double WEIGHT_Y = 0.2;
 	final static Dimension MAX_SIZE = new Dimension(1000, 1000);
 	final static Dimension MIN_SIZE = new Dimension(300, 300);
-//	final static Dimension BTN_MAX_SIZE = new Dimension(160, 160);
+	// final static Dimension BTN_MAX_SIZE = new Dimension(160, 160);
 	final static Dimension BTN_MIN_SIZE = new Dimension(60, 60);
 	final static Font BUTTON_FONT = new Font("Verdana", Font.BOLD, 18);
 	private JTextField txtField;
@@ -313,7 +313,7 @@ public class CalculatorInterface implements ActionListener
 			if (validator.isValid("7"))
 				txtField.setText(enteredText + "7");
 		}
-
+		
 		if (e.getSource() == eight)
 		{
 			if (validator.isValid("8"))
@@ -335,10 +335,13 @@ public class CalculatorInterface implements ActionListener
 		{
 			if (validator.isValid(","))
 				txtField.setText(enteredText + ",");
+
+			disableDecimalSeparator();
+
 		}
-		
-		//TODO Zbierz tekst z negacją
-		
+
+		// TODO Zbierz tekst z negacją
+
 		if (e.getSource() == negation)
 		{
 			if (isNegationClicked)
@@ -362,25 +365,30 @@ public class CalculatorInterface implements ActionListener
 		{
 			if (validator.isValid("+"))
 			{
+				txtField.setText(enteredText + "+");
 				number = txtField.getText();
-				txtField.setText(number + "+");
+				enableDecimalSeparator();
 			}
-
+		}
 		if (e.getSource() == subtraction)
 		{
 			if (validator.isValid("-"))
 			{
+				txtField.setText(enteredText + "-");
 				number = txtField.getText();
-				txtField.setText(number + "-");
+				enableDecimalSeparator();
 			}
 		}
 
 		if (e.getSource() == multiplication)
 		{
+			enableDecimalSeparator();
+
 			if (validator.isValid("*"))
 			{
+				txtField.setText(enteredText + "*");
 				number = txtField.getText();
-				txtField.setText(number + "*");
+
 			}
 		}
 
@@ -388,8 +396,10 @@ public class CalculatorInterface implements ActionListener
 		{
 			if (validator.isValid("/"))
 			{
+				txtField.setText(enteredText + "/");
 				number = txtField.getText();
-				txtField.setText(number + "/");
+
+				enableDecimalSeparator();
 			}
 		}
 
@@ -397,8 +407,9 @@ public class CalculatorInterface implements ActionListener
 		{
 			if (validator.isValid("%"))
 			{
-			//	number = txtField.getText();
-				txtField.setText(number + "%");
+				// number = txtField.getText();
+				txtField.setText(enteredText + "%");
+				enableDecimalSeparator();
 			}
 		}
 
@@ -407,48 +418,59 @@ public class CalculatorInterface implements ActionListener
 			if (validator.isValid("√"))
 			{
 				number = txtField.getText();
-				txtField.setText("√" + number);
+				txtField.setText("√" + enteredText);
 			}
 		}
-		
+
 		if (e.getSource() == equalsSign)
 		{
 			String result = calc.calculate(enteredText);
 			txtField.setText(result);
+			enableDecimalSeparator();
 		}
 	}
+
+	private void disableDecimalSeparator()
+	{
+		decimalSeparator.setEnabled(false);
+	}
+
+	private void enableDecimalSeparator()
+	{
+		decimalSeparator.setEnabled(true);
 	}
 
 	private void disableControls()
 	{
-		boolean disable = false;
+		boolean enable = false;
 
-		txtField.setEnabled(disable);
-		one.setEnabled(disable);
-		two.setEnabled(disable);
-		three.setEnabled(disable);
-		four.setEnabled(disable);
-		five.setEnabled(disable);
-		six.setEnabled(disable);
-		seven.setEnabled(disable);
-		eight.setEnabled(disable);
-		nine.setEnabled(disable);
-		zero.setEnabled(disable);
-		addition.setEnabled(disable);
-		subtraction.setEnabled(disable);
-		multiplication.setEnabled(disable);
-		division.setEnabled(disable);
-		squareRoot.setEnabled(disable);
-		negation.setEnabled(disable);
-		percent.setEnabled(disable);
-		decimalSeparator.setEnabled(disable);
-		equalsSign.setEnabled(disable);
+		txtField.setEnabled(enable);
+		one.setEnabled(enable);
+		two.setEnabled(enable);
+		three.setEnabled(enable);
+		four.setEnabled(enable);
+		five.setEnabled(enable);
+		six.setEnabled(enable);
+		seven.setEnabled(enable);
+		eight.setEnabled(enable);
+		nine.setEnabled(enable);
+		zero.setEnabled(enable);
+		addition.setEnabled(enable);
+		subtraction.setEnabled(enable);
+		multiplication.setEnabled(enable);
+		division.setEnabled(enable);
+		squareRoot.setEnabled(enable);
+		negation.setEnabled(enable);
+		percent.setEnabled(enable);
+		decimalSeparator.setEnabled(enable);
+		equalsSign.setEnabled(enable);
 	}
 
-	public JTextField getTxtField()
-	{
-		return txtField;
-	}
+
+	// public JTextField getTxtField()
+	// {
+	// return txtField;
+	// }
 
 	public static void main(String[] args)
 	{

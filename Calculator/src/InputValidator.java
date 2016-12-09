@@ -6,6 +6,11 @@ public class InputValidator
 	{
 		InputValidator v = new InputValidator();
 		v.unitTest("2,3,3", false);
+		v.unitTest("0", true);
+		v.unitTest("20/4", true);
+		v.unitTest("10*4/2", true);
+
+		v.unitTest("32*23", true);
 		v.unitTest("2+2", true);
 		v.unitTest("2+2+", true);
 		v.unitTest("2-2", true);
@@ -18,70 +23,48 @@ public class InputValidator
 		v.unitTest("2/9", true);
 		v.unitTest("2+5-7", true);
 		v.unitTest("2+2+2", true);
-		v.unitTest("0", false);
-		
 		v.unitTest("2,1+3,2", true);
 		v.unitTest("2,,2", false);
 		v.unitTest("2,2", true);
 		v.unitTest("12,1234+134,1245", true);
-		
-	}
 
+	}
+	
+//	public boolean isNumber(String text)
+//	{
+//		if (text.matches("\\d+") || text.matches("\\d+\\,\\d+"))
+//		{
+//		return true;
+//		}
+//		
+//		return false;
+//		
+//	}
+	
 	public boolean isValid(String characterString)
 	{
 		return isValid(characterString.charAt(0));
 	}
-	
+
 	public boolean isValid(char character)
 	{
-		// TODO: zdefiniuj input validator
-		// return false if
-		// 1. last char in input is math operation and character is also a math
-		// operation
-		// 2. input is length == 0 and character is 0
-		// 3. in number in between math operation char you can have only one
-		// comma
+			// Pierwszy znak nie może być znakiem lub zerem
+			if (input.length() == 0 && !Character.isDigit(character))						 // || Character.valueOf(character) == '0')
+			{
+				return false;
+			}
 
-		//&& character != '-';
-		
-		
-		// Pierwszy znak nie może być znakiem lub zerem
-		if (input.length() == 0 && !Character.isDigit(character) || Character.valueOf(character) == '0')
-		{
-			return false;
-		}
-//		// Jeśli input nie jest pusty i ostatni znak jest operatorem i nowy też 
-//		// Ignoruj nowy znak
-		if (input.length() >= 1 && !Character.isDigit(input.charAt(input.length() - 1)) && !Character.isDigit(character))
-		{
-			return false;
-		}
-//		
-		if (input.matches("[^0-9]$") && !Character.isDigit(character))
-		{
-			return false;
-		}
-		
-		//NIEDOBRY
-		String newest = "((^\\d+(\\,{1}\\d+){0,1}){1}([\\+\\-\\/\\*\\%]{1}(\\d+(\\,{1}\\d+){0,1}){0,1}){0,1})$";
-		String newReg = "(?m)^(\\?!.*\\b((^\\d+(\\,{1}\\d+){0,1}){1}([\\+\\-\\/\\*\\%]{1}(\\d+(\\,{1}\\d+){0,1}){0,1}){0,1})\\b).+$";
-		String regex = "((^\\d+(\\,{1}\\d+){0,1}){1}([\\+\\-\\/\\*\\%]{1}(\\d+(\\,{1}\\d+){0,1}){0,1}){0,1})$";
-//		String reg = "(^\\d+(\\,{1}\\d+){0,1}){1}[\\+\\-\\/\\*\\%]{0,1}(\\d+(\\,{1}\\d+){0,1}){0,1}";
-		
-
-		
-		if (input.matches(newReg))
-		{
-			return false;
-		}
-		
-	
-	// TODO: To blokuje uzywanie tych samych znaków, po testach wykasuj	
-//		if (!Character.isDigit(character) && input.contains(Character.toString(character)))
-	//	{
-//			return false;
-//		}
+			// Jeśli input nie jest pusty i ostatni znak jest operatorem i nowy
+			// też
+			// Ignoruj nowy znak
 			
+			if (input.length()!= 0 && !Character.isDigit(input.charAt(input.length() - 1))
+					&& !Character.isDigit(character))
+			{
+				return false;
+			}
+
+
 		input += character;
 		return true;
 	}
@@ -102,14 +85,12 @@ public class InputValidator
 			}
 		}
 
-
 		boolean testPassed = (expectedResult != wasNotValidOnceOrMore);
 
 		if (testPassed)
 		{
 			System.out.println(input + " " + expectedResult + " TEST PASSED");
-		}
-		else
+		} else
 		{
 			System.out.println(input + " " + expectedResult + " TEST FAILED");
 		}
