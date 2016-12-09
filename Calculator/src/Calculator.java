@@ -17,38 +17,38 @@ public class Calculator
 		this.operator = operator;
 		this.x = x;
 		this.y = y;
-		
-		if (operator == Operation.ADDITION.returnOperator())
-		{
-			{
-				result = x + y;
-			}
-		}
-		if (operator == Operation.SUBTRACTION.returnOperator())
-		{
-			result = x - y;
-		}
-		
-		if (operator == Operation.MULTIPLICATION.returnOperator())
-		{
-			result = x * y;
-
-		}
-		
-		if (operator == Operation.DIVISION.returnOperator())
-		{
-			result = x / y;
-		}
-		
-		if (operator == Operation.PERCENTAGE.returnOperator())
-		{
-				result = x / 100 * y;			
-		}
-		
-		if (operator == Operation.SQUARE_ROOT.returnOperator())
-		{
-			result = Math.sqrt(x);
-		}
+//		
+//		if (operator == Operation.ADDITION.returnOperator())
+//		{
+//			{
+//				result = x + y;
+//			}
+//		}
+//		if (operator == Operation.SUBTRACTION.returnOperator())
+//		{
+//			result = x - y;
+//		}
+//		
+//		if (operator == Operation.MULTIPLICATION.returnOperator())
+//		{
+//			result = x * y;
+//
+//		}
+//		
+//		if (operator == Operation.DIVISION.returnOperator())
+//		{
+//			result = x / y;
+//		}
+//		
+//		if (operator == Operation.PERCENTAGE.returnOperator())
+//		{
+//				result = x / 100 * y;			
+//		}
+//		
+//		if (operator == Operation.SQUARE_ROOT.returnOperator())
+//		{
+//			result = Math.sqrt(x);
+//		}
 		
 		strResult = String.valueOf(result);
 		return strResult;

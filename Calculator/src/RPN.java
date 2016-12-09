@@ -57,7 +57,7 @@ public class RPN {
      */
     public static void main(String[] args) {
         try {
-            compute("22+444");
+            compute("22 + 444");
         } catch (Exception err) {
             System.out.println(err.getMessage());
         }

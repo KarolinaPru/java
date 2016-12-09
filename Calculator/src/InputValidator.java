@@ -1,79 +1,45 @@
 public class InputValidator
 {
-	private String input = "";
+	public String lastValidInput = "";
 
 	public static void main(String[] args)
 	{
 		InputValidator v = new InputValidator();
 		v.unitTest("2,3,3", false);
 		v.unitTest("0", true);
-		v.unitTest("20/4", true);
-		v.unitTest("10*4/2", true);
-		v.unitTest("√9", true);
-		v.unitTest("√√9", false);
-		v.unitTest("√9√", false);
-		v.unitTest("32*23", true);
-		v.unitTest("2+2", true);
-		v.unitTest("2+2+", true);
-		v.unitTest("2-2", true);
-		v.unitTest("2--2", false);
-		v.unitTest("--2", false);
-		v.unitTest("+", false);
-		v.unitTest("-", false);
 		v.unitTest("7", true);
-		v.unitTest("1+-2", false);
-		v.unitTest("2/9", true);
-		v.unitTest("2+5-7", true);
-		v.unitTest("2+2+2", true);
-		v.unitTest("2,1+3,2", true);
 		v.unitTest("2,,2", false);
 		v.unitTest("2,2", true);
-		v.unitTest("12,1234+134,1245", true);
-
+		v.unitTest("00", false);
+		v.unitTest("00,asdfa", false);
+		v.unitTest("12345", true);
+		v.unitTest("12345asdf", false);
+		v.unitTest("asdf12345", false);
 	}
 	
-//	public boolean isNumber(String text)
-//	{
-//		if (text.matches("\\d+") || text.matches("\\d+\\,\\d+"))
-//		{
-//		return true;
-//		}
-//		
-//		return false;
-//		
-//	}
-	
-	public boolean isValid(String characterString)
-	{
-		return isValid(characterString.charAt(0));
+	public boolean isValidNumber(char newInput){
+		return isValidNumber(String.valueOf(newInput));
 	}
 
-	public boolean isValid(char character)
+	public boolean isValidNumber(String newInput)
 	{
+		String inputCandidate = lastValidInput + newInput; 
 
-			if (input.length() == 0 && !Character.isDigit(character))
-			{
-				return false;
-			}
-			
-			if (input.length()!= 0 && !Character.isDigit(input.charAt(input.length() - 1))
-					&& !Character.isDigit(character))
-			{
-				return false;
-			}
+		// a number with a comma as a decimal separator
+		if(!inputCandidate.matches("^\\d*\\,?\\d*$"))
+			return false;
+		
+		// more than 2 zeros at the beginning
+		if(inputCandidate.matches("^0{2,}"))
+			return false;
 
-			if (input.length() != 0 && input.contains("√") && Character.valueOf(character) == '√')
-			{
-				return false;
-			}
-
-		input += character;
+		lastValidInput = inputCandidate;
 		return true;
 	}
 
 	public void clear()
 	{
-		input = "";
+		lastValidInput = "";
 	}
 
 	public void unitTest(String input, boolean expectedResult)
@@ -81,7 +47,7 @@ public class InputValidator
 		boolean wasNotValidOnceOrMore = false;
 		for (int i = 0; i < input.length(); i++)
 		{
-			if (!this.isValid(input.charAt(i)))
+			if (!this.isValidNumber(input.charAt(i)))
 			{
 				wasNotValidOnceOrMore = true;
 			}
