@@ -46,7 +46,6 @@ public class CalculatorInterface implements ActionListener
 	private JButton equalsSign;
 	private JButton decimalSeparator;
 	private JButton negation;
-	private boolean isNegationClicked = false;
 	private InputValidator validator = new InputValidator();
 	private Calculator calc = new Calculator();
 	private String number;
@@ -344,15 +343,22 @@ public class CalculatorInterface implements ActionListener
 
 		if (e.getSource() == negation)
 		{
-			if (isNegationClicked)
+			char firstChar = enteredText.charAt(0);
+			if(Character.isDigit(firstChar))
+				{
+					txtField.setText("-" + enteredText);
+				}
+			
+			else if (Character.valueOf(firstChar) == '-')
 			{
-				txtField.setText("-" + enteredText);
-
-			} else
-			{
-				txtField.setText("" + enteredText);
+				enteredText = enteredText.replace(firstChar, '+');
+				txtField.setText(enteredText);
 			}
-			isNegationClicked = !isNegationClicked;
+			else if (Character.valueOf(firstChar) == '+')
+			{
+				enteredText = enteredText.replace(firstChar, '-');
+				txtField.setText(enteredText);
+			}
 		}
 
 		if (e.getSource() == clear)
@@ -424,7 +430,7 @@ public class CalculatorInterface implements ActionListener
 
 		if (e.getSource() == equalsSign)
 		{
-			String result = calc.calculate(enteredText);
+			String result = calc.parse(enteredText);
 			txtField.setText(result);
 			enableDecimalSeparator();
 		}

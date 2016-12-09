@@ -2,64 +2,24 @@
 public enum Operation
 {
 	
-	ADDITION,
-	SUBTRACTION,
-	MULTIPLICATION,
-	DIVISION,
-	PERCENTAGE,
-	SQUARE_ROOT;
-}
+	ADDITION ('+'),
+	SUBTRACTION ('-'),
+	MULTIPLICATION('*'),
+	DIVISION ('/'),
+	PERCENTAGE ('%'),
+	SQUARE_ROOT ('√');
 	
-/*	ADDITION
-	{
-		double apply(double x, double y)
-		{
-			return x + y;
-		}
-	},
-	SUBTRACTION
-	{
-		double apply(double x, double y)
-		{
-			return x - y;
-		}
-	},
-	MULTIPLICATION
-	{
-		double apply(double x, double y)
-		{
-			return x * y;
-		}
-	},
-	DIVISION
-	{
-		double apply(double x, double y)
-		{
-			return x / y;
-		}
-	},
-	PERCENTAGE
-	{
-		double apply(double x, double y)
-		{
-			return x/100 * y;
-		}
-	},
-	SQUARE_ROOT
-	{	
-		//TODO: check if works
-		double apply(double x, double y)
-		{
-			return Math.sqrt(x);
-		}
-	};
+	private char operator;
 	
-	public String calculate (Operation op, double x, double y)
+	private Operation(char operator)
 	{
-		return String.valueOf(op.apply(x, y));
+		this.operator = operator;
 	}
+	
+	public char returnOperator()
+	{
+		return operator;
+	}
+}
 
-	abstract double apply(double x, double y);
-
-	*/
 
