@@ -86,9 +86,9 @@ public class CalculatorListener implements ActionListener
 
 		if (e.getSource() == calcInterface.decimalSeparator)
 		{
-			if (validator.isValidNumber(","))
+			if (validator.isValidNumber("."))
 			{
-				calcInterface.txtField.setText(enteredText + ",");
+				calcInterface.txtField.setText(enteredText + ".");
 				calcInterface.disableDecimalSeparator();
 			}
 		}
