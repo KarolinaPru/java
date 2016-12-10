@@ -8,145 +8,145 @@ public class CalculatorListener implements ActionListener
 	private Operation operation = Operation.MULTIPLY;
 	private String enteredText;
 
-	private CalculatorInterface calcInterface;
-	private InputValidator validator;
+	private CalculatorInterface gui;
+	private CalculatorLogic logic;
 
-	public CalculatorListener(CalculatorInterface calcInterface)
+	public CalculatorListener(CalculatorInterface gui)
 	{
-		this.calcInterface = calcInterface;
-		this.validator = new InputValidator();
+		this.gui = gui;
+		this.logic = new CalculatorLogic();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		enteredText = calcInterface.txtField.getText();
+		enteredText = gui.txtField.getText();
 
-		if (e.getSource() == calcInterface.one)
+		if (e.getSource() == gui.one)
 		{
-			if (validator.validateIfIsNumberAndSaveAsLastValidInput("1"))
-				calcInterface.txtField.setText(enteredText + "1");
+			if (logic.validateIfIsNumberAndSaveAsLastValidInput("1"))
+				gui.txtField.setText(enteredText + "1");
 		}
 
-		if (e.getSource() == calcInterface.two)
+		if (e.getSource() == gui.two)
 		{
-			if (validator.validateIfIsNumberAndSaveAsLastValidInput("2"))
-				calcInterface.txtField.setText(enteredText + "2");
+			if (logic.validateIfIsNumberAndSaveAsLastValidInput("2"))
+				gui.txtField.setText(enteredText + "2");
 		}
 
-		if (e.getSource() == calcInterface.three)
+		if (e.getSource() == gui.three)
 		{
-			if (validator.validateIfIsNumberAndSaveAsLastValidInput("3"))
-				calcInterface.txtField.setText(enteredText + "3");
+			if (logic.validateIfIsNumberAndSaveAsLastValidInput("3"))
+				gui.txtField.setText(enteredText + "3");
 		}
 
-		if (e.getSource() == calcInterface.four)
+		if (e.getSource() == gui.four)
 		{
-			if (validator.validateIfIsNumberAndSaveAsLastValidInput("4"))
-				calcInterface.txtField.setText(enteredText + "4");
+			if (logic.validateIfIsNumberAndSaveAsLastValidInput("4"))
+				gui.txtField.setText(enteredText + "4");
 		}
 
-		if (e.getSource() == calcInterface.five)
+		if (e.getSource() == gui.five)
 		{
-			if (validator.validateIfIsNumberAndSaveAsLastValidInput("5"))
-				calcInterface.txtField.setText(enteredText + "5");
+			if (logic.validateIfIsNumberAndSaveAsLastValidInput("5"))
+				gui.txtField.setText(enteredText + "5");
 		}
 
-		if (e.getSource() == calcInterface.six)
+		if (e.getSource() == gui.six)
 		{
-			if (validator.validateIfIsNumberAndSaveAsLastValidInput("6"))
-				calcInterface.txtField.setText(enteredText + "6");
+			if (logic.validateIfIsNumberAndSaveAsLastValidInput("6"))
+				gui.txtField.setText(enteredText + "6");
 		}
 
-		if (e.getSource() == calcInterface.seven)
+		if (e.getSource() == gui.seven)
 		{
-			if (validator.validateIfIsNumberAndSaveAsLastValidInput("7"))
-				calcInterface.txtField.setText(enteredText + "7");
+			if (logic.validateIfIsNumberAndSaveAsLastValidInput("7"))
+				gui.txtField.setText(enteredText + "7");
 		}
 
-		if (e.getSource() == calcInterface.eight)
+		if (e.getSource() == gui.eight)
 		{
-			if (validator.validateIfIsNumberAndSaveAsLastValidInput("8"))
-				calcInterface.txtField.setText(enteredText + "8");
+			if (logic.validateIfIsNumberAndSaveAsLastValidInput("8"))
+				gui.txtField.setText(enteredText + "8");
 		}
 
-		if (e.getSource() == calcInterface.nine)
+		if (e.getSource() == gui.nine)
 		{
-			if (validator.validateIfIsNumberAndSaveAsLastValidInput("9"))
-				calcInterface.txtField.setText(enteredText + "9");
+			if (logic.validateIfIsNumberAndSaveAsLastValidInput("9"))
+				gui.txtField.setText(enteredText + "9");
 		}
-		if (e.getSource() == calcInterface.zero)
+		if (e.getSource() == gui.zero)
 		{
-			if (validator.validateIfIsNumberAndSaveAsLastValidInput("0"))
-				calcInterface.txtField.setText(enteredText + "0");
+			if (logic.validateIfIsNumberAndSaveAsLastValidInput("0"))
+				gui.txtField.setText(enteredText + "0");
 		}
 
-		if (e.getSource() == calcInterface.decimalSeparator)
+		if (e.getSource() == gui.decimalSeparator)
 		{
-			if (validator.validateIfIsNumberAndSaveAsLastValidInput("."))
+			if (logic.validateIfIsNumberAndSaveAsLastValidInput("."))
 			{
-				calcInterface.txtField.setText(enteredText + ".");
-				calcInterface.disableDecimalSeparator();
+				gui.txtField.setText(enteredText + ".");
+				gui.disableDecimalSeparator();
 			}
 		}
 
-		if (e.getSource() == calcInterface.negation)
+		if (e.getSource() == gui.negation)
 		{
-			validator.negateLastValidInput();
+			logic.negateLastValidInput();
 
-			calcInterface.txtField.setText(validator.lastValidInput);
+			gui.txtField.setText(logic.lastValidInput);
 
 			if (numbers.size() == 1)
 			{
-				calcInterface.txtField.setText(numbers.get(0) + getOperationSign() + validator.lastValidInput);
+				gui.txtField.setText(numbers.get(0) + getOperationSign() + logic.lastValidInput);
 			}
 		}
 
-		if (e.getSource() == calcInterface.clear)
+		if (e.getSource() == gui.clear)
 		{
 			clearState();
 		}
 
-		if (e.getSource() == calcInterface.addition)
+		if (e.getSource() == gui.addition)
 		{
 			handleOperationClick(Operation.ADD, "+");
 		}
-		if (e.getSource() == calcInterface.subtraction)
+		if (e.getSource() == gui.subtraction)
 		{
 			handleOperationClick(Operation.SUBTRACT, "-");
 		}
 
-		if (e.getSource() == calcInterface.multiplication)
+		if (e.getSource() == gui.multiplication)
 		{
 			handleOperationClick(Operation.MULTIPLY, "*");
 		}
 
-		if (e.getSource() == calcInterface.division)
+		if (e.getSource() == gui.division)
 		{
 			handleOperationClick(Operation.DIVIDE, "/");
 		}
 
-		if (e.getSource() == calcInterface.percent)
+		if (e.getSource() == gui.percent)
 		{
 			handleOperationClick(Operation.PERCENT, "%");
 		}
 
-		if (e.getSource() == calcInterface.squareRoot)
+		if (e.getSource() == gui.squareRoot)
 		{
-			if (validator.lastValidInput.isEmpty())
+			if (logic.lastValidInput.isEmpty())
 			{
 				return;
 			}
 
-			double number = Double.parseDouble(validator.lastValidInput);
+			double number = Double.parseDouble(logic.lastValidInput);
 			String result = String.valueOf(Math.sqrt(number));
 
-			calcInterface.txtField.setText(result);
+			gui.txtField.setText(result);
 			numbers.clear();
-			validator.lastValidInput = result;
+			logic.lastValidInput = result;
 		}
 
-		if (e.getSource() == calcInterface.equalsSign)
+		if (e.getSource() == gui.equalsSign)
 		{
 			handleEquals();
 		}
@@ -173,7 +173,7 @@ public class CalculatorListener implements ActionListener
 
 	private void handleEquals()
 	{
-		if (validator.lastValidInput.isEmpty())
+		if (logic.lastValidInput.isEmpty())
 		{
 			return;
 		}
@@ -192,55 +192,65 @@ public class CalculatorListener implements ActionListener
 		{
 		case ADD:
 			result = String.valueOf(firstNumber + secondNumber);
-			calcInterface.txtField.setText(result);
+			gui.txtField.setText(result);
 			break;
 		case SUBTRACT:
 			result = String.valueOf(firstNumber - secondNumber);
-			calcInterface.txtField.setText(result);
+			gui.txtField.setText(result);
 			break;
 		case MULTIPLY:
 			result = String.valueOf(firstNumber * secondNumber);
-			calcInterface.txtField.setText(result);
+			gui.txtField.setText(result);
 			break;
 		case DIVIDE:
 			result = String.valueOf(firstNumber / secondNumber);
-			calcInterface.txtField.setText(result);
+			gui.txtField.setText(result);
 			break;
 		case PERCENT:
 			result = String.valueOf(firstNumber / 100 * secondNumber);
-			calcInterface.txtField.setText(result);
+			gui.txtField.setText(result);
 			break;
 		}
 
 		numbers.clear();
-		validator.lastValidInput = result;
-		calcInterface.enableControls();
+
+		if (result.equals("NaN") || result.equals("Infinity"))
+		{
+			gui.txtField.setText("Error");
+			gui.disableControls();
+			numbers.clear();
+			logic.clear();
+		} else
+		{
+			logic.lastValidInput = result;
+			gui.enableControls();
+		}
 	}
 
 	private void addLastValidInputToNumbersList()
 	{
-		numbers.add(validator.lastValidInput);
+		numbers.add(logic.lastValidInput);
 	}
 
 	private void handleOperationClick(Operation operation, String symbol)
 	{
-		if (validator.lastValidInput.isEmpty())
+		if (logic.lastValidInput.isEmpty())
 		{
 			return;
 		}
 		addLastValidInputToNumbersList();
 		this.operation = operation;
-		calcInterface.txtField.setText(enteredText + symbol);
-		validator.clear();
-		calcInterface.enableDecimalSeparator();
-		calcInterface.disableOperations();
+		gui.txtField.setText(enteredText + symbol);
+		logic.clear();
+		gui.enableDecimalSeparator();
+		gui.disableOperations();
 	}
 
 	private void clearState()
 	{
-		validator.clear();
+		logic.clear();
 		numbers.clear();
-		calcInterface.txtField.setText("");
-		calcInterface.enableControls();
+		gui.txtField.setText("");
+		gui.enableControls();
 	}
 }

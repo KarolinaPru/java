@@ -1,26 +1,26 @@
-public class InputValidator
+public class CalculatorLogic
 {
 	public String lastValidInput = "";
 
 	public static void main(String[] args)
 	{
-		InputValidator v = new InputValidator();
-		v.unitTest(".", false);
-		v.unitTest(".34", false);
-		v.unitTest("2.3.3", false);
-		v.unitTest("1,2", false);
-		v.unitTest("0", true);
-		v.unitTest("7", true);
-		v.unitTest("2..2", false);
-		v.unitTest("2.2", true);
-		v.unitTest("00", false);
-		v.unitTest("00.asdfa", false);
-		v.unitTest("12345", true);
-		v.unitTest("12345asdf", false);
-		v.unitTest("asdf12345", false);
-		v.unitTest("+2", false);
-		v.unitTest("-2", true);
-		v.unitTest("--2", false);
+		CalculatorLogic cl = new CalculatorLogic();
+		cl.unitTest(".", false);
+		cl.unitTest(".34", false);
+		cl.unitTest("2.3.3", false);
+		cl.unitTest("1,2", false);
+		cl.unitTest("0", true);
+		cl.unitTest("7", true);
+		cl.unitTest("2..2", false);
+		cl.unitTest("2.2", true);
+		cl.unitTest("00", false);
+		cl.unitTest("00.asdfa", false);
+		cl.unitTest("12345", true);
+		cl.unitTest("12345asdf", false);
+		cl.unitTest("asdf12345", false);
+		cl.unitTest("+2", false);
+		cl.unitTest("-2", true);
+		cl.unitTest("--2", false);
 	}
 	
 	public boolean validateIfIsNumberAndSaveAsLastValidInput(char newInput){
@@ -31,11 +31,9 @@ public class InputValidator
 	{
 		String inputCandidate = lastValidInput + newInput; 
 
-		// a number with a comma as a decimal separator
 		if(!inputCandidate.matches("^\\-?\\d*\\.?\\d*$"))
 			return false;
 		
-		// more than 2 zeros at the beginning
 		if(inputCandidate.matches("^0{2,}"))
 			return false;
 		
