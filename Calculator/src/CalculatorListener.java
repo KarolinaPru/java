@@ -94,6 +94,7 @@ public class CalculatorListener implements ActionListener
 
 		if (e.getSource() == calcInterface.negation)
 		{
+			
 			// char firstChar = enteredText.charAt(0);
 			// if (Character.isDigit(firstChar))
 			// {
@@ -142,9 +143,17 @@ public class CalculatorListener implements ActionListener
 
 		if (e.getSource() == calcInterface.squareRoot)
 		{
-			// TODO: special case - think how to handle squareRoot
-			// handleOperationClick(Operation.SQUARE_ROOT, "√");
-			// calcInterface.txtField.setText("√" + enteredText);
+			if (validator.lastValidInput.isEmpty())
+			{
+				return;
+			}
+			
+			double number = Double.parseDouble(validator.lastValidInput);
+			String result = String.valueOf(Math.sqrt(number));
+			
+			calcInterface.txtField.setText(result);
+			numbers.clear();
+			validator.lastValidInput = result;
 		}
 
 		if (e.getSource() == calcInterface.equalsSign)
