@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class CalculatorListener implements ActionListener
 {
-	private int currentNumber = 0;
 	private ArrayList<String> numbers = new ArrayList<String>();
 	private Operation operation;
 	private String enteredText;
@@ -159,7 +158,7 @@ public class CalculatorListener implements ActionListener
 
 			double firstNumber = Double.parseDouble(numbers.get(0));
 			double secondNumber = Double.parseDouble(numbers.get(1));
-			String result;
+			String result = "";
 			switch (operation)
 			{
 			case ADD:
@@ -184,13 +183,16 @@ public class CalculatorListener implements ActionListener
 				calcInterface.txtField.setText(result);
 				break;
 			}
+			
+			numbers.clear();
+			validator.lastValidInput = result;
+			calcInterface.enableControls();
 		}
 	}
 
 	private void handleOperationClick(Operation operation, String symbol)
 	{
 		numbers.add(validator.lastValidInput);
-		switchToNextNumber();
 		this.operation = operation;
 		calcInterface.txtField.setText(enteredText + symbol);
 		validator.clear();
@@ -198,16 +200,10 @@ public class CalculatorListener implements ActionListener
 		calcInterface.disableOperations();
 	}
 
-	private void switchToNextNumber()
-	{
-		currentNumber += 1;
-	}
-
 	private void clearState()
 	{
 		validator.clear();
 		numbers.clear();
-		currentNumber = 0;
 		calcInterface.txtField.setText("");
 		calcInterface.enableControls();
 	}
