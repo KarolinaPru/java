@@ -149,6 +149,11 @@ public class CalculatorListener implements ActionListener
 
 		if (e.getSource() == calcInterface.equalsSign)
 		{
+			if (validator.lastValidInput.isEmpty())
+			{
+				return;
+			}
+			
 			numbers.add(validator.lastValidInput);
 			
 			if (numbers.size() < 2)

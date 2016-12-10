@@ -5,6 +5,8 @@ public class InputValidator
 	public static void main(String[] args)
 	{
 		InputValidator v = new InputValidator();
+		v.unitTest(".", false);
+		v.unitTest(".34", false);
 		v.unitTest("2.3.3", false);
 		v.unitTest("1,2", false);
 		v.unitTest("0", true);
@@ -33,6 +35,9 @@ public class InputValidator
 		
 		// more than 2 zeros at the beginning
 		if(inputCandidate.matches("^0{2,}"))
+			return false;
+		
+		if(inputCandidate.matches("^\\."))
 			return false;
 
 		lastValidInput = inputCandidate;
