@@ -192,6 +192,10 @@ public class CalculatorListener implements ActionListener
 
 	private void handleOperationClick(Operation operation, String symbol)
 	{
+		if (validator.lastValidInput.isEmpty())
+		{
+			return;
+		}
 		numbers.add(validator.lastValidInput);
 		this.operation = operation;
 		calcInterface.txtField.setText(enteredText + symbol);
