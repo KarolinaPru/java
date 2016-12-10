@@ -19,6 +19,8 @@ public class InputValidator
 		v.unitTest("12345asdf", false);
 		v.unitTest("asdf12345", false);
 		v.unitTest("+2", false);
+		v.unitTest("-2", true);
+		v.unitTest("--2", false);
 	}
 	
 	public boolean validateIfIsNumberAndSaveAsLastValidInput(char newInput){
@@ -30,7 +32,7 @@ public class InputValidator
 		String inputCandidate = lastValidInput + newInput; 
 
 		// a number with a comma as a decimal separator
-		if(!inputCandidate.matches("^\\d*\\.?\\d*$"))
+		if(!inputCandidate.matches("^\\-?\\d*\\.?\\d*$"))
 			return false;
 		
 		// more than 2 zeros at the beginning
@@ -44,6 +46,27 @@ public class InputValidator
 		return true;
 	}
 
+	public boolean isLastValidNumberPositive()
+	{
+		if(this.lastValidInput.startsWith("-")){
+			return false;
+		}
+		return true;
+	}
+	
+	public void negateLastValidInput(){
+		if (!this.isLastValidNumberPositive())
+		{
+			StringBuilder numberNegation = new StringBuilder();
+			numberNegation.append(this.lastValidInput);
+			numberNegation.replace(0, 1, "");
+			this.lastValidInput = numberNegation.toString();
+		} else
+		{
+			this.lastValidInput = "-" + this.lastValidInput;
+		}
+	}
+	
 	public void clear()
 	{
 		lastValidInput = "";

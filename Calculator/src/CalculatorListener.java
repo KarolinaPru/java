@@ -92,17 +92,14 @@ public class CalculatorListener implements ActionListener
 
 		if (e.getSource() == calcInterface.negation)
 		{
-			if (validator.lastValidInput.startsWith("-"))
+			validator.negateLastValidInput();
+
+			calcInterface.txtField.setText(validator.lastValidInput);
+
+			if (numbers.size() == 1)
 			{
-				StringBuilder numberNegation = new StringBuilder();
-				numberNegation.append(validator.lastValidInput);
-				numberNegation.replace(0, 1, "");
-				validator.lastValidInput = numberNegation.toString();
-			} else
-			{
-				validator.lastValidInput = "-" + validator.lastValidInput;
+				calcInterface.txtField.setText(numbers.get(0) + getOperationSign() + validator.lastValidInput);
 			}
-			System.out.println("negation: " + validator.lastValidInput);
 		}
 
 		if (e.getSource() == calcInterface.clear)
@@ -155,6 +152,25 @@ public class CalculatorListener implements ActionListener
 		}
 	}
 
+	private String getOperationSign()
+	{
+		switch (operation)
+		{
+		case ADD:
+			return "+";
+		case SUBTRACT:
+			return "-";
+		case MULTIPLY:
+			return "*";
+		case DIVIDE:
+			return "/";
+		case PERCENT:
+			return "%";
+		}
+
+		return "";
+	}
+
 	private void handleEquals()
 	{
 		if (validator.lastValidInput.isEmpty())
@@ -169,7 +185,6 @@ public class CalculatorListener implements ActionListener
 			return;
 		}
 
-		System.out.println(numbers.get(0));
 		double firstNumber = Double.parseDouble(numbers.get(0));
 		double secondNumber = Double.parseDouble(numbers.get(1));
 		String result = "";
