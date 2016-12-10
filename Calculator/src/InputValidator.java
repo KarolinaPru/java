@@ -21,11 +21,11 @@ public class InputValidator
 		v.unitTest("+2", false);
 	}
 	
-	public boolean isValidNumber(char newInput){
-		return isValidNumber(String.valueOf(newInput));
+	public boolean validateIfIsNumberAndSaveAsLastValidInput(char newInput){
+		return validateIfIsNumberAndSaveAsLastValidInput(String.valueOf(newInput));
 	}
 
-	public boolean isValidNumber(String newInput)
+	public boolean validateIfIsNumberAndSaveAsLastValidInput(String newInput)
 	{
 		String inputCandidate = lastValidInput + newInput; 
 
@@ -54,7 +54,7 @@ public class InputValidator
 		boolean wasNotValidOnceOrMore = false;
 		for (int i = 0; i < input.length(); i++)
 		{
-			if (!this.isValidNumber(input.charAt(i)))
+			if (!this.validateIfIsNumberAndSaveAsLastValidInput(input.charAt(i)))
 			{
 				wasNotValidOnceOrMore = true;
 			}

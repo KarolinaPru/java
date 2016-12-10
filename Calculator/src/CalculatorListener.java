@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class CalculatorListener implements ActionListener
 {
 	private ArrayList<String> numbers = new ArrayList<String>();
-	private Operation operation;
+	private Operation operation = Operation.MULTIPLY;
 	private String enteredText;
 
 	private CalculatorInterface calcInterface;
@@ -26,66 +26,66 @@ public class CalculatorListener implements ActionListener
 
 		if (e.getSource() == calcInterface.one)
 		{
-			if (validator.isValidNumber("1"))
+			if (validator.validateIfIsNumberAndSaveAsLastValidInput("1"))
 				calcInterface.txtField.setText(enteredText + "1");
 		}
 
 		if (e.getSource() == calcInterface.two)
 		{
-			if (validator.isValidNumber("2"))
+			if (validator.validateIfIsNumberAndSaveAsLastValidInput("2"))
 				calcInterface.txtField.setText(enteredText + "2");
 		}
 
 		if (e.getSource() == calcInterface.three)
 		{
-			if (validator.isValidNumber("3"))
+			if (validator.validateIfIsNumberAndSaveAsLastValidInput("3"))
 				calcInterface.txtField.setText(enteredText + "3");
 		}
 
 		if (e.getSource() == calcInterface.four)
 		{
-			if (validator.isValidNumber("4"))
+			if (validator.validateIfIsNumberAndSaveAsLastValidInput("4"))
 				calcInterface.txtField.setText(enteredText + "4");
 		}
 
 		if (e.getSource() == calcInterface.five)
 		{
-			if (validator.isValidNumber("5"))
+			if (validator.validateIfIsNumberAndSaveAsLastValidInput("5"))
 				calcInterface.txtField.setText(enteredText + "5");
 		}
 
 		if (e.getSource() == calcInterface.six)
 		{
-			if (validator.isValidNumber("6"))
+			if (validator.validateIfIsNumberAndSaveAsLastValidInput("6"))
 				calcInterface.txtField.setText(enteredText + "6");
 		}
 
 		if (e.getSource() == calcInterface.seven)
 		{
-			if (validator.isValidNumber("7"))
+			if (validator.validateIfIsNumberAndSaveAsLastValidInput("7"))
 				calcInterface.txtField.setText(enteredText + "7");
 		}
 
 		if (e.getSource() == calcInterface.eight)
 		{
-			if (validator.isValidNumber("8"))
+			if (validator.validateIfIsNumberAndSaveAsLastValidInput("8"))
 				calcInterface.txtField.setText(enteredText + "8");
 		}
 
 		if (e.getSource() == calcInterface.nine)
 		{
-			if (validator.isValidNumber("9"))
+			if (validator.validateIfIsNumberAndSaveAsLastValidInput("9"))
 				calcInterface.txtField.setText(enteredText + "9");
 		}
 		if (e.getSource() == calcInterface.zero)
 		{
-			if (validator.isValidNumber("0"))
+			if (validator.validateIfIsNumberAndSaveAsLastValidInput("0"))
 				calcInterface.txtField.setText(enteredText + "0");
 		}
 
 		if (e.getSource() == calcInterface.decimalSeparator)
 		{
-			if (validator.isValidNumber("."))
+			if (validator.validateIfIsNumberAndSaveAsLastValidInput("."))
 			{
 				calcInterface.txtField.setText(enteredText + ".");
 				calcInterface.disableDecimalSeparator();
