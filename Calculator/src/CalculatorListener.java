@@ -92,8 +92,17 @@ public class CalculatorListener implements ActionListener
 
 		if (e.getSource() == calcInterface.negation)
 		{
-			
-			
+			if (validator.lastValidInput.startsWith("-"))
+			{
+				StringBuilder numberNegation = new StringBuilder();
+				numberNegation.append(validator.lastValidInput);
+				numberNegation.replace(0, 1, "");
+				validator.lastValidInput = numberNegation.toString();
+			} else
+			{
+				validator.lastValidInput = "-" + validator.lastValidInput;
+			}
+			System.out.println("negation: " + validator.lastValidInput);
 		}
 
 		if (e.getSource() == calcInterface.clear)
@@ -131,10 +140,10 @@ public class CalculatorListener implements ActionListener
 			{
 				return;
 			}
-			
+
 			double number = Double.parseDouble(validator.lastValidInput);
 			String result = String.valueOf(Math.sqrt(number));
-			
+
 			calcInterface.txtField.setText(result);
 			numbers.clear();
 			validator.lastValidInput = result;
@@ -142,49 +151,60 @@ public class CalculatorListener implements ActionListener
 
 		if (e.getSource() == calcInterface.equalsSign)
 		{
-			if (validator.lastValidInput.isEmpty())
-			{
-				return;
-			}
-			
-			numbers.add(validator.lastValidInput);
-			
-			if (numbers.size() < 2)
-			{
-				return;
-			}
-
-			double firstNumber = Double.parseDouble(numbers.get(0));
-			double secondNumber = Double.parseDouble(numbers.get(1));
-			String result = "";
-			switch (operation)
-			{
-			case ADD:
-				result = String.valueOf(firstNumber + secondNumber);
-				calcInterface.txtField.setText(result);
-				break;
-			case SUBTRACT:
-				result = String.valueOf(firstNumber - secondNumber);
-				calcInterface.txtField.setText(result);
-				break;
-			case MULTIPLY:
-				result = String.valueOf(firstNumber * secondNumber);
-				calcInterface.txtField.setText(result);
-				break;
-			case DIVIDE:
-				result = String.valueOf(firstNumber / secondNumber);
-				calcInterface.txtField.setText(result);
-				break;
-			case PERCENT:
-				result = String.valueOf(firstNumber / 100 * secondNumber);
-				calcInterface.txtField.setText(result);
-				break;
-			}
-			
-			numbers.clear();
-			validator.lastValidInput = result;
-			calcInterface.enableControls();
+			handleEquals();
 		}
+	}
+
+	private void handleEquals()
+	{
+		if (validator.lastValidInput.isEmpty())
+		{
+			return;
+		}
+
+		addLastValidInputToNumbersList();
+
+		if (numbers.size() < 2)
+		{
+			return;
+		}
+
+		System.out.println(numbers.get(0));
+		double firstNumber = Double.parseDouble(numbers.get(0));
+		double secondNumber = Double.parseDouble(numbers.get(1));
+		String result = "";
+		switch (operation)
+		{
+		case ADD:
+			result = String.valueOf(firstNumber + secondNumber);
+			calcInterface.txtField.setText(result);
+			break;
+		case SUBTRACT:
+			result = String.valueOf(firstNumber - secondNumber);
+			calcInterface.txtField.setText(result);
+			break;
+		case MULTIPLY:
+			result = String.valueOf(firstNumber * secondNumber);
+			calcInterface.txtField.setText(result);
+			break;
+		case DIVIDE:
+			result = String.valueOf(firstNumber / secondNumber);
+			calcInterface.txtField.setText(result);
+			break;
+		case PERCENT:
+			result = String.valueOf(firstNumber / 100 * secondNumber);
+			calcInterface.txtField.setText(result);
+			break;
+		}
+
+		numbers.clear();
+		validator.lastValidInput = result;
+		calcInterface.enableControls();
+	}
+
+	private void addLastValidInputToNumbersList()
+	{
+		numbers.add(validator.lastValidInput);
 	}
 
 	private void handleOperationClick(Operation operation, String symbol)
@@ -193,7 +213,7 @@ public class CalculatorListener implements ActionListener
 		{
 			return;
 		}
-		numbers.add(validator.lastValidInput);
+		addLastValidInputToNumbersList();
 		this.operation = operation;
 		calcInterface.txtField.setText(enteredText + symbol);
 		validator.clear();
