@@ -18,31 +18,13 @@ public class CalculatorInterface
 	final static double WEIGHT_Y = 0.2;
 	final static Dimension MAX_SIZE = new Dimension(1000, 1000);
 	final static Dimension MIN_SIZE = new Dimension(300, 300);
-	// final static Dimension BTN_MAX_SIZE = new Dimension(160, 160);
 	final static Dimension BTN_MIN_SIZE = new Dimension(60, 60);
 	final static Font BUTTON_FONT = new Font("Verdana", Font.BOLD, 18);
 	public JTextField txtField;
 	public String enteredText;
-	public JButton one;
-	public JButton two;
-	public JButton three;
-	public JButton four;
-	public JButton five;
-	public JButton six;
-	public JButton seven;
-	public JButton eight;
-	public JButton nine;
-	public JButton zero;
-	public JButton clear;
-	public JButton division;
-	public JButton multiplication;
-	public JButton subtraction;
-	public JButton addition;
-	public JButton squareRoot;
-	public JButton percent;
-	public JButton equalsSign;
-	public JButton decimalSeparator;
-	public JButton negation;
+	public JButton one, two, three, four, five, six, seven, eight, nine, zero, clear, division, multiplication,
+			subtraction, addition, squareRoot, percent, equalsSign, decimalSeparator, negation;
+	
 	private CalculatorListener listener;
 
 	public CalculatorInterface()
@@ -295,7 +277,7 @@ public class CalculatorInterface
 		decimalSeparator.setEnabled(false);
 		equalsSign.setEnabled(false);
 	}
-	
+
 	public void enableControls()
 	{
 		txtField.setEnabled(true);
@@ -337,7 +319,6 @@ public class CalculatorInterface
 			@Override
 			public void run()
 			{
-
 				CalculatorInterface calc = new CalculatorInterface();
 			}
 		});

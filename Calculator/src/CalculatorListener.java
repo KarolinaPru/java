@@ -10,13 +10,11 @@ public class CalculatorListener implements ActionListener
 
 	private CalculatorInterface calcInterface;
 	private InputValidator validator;
-	private Calculator calc;
 
 	public CalculatorListener(CalculatorInterface calcInterface)
 	{
 		this.calcInterface = calcInterface;
 		this.validator = new InputValidator();
-		this.calc = new Calculator();
 	}
 
 	@Override
@@ -95,21 +93,7 @@ public class CalculatorListener implements ActionListener
 		if (e.getSource() == calcInterface.negation)
 		{
 			
-			// char firstChar = enteredText.charAt(0);
-			// if (Character.isDigit(firstChar))
-			// {
-			// calcInterface.txtField.setText("-" + enteredText);
-			// }
-			//
-			// else if (Character.valueOf(firstChar) == '-')
-			// {
-			// enteredText = enteredText.replace(firstChar, '+');
-			// calcInterface.txtField.setText(enteredText);
-			// } else if (Character.valueOf(firstChar) == '+')
-			// {
-			// enteredText = enteredText.replace(firstChar, '-');
-			// calcInterface.txtField.setText(enteredText);
-			// }
+			
 		}
 
 		if (e.getSource() == calcInterface.clear)
@@ -178,7 +162,6 @@ public class CalculatorListener implements ActionListener
 			case ADD:
 				result = String.valueOf(firstNumber + secondNumber);
 				calcInterface.txtField.setText(result);
-				// TODO: clear numbers add result to numbers (first position)
 				break;
 			case SUBTRACT:
 				result = String.valueOf(firstNumber - secondNumber);
