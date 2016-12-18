@@ -371,7 +371,7 @@ public class CalculatorInterface implements ActionListener
 			if (validator.isValid("-"))
 			{
 				number = txtField.getText();
-				txtField.setText(number + "-");
+				txtField.setText(enteredText + "-");
 			}
 		}
 
@@ -380,7 +380,7 @@ public class CalculatorInterface implements ActionListener
 			if (validator.isValid("*"))
 			{
 				number = txtField.getText();
-				txtField.setText(number + "*");
+				txtField.setText(enteredText + "*");
 			}
 		}
 
@@ -389,7 +389,7 @@ public class CalculatorInterface implements ActionListener
 			if (validator.isValid("/"))
 			{
 				number = txtField.getText();
-				txtField.setText(number + "/");
+				txtField.setText(enteredText + "/");
 			}
 		}
 
@@ -398,7 +398,7 @@ public class CalculatorInterface implements ActionListener
 			if (validator.isValid("%"))
 			{
 			//	number = txtField.getText();
-				txtField.setText(number + "%");
+				txtField.setText(enteredText + "%");
 			}
 		}
 
