@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
-encoding//src/Calculator.java=UTF-8
 encoding//src/CalculatorInterface.java=UTF-8
-encoding//src/InputValidator.java=UTF-8
+encoding//src/CalculatorListener.java=UTF-8
+encoding//src/CalculatorLogic.java=UTF-8
+encoding//src/Operation.java=UTF-8
