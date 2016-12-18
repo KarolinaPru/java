@@ -19,6 +19,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 
 
 public class Main extends Application {
@@ -29,16 +30,42 @@ public class Main extends Application {
 			Scene scene = new Scene(root,600,690);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
-			Canvas canvas = new Canvas(580, 560);
-			canvas.setLayoutX(10);
-			canvas.setLayoutY(10);
+			Canvas canvas = new Canvas(600, 560);
+
 			GraphicsContext gc = canvas.getGraphicsContext2D();
 			gc.setFill(Color.web("#EAFAF1"));
-			gc.fillRect(10, 10, 580, 560);
+			gc.fillRect(
+					canvas.getLayoutX(),
+					canvas.getLayoutY(),
+					canvas.getWidth(),
+					canvas.getHeight()
+					);
 			// W celu dokonywania wyliczen w obrebie canvas ?
 			canvas.boundsInParentProperty();
 			root.getChildren().add(canvas);
 			
+			Line axisX = new Line(
+					canvas.getLayoutX(), 
+					canvas.getHeight()/2, 
+					canvas.getLayoutX() + canvas.getWidth(), 
+					canvas.getHeight()/2
+					);
+			root.getChildren().add(axisX);
+			
+			Line axisY = new Line(
+					canvas.getWidth()/2,
+					canvas.getLayoutY(),
+					canvas.getWidth()/2,
+					canvas.getLayoutY() + canvas.getHeight()					
+					);
+			root.getChildren().add(axisY);
+			
+			System.out.println(canvas.getLayoutX() + " layout x");
+			System.out.println(canvas.getLayoutY() + " layout y");
+			System.out.println(canvas.getWidth() + " canvas - width");
+			System.out.println(canvas.getHeight() + " canvas - height");
+			System.out.println(scene.getWidth() + " scene width");
+			System.out.println(axisX.getEndX() + " axis x endX");
 			
 			Label labelA = new Label("Enter A: ");
 			labelA.setMinWidth(100);
