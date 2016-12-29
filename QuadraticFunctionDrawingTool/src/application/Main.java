@@ -60,6 +60,24 @@ public class Main extends Application {
 					);
 			root.getChildren().add(axisY);
 			
+			
+
+			for (int i = 0; i < canvas.getWidth(); i+=5)
+			{
+				
+				Line scaleAxisX = new Line(
+						i,
+						canvas.getHeight()/2 - 3,
+						i,
+						canvas.getHeight()/2 + 3
+						);
+				scaleAxisX.setStrokeWidth(0.5);
+				
+				root.getChildren().add(scaleAxisX);
+				
+			}
+			
+			
 			System.out.println(canvas.getLayoutX() + " layout x");
 			System.out.println(canvas.getLayoutY() + " layout y");
 			System.out.println(canvas.getWidth() + " canvas - width");
