@@ -62,21 +62,32 @@ public class Main extends Application {
 			
 			
 
-			for (int i = 0; i < canvas.getWidth(); i+=5)
+			for (int i = 0; i < canvas.getWidth(); i+=10)
 			{
-				
 				Line scaleAxisX = new Line(
-						i,
-						canvas.getHeight()/2 - 3,
-						i,
-						canvas.getHeight()/2 + 3
-						);
+					i,
+					canvas.getHeight()/2 - 3,
+					i,
+					canvas.getHeight()/2 + 3
+					);
 				scaleAxisX.setStrokeWidth(0.5);
 				
 				root.getChildren().add(scaleAxisX);
-				
 			}
 			
+			for (int j = 0; j < canvas.getHeight(); j+=10)
+			{
+				Line scaleAxisY = new Line(
+					canvas.getWidth() / 2 - 3,
+					j,
+					canvas.getWidth()/2 + 3,
+					j
+					);
+				scaleAxisY.setStrokeWidth(0.5);
+				
+				root.getChildren().add(scaleAxisY);
+				
+			}
 			
 			System.out.println(canvas.getLayoutX() + " layout x");
 			System.out.println(canvas.getLayoutY() + " layout y");
