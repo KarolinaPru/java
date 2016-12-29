@@ -20,6 +20,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
+import javafx.scene.shape.QuadCurveTo;
 
 
 public class Main extends Application {
@@ -44,58 +47,12 @@ public class Main extends Application {
 			canvas.boundsInParentProperty();
 			root.getChildren().add(canvas);
 			
-			Line axisX = new Line(
-					canvas.getLayoutX(), 
-					canvas.getHeight()/2, 
-					canvas.getLayoutX() + canvas.getWidth(), 
-					canvas.getHeight()/2
-					);
-			root.getChildren().add(axisX);
-			
-			Line axisY = new Line(
-					canvas.getWidth()/2,
-					canvas.getLayoutY(),
-					canvas.getWidth()/2,
-					canvas.getLayoutY() + canvas.getHeight()					
-					);
-			root.getChildren().add(axisY);
-			
-			
+			drawAxisX(root, canvas);
+			drawAxisY(root, canvas);
 
-			for (int i = 0; i < canvas.getWidth(); i+=10)
-			{
-				Line scaleAxisX = new Line(
-					i,
-					canvas.getHeight()/2 - 3,
-					i,
-					canvas.getHeight()/2 + 3
-					);
-				scaleAxisX.setStrokeWidth(0.5);
-				
-				root.getChildren().add(scaleAxisX);
-			}
-			
-			for (int j = 0; j < canvas.getHeight(); j+=10)
-			{
-				Line scaleAxisY = new Line(
-					canvas.getWidth() / 2 - 3,
-					j,
-					canvas.getWidth()/2 + 3,
-					j
-					);
-				scaleAxisY.setStrokeWidth(0.5);
-				
-				root.getChildren().add(scaleAxisY);
-				
-			}
-			
-			System.out.println(canvas.getLayoutX() + " layout x");
-			System.out.println(canvas.getLayoutY() + " layout y");
-			System.out.println(canvas.getWidth() + " canvas - width");
-			System.out.println(canvas.getHeight() + " canvas - height");
-			System.out.println(scene.getWidth() + " scene width");
-			System.out.println(axisX.getEndX() + " axis x endX");
-			
+			drawScaleOnAxisX(root, canvas);
+			drawScaleOnAxisY(root, canvas);
+
 			Label labelA = new Label("Enter A: ");
 			labelA.setMinWidth(100);
 			labelA.setAlignment(Pos.BOTTOM_RIGHT);
@@ -127,6 +84,40 @@ public class Main extends Application {
 			root.getChildren().add(bottomControls);
 			bottomControls.setLayoutY(570);
 			
+			//TODO: Draw a curve based on given data
+			
+			// Making a path 
+			Path path = new Path();
+			
+			// A starting point
+			// Creates an addition to the path by moving to the specified coordinates.
+			MoveTo moveTo = new MoveTo();
+			moveTo.setX(200);
+			moveTo.setY(0);
+			
+			// Bezier curve
+			QuadCurveTo quadFunction = new QuadCurveTo();
+			quadFunction.setControlX(300);
+			quadFunction.setControlY(300);
+			quadFunction.setX(400);
+			quadFunction.setY(0);
+			
+			path.getElements().add(moveTo);
+			path.getElements().add(quadFunction);
+			
+			root.getChildren().add(path);
+			
+			
+			//TODO:
+			// Wyznaczyæ œrodek uk³adu
+			//TODO:
+			// Dodaæ tooltipy pokazuj¹ce wspó³rzêdne x y na paraboli
+			//TODO
+			// dodaæ s³uchaczy zdarzeñ to pól tekstowych i guzika
+			//TODO
+			// slider? coœ, ¿eby móc porzerzyæ wykres w razie potrzeby
+			
+			
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Quadratic function drawing tool");
 			primaryStage.setResizable(false);
@@ -135,6 +126,60 @@ public class Main extends Application {
 			
 		} catch(Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	private void drawAxisY(Group root, Canvas canvas)
+	{
+		Line axisY = new Line(
+				canvas.getWidth()/2,
+				canvas.getLayoutY(),
+				canvas.getWidth()/2,
+				canvas.getLayoutY() + canvas.getHeight()					
+				);
+		root.getChildren().add(axisY);
+	}
+
+	private void drawAxisX(Group root, Canvas canvas)
+	{
+		Line axisX = new Line(
+				canvas.getLayoutX(), 
+				canvas.getHeight()/2, 
+				canvas.getLayoutX() + canvas.getWidth(), 
+				canvas.getHeight()/2
+				);
+		root.getChildren().add(axisX);
+	}
+
+	private void drawScaleOnAxisY(Group root, Canvas canvas)
+	{
+		for (int j = 0; j < canvas.getHeight(); j+=10)
+		{
+			Line scaleAxisY = new Line(
+				canvas.getWidth() / 2 - 3,
+				j,
+				canvas.getWidth()/2 + 3,
+				j
+				);
+			scaleAxisY.setStrokeWidth(0.5);
+			
+			root.getChildren().add(scaleAxisY);
+		}
+	}
+
+	private void drawScaleOnAxisX(Group root, Canvas canvas)
+	{
+		for (int i = 0; i < canvas.getWidth(); i+=10)
+		{
+			Line scaleAxisX = new Line(
+				i,
+				canvas.getHeight()/2 - 3,
+				i,
+				canvas.getHeight()/2 + 3
+				);
+			scaleAxisX.setStrokeWidth(0.5);
+			
+			root.getChildren().add(scaleAxisX);
 		}
 	}
 	
