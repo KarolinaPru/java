@@ -1,10 +1,10 @@
 package application;
 
-public class Logic
+public class CurveDrawingLogic
 {
-	private static double a;
-	private static double b;
-	private static double c;
+	private double a;
+	private double b;
+	private double c;
 	private static double root1;
 	private static double root2;
 	private static double discriminant;
@@ -14,15 +14,36 @@ public class Logic
 
 	public static void main(String[] args)
 	{
-		Logic logic = new Logic();
-		discriminant = b*b - 4*a*c;
-		a = Double.parseDouble(logic.textA);
-		b = 0;
-		c = Double.parseDouble(logic.textB);
-		logic.findRootPoints(a, b);
-
+		
 	}
-
+	
+	public boolean validateInput(String enteredText)
+	{
+		if (enteredText.isEmpty())
+		{
+			return false;
+		}
+		
+		if (!enteredText.isEmpty() && enteredText.matches("^\\-?\\d*\\.?\\d*$"))
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
+	private double calculateDiscriminant(double a, double c)
+	{
+		this.a = a;
+		this.c = c;
+		b = 0;
+		
+		discriminant = b*b - 4*a*c;
+		
+		return discriminant;
+	}
+	
+	
 	public void findRootPoints(double a, double b) {
 		this.a = a;
 		this.b = b;
@@ -33,21 +54,9 @@ public class Logic
 			root2 = (-b + Math.sqrt(discriminant)) / (2*a);
 		}	
 	}
-	
-	private boolean isDouble(String text)
-	{
-		try {
-			Double.parseDouble(text);
-			return true;
-		} 
-		catch (NumberFormatException e)
-		{
-			return false;
-		}
-		
-	}
+}
 	
 
 	
 	
-}
+
