@@ -1,5 +1,7 @@
 package application;
 
+import java.util.ArrayList;
+
 public class CurveDrawingLogic
 {
 	private double a;
@@ -8,13 +10,11 @@ public class CurveDrawingLogic
 	private double root1;
 	private double root2;
 	private double discriminant;
-	private String textA;
-	private String textB;
 
 	public CurveDrawingLogic(String textA, String textB)
 	{
-		this.textA = textA;
-		this.textB = textB;
+		a = Double.parseDouble(textA);
+		b = Double.parseDouble(textB);
 	}
 	
 	private double calculateDiscriminant(double a, double c)
@@ -39,9 +39,17 @@ public class CurveDrawingLogic
 			root2 = (-b + Math.sqrt(discriminant)) / (2*a);
 		}	
 	}
+	
+	public ArrayList<Coordinate> calculateCoordinatesOfQuadFunc() {
+		ArrayList<Coordinate> coordinates = new ArrayList<Coordinate>();
+		
+		// TODO: implement the 'real' logic of coordinates calculation
+		coordinates.add(new Coordinate(0,0));
+		coordinates.add(new Coordinate(1,1));
+		coordinates.add(new Coordinate(2,1));
+		coordinates.add(new Coordinate(4,0.5));
+		
+		return coordinates;
+	}
+	
 }
-	
-
-	
-	
-
