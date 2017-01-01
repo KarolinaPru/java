@@ -5,31 +5,16 @@ public class CurveDrawingLogic
 	private double a;
 	private double b;
 	private double c;
-	private static double root1;
-	private static double root2;
-	private static double discriminant;
-	GUI gui = new GUI();
-	private String textA = gui.txtA.getText();
-	private String textB = gui.txtB.getText();
+	private double root1;
+	private double root2;
+	private double discriminant;
+	private String textA;
+	private String textB;
 
-	public static void main(String[] args)
+	public CurveDrawingLogic(String textA, String textB)
 	{
-		
-	}
-	
-	public boolean validateInput(String enteredText)
-	{
-		if (enteredText.isEmpty())
-		{
-			return false;
-		}
-		
-		if (!enteredText.isEmpty() && enteredText.matches("^\\-?\\d*\\.?\\d*$"))
-		{
-			return true;
-		}
-		
-		return false;
+		this.textA = textA;
+		this.textB = textB;
 	}
 	
 	private double calculateDiscriminant(double a, double c)
