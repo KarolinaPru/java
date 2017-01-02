@@ -7,6 +7,9 @@ public class CurveDrawingLogic
 	private double a;
 	private double b;
 	private double c;
+	private double y;
+	private double x;
+	private double vertexY;
 	private double root1;
 	private double root2;
 	private double discriminant;
@@ -28,8 +31,8 @@ public class CurveDrawingLogic
 		return discriminant;
 	}
 	
-	
-	public void findRootPoints(double a, double b) {
+	// TODO: Finish or delete
+	private void findRootPoints(double a, double b) {
 		this.a = a;
 		this.b = b;
 
@@ -40,8 +43,36 @@ public class CurveDrawingLogic
 		}	
 	}
 	
-	public ArrayList<Coordinate> calculateCoordinatesOfQuadFunc() {
+	private double findVertexY()
+	{
+		vertexY = (discriminant * (-1)) / (4*a);
+		return vertexY;
+	}
+	
+	public ArrayList<Coordinate> calculateCoordinatesOfQuadFunc() 
+	{
 		ArrayList<Coordinate> coordinates = new ArrayList<Coordinate>();
+		
+		y = a*x*x + c;
+		double maxYOnScale = new GUI().canvas.getHeight() / 2 / 10;
+		double minYOnScale = maxYOnScale * (-1);
+		
+		if (a > 0)
+		{
+			for (y = vertexY; y <= maxYOnScale; y++)
+			{
+				
+			}
+			
+		if (a < 0)
+		{
+			for (y = vertexY; y >= minYOnScale; y--)
+			{
+				
+			}
+		}
+			
+		}
 		
 		// TODO: implement the 'real' logic of coordinates calculation
 		coordinates.add(new Coordinate(0,0));
