@@ -13,74 +13,65 @@ public class CurveDrawingLogic
 	private double root1;
 	private double root2;
 	private double discriminant;
+	private GUI gui;
 
 	public CurveDrawingLogic(String textA, String textB)
 	{
 		a = Double.parseDouble(textA);
-		b = Double.parseDouble(textB);
+		c = Double.parseDouble(textB);
 	}
-	
+
 	private double calculateDiscriminant(double a, double c)
 	{
 		this.a = a;
 		this.c = c;
 		b = 0;
-		
-		discriminant = b*b - 4*a*c;
-		
+
+		discriminant = b * b - 4 * a * c;
+
 		return discriminant;
 	}
-	
+
 	// TODO: Finish or delete
-	private void findRootPoints(double a, double b) {
+	private void findRootPoints(double a, double b)
+	{
 		this.a = a;
 		this.b = b;
 
 		if (discriminant > 0)
 		{
-			root1 = (-b - Math.sqrt(discriminant)) / (2*a);
-			root2 = (-b + Math.sqrt(discriminant)) / (2*a);
-		}	
+			root1 = (-b - Math.sqrt(discriminant)) / (2 * a);
+			root2 = (-b + Math.sqrt(discriminant)) / (2 * a);
+		}
 	}
-	
+
 	private double findVertexY()
 	{
-		vertexY = (discriminant * (-1)) / (4*a);
+		vertexY = (discriminant * (-1)) / (4 * a);
 		return vertexY;
 	}
-	
-	public ArrayList<Coordinate> calculateCoordinatesOfQuadFunc() 
+
+	public ArrayList<Coordinate> calculateCoordinatesOfQuadFunc()
 	{
 		ArrayList<Coordinate> coordinates = new ArrayList<Coordinate>();
 		
-		y = a*x*x + c;
-		double maxYOnScale = new GUI().canvas.getHeight() / 2 / 10;
+		gui = new GUI();
+		double maxXOnScale = gui.canvasWidth /2 / 10;
+		double minXOnScale = maxXOnScale * (-1);
+		double maxYOnScale = gui.canvasHeight /2 /10;
 		double minYOnScale = maxYOnScale * (-1);
-		
-		if (a > 0)
+
+
+		for (x = minXOnScale; x <= maxXOnScale; x+=0.1)
 		{
-			for (y = vertexY; y <= maxYOnScale; y++)
-			{
-				
-			}
+			b = 0;
+			y = a * x * x + x * b + c;
 			
-		if (a < 0)
-		{
-			for (y = vertexY; y >= minYOnScale; y--)
-			{
-				
-			}
+			coordinates.add(new Coordinate(x, y));				
+
 		}
-			
-		}
-		
-		// TODO: implement the 'real' logic of coordinates calculation
-		coordinates.add(new Coordinate(0,0));
-		coordinates.add(new Coordinate(1,1));
-		coordinates.add(new Coordinate(2,1));
-		coordinates.add(new Coordinate(4,0.5));
 		
 		return coordinates;
 	}
-	
+
 }
