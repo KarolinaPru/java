@@ -54,23 +54,23 @@ public class CurveDrawingLogic
 	public ArrayList<Coordinate> calculateCoordinatesOfQuadFunc()
 	{
 		ArrayList<Coordinate> coordinates = new ArrayList<Coordinate>();
-		
+
 		gui = new GUI();
-		double maxXOnScale = gui.canvasWidth /2 / 10;
+		double maxXOnScale = gui.canvasWidth / 2 / 10;
 		double minXOnScale = maxXOnScale * (-1);
-		double maxYOnScale = gui.canvasHeight /2 /10;
+		double maxYOnScale = gui.canvasHeight / 2 / 10;
 		double minYOnScale = maxYOnScale * (-1);
 
-
-		for (x = minXOnScale; x <= maxXOnScale; x+=0.1)
+		for (x = minXOnScale; x <= maxXOnScale; x += 0.1)
 		{
 			b = 0;
 			y = a * x * x + x * b + c;
-			
-			coordinates.add(new Coordinate(x, y));				
-
+			if (y >= minYOnScale)
+			{
+				coordinates.add(new Coordinate(x, y));
+			}
 		}
-		
+
 		return coordinates;
 	}
 
