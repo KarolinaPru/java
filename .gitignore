@@ -1,5 +1,5 @@
-/bin/
-.metadata/
+**/bin
+**/.metadata
 *.class
-.recommenders
-.recommenders
+**/.recommenders
+
