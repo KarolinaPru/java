@@ -1,4 +1,4 @@
- package application;
+package application;
 
 import java.util.Optional;
 import javafx.application.Application;
