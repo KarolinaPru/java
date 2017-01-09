@@ -1,14 +1,14 @@
-package stackTests;
+package test.java.stackTests;
 
 import org.junit.Test;
 
-import stack.EmptyStackException;
-import stack.Stack;
+import main.java.stack.EmptyStackException;
+import main.java.stack.Stack;
 import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
-import stack.StackOutOfBoundsException;
+import main.java.stack.StackOutOfBoundsException;
 
 public class StackTests {
 
