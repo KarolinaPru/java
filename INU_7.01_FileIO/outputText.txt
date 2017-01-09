@@ -1,0 +1,4 @@
+Wczytano dane: id: 1, imię: Jan, nazwisko: Kowalski
+Wczytano dane: id: 2, imię: Hanna, nazwisko: Woźniak
+Wczytano dane: id: 3, imię: Janusz, nazwisko: Hanys
+Wczytano dane: id: 4, imię: Elżbieta, nazwisko: Król
