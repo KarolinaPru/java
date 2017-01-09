@@ -12,12 +12,14 @@ import main.java.stack.StackOutOfBoundsException;
 
 public class StackTests {
 
-	private Stack s;
+	private Stack sMax2;
+	private Stack sMax3;
 
 	@Before
 	public void setUp()
 	{
-		s = new Stack();
+		sMax2 = new Stack(2);
+		sMax3 = new Stack(3);
 	}
 	
 	@After
@@ -29,121 +31,120 @@ public class StackTests {
 	@Test
 	public void givenNewStack_WhenCheckForEmptiness_ThenTrueIsReturned()
 	{
-		Stack s = new Stack();
-		
-		assertTrue(s.isEmpty());
+		assertTrue(sMax2.isEmpty());
 	}
 
 	@Test
 	public void givenStackNotEmpty_WhenCheckingForEmptiness_ThenFalseIsReturned() throws StackOutOfBoundsException
 	{
-		Stack s = new Stack();
-		s.push(42);
+		sMax2.push(42);
 		
-		assertFalse(s.isEmpty());
+		assertFalse(sMax2.isEmpty());
 	}
 	
 	@Test (expected = EmptyStackException.class)
 	public void givenEmptyStack_WhenPopping_ThenExceptionIsThrown() throws EmptyStackException
 	{
-		Stack s = new Stack();
-		s.pop();
+		sMax2.pop();
 	}
 	
 	@Test
 	public void givenStackNotEmpty_WhenPopping_ThenValueIsReturned() throws EmptyStackException, StackOutOfBoundsException
 	{
-		Stack s = new Stack();
+		sMax2.push(10);
 		
-		s.push(10);
-		
-		assertEquals(10, s.pop());
+		assertEquals(10, sMax2.pop());
 	}
 	
 	@Test
 	public void givenStackNotEmpty_WhenPopping_ThenLastAddedValueIsReturned() throws EmptyStackException, StackOutOfBoundsException
-	{
-		Stack s = new Stack();
+	{	
+		sMax2.push(10);
+		sMax2.push(24);
 		
-		s.push(10);
-		s.push(24);
-		
-		assertEquals(24, s.pop());
+		assertEquals(24, sMax2.pop());
 	}
 	
 	@Test
 	public void givenStackNotEmpty_WhenPopping_ThenStackBecomesEmpty() throws EmptyStackException, StackOutOfBoundsException
 	{
-		Stack s = new Stack();
+		sMax2.push(24);
+		sMax2.pop();
 		
-		s.push(24);
-		s.pop();
-		
-		assertTrue(s.isEmpty());
+		assertTrue(sMax2.isEmpty());
 	}
 	
 	@Test
 	public void givenStackWith2Elements_WhenPoppingSingleItem_ThenStackIsStillNotEmpty() throws EmptyStackException, StackOutOfBoundsException
 	{
-		Stack s = new Stack();
+		sMax2.push(24);
+		sMax2.push(12);
+		sMax2.pop();
 		
-		s.push(24);
-		s.push(12);
-		s.pop();
-		
-		assertFalse(s.isEmpty());
+		assertFalse(sMax2.isEmpty());
 	}
 
 	@Test
 	public void givenStackWith2Elements_WhenPoppingSecondItem_ThenSecondAddedValueIsReturned() throws EmptyStackException, StackOutOfBoundsException
 	{
-		Stack s = new Stack();
+		sMax2.push(24);
+		sMax2.push(12);
+		sMax2.pop();
 		
-		s.push(24);
-		s.push(12);
-		s.pop();
-		
-		assertEquals(24, s.pop());
+		assertEquals(24, sMax2.pop());
 	}
 	
 	@Test
 	public void givenNotEmptyStack_WhenClearIsUsed_ThenIsEmptyIsTrue() throws StackOutOfBoundsException
 	{
-		Stack s = new Stack();
+		sMax2.push(10);
+		sMax2.clear();
 		
-		s.push(10);
-		s.clear();
-		
-		assertTrue(s.isEmpty());
-	}
+		assertTrue(sMax2.isEmpty());
+	}	
 	
 	@Test
 	public void givenStackIsEmpty_WhenGettingSize_Then0Returned()
 	{
-		Stack s = new Stack();
-		
-		assertEquals(0, s.getSize());
-		
+		assertEquals(0, sMax2.getSize());	
 	}
 	
 	@Test
 	public void givenStackIsNotEmpty_WhenGettingSize_ThenValueIsReturned() throws StackOutOfBoundsException
 	{
-		Stack s = new Stack();
-		s.push(1);
-		s.push(12);
+		sMax2.push(1);
+		sMax2.push(12);
 		
-		assertEquals(2, s.getSize());
+		assertEquals(2, sMax2.getSize());
+	}
+	
+	@Test
+	public void givenStackIsFullAndCleared_WhenPushingTwoItems_ThenSizeShouldBe2() throws StackOutOfBoundsException
+	{
+		sMax2.push(1);
+		sMax2.push(2);
+		sMax2.clear();
+		sMax2.push(3);
+		
+		assertEquals(1, sMax2.getSize());
 		
 	}
 	
 	@Test (expected = StackOutOfBoundsException.class)
 	public void givenStackIsFull_WhenPushingNewItem_ThenExceptionIsThrown() throws StackOutOfBoundsException
 	{
-		Stack s = new Stack();
+		sMax2.push(1);
+		sMax2.push(2);
+		sMax2.push(3);
+	}
+	
+	@Test
+	public void givenStackContains3Items_WhenCheckingForSize_Then3IsReturned() throws StackOutOfBoundsException
+	{
+		sMax3.push(1);
+		sMax3.push(2);
+		sMax3.push(3);
 		
-		s.push(1);
-		s.push(2);
-		s.push(3);
+		assertEquals(3, sMax3.getSize());
 	}
 }
