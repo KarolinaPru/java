@@ -3,6 +3,7 @@ package test.java.stackTests;
 import org.junit.Test;
 
 import main.java.stack.EmptyStackException;
+import main.java.stack.NegativeStackSizeException;
 import main.java.stack.Stack;
 import static org.junit.Assert.*;
 
@@ -14,12 +15,14 @@ public class StackTests {
 
 	private Stack sMax2;
 	private Stack sMax3;
+	private Stack sMax0;
 
 	@Before
-	public void setUp()
+	public void setUp() throws NegativeStackSizeException
 	{
 		sMax2 = new Stack(2);
 		sMax3 = new Stack(3);
+		sMax0 = new Stack(0);
 	}
 	
 	@After
@@ -66,7 +69,7 @@ public class StackTests {
 	}
 	
 	@Test
-	public void givenStackNotEmpty_WhenPopping_ThenStackBecomesEmpty() throws EmptyStackException, StackOutOfBoundsException
+	public void givenStackContains1Item_WhenPopping_ThenStackBecomesEmpty() throws EmptyStackException, StackOutOfBoundsException
 	{
 		sMax2.push(24);
 		sMax2.pop();
@@ -85,7 +88,7 @@ public class StackTests {
 	}
 
 	@Test
-	public void givenStackWith2Elements_WhenPoppingSecondItem_ThenSecondAddedValueIsReturned() throws EmptyStackException, StackOutOfBoundsException
+	public void givenStackWith2Elements_WhenPoppingSecondItem_ThenFirstPushedValueIsReturned() throws EmptyStackException, StackOutOfBoundsException
 	{
 		sMax2.push(24);
 		sMax2.push(12);
@@ -138,6 +141,13 @@ public class StackTests {
 		sMax2.push(3);
 	}
 	
+	@Test (expected = StackOutOfBoundsException.class)
+	public void givenStackMaxSizeIs0_WhenPushingAnItem_ThenExceptionIsThrown() throws StackOutOfBoundsException
+	{
+		sMax0.push(17);
+		
+	}
+	
 	@Test
 	public void givenStackContains3Items_WhenCheckingForSize_Then3IsReturned() throws StackOutOfBoundsException
 	{
@@ -146,5 +156,11 @@ public class StackTests {
 		sMax3.push(3);
 		
 		assertEquals(3, sMax3.getSize());
+	}
+	
+	@Test (expected = NegativeStackSizeException.class)
+	public void givenNewStackIsBeingCreated_WhenGivingItNegativeSize_ThenExceptionIsThrown() throws NegativeStackSizeException
+	{
+		Stack s = new Stack(-1);
 	}
 }
