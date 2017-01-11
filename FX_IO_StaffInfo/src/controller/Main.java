@@ -1,25 +1,51 @@
 package controller;
-	
+
+import java.io.IOException;
+
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-
+import javafx.scene.layout.AnchorPane;
 
 public class Main extends Application {
+	private Stage primaryStage;
+
+	// Trzeba wykasowac srodek, zostawic tylko start
 	@Override
 	public void start(Stage primaryStage) {
+		this.primaryStage = primaryStage;
+		mainWindow();
+
+	}
+
+	// Tu będziemy chcieli zassać plik fmxl - miedzy ukośnikami package
+	public void mainWindow() {
 		try {
-			BorderPane root = new BorderPane();
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("/view/MainWindowView.fxml"));
+
+			// Inicjalizujemy ten obiekt metodą load
+			AnchorPane pane = loader.load();
+			primaryStage.setMinWidth(1787.0);
+			primaryStage.setMinHeight(1074.0);
+
+			// Nie robimy przez new, tylko ładujemy
+			MainWindowController mainWindowController = loader.getController();
+			
+			mainWindowController.setMain(this, primaryStage);
+
+			Scene scene = new Scene(pane);
 			primaryStage.setScene(scene);
 			primaryStage.show();
-		} catch(Exception e) {
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
