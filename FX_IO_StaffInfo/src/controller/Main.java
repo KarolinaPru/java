@@ -27,8 +27,8 @@ public class Main extends Application {
 
 			// Inicjalizujemy ten obiekt metodą load
 			AnchorPane pane = loader.load();
-			primaryStage.setMinWidth(800.0);
-			primaryStage.setMinHeight(600.0);
+			primaryStage.setMinWidth(1277.0);
+			primaryStage.setMinHeight(914.0);
 
 			// Nie robimy przez new, tylko ładujemy
 			MainWindowController mainWindowController = loader.getController();
