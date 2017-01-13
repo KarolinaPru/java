@@ -17,21 +17,21 @@
    <children>
       <VBox fx:id="vBoxTableView" alignment="CENTER" layoutX="34.0" layoutY="14.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="874.0" prefWidth="446.0" spacing="20.0" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="14.0">
          <children>
-            <HBox fx:id="hBoxButtons" alignment="CENTER" prefHeight="31.0" prefWidth="446.0" spacing="50.0">
+            <HBox fx:id="hBoxButtons" alignment="CENTER" prefHeight="31.0" prefWidth="446.0" spacing="10.0">
                <children>
-                  <Button fx:id="loadButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="105.0" stylesheets="@application.css" text="Load file" />
-                  <Button fx:id="saveButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="98.0" stylesheets="@application.css" text="Save" />
-                  <Button fx:id="reportButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="105.0" stylesheets="@application.css" text="Report" />
+                  <Button fx:id="loadButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" stylesheets="@application.css" text="Load file" />
+                  <Button fx:id="saveButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" stylesheets="@application.css" text="Save" />
+                  <Button fx:id="reportButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="155.0" stylesheets="@application.css" text="Generate report" />
                </children>
                <padding>
-                  <Insets bottom="10.0" left="15.0" top="10.0" />
+                  <Insets bottom="10.0" top="10.0" />
                </padding>
             </HBox>
             <TableView fx:id="stafftableView" prefHeight="814.0" prefWidth="446.0">
               <columns>
                 <TableColumn fx:id="firstNameColumn" prefWidth="160.0" text="First name" />
                 <TableColumn fx:id="lastNameColumn" minWidth="0.0" prefWidth="160.0" text="Last name" />
-                  <TableColumn fx:id="roomNumberColumn" prefWidth="130.0" text="Room no" />
+                  <TableColumn fx:id="officeNumberColumn" prefWidth="130.0" text="Office no" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -59,7 +59,15 @@
                <VBox.margin>
                   <Insets left="30.0" />
                </VBox.margin></ImageView>
-            <HBox fx:id="hBoxTextFields" prefHeight="250.0" prefWidth="727.0" spacing="20.0">
+            <Label fx:id="enterDataLabel" alignment="CENTER" prefHeight="21.0" prefWidth="380.0" text="Enter new data" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Label>
+            <HBox fx:id="hBoxTextFields" alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="700.0" spacing="20.0">
                <children>
                   <VBox fx:id="vBoxTextFields1" prefHeight="229.0" prefWidth="232.0" spacing="10.0">
                      <children>
@@ -67,7 +75,7 @@
                         <TextField fx:id="firstNameTextField" prefHeight="31.0" prefWidth="155.0" />
                         <Label fx:id="lastNameLabel" prefHeight="31.0" prefWidth="142.0" text="Last name" />
                         <TextField fx:id="lastNameTextField" />
-                        <Label fx:id="roomNumberLabel" prefHeight="31.0" prefWidth="142.0" text="Room number" />
+                        <Label fx:id="officeNumberLabel" prefHeight="31.0" prefWidth="142.0" text="Office number" />
                         <TextField fx:id="roomNumberTextField" />
                      </children>
                      <padding>
@@ -92,11 +100,14 @@
                   </VBox>
                </children>
                <padding>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="40.0" />
+                  <Insets bottom="20.0" left="20.0" right="20.0" />
                </padding>
                <VBox.margin>
                   <Insets left="50.0" />
                </VBox.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
             </HBox>
          </children>
          <padding>
