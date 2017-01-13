@@ -27,7 +27,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </padding>
             </HBox>
-            <TableView fx:id="stafftableView" prefHeight="814.0" prefWidth="446.0">
+            <TableView fx:id="stafftableView" prefHeight="814.0" prefWidth="446.0" styleClass="table_view">
               <columns>
                 <TableColumn fx:id="firstNameColumn" prefWidth="160.0" text="First name" />
                 <TableColumn fx:id="lastNameColumn" minWidth="0.0" prefWidth="160.0" text="Last name" />
@@ -47,7 +47,7 @@
       </VBox>
       <VBox fx:id="vBoxMapAndTextFields" alignment="CENTER" layoutX="461.0" layoutY="65.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="787.0" spacing="15.0" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="65.0">
          <children>
-            <Label fx:id="mapLabel" alignment="CENTER" prefHeight="35.0" prefWidth="945.0" text="Office layout" textAlignment="CENTER">
+            <Label fx:id="mapLabel" alignment="CENTER" prefHeight="35.0" prefWidth="945.0" styleClass="big_label" text="Office layout" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -59,7 +59,7 @@
                <VBox.margin>
                   <Insets left="30.0" />
                </VBox.margin></ImageView>
-            <Label fx:id="enterDataLabel" alignment="CENTER" prefHeight="21.0" prefWidth="380.0" text="Enter new data" textAlignment="CENTER">
+            <Label fx:id="enterDataLabel" alignment="CENTER" prefHeight="21.0" prefWidth="380.0" styleClass="big_label" text="Enter new data" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
