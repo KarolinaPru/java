@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="914.0" prefWidth="1277.0" styleClass="background" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="914.0" prefWidth="1277.0" styleClass="background" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
    <children>
       <VBox fx:id="vBoxTableView" alignment="CENTER" layoutX="34.0" layoutY="14.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="874.0" prefWidth="446.0" spacing="20.0" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="14.0">
          <children>
@@ -27,7 +27,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </padding>
             </HBox>
-            <TableView fx:id="stafftableView" prefHeight="814.0" prefWidth="446.0" styleClass="table_view">
+            <TableView fx:id="staffTableView" prefHeight="814.0" prefWidth="446.0" styleClass="table_view">
               <columns>
                 <TableColumn fx:id="firstNameColumn" prefWidth="160.0" text="First name" />
                 <TableColumn fx:id="lastNameColumn" minWidth="0.0" prefWidth="160.0" text="Last name" />
@@ -76,7 +76,7 @@
                         <Label fx:id="lastNameLabel" prefHeight="31.0" prefWidth="142.0" text="Last name" />
                         <TextField fx:id="lastNameTextField" />
                         <Label fx:id="officeNumberLabel" prefHeight="31.0" prefWidth="142.0" text="Office number" />
-                        <TextField fx:id="roomNumberTextField" />
+                        <TextField fx:id="officeNumberTextField"/>
                      </children>
                      <padding>
                         <Insets left="20.0" right="20.0" />
