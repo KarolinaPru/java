@@ -127,7 +127,7 @@ public class MainWindowController
 		{
 			return selectedFile.getAbsolutePath();
 		}
-		return "";
+		return null;
 	}
 	
 	private String getPathToSaveFile()
@@ -143,7 +143,7 @@ public class MainWindowController
 		{
 			return selectedFile.getAbsolutePath();
 		}
-		return "";
+		return null;
 	}
 	
 	
@@ -152,7 +152,12 @@ public class MainWindowController
 	{
 		if (pathToFile == null)
 		{
-			pathToFile = getPathToLoadFile();	
+			pathToFile = getPathToLoadFile();
+			
+			if (pathToFile == null)
+			{
+				return;
+			}
 		}
 		StaffMemberSerializer serializer = new StaffMemberSerializer();
 		ArrayList<StaffMember> loadedStaffList = serializer.deserialize(pathToFile);
@@ -171,6 +176,11 @@ public class MainWindowController
 		if (pathToFile == null)
 		{
 			pathToFile = getPathToSaveFile();	
+			
+			if (pathToFile == null)
+			{
+				return;
+			}
 		}
 		StaffMemberSerializer serializer = new StaffMemberSerializer();
 		ArrayList<StaffMember> listToSerialize = new ArrayList<StaffMember>();
