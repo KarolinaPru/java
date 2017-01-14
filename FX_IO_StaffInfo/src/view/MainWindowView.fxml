@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="914.0" prefWidth="1277.0" styleClass="background" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="914.0" prefWidth="1277.0" styleClass="background" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
    <children>
       <VBox fx:id="vBoxTableView" alignment="CENTER" layoutX="34.0" layoutY="14.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="874.0" prefWidth="446.0" spacing="20.0" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="14.0">
          <children>
@@ -76,7 +76,7 @@
                         <Label fx:id="lastNameLabel" prefHeight="31.0" prefWidth="142.0" text="Last name" />
                         <TextField fx:id="lastNameTextField" />
                         <Label fx:id="officeNumberLabel" prefHeight="31.0" prefWidth="142.0" text="Office number" />
-                        <TextField fx:id="officeNumberTextField"/>
+                        <TextField fx:id="officeNumberTextField" />
                      </children>
                      <padding>
                         <Insets left="20.0" right="20.0" />
@@ -88,7 +88,7 @@
                         <TextField fx:id="workingFromTextField" />
                         <Label fx:id="workingToLabel" prefHeight="31.0" prefWidth="142.0" text="Working to" />
                         <TextField fx:id="workingToTextField" />
-                        <Button fx:id="addButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="160.0" stylesheets="@application.css" text="Add" textAlignment="CENTER">
+                        <Button fx:id="addButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#handleAddButtonClick" prefHeight="30.0" prefWidth="160.0" stylesheets="@application.css" text="Add" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets left="12.0" top="30.0" />
                            </VBox.margin>
