@@ -9,17 +9,14 @@ import java.util.Scanner;
 
 public class StaffMemberSerializer
 {
-
-	private static final String PATH_TO_DATA_FILE = "src/textFiles/StaffMembers.txt";
-
-	public ArrayList<StaffMember> deserialize()
+	public ArrayList<StaffMember> deserialize(String pathToFile)
 	{
 		Scanner in = null;
 		ArrayList<StaffMember> staffList = new ArrayList<StaffMember>();
 
 		try
 		{
-			in = new Scanner(Paths.get(PATH_TO_DATA_FILE));
+			in = new Scanner(Paths.get(pathToFile));
 
 			while (in.hasNext())
 			{
@@ -47,13 +44,13 @@ public class StaffMemberSerializer
 		return staffList;
 	}
 
-	public void serialize(ArrayList<StaffMember> staffList)
+	public void serialize(ArrayList<StaffMember> staffList, String pathToFile)
 	{
 		PrintWriter out = null;
 		
 		try
 		{
-			out = new PrintWriter(PATH_TO_DATA_FILE);
+			out = new PrintWriter(pathToFile);
 
 			for (StaffMember s : staffList)
 			{

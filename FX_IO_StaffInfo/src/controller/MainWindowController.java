@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
@@ -8,6 +9,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import model.StaffMember;
 import model.StaffMemberSerializer;
@@ -29,10 +32,10 @@ public class MainWindowController
     private TextField firstNameTextField, lastNameTextField, officeNumberTextField, workingFromTextField, workingToTextField;
     @FXML
     private Label firstNameLabel, lastNameLabel, officeNumberLabel, workingFromLabel, workingToLabel;
-    
-    private int id;
+
 
 	private ObservableList<StaffMember> staffMemberList = FXCollections.observableArrayList();
+	private String pathToFile;
 
 
 	public void setMain(Main main, Stage primaryStage) {
@@ -52,7 +55,7 @@ public class MainWindowController
 		staffTableView.getSelectionModel().selectedItemProperty().addListener(
 				(ov, oldVal, newVal) ->
 				System.out.println(
-					newVal.getFirstName() + "" 
+					newVal.getFirstName() + " " 
 					+ newVal.getLastName())
 					);
 	}
@@ -111,11 +114,48 @@ public class MainWindowController
 	
 	}
 	
+	private String getPathToLoadFile()
+	{
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Load a file");
+		fileChooser.getExtensionFilters().addAll(
+		    new ExtensionFilter("Text files", "*.txt"));
+
+		File selectedFile = fileChooser.showOpenDialog(primaryStage);
+
+		if (selectedFile != null)
+		{
+			return selectedFile.getAbsolutePath();
+		}
+		return "";
+	}
+	
+	private String getPathToSaveFile()
+	{
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Save");
+		fileChooser.getExtensionFilters().addAll(
+		    new ExtensionFilter("Text files", "*.txt"));
+
+		File selectedFile = fileChooser.showSaveDialog(primaryStage);
+
+		if (selectedFile != null)
+		{
+			return selectedFile.getAbsolutePath();
+		}
+		return "";
+	}
+	
+	
 	@FXML
 	private void handleLoadClick()
 	{
+		if (pathToFile == null)
+		{
+			pathToFile = getPathToLoadFile();	
+		}
 		StaffMemberSerializer serializer = new StaffMemberSerializer();
-		ArrayList<StaffMember> loadedStaffList = serializer.deserialize();
+		ArrayList<StaffMember> loadedStaffList = serializer.deserialize(pathToFile);
 		
 		staffMemberList.clear();
 	
@@ -128,6 +168,10 @@ public class MainWindowController
 	@FXML
 	private void handleSaveClick()
 	{
+		if (pathToFile == null)
+		{
+			pathToFile = getPathToSaveFile();	
+		}
 		StaffMemberSerializer serializer = new StaffMemberSerializer();
 		ArrayList<StaffMember> listToSerialize = new ArrayList<StaffMember>();
 		
@@ -135,6 +179,6 @@ public class MainWindowController
 		{
 			listToSerialize.add(s);
 		}
-		serializer.serialize(listToSerialize);
+		serializer.serialize(listToSerialize, pathToFile);
 	}
 }
