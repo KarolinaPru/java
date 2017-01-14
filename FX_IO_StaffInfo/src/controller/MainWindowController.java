@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.regex.Pattern;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -31,33 +34,21 @@ public class MainWindowController
 
 	private ObservableList<StaffMember> staffMemberList = FXCollections.observableArrayList();
 
-	private void setTable() {
-		
-		new StaffMemberSerializer().deserialize();
-	}
 
 	public void setMain(Main main, Stage primaryStage) {
 		this.main = main;
 		this.primaryStage = primaryStage;
-		setTable();
 		staffTableView.setItems(staffMemberList);
 	}
 
-	// Chcemy, zeby ka¿da kolumna wiedzia³a, które pole klasy Person bêdzie
-	// stanowi³o treœæ tej kolumny
 	
 	public void initialize() {
-		firstNameColumn.setCellValueFactory(
-				// Bêdziemy pobieraæ z klasy Person zawartoœc pola, które jest
-				// Stringiem
-				new PropertyValueFactory<StaffMember, String>("firstName"));
+		firstNameColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, String>("firstName"));
 
 		lastNameColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, String>("lastName"));
 
 		officeNumberColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, Integer>("officeNumber"));
 
-		// ¯eby to dzia³a³o i ¿eby oldVal i newVal by³o typu Person, trzeba to
-		// zaznaczyæ w polu TableView<Person>
 		staffTableView.getSelectionModel().selectedItemProperty().addListener(
 				(ov, oldVal, newVal) ->
 				System.out.println(
@@ -71,6 +62,15 @@ public class MainWindowController
 		primaryStage.close();
 	}
 
+	//TODO: block unwanted input whatsoever
+	private void allowOnlyDoublesInTextFields()
+	{
+		// Compiles the given regular expression into a pattern.
+		Pattern validInteger = Pattern.compile("\\d*");
+
+	}
+	
+	
 	private static boolean isInteger(String str)
 	{
 	  return str.matches("\\d*");
@@ -81,7 +81,6 @@ public class MainWindowController
 	private void handleAddButtonClick() 
 	{
 		
-		id = staffMemberList.size();
 		String firstName = firstNameTextField.getText();
 		String lastName = lastNameTextField.getText();
 		String sOfficeNumber = officeNumberTextField.getText();
@@ -99,7 +98,7 @@ public class MainWindowController
 			int workingFrom = Integer.parseInt(sWorkingFrom);
 			int workingTo = Integer.parseInt(sWorkingTo);
 	
-			StaffMember sm = new StaffMember(++id, firstName, lastName, officeNumber, workingFrom, workingTo);
+			StaffMember sm = new StaffMember(firstName, lastName, officeNumber, workingFrom, workingTo);
 			staffMemberList.add(sm);
 			
 			firstNameTextField.clear();
@@ -110,6 +109,20 @@ public class MainWindowController
 		}
 		return;
 	
+	}
+	
+	@FXML
+	private void handleLoadFileClick()
+	{
+		StaffMemberSerializer serializer = new StaffMemberSerializer();
+		ArrayList<StaffMember> loadedStaffList = serializer.deserialize();
+		
+		staffMemberList.clear();
+		
+		for (StaffMember s : loadedStaffList)
+		{
+			staffMemberList.add(s);
+		}
 	}
 	
 }

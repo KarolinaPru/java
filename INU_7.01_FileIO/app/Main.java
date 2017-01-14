@@ -20,9 +20,9 @@ public class Main
 		String lastName;
 		
 		// Rozwiązanie szybkie; bardziej eleganckie - klasa Person
-		ArrayList<Integer> idList = new ArrayList();
-		ArrayList<String> firstNameList = new ArrayList();
-		ArrayList<String> lastNameList = new ArrayList();
+		ArrayList<Integer> idList = new ArrayList<Integer>();
+		ArrayList<String> firstNameList = new ArrayList<String>();
+		ArrayList<String> lastNameList = new ArrayList<String>();
 		
 		try
 		{
