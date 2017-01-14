@@ -29,16 +29,13 @@ public class MainWindowController
     
     private int id;
 
-	// Obserwowanie listy osób i jej zmian
 	private ObservableList<StaffMember> staffMemberList = FXCollections.observableArrayList();
 
 	private void setTable() {
-	
 		
 		new StaffMemberSerializer().deserialize();
 	}
 
-	// dodajemy primaryStage ze wzglêdu na zamykanie okienka - sceny
 	public void setMain(Main main, Stage primaryStage) {
 		this.main = main;
 		this.primaryStage = primaryStage;
@@ -48,6 +45,7 @@ public class MainWindowController
 
 	// Chcemy, zeby ka¿da kolumna wiedzia³a, które pole klasy Person bêdzie
 	// stanowi³o treœæ tej kolumny
+	
 	public void initialize() {
 		firstNameColumn.setCellValueFactory(
 				// Bêdziemy pobieraæ z klasy Person zawartoœc pola, które jest
@@ -73,25 +71,45 @@ public class MainWindowController
 		primaryStage.close();
 	}
 
+	private static boolean isInteger(String str)
+	{
+	  return str.matches("\\d*");
+	}
+	
+	
 	@FXML
-	private void handleAddButtonClick() {
+	private void handleAddButtonClick() 
+	{
+		
 		id = staffMemberList.size();
 		String firstName = firstNameTextField.getText();
 		String lastName = lastNameTextField.getText();
-		int officeNumber = Integer.parseInt(officeNumberTextField.getText());
-		int workingFrom = Integer.parseInt(workingToTextField.getText());
-		int workingTo = Integer.parseInt(workingToTextField.getText());
+		String sOfficeNumber = officeNumberTextField.getText();
+		String sWorkingFrom = workingFromTextField.getText();	
+		String sWorkingTo = workingToTextField.getText();
+		
+		if (isInteger(sOfficeNumber) 
+				&& isInteger(sWorkingFrom) 
+				&& isInteger(sWorkingTo)
+				&& !isInteger(firstName)
+				&& !isInteger(lastName))
 
-		StaffMember sm = new StaffMember(++id, firstName, lastName, officeNumber, workingFrom, workingTo);
-		staffMemberList.add(sm);
-		
-		firstNameTextField.clear();
-		lastNameTextField.clear();
-		officeNumberTextField.clear();
-		workingFromTextField.clear();
-		workingToTextField.clear();
-		
-		
+		{
+			int officeNumber = Integer.parseInt(sOfficeNumber);
+			int workingFrom = Integer.parseInt(sWorkingFrom);
+			int workingTo = Integer.parseInt(sWorkingTo);
+	
+			StaffMember sm = new StaffMember(++id, firstName, lastName, officeNumber, workingFrom, workingTo);
+			staffMemberList.add(sm);
+			
+			firstNameTextField.clear();
+			lastNameTextField.clear();
+			officeNumberTextField.clear();
+			workingFromTextField.clear();
+			workingToTextField.clear();	
+		}
+		return;
+	
 	}
 	
 }
