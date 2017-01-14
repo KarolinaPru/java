@@ -112,17 +112,29 @@ public class MainWindowController
 	}
 	
 	@FXML
-	private void handleLoadFileClick()
+	private void handleLoadClick()
 	{
 		StaffMemberSerializer serializer = new StaffMemberSerializer();
 		ArrayList<StaffMember> loadedStaffList = serializer.deserialize();
 		
 		staffMemberList.clear();
-		
+	
 		for (StaffMember s : loadedStaffList)
 		{
 			staffMemberList.add(s);
 		}
 	}
 	
+	@FXML
+	private void handleSaveClick()
+	{
+		StaffMemberSerializer serializer = new StaffMemberSerializer();
+		ArrayList<StaffMember> listToSerialize = new ArrayList<StaffMember>();
+		
+		for (StaffMember s : staffMemberList)
+		{
+			listToSerialize.add(s);
+		}
+		serializer.serialize(listToSerialize);
+	}
 }

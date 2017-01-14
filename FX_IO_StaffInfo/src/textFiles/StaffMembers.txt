@@ -1,4 +1,6 @@
-Jan Nowak 8 0900 1300 
-Ewa Kowalska 1 0830 1630
-Jerzy Malinowski 2 0900 1630
+Jan Nowak 8 900 1300
+Ewa Kowalska 1 830 1630
+Jerzy Malinowski 2 900 1630
 Joanna Jankowska 4 1300 1800
+Bartek Miœ 24 1000 1300
+Ula Zulugula 12 1800 2200
