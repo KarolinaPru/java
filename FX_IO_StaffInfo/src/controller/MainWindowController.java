@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.DeserializationFailedException;
@@ -181,6 +182,9 @@ public class MainWindowController
 			loadedStaffList = serializer.deserialize(pathSelector.pathToLoadFile);
 		} catch (DeserializationFailedException e)
 		{
+			Alert alert = new Alert(AlertType.INFORMATION, "Please select a valid text file", ButtonType.OK);
+			alert.showAndWait();
+			
 			pathSelector.pathToLoadFile = null;
 			return;
 		}
