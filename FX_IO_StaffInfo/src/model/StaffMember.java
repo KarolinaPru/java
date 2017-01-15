@@ -8,10 +8,10 @@ public class StaffMember {
     private String firstName;
     private String lastName;
     private int officeNumber;
-    private int workingFrom;
-    private int workingTo;
+    private String workingFrom;
+    private String workingTo;
 
-    public StaffMember(String firstName, String lastName, int officeNumber, int workingFrom, int workingTo)
+    public StaffMember(String firstName, String lastName, int officeNumber, String workingFrom, String workingTo)
     {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -40,12 +40,12 @@ public class StaffMember {
 		return officeNumber;
 	}
 
-	public int getWorkingFrom()
+	public String getWorkingFrom()
 	{
 		return workingFrom;
 	}
 
-	public int getWorkingTo()
+	public String getWorkingTo()
 	{
 		return workingTo;
 	}

@@ -1,23 +1,19 @@
 package controller;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+import model.DeserializationFailedException;
 import model.StaffMember;
 import model.StaffMemberSerializer;
 
 public class MainWindowController
 {
-	private Main main;
 	private Stage primaryStage;
 
 	@FXML
@@ -36,20 +32,32 @@ public class MainWindowController
 	@FXML
 	private ComboBox<Integer> officeNumberComboBox;
 	@FXML
-	private ComboBox<String>  comboBoxMmFrom,comboBoxMmTo, comboBoxHhFrom, comboBoxHhTo;
-	
-	private String pathToFile;
+	private ComboBox<String> comboBoxMmFrom, comboBoxMmTo, comboBoxHhFrom, comboBoxHhTo;
 	private ObservableList<StaffMember> staffMemberList = FXCollections.observableArrayList();
+	private PathSelector pathSelector;
 
-	
-	public void setMain(Main main, Stage primaryStage)
+	public void initialize(Stage primaryStage)
 	{
-		this.main = main;
 		this.primaryStage = primaryStage;
-		staffTableView.setItems(staffMemberList);
+		pathSelector = new PathSelector(primaryStage);
 		initializeComboBoxes();
+		bindTableColumnsToStaffMemberList();
 	}
-	
+
+	private void bindTableColumnsToStaffMemberList()
+	{
+		staffTableView.setItems(staffMemberList);
+		
+		firstNameColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, String>("firstName"));
+
+		lastNameColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, String>("lastName"));
+
+		officeNumberColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, Integer>("officeNumber"));
+
+		staffTableView.getSelectionModel().selectedItemProperty().addListener(
+				(ov, oldVal, newVal) -> System.out.println(newVal.getFirstName() + " " + newVal.getLastName()));
+	}
+
 	private void initializeComboBoxes()
 	{
 		addOfficeNumbersToComboBox();
@@ -60,60 +68,47 @@ public class MainWindowController
 	private void addOfficeNumbersToComboBox()
 	{
 		ObservableList<Integer> officeNumbers = FXCollections.observableArrayList();
-		
-		for (int i=1; i<13; i++)
+
+		for (int i = 1; i < 13; i++)
 		{
-			officeNumbers.addAll(i);			
+			officeNumbers.addAll(i);
 		}
-		
+
 		officeNumberComboBox.setItems(officeNumbers);
 	}
 
 	private void addHoursToComboBoxes()
 	{
 		ObservableList<String> hours = FXCollections.observableArrayList();
-	
-		for (int i=0; i < 10; i++)
+
+		for (int i = 0; i < 10; i++)
 		{
 			hours.add("0" + String.valueOf(i));
 		}
-		for (int i=10; i<24; i++)
+		for (int i = 10; i < 24; i++)
 		{
 			hours.add(String.valueOf(i));
 		}
 		comboBoxHhFrom.setItems(hours);
 		comboBoxHhTo.setItems(hours);
 	}
-	
+
 	private void addMinutesToComboBoxes()
 	{
 		ObservableList<String> minutes = FXCollections.observableArrayList();
-		
-		for (int i=0; i < 10; i++)
+
+		for (int i = 0; i < 10; i++)
 		{
 			minutes.add("0" + String.valueOf(i));
 		}
-		
-		for (int i=10; i < 60; i++)
+
+		for (int i = 10; i < 60; i++)
 		{
 			minutes.add(String.valueOf(i));
 		}
-		
+
 		comboBoxMmFrom.setItems(minutes);
 		comboBoxMmTo.setItems(minutes);
-	}
-	
-	
-	public void initialize()
-	{
-		firstNameColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, String>("firstName"));
-
-		lastNameColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, String>("lastName"));
-
-		officeNumberColumn.setCellValueFactory (new PropertyValueFactory<StaffMember,Integer>("officeNumber"));
-
-		staffTableView.getSelectionModel().selectedItemProperty().addListener(
-				(ov, oldVal, newVal) -> System.out.println(newVal.getFirstName() + " " + newVal.getLastName()));
 	}
 
 	@FXML
@@ -121,7 +116,6 @@ public class MainWindowController
 	{
 		primaryStage.close();
 	}
-
 
 	private static boolean isInteger(String str)
 	{
@@ -134,74 +128,50 @@ public class MainWindowController
 
 		String firstName = firstNameTextField.getText();
 		String lastName = lastNameTextField.getText();
-		String sWorkingFrom = comboBoxHhFrom.getValue();
-		String sWorkingTo = comboBoxHhTo.getValue();
 
 		if (!isInteger(firstName) && !isInteger(lastName))
 
 		{
-		
 			int officeNumber = officeNumberComboBox.getValue();
-			int workingFrom = Integer.parseInt(sWorkingFrom);
-			int workingTo = Integer.parseInt(sWorkingTo);
+			String workingFromHours = comboBoxHhFrom.getValue();
+			String workingFromMinutes = comboBoxMmFrom.getValue();
+			String workingFrom = workingFromHours + ":" + workingFromMinutes;
+
+			String workingToHours = comboBoxHhTo.getValue();
+			String workingToMinutes = comboBoxMmTo.getValue();
+			String workingTo = workingToHours + ":" + workingToMinutes;
 
 			StaffMember sm = new StaffMember(firstName, lastName, officeNumber, workingFrom, workingTo);
 			staffMemberList.add(sm);
 
 			firstNameTextField.clear();
 			lastNameTextField.clear();
-			officeNumberTextField.clear();
-			workingFromTextField.clear();
-			workingToTextField.clear();
 		}
-		return;
-
-	}
-
-	private String getPathToLoadFile()
-	{
-		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Load a file");
-		fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Text files", "*.txt"));
-
-		File selectedFile = fileChooser.showOpenDialog(primaryStage);
-
-		if (selectedFile != null)
-		{
-			return selectedFile.getAbsolutePath();
-		}
-		return null;
-	}
-
-	private String getPathToSaveFile()
-	{
-		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Save");
-		fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Text files", "*.txt"));
-
-		File selectedFile = fileChooser.showSaveDialog(primaryStage);
-
-		if (selectedFile != null)
-		{
-			return selectedFile.getAbsolutePath();
-		}
-		return null;
 	}
 
 	@FXML
 	private void handleLoadClick()
 	{
-		if (pathToFile == null)
+		if (pathToLoadFileIsNotSelected())
 		{
-			pathToFile = getPathToLoadFile();
+			pathSelector.getPathToLoadFile();
 
-			if (pathToFile == null)
+			if (pathToLoadFileIsNotSelected())
 			{
 				return;
 			}
 		}
 		StaffMemberSerializer serializer = new StaffMemberSerializer();
-		ArrayList<StaffMember> loadedStaffList = serializer.deserialize(pathToFile);
+		ArrayList<StaffMember> loadedStaffList;
+		
+		try
+		{
+			loadedStaffList = serializer.deserialize(pathSelector.pathToLoadFile);
+		} catch (DeserializationFailedException e)
+		{
+			pathSelector.pathToLoadFile = null;
+			return;
+		}
 
 		staffMemberList.clear();
 
@@ -211,18 +181,24 @@ public class MainWindowController
 		}
 	}
 
+	private boolean pathToLoadFileIsNotSelected()
+	{
+		return pathSelector.pathToLoadFile == null;
+	}
+
 	@FXML
 	private void handleSaveClick()
 	{
-		if (pathToFile == null)
+		if (pathToSaveFileIsNotSelected())
 		{
-			pathToFile = getPathToSaveFile();
+			pathSelector.getPathToSaveFile();
 
-			if (pathToFile == null)
+			if (pathToSaveFileIsNotSelected())
 			{
 				return;
 			}
 		}
+
 		StaffMemberSerializer serializer = new StaffMemberSerializer();
 		ArrayList<StaffMember> listToSerialize = new ArrayList<StaffMember>();
 
@@ -230,6 +206,11 @@ public class MainWindowController
 		{
 			listToSerialize.add(s);
 		}
-		serializer.serialize(listToSerialize, pathToFile);
+		serializer.serialize(listToSerialize, pathSelector.pathToSaveFile);
+	}
+
+	private boolean pathToSaveFileIsNotSelected()
+	{
+		return pathSelector.pathToSaveFile == null;
 	}
 }

@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class StaffMemberSerializer
 {
-	public ArrayList<StaffMember> deserialize(String pathToFile)
+	public ArrayList<StaffMember> deserialize(String pathToFile) throws DeserializationFailedException
 	{
 		Scanner in = null;
 		ArrayList<StaffMember> staffList = new ArrayList<StaffMember>();
@@ -23,17 +23,20 @@ public class StaffMemberSerializer
 				String firstName = in.next();
 				String lastName = in.next();
 				int officeNumber = in.nextInt();
-				int workingFrom = in.nextInt();
-				int workingTo = in.nextInt();
+				String workingFrom = in.next();
+				String workingTo = in.next();
 
 				StaffMember sm = new StaffMember(firstName, lastName, officeNumber, workingFrom, workingTo);
 
 				staffList.add(sm);
 			}
-			
+
 		} catch (IOException e)
 		{
 			e.printStackTrace();
+		} catch (Exception e)
+		{
+			throw new DeserializationFailedException();
 		} finally
 		{
 			if (in != null)
@@ -47,22 +50,17 @@ public class StaffMemberSerializer
 	public void serialize(ArrayList<StaffMember> staffList, String pathToFile)
 	{
 		PrintWriter out = null;
-		
+
 		try
 		{
 			out = new PrintWriter(pathToFile);
 
 			for (StaffMember s : staffList)
 			{
-				out.printf("%s %s %d %d %d\n", 
-						s.getFirstName(),
-						s.getLastName(), 
-						s.getOfficeNumber(),
-						s.getWorkingFrom(), 
-						s.getWorkingTo());
+				out.printf("%s %s %d %s %s \n", s.getFirstName(), s.getLastName(), s.getOfficeNumber(),
+						s.getWorkingFrom(), s.getWorkingTo());
 			}
-		} 
-		catch (FileNotFoundException e)
+		} catch (FileNotFoundException e)
 		{
 			e.printStackTrace();
 
