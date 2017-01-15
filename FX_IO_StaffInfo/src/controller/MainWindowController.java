@@ -63,6 +63,7 @@ public class MainWindowController
 		addOfficeNumbersToComboBox();
 		addHoursToComboBoxes();
 		addMinutesToComboBoxes();
+		setDefaultSelectionForComboBoxes();
 	}
 
 	private void addOfficeNumbersToComboBox()
@@ -75,17 +76,18 @@ public class MainWindowController
 		}
 
 		officeNumberComboBox.setItems(officeNumbers);
+		officeNumberComboBox.getSelectionModel().selectFirst();
 	}
 
 	private void addHoursToComboBoxes()
 	{
 		ObservableList<String> hours = FXCollections.observableArrayList();
 
-		for (int i = 0; i < 10; i++)
+		for (int i = 7; i < 10; i++)
 		{
 			hours.add("0" + String.valueOf(i));
 		}
-		for (int i = 10; i < 24; i++)
+		for (int i = 10; i < 20; i++)
 		{
 			hours.add(String.valueOf(i));
 		}
@@ -97,17 +99,17 @@ public class MainWindowController
 	{
 		ObservableList<String> minutes = FXCollections.observableArrayList();
 
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 10; i+=15)
 		{
 			minutes.add("0" + String.valueOf(i));
 		}
 
-		for (int i = 10; i < 60; i++)
+		for (int i = 15; i < 60; i+=15)
 		{
 			minutes.add(String.valueOf(i));
 		}
 
-		comboBoxMmFrom.setItems(minutes);
+		comboBoxMmFrom.setItems(minutes);	
 		comboBoxMmTo.setItems(minutes);
 	}
 
@@ -146,7 +148,17 @@ public class MainWindowController
 
 			firstNameTextField.clear();
 			lastNameTextField.clear();
+			setDefaultSelectionForComboBoxes();
 		}
+	}
+
+	private void setDefaultSelectionForComboBoxes()
+	{
+		comboBoxHhFrom.getSelectionModel().selectFirst();
+		comboBoxHhTo.getSelectionModel().selectLast();	
+		comboBoxMmFrom.getSelectionModel().selectFirst();
+		comboBoxMmTo.getSelectionModel().selectFirst();
+		officeNumberComboBox.getSelectionModel().selectFirst();
 	}
 
 	@FXML
