@@ -11,8 +11,8 @@ public class StaffMember {
     private String firstName;
     private String lastName;
     private int officeNumber;
-    public String workingFrom; // 09:00
-    public String workingTo; // 17:00
+    public String workingFrom; 
+    public String workingTo;
     public long workDuration;
     
     public StaffMember(String firstName, String lastName, int officeNumber, String workingFrom, String workingTo)

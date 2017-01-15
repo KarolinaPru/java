@@ -24,8 +24,18 @@ public class reportTest
 	@Test
 	public void GivenEmployeeWorksFrom9to11_WhenCalculatedWorkDuration_Then120minsShouldBeReturned()
 	{
-		long janWorksInMinutes = sm1.calculateWorkDuration();
-		assertEquals(120, janWorksInMinutes);
+		long sm1WorkInMinutes = sm1.calculateWorkDuration();
+		assertEquals(120, sm1WorkInMinutes);
+	}
+	
+	@Test
+	public void GivenSm2WorksFrom8to12_WhenComparedWith9to11_ThenEmployee2worksLonger()
+	{
+		long sm1WorkInMinutes = sm1.calculateWorkDuration();
+		long sm2WorkInMinutes = sm2.calculateWorkDuration();
+		
+		assertTrue(sm2WorkInMinutes > sm1WorkInMinutes);
+		
 	}
 
 }
