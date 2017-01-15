@@ -1,16 +1,20 @@
 package model;
 
+import java.time.Duration;
+import java.time.LocalTime;
+
 /**
  * Created by karol_000 on 13.01.2017.
  */
 public class StaffMember {
-	private int id;
+
     private String firstName;
     private String lastName;
     private int officeNumber;
-    private String workingFrom;
-    private String workingTo;
-
+    public String workingFrom; // 09:00
+    public String workingTo; // 17:00
+    public long workDuration;
+    
     public StaffMember(String firstName, String lastName, int officeNumber, String workingFrom, String workingTo)
     {
         this.firstName = firstName;
@@ -20,11 +24,15 @@ public class StaffMember {
         this.workingTo = workingTo;
     }
 
-	public int getId()
-	{
-		return id;
-	}
+    public long calculateWorkDuration()
+    {
+    	LocalTime timeFrom = LocalTime.parse(workingFrom);
+    	LocalTime timeTo = LocalTime.parse(workingTo);
 
+    	workDuration = Duration.between(timeFrom, timeTo).toMinutes();
+    	return workDuration;
+    }
+    
 	public String getFirstName()
 	{
 		return firstName;
