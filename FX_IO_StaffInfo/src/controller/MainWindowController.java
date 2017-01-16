@@ -190,6 +190,7 @@ public class MainWindowController
 		{
 			staffMemberList.add(s);
 		}
+		
 	}
 
 	private boolean pathToLoadFileIsNotSelected()
@@ -249,13 +250,11 @@ public class MainWindowController
 		for (StaffMember s : staffMemberList)
 		{
 			listToSort.add(s);
-			System.out.println(s.getFirstName() + s.workDuration);
 		}
 		
 		sortedList = rg.generateReport(listToSort);
 		StaffMemberSerializer serializer = new StaffMemberSerializer();
-		serializer.serializeReport(sortedList, pathSelector.pathToReportFile);
-		
+		serializer.serializeReport(sortedList, pathSelector.pathToReportFile);		
 	}
 	
 	private boolean pathToReportFileIsNotSelected()
