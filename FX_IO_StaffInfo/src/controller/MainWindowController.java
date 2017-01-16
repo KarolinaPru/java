@@ -1,13 +1,18 @@
 package controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import model.DeserializationFailedException;
 import model.ReportGenerator;
@@ -35,6 +40,9 @@ public class MainWindowController
 	private ComboBox<Integer> officeNumberComboBox;
 	@FXML
 	private ComboBox<String> comboBoxMmFrom, comboBoxMmTo, comboBoxHhFrom, comboBoxHhTo;
+	@FXML
+	private Circle circle3;
+	
 	private ObservableList<StaffMember> staffMemberList = FXCollections.observableArrayList();
 	private PathSelector pathSelector;
 
@@ -58,6 +66,8 @@ public class MainWindowController
 
 		staffTableView.getSelectionModel().selectedItemProperty().addListener(
 				(ov, oldVal, newVal) -> System.out.println(newVal.getFirstName() + " " + newVal.getLastName()));
+		staffTableView.getSelectionModel().selectedItemProperty().addListener(
+				(ov, oldVal, newVal) -> makeCircleMarkingOfficeVisible());
 	}
 
 	private void initializeComboBoxes()
@@ -261,7 +271,22 @@ public class MainWindowController
 	{
 		return pathSelector.pathToReportFile == null;
 	}
-	
+
+	private void makeCircleMarkingOfficeVisible()
+	{
+		int officeNumberSelected = staffTableView.getSelectionModel().getSelectedItem().getOfficeNumber();
+
+		if (officeNumberSelected == 3)
+		{
+
+			circle3.setLayoutX(75);
+			circle3.setLayoutY(70);
+			circle3.setVisible(true);
+		}
+
+	}
+
+
 	@FXML
 	private void closeStage()
 	{
