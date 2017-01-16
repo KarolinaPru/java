@@ -1,23 +1,20 @@
 package controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import model.DeserializationFailedException;
 import model.ReportGenerator;
 import model.StaffMember;
 import model.StaffMemberSerializer;
+import view.CirclePosition;
 
 public class MainWindowController
 {
@@ -41,7 +38,7 @@ public class MainWindowController
 	@FXML
 	private ComboBox<String> comboBoxMmFrom, comboBoxMmTo, comboBoxHhFrom, comboBoxHhTo;
 	@FXML
-	private Circle circle3;
+	private Circle circle;
 	
 	private ObservableList<StaffMember> staffMemberList = FXCollections.observableArrayList();
 	private PathSelector pathSelector;
@@ -64,8 +61,6 @@ public class MainWindowController
 
 		officeNumberColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, Integer>("officeNumber"));
 
-		staffTableView.getSelectionModel().selectedItemProperty().addListener(
-				(ov, oldVal, newVal) -> System.out.println(newVal.getFirstName() + " " + newVal.getLastName()));
 		staffTableView.getSelectionModel().selectedItemProperty().addListener(
 				(ov, oldVal, newVal) -> makeCircleMarkingOfficeVisible());
 	}
@@ -276,13 +271,85 @@ public class MainWindowController
 	{
 		int officeNumberSelected = staffTableView.getSelectionModel().getSelectedItem().getOfficeNumber();
 
-		if (officeNumberSelected == 3)
+		switch(officeNumberSelected)
 		{
+			case 1:
+				circle.setLayoutY(CirclePosition.POSITION1.getX());
+				circle.setLayoutY(CirclePosition.POSITION1.getY());
+				circle.setVisible(true);
+				break;
 
-			circle3.setLayoutX(75);
-			circle3.setLayoutY(70);
-			circle3.setVisible(true);
+			case 2:
+				circle.setLayoutX(CirclePosition.POSITION2.getX());
+				circle.setLayoutY(CirclePosition.POSITION2.getY());
+				circle.setVisible(true);
+				break;
+
+			case 3:
+				circle.setLayoutY(CirclePosition.POSITION3.getX());
+				circle.setLayoutY(CirclePosition.POSITION3.getY());
+				circle.setVisible(true);
+				break;
+
+			case 4:
+				circle.setLayoutX(CirclePosition.POSITION4.getX());
+				circle.setLayoutY(CirclePosition.POSITION4.getY());
+				circle.setVisible(true);
+				break;
+
+			case 5:
+				circle.setLayoutY(CirclePosition.POSITION5.getX());
+				circle.setLayoutY(CirclePosition.POSITION6.getY());
+				circle.setVisible(true);
+				break;
+
+			case 6:
+				circle.setLayoutX(CirclePosition.POSITION6.getX());
+				circle.setLayoutY(CirclePosition.POSITION6.getY());
+				circle.setVisible(true);
+				break;
+
+			case 7:
+				circle.setLayoutY(CirclePosition.POSITION7.getX());
+				circle.setLayoutY(CirclePosition.POSITION7.getY());
+				circle.setVisible(true);
+				break;
+
+			case 8:
+				circle.setLayoutX(CirclePosition.POSITION8.getX());
+				circle.setLayoutY(CirclePosition.POSITION8.getY());
+				circle.setVisible(true);
+				break;
+
+			case 9:
+				circle.setLayoutY(CirclePosition.POSITION9.getX());
+				circle.setLayoutY(CirclePosition.POSITION9.getY());
+				circle.setVisible(true);
+				break;
+
+			case 10:
+				circle.setLayoutX(CirclePosition.POSITION10.getX());
+				circle.setLayoutY(CirclePosition.POSITION10.getY());
+				circle.setVisible(true);
+				break;
+
+			case 11:
+				circle.setLayoutY(CirclePosition.POSITION11.getX());
+				circle.setLayoutY(CirclePosition.POSITION11.getY());
+				circle.setVisible(true);
+				break;
+
+			case 12:
+				circle.setLayoutX(CirclePosition.POSITION12.getX());
+				circle.setLayoutY(CirclePosition.POSITION12.getY());
+				circle.setVisible(true);
+				break;
+
+			default:
+				circle.setVisible(false);
+
 		}
+
 
 	}
 
