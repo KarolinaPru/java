@@ -23,6 +23,9 @@ public class reportTest
 	private long sm2WorkInMinutes;
 	private long sm3WorkInMinutes;
 	private long sm4WorkInMinutes;
+	private StaffMember sm5;
+	private StaffMember sm6;
+	private StaffMember sm7;
 
 	@Before
 	
@@ -35,18 +38,12 @@ public class reportTest
 		sm2=new StaffMember("Joanna","Krawczyk",2,"08:00","12:00");	//240
 		sm3=new StaffMember("Jerzy","Halicki",3,"11:00","13:30");	//150
 		sm4=new StaffMember("Helena","Nowak",5,"15:15","18:45"); //210
-		
+		sm5 = new StaffMember("Ola", "Oliñska", 13, "10:15", "16:45"); //390
+		sm6 = new StaffMember("Ela", "Nowak", 7, "11:00", "23:45");
+		sm7 = new StaffMember("Igor", "Oliñski", 10, "10:15", "09:40");
+			
 		rg = new ReportGenerator();
 
-	}
-	
-	private void printData()
-	{
-	System.out.println("work duration: " + sm1.getFirstName() + " " + sm1.workDuration);
-	System.out.println("work duration: " + sm2.getFirstName() + " " + sm2.workDuration);
-	System.out.println("work duration: " + sm3.getFirstName() + " " + sm3.workDuration);
-	System.out.println("work duration: " + sm4.getFirstName() + " " + sm4.workDuration);
-	System.out.println();
 	}
 	
 	@Test
@@ -72,11 +69,11 @@ public class reportTest
 		staffList.add(sm2);
 		staffList.add(sm3);
 		staffList.add(sm4);
+		
+		sortedList = rg.descendingSelectionSortAccordingToWorkDuration(staffList);
+		
 		int staffListSize = staffList.size();
-		
-//		rg.sortStaffMembersAccordingToWorkDuration(staffList);
-		
-		int sortedListSize = staffList.size();
+		int sortedListSize = sortedList.size();
 		
 		assertEquals(staffListSize, 4);
 		assertEquals(staffListSize, sortedListSize);
@@ -90,23 +87,37 @@ public class reportTest
 		staffList.add(sm2);
 		staffList.add(sm3);
 		
-//		rg.sortStaffMembersAccordingToWorkDuration(staffList);
+		sortedList = rg.descendingSelectionSortAccordingToWorkDuration(staffList);
 		
-		StaffMember firstSorted = staffList.get(0);
-		StaffMember secondSorted = staffList.get(1);
-		StaffMember thirdSorted = staffList.get(2);
-		
-		for (StaffMember sm : staffList)
-		{
-			System.out.println("Sorting test: " + sm.getFirstName() + " " + sm.workDuration);
-		}
-		System.out.println();
+		StaffMember firstSorted = sortedList.get(0);
+		StaffMember secondSorted = sortedList.get(1);
+		StaffMember thirdSorted = sortedList.get(2);
 		
 		assertEquals(sm2, firstSorted);
 		assertEquals(sm3, secondSorted);
 		assertEquals(sm1, thirdSorted);
-		
-		
+			
 	}
 
+	@Test
+	public void Given7StaffMembers_WhenSortedInTermsOfHours_ThenTheOrderShouldBeDescending()
+	{
+		staffList.add(sm1);
+		staffList.add(sm2);
+		staffList.add(sm3);
+		staffList.add(sm4);
+		staffList.add(sm5);
+		staffList.add(sm6);
+		staffList.add(sm7);
+		
+		sortedList = rg.descendingSelectionSortAccordingToWorkDuration(staffList);
+		
+		assertTrue(sortedList.get(0).calculateWorkDuration() > sortedList.get(1).calculateWorkDuration()
+				&& sortedList.get(1).calculateWorkDuration() >  sortedList.get(2).calculateWorkDuration()
+				&& sortedList.get(2).calculateWorkDuration() >  sortedList.get(3).calculateWorkDuration()
+				&& sortedList.get(3).calculateWorkDuration() >  sortedList.get(4).calculateWorkDuration()
+				&& sortedList.get(4).calculateWorkDuration() >  sortedList.get(5).calculateWorkDuration()
+				&& sortedList.get(5).calculateWorkDuration() >  sortedList.get(6).calculateWorkDuration());
+		
+	}
 }

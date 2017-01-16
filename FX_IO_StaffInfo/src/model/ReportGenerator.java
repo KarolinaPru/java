@@ -5,39 +5,11 @@ import java.util.Arrays;
 
 public class ReportGenerator
 {
-	private static ArrayList<StaffMember> staffMemberList = new ArrayList<StaffMember>();
 	private static ArrayList<StaffMember> sortedList;
 
-	public static void main(String[] args)
-	{
-		generateReport();
-	}
 
-	private static void generateReport()
-	{
-		ReportGenerator rg = new ReportGenerator();
-		rg.initializeTheList();
-		descendingSelectionSortAccordingToWorkDuration(staffMemberList);
-	}
-
-	private ArrayList<StaffMember> initializeTheList()
-	{
-	StaffMember sm1 = new StaffMember("Jan", "Kowalski", 1, "09:00", "11:00"); // 120
-	StaffMember	sm2 = new StaffMember("Joanna", "Krawczyk", 2, "08:00", "12:00"); // 240
-	StaffMember	sm3 = new StaffMember("Jerzy", "Halicki", 3, "11:00", "13:30"); // 150
-	StaffMember	sm4 = new StaffMember("Helena", "Nowak", 5, "15:15", "18:45"); // 210
-	StaffMember	sm5 = new StaffMember("Ola", "Oliñska", 13, "10:15", "16:45"); // 390
-
-		staffMemberList.add(sm1);
-		staffMemberList.add(sm2);
-		staffMemberList.add(sm3);
-		staffMemberList.add(sm4);
-		staffMemberList.add(sm5);
-
-		return staffMemberList;
-	}
-
-	public static ArrayList<StaffMember> descendingSelectionSortAccordingToWorkDuration(ArrayList<StaffMember> staffMemberList)
+	public static ArrayList<StaffMember> descendingSelectionSortAccordingToWorkDuration(
+			ArrayList<StaffMember> staffMemberList)
 	{
 		StaffMember[] staffMemberArray = convertArrayListToArray(staffMemberList);
 
@@ -61,18 +33,14 @@ public class ReportGenerator
 				}
 			}
 
-			tempSm = staffMemberArray[first]; // swap smallest found with the element in position i.
-												
+			tempSm = staffMemberArray[first]; // swap smallest found with the
+												// element in position i.
 			staffMemberArray[first] = staffMemberArray[i];
 			staffMemberArray[i] = tempSm;
 		}
 
 		sortedList = new ArrayList<StaffMember>(Arrays.asList(staffMemberArray));
-		
-		for (StaffMember sm : sortedList)
-		{
-			System.out.println("Sorted: " + sm.getFirstName() + " " + sm.workDuration);
-		}
+
 		return sortedList;
 	}
 
