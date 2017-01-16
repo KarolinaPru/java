@@ -7,12 +7,18 @@ public class ReportGenerator
 {
 	private static ArrayList<StaffMember> sortedList;
 
-
-	public static ArrayList<StaffMember> descendingSelectionSortAccordingToWorkDuration(
-			ArrayList<StaffMember> staffMemberList)
+	public ArrayList<StaffMember> generateReport(ArrayList<StaffMember> staffMemberList)
 	{
 		StaffMember[] staffMemberArray = convertArrayListToArray(staffMemberList);
 
+		descendingSelectionSortAccordingToWorkHours(staffMemberArray);
+
+		sortedList = new ArrayList<StaffMember>(Arrays.asList(staffMemberArray));
+		return sortedList;
+	}
+
+	private void descendingSelectionSortAccordingToWorkHours(StaffMember[] staffMemberArray)
+	{
 		int i, j, first;
 		StaffMember tempSm;
 		long firstSmWorkDuration;
@@ -38,10 +44,6 @@ public class ReportGenerator
 			staffMemberArray[first] = staffMemberArray[i];
 			staffMemberArray[i] = tempSm;
 		}
-
-		sortedList = new ArrayList<StaffMember>(Arrays.asList(staffMemberArray));
-
-		return sortedList;
 	}
 
 	private static StaffMember[] convertArrayListToArray(ArrayList<StaffMember> staffMemberList)

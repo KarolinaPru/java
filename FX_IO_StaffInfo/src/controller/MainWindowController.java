@@ -10,6 +10,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.DeserializationFailedException;
+import model.ReportGenerator;
 import model.StaffMember;
 import model.StaffMemberSerializer;
 
@@ -48,7 +49,7 @@ public class MainWindowController
 	private void bindTableColumnsToStaffMemberList()
 	{
 		staffTableView.setItems(staffMemberList);
-		
+
 		firstNameColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, String>("firstName"));
 
 		lastNameColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, String>("lastName"));
@@ -100,24 +101,27 @@ public class MainWindowController
 	{
 		ObservableList<String> minutes = FXCollections.observableArrayList();
 
-		for (int i = 0; i < 10; i+=15)
+		for (int i = 0; i < 10; i += 15)
 		{
 			minutes.add("0" + String.valueOf(i));
 		}
 
-		for (int i = 15; i < 60; i+=15)
+		for (int i = 15; i < 60; i += 15)
 		{
 			minutes.add(String.valueOf(i));
 		}
 
-		comboBoxMmFrom.setItems(minutes);	
+		comboBoxMmFrom.setItems(minutes);
 		comboBoxMmTo.setItems(minutes);
 	}
 
-	@FXML
-	private void closeStage()
+	private void setDefaultSelectionForComboBoxes()
 	{
-		primaryStage.close();
+		comboBoxHhFrom.getSelectionModel().selectFirst();
+		comboBoxHhTo.getSelectionModel().selectLast();
+		comboBoxMmFrom.getSelectionModel().selectFirst();
+		comboBoxMmTo.getSelectionModel().selectFirst();
+		officeNumberComboBox.getSelectionModel().selectFirst();
 	}
 
 	private static boolean isInteger(String str)
@@ -153,15 +157,6 @@ public class MainWindowController
 		}
 	}
 
-	private void setDefaultSelectionForComboBoxes()
-	{
-		comboBoxHhFrom.getSelectionModel().selectFirst();
-		comboBoxHhTo.getSelectionModel().selectLast();	
-		comboBoxMmFrom.getSelectionModel().selectFirst();
-		comboBoxMmTo.getSelectionModel().selectFirst();
-		officeNumberComboBox.getSelectionModel().selectFirst();
-	}
-
 	@FXML
 	private void handleLoadClick()
 	{
@@ -176,7 +171,7 @@ public class MainWindowController
 		}
 		StaffMemberSerializer serializer = new StaffMemberSerializer();
 		ArrayList<StaffMember> loadedStaffList;
-		
+
 		try
 		{
 			loadedStaffList = serializer.deserialize(pathSelector.pathToLoadFile);
@@ -184,7 +179,7 @@ public class MainWindowController
 		{
 			Alert alert = new Alert(AlertType.INFORMATION, "Please select a valid text file", ButtonType.OK);
 			alert.showAndWait();
-			
+
 			pathSelector.pathToLoadFile = null;
 			return;
 		}
@@ -228,5 +223,49 @@ public class MainWindowController
 	private boolean pathToSaveFileIsNotSelected()
 	{
 		return pathSelector.pathToSaveFile == null;
+	}
+
+	@FXML
+	private void handleReportClick()
+	{
+		if (staffMemberList.isEmpty())
+		{
+			return;
+		}
+		if (pathToReportFileIsNotSelected())
+		{
+			pathSelector.getPathToReportFile();
+
+			if (pathToReportFileIsNotSelected())
+			{
+				return;
+			}
+		}
+		
+		ReportGenerator rg = new ReportGenerator();
+		ArrayList<StaffMember> listToSort = new ArrayList<StaffMember>();
+		ArrayList<StaffMember> sortedList = new ArrayList<StaffMember>();
+		
+		for (StaffMember s : staffMemberList)
+		{
+			listToSort.add(s);
+			System.out.println(s.getFirstName() + s.workDuration);
+		}
+		
+		sortedList = rg.generateReport(listToSort);
+		StaffMemberSerializer serializer = new StaffMemberSerializer();
+		serializer.serializeReport(sortedList, pathSelector.pathToReportFile);
+		
+	}
+	
+	private boolean pathToReportFileIsNotSelected()
+	{
+		return pathSelector.pathToReportFile == null;
+	}
+	
+	@FXML
+	private void closeStage()
+	{
+		primaryStage.close();
 	}
 }

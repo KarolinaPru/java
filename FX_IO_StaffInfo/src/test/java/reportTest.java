@@ -70,7 +70,7 @@ public class reportTest
 		staffList.add(sm3);
 		staffList.add(sm4);
 		
-		sortedList = rg.descendingSelectionSortAccordingToWorkDuration(staffList);
+		sortedList = rg.generateReport(staffList);
 		
 		int staffListSize = staffList.size();
 		int sortedListSize = sortedList.size();
@@ -87,7 +87,7 @@ public class reportTest
 		staffList.add(sm2);
 		staffList.add(sm3);
 		
-		sortedList = rg.descendingSelectionSortAccordingToWorkDuration(staffList);
+		sortedList = rg.generateReport(staffList);
 		
 		StaffMember firstSorted = sortedList.get(0);
 		StaffMember secondSorted = sortedList.get(1);
@@ -110,7 +110,7 @@ public class reportTest
 		staffList.add(sm6);
 		staffList.add(sm7);
 		
-		sortedList = rg.descendingSelectionSortAccordingToWorkDuration(staffList);
+		sortedList = rg.generateReport(staffList);
 		
 		assertTrue(sortedList.get(0).calculateWorkDuration() > sortedList.get(1).calculateWorkDuration()
 				&& sortedList.get(1).calculateWorkDuration() >  sortedList.get(2).calculateWorkDuration()

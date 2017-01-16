@@ -10,6 +10,7 @@ public class PathSelector
 {
 	public String pathToLoadFile;
 	public String pathToSaveFile;
+	public String pathToReportFile;
 	private Stage primaryStage;
 
 	public PathSelector(Stage primaryStage)
@@ -44,4 +45,18 @@ public class PathSelector
 			pathToSaveFile = selectedFile.getAbsolutePath();
 		}
 	}
+	public void getPathToReportFile()
+	{
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Save the report");
+		fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Text files", "*.txt"));
+
+		File selectedFile = fileChooser.showSaveDialog(primaryStage);
+
+		if (selectedFile != null)
+		{
+			pathToReportFile = selectedFile.getAbsolutePath();
+		}
+	}
+	
 }

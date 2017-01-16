@@ -22,7 +22,7 @@
                <children>
                   <Button fx:id="loadButton" mnemonicParsing="false" onAction="#handleLoadClick" prefHeight="40.0" prefWidth="150.0" stylesheets="@application.css" text="Load file" />
                   <Button fx:id="saveButton" mnemonicParsing="false" onAction="#handleSaveClick" prefHeight="40.0" prefWidth="100.0" stylesheets="@application.css" text="Save" />
-                  <Button fx:id="reportButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="155.0" stylesheets="@application.css" text="Generate report" />
+                  <Button fx:id="reportButton" mnemonicParsing="false" onAction="#handleReportClick" prefHeight="40.0" prefWidth="155.0" stylesheets="@application.css" text="Generate report" />
                </children>
                <padding>
                   <Insets bottom="10.0" top="10.0" />

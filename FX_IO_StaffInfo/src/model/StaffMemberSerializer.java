@@ -72,5 +72,31 @@ public class StaffMemberSerializer
 			}
 		}
 	}
+	
+	public void serializeReport(ArrayList<StaffMember> staffList, String pathToFile)
+	{
+		PrintWriter out = null;
 
+		try
+		{
+			out = new PrintWriter(pathToFile);
+
+			for (StaffMember s : staffList)
+			{
+				out.printf("%s %s %d %s %s %d \n", s.getFirstName(), s.getLastName(), s.getOfficeNumber(),
+						s.getWorkingFrom(), s.getWorkingTo(), s.calculateWorkDuration());
+			}
+		} catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+
+		} finally
+		{
+			if (out != null)
+			{
+				out.close();
+			}
+		}
+	}
+	
 }
