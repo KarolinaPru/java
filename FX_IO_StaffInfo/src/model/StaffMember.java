@@ -22,6 +22,7 @@ public class StaffMember {
         this.officeNumber = officeNumber;
         this.workingFrom = workingFrom;
         this.workingTo = workingTo;
+        workDuration = calculateWorkDuration();
     }
 
     public long calculateWorkDuration()
