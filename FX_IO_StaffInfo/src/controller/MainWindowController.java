@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.StringJoiner;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -57,21 +58,41 @@ public class MainWindowController
 		bindTableColumnsToStaffMemberList();
 	}
 
-	private void bindTableColumnsToStaffMemberList()
-	{
-		staffTableView.setItems(staffMemberList);
+	private void bindTableColumnsToStaffMemberList() {
+        staffTableView.setItems(staffMemberList);
 
-		firstNameColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, String>("firstName"));
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, String>("firstName"));
 
-		lastNameColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, String>("lastName"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, String>("lastName"));
 
-		officeNumberColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, Integer>("officeNumber"));
+        officeNumberColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, Integer>("officeNumber"));
 
-		staffTableView.getSelectionModel().selectedItemProperty().addListener(
-				(ov, oldVal, newVal) -> makeCircleMarkingOfficeVisible());
-        
-	}
+        staffTableView.getSelectionModel().selectedItemProperty().addListener(
+                (ov, oldVal, newVal) -> makeCircleMarkingOfficeVisible());
+        staffTableView.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) ->
+                {
+                    StaffMember selectedMember = staffTableView.getSelectionModel().getSelectedItem();
+                    String firstName = selectedMember.getFirstName();
+                    String lastName = selectedMember.getLastName();
+                    String hhFrom = selectedMember.getHoursFrom();
+                    String mmFrom = selectedMember.getMinutesFrom();
+                    String hhTo = selectedMember.getHoursTo();
+                    String mmTo = selectedMember.getMinutesTo();
+                    int officeNo = selectedMember.getOfficeNumber();
 
+                    firstNameTextField.setText(firstName);
+                    lastNameTextField.setText(lastName);
+                    officeNumberComboBox.setValue(officeNo);
+                    comboBoxHhFrom.setValue(hhFrom);
+                    comboBoxMmFrom.setValue(mmFrom);
+                    comboBoxHhTo.setValue(hhTo);
+                    comboBoxMmTo.setValue(mmTo);
+                }
+        );
+
+
+    }
 	private void initializeComboBoxes()
 	{
 		addOfficeNumbersToComboBox();
