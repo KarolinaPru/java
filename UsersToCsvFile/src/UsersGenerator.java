@@ -1,48 +1,67 @@
 import java.io.BufferedWriter;
+import java.io.EOFException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class UsersGenerator
-{
-	
-	private ArrayList<User> usersList;
+public class UsersGenerator {
+    private static final String FILE_HEADER = "firstName,lastName,username,password,email";
+    private static final String NEW_LINE_SEPARATOR = "\n";
 
-	public static void main (String[] args) throws IOException
-	{
-		UsersGenerator ug = new UsersGenerator();
-		generateUserList();
-		saveUsersToFile(generateUserList());
-		
-	}
 
-	private static ArrayList<User> generateUserList()
-	{
-		ArrayList<User> usersList = new ArrayList<User>();
+    public static void main (String[] args) throws IOException {
+        ArrayList<User> generatedList;
+        generatedList = generateUserList(300);
+
+        for (User u : generatedList)
+        {
+            System.out.println(u.getFirstName());
+        }
+
+        saveUsersToFile(generatedList);
+    }
+
+	private static ArrayList<User> generateUserList(int numberOfUsers) {
+		ArrayList<User> usersList = new ArrayList<>();
 		
-		for (int i = 1; i < 300; i++)
+		for (int i = 1; i < numberOfUsers; i++)
 		{
-			usersList.add(new User("Student" + i, "S", "student" + i, "123", "mail@email"));		
+			usersList.add(new User("Student" + i, "S", "student" + i, "123", "mail@email"));
 		}
-	
+
 		return usersList;
-		
+
 	}
 
-	private static void saveUsersToFile(ArrayList<User> list1) throws IOException
-	{
-	list1 = new ArrayList<User>();
-	BufferedWriter br = new BufferedWriter(new FileWriter("generatedUsers.csv"));
-	StringBuilder sb = new StringBuilder();
-		
-	for(User u: list1)
-	{
-		sb.append(u);
-		sb.append(";");
-	
-	}
-		 br.write(sb.toString());
-		 br.close();
-	}
+	private static void saveUsersToFile(ArrayList<User> listOfUsers) throws IOException {
+        FileWriter fileWriter = null;
+
+        try {
+
+            fileWriter = new FileWriter("generatedUsers.csv");
+
+            fileWriter.append(FILE_HEADER.toString());
+            fileWriter.append(NEW_LINE_SEPARATOR);
+
+            for (User u : listOfUsers) {
+                fileWriter.append(u.getFirstName()).append(";");
+                fileWriter.append(u.getLastName()).append(";");
+                fileWriter.append(u.getUsername()).append(";");
+                fileWriter.append(u.getPassword()).append(";");
+                fileWriter.append(u.getEmail()).append(";");
+                fileWriter.append(NEW_LINE_SEPARATOR);
+            }
+
+            System.out.println("Success, check your file!");
+        }
+        catch (EOFException e) {
+            System.out.println("Oops, something went wrong!");
+            e.printStackTrace();
+        }
+        finally {
+           fileWriter.flush();
+           fileWriter.close();
+        }
+    }
 }
 
