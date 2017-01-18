@@ -27,21 +27,27 @@ public class MainWindowController
 	@FXML
 	private TableColumn<StaffMember, Integer> officeNumberColumn;
 	@FXML
-	private Button addButton, saveButton, loadButton, reportButton;
+	private TextField firstNameTextField;
 	@FXML
-	private TextField firstNameTextField, lastNameTextField, officeNumberTextField, workingFromTextField,
-			workingToTextField;
-	@FXML
-	private Label firstNameLabel, lastNameLabel, officeNumberLabel, workingFromLabel, workingToLabel;
+	private TextField lastNameTextField;
 	@FXML
 	private ComboBox<Integer> officeNumberComboBox;
 	@FXML
-	private ComboBox<String> comboBoxMmFrom, comboBoxMmTo, comboBoxHhFrom, comboBoxHhTo;
+	private ComboBox<String> comboBoxMmFrom;
+    @FXML
+    private ComboBox<String> comboBoxMmTo;
+    @FXML
+    private ComboBox<String> comboBoxHhFrom;
+    @FXML
+    private ComboBox<String> comboBoxHhTo;
 	@FXML
 	private Circle circle;
 	
 	private ObservableList<StaffMember> staffMemberList = FXCollections.observableArrayList();
 	private PathSelector pathSelector;
+
+	public MainWindowController() {
+	}
 
 	public void initialize(Stage primaryStage)
 	{
@@ -63,6 +69,7 @@ public class MainWindowController
 
 		staffTableView.getSelectionModel().selectedItemProperty().addListener(
 				(ov, oldVal, newVal) -> makeCircleMarkingOfficeVisible());
+        
 	}
 
 	private void initializeComboBoxes()
@@ -137,12 +144,10 @@ public class MainWindowController
 	@FXML
 	private void handleAddButtonClick()
 	{
-
 		String firstName = firstNameTextField.getText();
 		String lastName = lastNameTextField.getText();
 
 		if (!isInteger(firstName) && !isInteger(lastName))
-
 		{
 			int officeNumber = officeNumberComboBox.getValue();
 			String workingFromHours = comboBoxHhFrom.getValue();
@@ -250,7 +255,7 @@ public class MainWindowController
 		
 		ReportGenerator rg = new ReportGenerator();
 		ArrayList<StaffMember> listToSort = new ArrayList<StaffMember>();
-		ArrayList<StaffMember> sortedList = new ArrayList<StaffMember>();
+		ArrayList<StaffMember> sortedList;
 		
 		for (StaffMember s : staffMemberList)
 		{
@@ -274,89 +279,61 @@ public class MainWindowController
 		switch(officeNumberSelected)
 		{
 			case 1:
-				circle.setLayoutY(CirclePosition.POSITION1.getX());
-				circle.setLayoutY(CirclePosition.POSITION1.getY());
-				circle.setVisible(true);
+                setCirclePosition(CirclePosition.POSITION1.getX(), CirclePosition.POSITION1.getY());
 				break;
 
 			case 2:
-				circle.setLayoutX(CirclePosition.POSITION2.getX());
-				circle.setLayoutY(CirclePosition.POSITION2.getY());
-				circle.setVisible(true);
+                setCirclePosition(CirclePosition.POSITION2.getX(), CirclePosition.POSITION2.getY());
 				break;
 
 			case 3:
-				circle.setLayoutY(CirclePosition.POSITION3.getX());
-				circle.setLayoutY(CirclePosition.POSITION3.getY());
-				circle.setVisible(true);
+                setCirclePosition(CirclePosition.POSITION3.getX(), CirclePosition.POSITION3.getY());
 				break;
 
 			case 4:
-				circle.setLayoutX(CirclePosition.POSITION4.getX());
-				circle.setLayoutY(CirclePosition.POSITION4.getY());
-				circle.setVisible(true);
+                setCirclePosition(CirclePosition.POSITION4.getX(), CirclePosition.POSITION4.getY());
 				break;
 
 			case 5:
-				circle.setLayoutY(CirclePosition.POSITION5.getX());
-				circle.setLayoutY(CirclePosition.POSITION6.getY());
-				circle.setVisible(true);
+                setCirclePosition(CirclePosition.POSITION5.getX(), CirclePosition.POSITION5.getY());
 				break;
 
 			case 6:
-				circle.setLayoutX(CirclePosition.POSITION6.getX());
-				circle.setLayoutY(CirclePosition.POSITION6.getY());
-				circle.setVisible(true);
+                setCirclePosition(CirclePosition.POSITION6.getX(), CirclePosition.POSITION6.getY());
 				break;
 
 			case 7:
-				circle.setLayoutY(CirclePosition.POSITION7.getX());
-				circle.setLayoutY(CirclePosition.POSITION7.getY());
-				circle.setVisible(true);
+                setCirclePosition(CirclePosition.POSITION7.getX(), CirclePosition.POSITION7.getY());
 				break;
 
 			case 8:
-				circle.setLayoutX(CirclePosition.POSITION8.getX());
-				circle.setLayoutY(CirclePosition.POSITION8.getY());
-				circle.setVisible(true);
+                setCirclePosition(CirclePosition.POSITION8.getX(), CirclePosition.POSITION8.getY());
 				break;
 
 			case 9:
-				circle.setLayoutY(CirclePosition.POSITION9.getX());
-				circle.setLayoutY(CirclePosition.POSITION9.getY());
-				circle.setVisible(true);
+                setCirclePosition(CirclePosition.POSITION9.getX(), CirclePosition.POSITION9.getY());
 				break;
 
 			case 10:
-				circle.setLayoutX(CirclePosition.POSITION10.getX());
-				circle.setLayoutY(CirclePosition.POSITION10.getY());
-				circle.setVisible(true);
+                setCirclePosition(CirclePosition.POSITION10.getX(), CirclePosition.POSITION10.getY());
 				break;
 
 			case 11:
-				circle.setLayoutY(CirclePosition.POSITION11.getX());
-				circle.setLayoutY(CirclePosition.POSITION11.getY());
-				circle.setVisible(true);
+                setCirclePosition(CirclePosition.POSITION11.getX(), CirclePosition.POSITION11.getY());
 				break;
 
 			case 12:
-				circle.setLayoutX(CirclePosition.POSITION12.getX());
-				circle.setLayoutY(CirclePosition.POSITION12.getY());
-				circle.setVisible(true);
+                setCirclePosition(CirclePosition.POSITION12.getX(), CirclePosition.POSITION12.getY());
 				break;
 
 			default:
 				circle.setVisible(false);
-
 		}
-
-
 	}
 
-
-	@FXML
-	private void closeStage()
-	{
-		primaryStage.close();
-	}
+    private void setCirclePosition(double positionX, double positionY) {
+        circle.setLayoutX(positionX);
+        circle.setLayoutY(positionY);
+        circle.setVisible(true);
+    }
 }
