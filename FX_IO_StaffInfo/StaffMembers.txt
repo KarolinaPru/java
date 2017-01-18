@@ -1,5 +1,5 @@
 Jan Kowalski 1 07:00 19:00 
-Joanna  Krawczyk 2 09:00 17:00 
+Joanna Krawczyk 2 09:00 17:00 
 Euzebiusz Kosi?ski 3 13:00 16:30 
 El?bieta Niemiec 4 13:15 18:15 
 Katarzyna Jurek 5 10:00 14:00 
@@ -10,3 +10,4 @@ Julian Osi?ski 9 12:00 17:30
 Dagmara Jackowska 10 11:00 14:30 
 Olga Owies 11 08:30 16:30 
 Aleksander Pawlicki 12 11:15 17:45 
+Piotr Dutkiewicz 5 13:00 14:30 
