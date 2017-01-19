@@ -1,22 +1,16 @@
-import java.io.BufferedWriter;
 import java.io.EOFException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class UsersGenerator {
-    private static final String FILE_HEADER = "firstName,lastName,username,password,email";
-    private static final String NEW_LINE_SEPARATOR = "\n";
+    private static final String FILE_HEADER = "first;last;username;password;email";
+    private static final String NEW_LINE_SEPARATOR = "\r\n";
 
 
     public static void main (String[] args) throws IOException {
         ArrayList<User> generatedList;
-        generatedList = generateUserList(300);
-
-        for (User u : generatedList)
-        {
-            System.out.println(u.getFirstName());
-        }
+        generatedList = generateUserList(1001);
 
         saveUsersToFile(generatedList);
     }
@@ -26,7 +20,7 @@ public class UsersGenerator {
 		
 		for (int i = 1; i < numberOfUsers; i++)
 		{
-			usersList.add(new User("Student" + i, "S", "student" + i, "123", "mail@email"));
+			usersList.add(new User("Student" + i, "S", "student" + i, "123", "mail@email.com"));
 		}
 
 		return usersList;
@@ -44,11 +38,16 @@ public class UsersGenerator {
             fileWriter.append(NEW_LINE_SEPARATOR);
 
             for (User u : listOfUsers) {
-                fileWriter.append(u.getFirstName()).append(";");
-                fileWriter.append(u.getLastName()).append(";");
-                fileWriter.append(u.getUsername()).append(";");
-                fileWriter.append(u.getPassword()).append(";");
-                fileWriter.append(u.getEmail()).append(";");
+                fileWriter.append(u.getFirstName());
+                fileWriter.append(";");
+                fileWriter.append(u.getLastName());
+                fileWriter.append(";");
+                fileWriter.append(u.getUsername());
+                fileWriter.append(";");
+                fileWriter.append(u.getPassword());
+                fileWriter.append(";");
+                fileWriter.append(u.getEmail());
+               // fileWriter.append(";");
                 fileWriter.append(NEW_LINE_SEPARATOR);
             }
 
