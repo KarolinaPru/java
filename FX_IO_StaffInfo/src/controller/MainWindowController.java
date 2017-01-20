@@ -1,8 +1,11 @@
 package controller;
 
 import java.util.ArrayList;
+
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -12,6 +15,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import model.DeserializationFailedException;
 import model.ReportGenerator;
 import model.StaffMember;
@@ -44,21 +48,10 @@ public class MainWindowController
 	private ComboBox<String> comboBoxHhTo;
 	@FXML
 	private Circle circle;
-	@FXML
-	private Button loadButton;
-	@FXML
-	private Button saveButton;
-	@FXML
-	private Button reportButton;
-	@FXML
-	private Button addButton;
-	
+
 	private ObservableList<StaffMember> staffMemberList = FXCollections.observableArrayList();
 	private PathSelector pathSelector;
-
-	public MainWindowController()
-	{
-	}
+	
 
 	public void initialize(Stage primaryStage)
 	{
@@ -79,7 +72,16 @@ public class MainWindowController
 		officeNumberColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, Integer>("officeNumber"));
 
 		staffTableView.getSelectionModel().selectedItemProperty()
-				.addListener((ov, oldVal, newVal) -> makeCircleMarkingOfficeVisible());
+		.addListener((ov, oldVal, newVal) -> markProperOfficeWithCircle());
+		
+		displayInfoAboutStaffMemberWhenClickedOn();
+
+		allowStaffMemberDeletionFromTheList();
+
+	}
+
+	private void displayInfoAboutStaffMemberWhenClickedOn()
+	{
 		staffTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->
 		{
 			StaffMember selectedMember = staffTableView.getSelectionModel().getSelectedItem();
@@ -99,7 +101,41 @@ public class MainWindowController
 			comboBoxHhTo.setValue(hhTo);
 			comboBoxMmTo.setValue(mmTo);
 		});
+	}
 
+	private void allowStaffMemberDeletionFromTheList()
+	{
+		staffTableView.setRowFactory(new Callback<TableView<StaffMember>, TableRow<StaffMember>>()
+		{
+			@Override
+			public TableRow<StaffMember> call(TableView<StaffMember> tableView)
+			{
+				final TableRow<StaffMember> row = new TableRow<>();
+				final ContextMenu rowMenu = new ContextMenu();
+				MenuItem removeItem = new MenuItem("Delete from the list");
+				removeItem.setOnAction(new EventHandler<ActionEvent>()
+				{
+					@Override
+					public void handle(ActionEvent event)
+					{
+						staffTableView.getItems().remove(row.getItem());
+					}
+				});
+				rowMenu.getItems().add(removeItem);
+
+				row.contextMenuProperty().bind(Bindings.when(Bindings.isNotNull(row.itemProperty())).then(rowMenu)
+				.otherwise((ContextMenu) null));
+				
+				return row;
+			}
+
+			private void displayContextMenuForNonNullElements(final TableRow<StaffMember> row,
+					final ContextMenu rowMenu)
+			{
+				row.contextMenuProperty().bind(Bindings.when(Bindings.isNotNull(row.itemProperty())).then(rowMenu)
+						.otherwise((ContextMenu) null));
+			}
+		});
 	}
 
 	private void initializeComboBoxes()
@@ -176,49 +212,27 @@ public class MainWindowController
 
 		if (firstName.matches(validInput) && lastName.matches(validInput))
 		{
-			int officeNumber = officeNumberComboBox.getValue();
-			String workingFromHours = comboBoxHhFrom.getValue();
-			String workingFromMinutes = comboBoxMmFrom.getValue();
-			String workingFrom = workingFromHours + ":" + workingFromMinutes;
-
-			String workingToHours = comboBoxHhTo.getValue();
-			String workingToMinutes = comboBoxMmTo.getValue();
-			String workingTo = workingToHours + ":" + workingToMinutes;
-
-			StaffMember sm = new StaffMember(firstName, lastName, officeNumber, workingFrom, workingTo);
-			staffMemberList.add(sm);
+			addStaffMemberToTheList(firstName, lastName);
 
 			firstNameTextField.clear();
 			lastNameTextField.clear();
 			setDefaultSelectionForComboBoxes();
-			circle.setVisible(false);
 		}
 	}
-	
-	@FXML
-	private void dropShadoWhenCursorIsOnButton()
+
+	private void addStaffMemberToTheList(String firstName, String lastName)
 	{
-		
-		DropShadow shadow = new DropShadow();
-		loadButton.addEventHandler(MouseEvent.MOUSE_ENTERED, 
-		    new EventHandler<MouseEvent>() {
-		        @Override public void handle(MouseEvent e) {
-		           loadButton.setEffect(shadow);
-		        }
-		});
-		
-		
-	}
-		
-	@FXML
-	private void removeShadowWhenCursorIsOff()
-	{
-		loadButton.addEventHandler(MouseEvent.MOUSE_EXITED, 
-		    new EventHandler<MouseEvent>() {
-		        @Override public void handle(MouseEvent e) {
-		           loadButton.setEffect(null);
-		        }
-		});
+		int officeNumber = officeNumberComboBox.getValue();
+		String workingFromHours = comboBoxHhFrom.getValue();
+		String workingFromMinutes = comboBoxMmFrom.getValue();
+		String workingFrom = workingFromHours + ":" + workingFromMinutes;
+
+		String workingToHours = comboBoxHhTo.getValue();
+		String workingToMinutes = comboBoxMmTo.getValue();
+		String workingTo = workingToHours + ":" + workingToMinutes;
+
+		StaffMember sm = new StaffMember(firstName, lastName, officeNumber, workingFrom, workingTo);
+		staffMemberList.add(sm);
 	}
 
 	@FXML
@@ -233,10 +247,9 @@ public class MainWindowController
 				return;
 			}
 		}
-		
-		else {
-				return;
-			
+		else
+		{
+			return;
 		}
 
 		StaffMemberSerializer serializer = new StaffMemberSerializer();
@@ -306,13 +319,18 @@ public class MainWindowController
 		if (pathToReportFileIsNotSelected())
 		{
 			pathSelector.getPathToReportFile();
-
+ 
 			if (pathToReportFileIsNotSelected())
 			{
 				return;
 			}
 		}
 
+		saveSortedListInSelectedFile();
+	}
+
+	private void saveSortedListInSelectedFile()
+	{
 		ReportGenerator rg = new ReportGenerator();
 		ArrayList<StaffMember> listToSort = new ArrayList<StaffMember>();
 		ArrayList<StaffMember> sortedList;
@@ -332,7 +350,7 @@ public class MainWindowController
 		return pathSelector.pathToReportFile == null;
 	}
 
-	private void makeCircleMarkingOfficeVisible()
+	private void markProperOfficeWithCircle()
 	{
 		int officeNumberSelected = staffTableView.getSelectionModel().getSelectedItem().getOfficeNumber();
 
