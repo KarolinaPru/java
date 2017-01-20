@@ -1,14 +1,15 @@
 package controller;
 
 import java.util.ArrayList;
-import java.util.regex.Pattern;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import model.DeserializationFailedException;
@@ -35,19 +36,28 @@ public class MainWindowController
 	private ComboBox<Integer> officeNumberComboBox;
 	@FXML
 	private ComboBox<String> comboBoxMmFrom;
-    @FXML
-    private ComboBox<String> comboBoxMmTo;
-    @FXML
-    private ComboBox<String> comboBoxHhFrom;
-    @FXML
-    private ComboBox<String> comboBoxHhTo;
+	@FXML
+	private ComboBox<String> comboBoxMmTo;
+	@FXML
+	private ComboBox<String> comboBoxHhFrom;
+	@FXML
+	private ComboBox<String> comboBoxHhTo;
 	@FXML
 	private Circle circle;
+	@FXML
+	private Button loadButton;
+	@FXML
+	private Button saveButton;
+	@FXML
+	private Button reportButton;
+	@FXML
+	private Button addButton;
 	
 	private ObservableList<StaffMember> staffMemberList = FXCollections.observableArrayList();
 	private PathSelector pathSelector;
 
-	public MainWindowController() {
+	public MainWindowController()
+	{
 	}
 
 	public void initialize(Stage primaryStage)
@@ -58,41 +68,40 @@ public class MainWindowController
 		bindTableColumnsToStaffMemberList();
 	}
 
-	private void bindTableColumnsToStaffMemberList() {
-        staffTableView.setItems(staffMemberList);
+	private void bindTableColumnsToStaffMemberList()
+	{
+		staffTableView.setItems(staffMemberList);
 
-        firstNameColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, String>("firstName"));
+		firstNameColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, String>("firstName"));
 
-        lastNameColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, String>("lastName"));
+		lastNameColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, String>("lastName"));
 
-        officeNumberColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, Integer>("officeNumber"));
+		officeNumberColumn.setCellValueFactory(new PropertyValueFactory<StaffMember, Integer>("officeNumber"));
 
-        staffTableView.getSelectionModel().selectedItemProperty().addListener(
-                (ov, oldVal, newVal) -> makeCircleMarkingOfficeVisible());
-        staffTableView.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) ->
-                {
-                    StaffMember selectedMember = staffTableView.getSelectionModel().getSelectedItem();
-                    String firstName = selectedMember.getFirstName();
-                    String lastName = selectedMember.getLastName();
-                    String hhFrom = selectedMember.getHoursFrom();
-                    String mmFrom = selectedMember.getMinutesFrom();
-                    String hhTo = selectedMember.getHoursTo();
-                    String mmTo = selectedMember.getMinutesTo();
-                    int officeNo = selectedMember.getOfficeNumber();
+		staffTableView.getSelectionModel().selectedItemProperty()
+				.addListener((ov, oldVal, newVal) -> makeCircleMarkingOfficeVisible());
+		staffTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->
+		{
+			StaffMember selectedMember = staffTableView.getSelectionModel().getSelectedItem();
+			String firstName = selectedMember.getFirstName();
+			String lastName = selectedMember.getLastName();
+			String hhFrom = selectedMember.getHoursFrom();
+			String mmFrom = selectedMember.getMinutesFrom();
+			String hhTo = selectedMember.getHoursTo();
+			String mmTo = selectedMember.getMinutesTo();
+			int officeNo = selectedMember.getOfficeNumber();
 
-                    firstNameTextField.setText(firstName);
-                    lastNameTextField.setText(lastName);
-                    officeNumberComboBox.setValue(officeNo);
-                    comboBoxHhFrom.setValue(hhFrom);
-                    comboBoxMmFrom.setValue(mmFrom);
-                    comboBoxHhTo.setValue(hhTo);
-                    comboBoxMmTo.setValue(mmTo);
-                }
-        );
+			firstNameTextField.setText(firstName);
+			lastNameTextField.setText(lastName);
+			officeNumberComboBox.setValue(officeNo);
+			comboBoxHhFrom.setValue(hhFrom);
+			comboBoxMmFrom.setValue(mmFrom);
+			comboBoxHhTo.setValue(hhTo);
+			comboBoxMmTo.setValue(mmTo);
+		});
 
+	}
 
-    }
 	private void initializeComboBoxes()
 	{
 		addOfficeNumbersToComboBox();
@@ -161,11 +170,12 @@ public class MainWindowController
 	private void handleAddButtonClick()
 	{
 		String validInput = ("[A-Za-z]+\\-{0,1}[A-Za-z]+");
-		
+
 		String firstName = firstNameTextField.getText();
 		String lastName = lastNameTextField.getText();
 
-		if(firstName.matches(validInput) && lastName.matches(validInput)) {
+		if (firstName.matches(validInput) && lastName.matches(validInput))
+		{
 			int officeNumber = officeNumberComboBox.getValue();
 			String workingFromHours = comboBoxHhFrom.getValue();
 			String workingFromMinutes = comboBoxMmFrom.getValue();
@@ -181,7 +191,34 @@ public class MainWindowController
 			firstNameTextField.clear();
 			lastNameTextField.clear();
 			setDefaultSelectionForComboBoxes();
+			circle.setVisible(false);
 		}
+	}
+	
+	@FXML
+	private void dropShadoWhenCursorIsOnButton()
+	{
+		
+		DropShadow shadow = new DropShadow();
+		loadButton.addEventHandler(MouseEvent.MOUSE_ENTERED, 
+		    new EventHandler<MouseEvent>() {
+		        @Override public void handle(MouseEvent e) {
+		           loadButton.setEffect(shadow);
+		        }
+		});
+		
+		
+	}
+		
+	@FXML
+	private void removeShadowWhenCursorIsOff()
+	{
+		loadButton.addEventHandler(MouseEvent.MOUSE_EXITED, 
+		    new EventHandler<MouseEvent>() {
+		        @Override public void handle(MouseEvent e) {
+		           loadButton.setEffect(null);
+		        }
+		});
 	}
 
 	@FXML
@@ -196,6 +233,12 @@ public class MainWindowController
 				return;
 			}
 		}
+		
+		else {
+				return;
+			
+		}
+
 		StaffMemberSerializer serializer = new StaffMemberSerializer();
 		ArrayList<StaffMember> loadedStaffList;
 
@@ -293,64 +336,65 @@ public class MainWindowController
 	{
 		int officeNumberSelected = staffTableView.getSelectionModel().getSelectedItem().getOfficeNumber();
 
-		switch(officeNumberSelected)
+		switch (officeNumberSelected)
 		{
-			case 1:
-                setCirclePosition(CirclePosition.POSITION1.getX(), CirclePosition.POSITION1.getY());
-				break;
+		case 1:
+			setCirclePosition(CirclePosition.POSITION1.getX(), CirclePosition.POSITION1.getY());
+			break;
 
-			case 2:
-                setCirclePosition(CirclePosition.POSITION2.getX(), CirclePosition.POSITION2.getY());
-				break;
+		case 2:
+			setCirclePosition(CirclePosition.POSITION2.getX(), CirclePosition.POSITION2.getY());
+			break;
 
-			case 3:
-                setCirclePosition(CirclePosition.POSITION3.getX(), CirclePosition.POSITION3.getY());
-				break;
+		case 3:
+			setCirclePosition(CirclePosition.POSITION3.getX(), CirclePosition.POSITION3.getY());
+			break;
 
-			case 4:
-                setCirclePosition(CirclePosition.POSITION4.getX(), CirclePosition.POSITION4.getY());
-				break;
+		case 4:
+			setCirclePosition(CirclePosition.POSITION4.getX(), CirclePosition.POSITION4.getY());
+			break;
 
-			case 5:
-                setCirclePosition(CirclePosition.POSITION5.getX(), CirclePosition.POSITION5.getY());
-				break;
+		case 5:
+			setCirclePosition(CirclePosition.POSITION5.getX(), CirclePosition.POSITION5.getY());
+			break;
 
-			case 6:
-                setCirclePosition(CirclePosition.POSITION6.getX(), CirclePosition.POSITION6.getY());
-				break;
+		case 6:
+			setCirclePosition(CirclePosition.POSITION6.getX(), CirclePosition.POSITION6.getY());
+			break;
 
-			case 7:
-                setCirclePosition(CirclePosition.POSITION7.getX(), CirclePosition.POSITION7.getY());
-				break;
+		case 7:
+			setCirclePosition(CirclePosition.POSITION7.getX(), CirclePosition.POSITION7.getY());
+			break;
 
-			case 8:
-                setCirclePosition(CirclePosition.POSITION8.getX(), CirclePosition.POSITION8.getY());
-				break;
+		case 8:
+			setCirclePosition(CirclePosition.POSITION8.getX(), CirclePosition.POSITION8.getY());
+			break;
 
-			case 9:
-                setCirclePosition(CirclePosition.POSITION9.getX(), CirclePosition.POSITION9.getY());
-				break;
+		case 9:
+			setCirclePosition(CirclePosition.POSITION9.getX(), CirclePosition.POSITION9.getY());
+			break;
 
-			case 10:
-                setCirclePosition(CirclePosition.POSITION10.getX(), CirclePosition.POSITION10.getY());
-				break;
+		case 10:
+			setCirclePosition(CirclePosition.POSITION10.getX(), CirclePosition.POSITION10.getY());
+			break;
 
-			case 11:
-                setCirclePosition(CirclePosition.POSITION11.getX(), CirclePosition.POSITION11.getY());
-				break;
+		case 11:
+			setCirclePosition(CirclePosition.POSITION11.getX(), CirclePosition.POSITION11.getY());
+			break;
 
-			case 12:
-                setCirclePosition(CirclePosition.POSITION12.getX(), CirclePosition.POSITION12.getY());
-				break;
+		case 12:
+			setCirclePosition(CirclePosition.POSITION12.getX(), CirclePosition.POSITION12.getY());
+			break;
 
-			default:
-				circle.setVisible(false);
+		default:
+			circle.setVisible(false);
 		}
 	}
 
-    private void setCirclePosition(double positionX, double positionY) {
-        circle.setLayoutX(positionX);
-        circle.setLayoutY(positionY);
-        circle.setVisible(true);
-    }
+	private void setCirclePosition(double positionX, double positionY)
+	{
+		circle.setLayoutX(positionX);
+		circle.setLayoutY(positionY);
+		circle.setVisible(true);
+	}
 }
