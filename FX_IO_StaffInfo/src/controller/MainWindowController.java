@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,6 +44,7 @@ public class MainWindowController
 		this.primaryStage = primaryStage;
 		pathSelector = new PathSelector(primaryStage);
 		initializeComboBoxes();
+		enableLettersOnly();
 		bindTableColumnsToStaffMemberList();
 	}
 
@@ -124,37 +126,60 @@ public class MainWindowController
 		officeNumberComboBox.getSelectionModel().selectFirst();
 	}
 
-	private static boolean isInteger(String str)
+	private void enableLettersOnly()
 	{
-		return str.matches("\\d*");
+
+		Pattern validText = Pattern.compile("[A-Za-z]");
+
+		TextFormatter<String> textFormatter = new TextFormatter<String>(change ->
+		{
+			String input = change.getText();
+			if (validText.matcher(input).matches())
+			{
+				return change;
+			} else
+				return null;
+		});
+		
+		firstNameTextField.setTextFormatter(textFormatter);
+		
+		TextFormatter<String> textFormatter2 = new TextFormatter<String>(change ->
+		{
+			String input = change.getText();
+			if (validText.matcher(input).matches())
+			{
+				return change;
+			} else
+				return null;
+		});
+		
+		lastNameTextField.setTextFormatter(textFormatter2);
+
 	}
 
 	@FXML
 	private void handleAddButtonClick()
 	{
-
+		
 		String firstName = firstNameTextField.getText();
 		String lastName = lastNameTextField.getText();
 
-		if (!isInteger(firstName) && !isInteger(lastName))
+		int officeNumber = officeNumberComboBox.getValue();
+		String workingFromHours = comboBoxHhFrom.getValue();
+		String workingFromMinutes = comboBoxMmFrom.getValue();
+		String workingFrom = workingFromHours + ":" + workingFromMinutes;
 
-		{
-			int officeNumber = officeNumberComboBox.getValue();
-			String workingFromHours = comboBoxHhFrom.getValue();
-			String workingFromMinutes = comboBoxMmFrom.getValue();
-			String workingFrom = workingFromHours + ":" + workingFromMinutes;
+		String workingToHours = comboBoxHhTo.getValue();
+		String workingToMinutes = comboBoxMmTo.getValue();
+		String workingTo = workingToHours + ":" + workingToMinutes;
 
-			String workingToHours = comboBoxHhTo.getValue();
-			String workingToMinutes = comboBoxMmTo.getValue();
-			String workingTo = workingToHours + ":" + workingToMinutes;
+		StaffMember sm = new StaffMember(firstName, lastName, officeNumber, workingFrom, workingTo);
+		staffMemberList.add(sm);
 
-			StaffMember sm = new StaffMember(firstName, lastName, officeNumber, workingFrom, workingTo);
-			staffMemberList.add(sm);
+		firstNameTextField.clear();
+		lastNameTextField.clear();
+		setDefaultSelectionForComboBoxes();
 
-			firstNameTextField.clear();
-			lastNameTextField.clear();
-			setDefaultSelectionForComboBoxes();
-		}
 	}
 
 	@FXML
@@ -190,7 +215,7 @@ public class MainWindowController
 		{
 			staffMemberList.add(s);
 		}
-		
+
 	}
 
 	private boolean pathToLoadFileIsNotSelected()
@@ -242,26 +267,26 @@ public class MainWindowController
 				return;
 			}
 		}
-		
+
 		ReportGenerator rg = new ReportGenerator();
 		ArrayList<StaffMember> listToSort = new ArrayList<StaffMember>();
 		ArrayList<StaffMember> sortedList = new ArrayList<StaffMember>();
-		
+
 		for (StaffMember s : staffMemberList)
 		{
 			listToSort.add(s);
 		}
-		
+
 		sortedList = rg.generateReport(listToSort);
 		StaffMemberSerializer serializer = new StaffMemberSerializer();
-		serializer.serializeReport(sortedList, pathSelector.pathToReportFile);		
+		serializer.serializeReport(sortedList, pathSelector.pathToReportFile);
 	}
-	
+
 	private boolean pathToReportFileIsNotSelected()
 	{
 		return pathSelector.pathToReportFile == null;
 	}
-	
+
 	@FXML
 	private void closeStage()
 	{
