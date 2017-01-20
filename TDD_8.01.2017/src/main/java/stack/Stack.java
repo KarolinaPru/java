@@ -50,7 +50,6 @@ public class Stack
 
 	public int getSize()
 	{
-
 		return currentSize;
 	}
 }
