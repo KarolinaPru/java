@@ -12,7 +12,7 @@ public class StaffMemberSerializer
 	public ArrayList<StaffMember> deserialize(String pathToFile) throws DeserializationFailedException
 	{
 		Scanner in = null;
-		ArrayList<StaffMember> staffList = new ArrayList<StaffMember>();
+		ArrayList<StaffMember> staffList = new ArrayList<>();
 
 		try
 		{

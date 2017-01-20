@@ -44,7 +44,6 @@ public class MainWindowController
 		this.primaryStage = primaryStage;
 		pathSelector = new PathSelector(primaryStage);
 		initializeComboBoxes();
-		enableLettersOnly();
 		bindTableColumnsToStaffMemberList();
 	}
 
@@ -126,60 +125,32 @@ public class MainWindowController
 		officeNumberComboBox.getSelectionModel().selectFirst();
 	}
 
-	private void enableLettersOnly()
-	{
-
-		Pattern validText = Pattern.compile("[A-Za-z]");
-
-		TextFormatter<String> textFormatter = new TextFormatter<String>(change ->
-		{
-			String input = change.getText();
-			if (validText.matcher(input).matches())
-			{
-				return change;
-			} else
-				return null;
-		});
-		
-		firstNameTextField.setTextFormatter(textFormatter);
-		
-		TextFormatter<String> textFormatter2 = new TextFormatter<String>(change ->
-		{
-			String input = change.getText();
-			if (validText.matcher(input).matches())
-			{
-				return change;
-			} else
-				return null;
-		});
-		
-		lastNameTextField.setTextFormatter(textFormatter2);
-
-	}
-
 	@FXML
 	private void handleAddButtonClick()
 	{
+		String validInput = ("[A-Za-z]+\\-{0,1}[A-Za-z]+");
 		
 		String firstName = firstNameTextField.getText();
 		String lastName = lastNameTextField.getText();
 
-		int officeNumber = officeNumberComboBox.getValue();
-		String workingFromHours = comboBoxHhFrom.getValue();
-		String workingFromMinutes = comboBoxMmFrom.getValue();
-		String workingFrom = workingFromHours + ":" + workingFromMinutes;
+		if(firstName.matches(validInput) && lastName.matches(validInput)) {
 
-		String workingToHours = comboBoxHhTo.getValue();
-		String workingToMinutes = comboBoxMmTo.getValue();
-		String workingTo = workingToHours + ":" + workingToMinutes;
+			int officeNumber = officeNumberComboBox.getValue();
+			String workingFromHours = comboBoxHhFrom.getValue();
+			String workingFromMinutes = comboBoxMmFrom.getValue();
+			String workingFrom = workingFromHours + ":" + workingFromMinutes;
 
-		StaffMember sm = new StaffMember(firstName, lastName, officeNumber, workingFrom, workingTo);
-		staffMemberList.add(sm);
+			String workingToHours = comboBoxHhTo.getValue();
+			String workingToMinutes = comboBoxMmTo.getValue();
+			String workingTo = workingToHours + ":" + workingToMinutes;
 
-		firstNameTextField.clear();
-		lastNameTextField.clear();
-		setDefaultSelectionForComboBoxes();
+			StaffMember sm = new StaffMember(firstName, lastName, officeNumber, workingFrom, workingTo);
+			staffMemberList.add(sm);
 
+			firstNameTextField.clear();
+			lastNameTextField.clear();
+			setDefaultSelectionForComboBoxes();
+		}
 	}
 
 	@FXML
@@ -270,7 +241,7 @@ public class MainWindowController
 
 		ReportGenerator rg = new ReportGenerator();
 		ArrayList<StaffMember> listToSort = new ArrayList<StaffMember>();
-		ArrayList<StaffMember> sortedList = new ArrayList<StaffMember>();
+		ArrayList<StaffMember> sortedList;
 
 		for (StaffMember s : staffMemberList)
 		{

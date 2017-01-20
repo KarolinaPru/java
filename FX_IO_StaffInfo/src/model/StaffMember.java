@@ -11,9 +11,9 @@ public class StaffMember {
     private String firstName;
     private String lastName;
     private int officeNumber;
-    public String workingFrom; 
-    public String workingTo;
-    public long workDuration;
+    private String workingFrom;
+    private String workingTo;
+    private long workDuration;
     
     public StaffMember(String firstName, String lastName, int officeNumber, String workingFrom, String workingTo)
     {

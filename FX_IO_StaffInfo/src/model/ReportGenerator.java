@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 public class ReportGenerator
 {
-	private static ArrayList<StaffMember> sortedList;
 	private StaffMember[] staffArray;
 	private int min;
 
@@ -15,7 +14,7 @@ public class ReportGenerator
 		StaffMember[] staffMemberArray = convertArrayListToArray(staffMemberList);
 
 		descendingSelectionSortAccordingToWorkHours(staffMemberArray);
-		sortedList = new ArrayList<StaffMember>(Arrays.asList(staffMemberArray));
+		ArrayList<StaffMember> sortedList = new ArrayList<>(Arrays.asList(staffMemberArray));
 
 		return sortedList;
 	}
