@@ -6,52 +6,61 @@ import java.util.Arrays;
 public class ReportGenerator
 {
 	private static ArrayList<StaffMember> sortedList;
+	private StaffMember[] staffArray;
+	private int min;
+
 
 	public ArrayList<StaffMember> generateReport(ArrayList<StaffMember> staffMemberList)
 	{
 		StaffMember[] staffMemberArray = convertArrayListToArray(staffMemberList);
 
 		descendingSelectionSortAccordingToWorkHours(staffMemberArray);
-
 		sortedList = new ArrayList<StaffMember>(Arrays.asList(staffMemberArray));
+
 		return sortedList;
 	}
 
-	private void descendingSelectionSortAccordingToWorkHours(StaffMember[] staffMemberArray)
-	{
-		int i, j, first;
-		StaffMember tempSm;
-		long firstSmWorkDuration;
-		long currentSmWorkDuration;
+    private static StaffMember[] convertArrayListToArray(ArrayList<StaffMember> staffMemberList)
+    {
+        StaffMember[] staffMemberArray;
+        staffMemberArray = new StaffMember[staffMemberList.size()];
+        staffMemberArray = staffMemberList.toArray(staffMemberArray);
+        return staffMemberArray;
+    }
 
-		for (i = staffMemberArray.length - 1; i > 0; i--)
+	private void descendingSelectionSortAccordingToWorkHours(StaffMember[] staffArray) {
+
+        this.staffArray = staffArray;
+		for (int i = this.staffArray.length - 1; i > 0; i--)
 		{
-			first = 0;
-
-			for (j = 1; j <= i; j++)
-			{
-				firstSmWorkDuration = staffMemberArray[first].calculateWorkDuration();
-				currentSmWorkDuration = staffMemberArray[j].calculateWorkDuration();
-
-				if (currentSmWorkDuration < firstSmWorkDuration)
-				{
-					first = j;
-				}
-			}
-
-			tempSm = staffMemberArray[first]; // swap smallest found with the
-												// element in position i.
-			staffMemberArray[first] = staffMemberArray[i];
-			staffMemberArray[i] = tempSm;
+		    min = 0;
+			min = iterateThroughArrayToFindCurrentMinWorkDuration(i);
+			placeCurrentMinAtTheEndOfTheSortedList(staffArray, i);
 		}
 	}
 
-	private static StaffMember[] convertArrayListToArray(ArrayList<StaffMember> staffMemberList)
-	{
-		StaffMember[] staffMemberArray;
-		staffMemberArray = new StaffMember[staffMemberList.size()];
-		staffMemberArray = staffMemberList.toArray(staffMemberArray);
-		return staffMemberArray;
+	private int iterateThroughArrayToFindCurrentMinWorkDuration(int i) {
+		int j;
+		long minWorkDuration;
+		long currentWorkDuration;
+		for (j = 1; j <= i; j++)
+        {
+            minWorkDuration = staffArray[min].calculateWorkDuration();
+            currentWorkDuration = staffArray[j].calculateWorkDuration();
+
+            if (currentWorkDuration < minWorkDuration)
+            {
+                min = j;
+            }
+        }
+        return min;
 	}
 
+    private void placeCurrentMinAtTheEndOfTheSortedList(StaffMember[] staffArray, int i) {
+        StaffMember smWithCurrentMin;
+
+        smWithCurrentMin = staffArray[min];
+        staffArray[min] = staffArray[i];
+        staffArray[i] = smWithCurrentMin;
+    }
 }

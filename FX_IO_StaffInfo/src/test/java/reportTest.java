@@ -38,9 +38,9 @@ public class reportTest
 		sm2=new StaffMember("Joanna","Krawczyk",2,"08:00","12:00");	//240
 		sm3=new StaffMember("Jerzy","Halicki",3,"11:00","13:30");	//150
 		sm4=new StaffMember("Helena","Nowak",5,"15:15","18:45"); //210
-		sm5 = new StaffMember("Ola", "Oliñska", 13, "10:15", "16:45"); //390
+		sm5 = new StaffMember("Ola", "OliÅ„ska", 13, "10:15", "16:45"); //390
 		sm6 = new StaffMember("Ela", "Nowak", 7, "11:00", "23:45");
-		sm7 = new StaffMember("Igor", "Oliñski", 10, "10:15", "09:40");
+		sm7 = new StaffMember("Igor", "OliÅ„ski", 10, "10:15", "09:40");
 			
 		rg = new ReportGenerator();
 
