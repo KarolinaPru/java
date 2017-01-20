@@ -21,8 +21,6 @@ public class reportTest
 	private ReportGenerator rg;
 	private long sm1WorkInMinutes;
 	private long sm2WorkInMinutes;
-	private long sm3WorkInMinutes;
-	private long sm4WorkInMinutes;
 	private StaffMember sm5;
 	private StaffMember sm6;
 	private StaffMember sm7;

@@ -1,5 +1,7 @@
 package model;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.time.Duration;
 import java.time.LocalTime;
 
@@ -33,7 +35,34 @@ public class StaffMember {
     	workDuration = Duration.between(timeFrom, timeTo).toMinutes();
     	return workDuration;
     }
-    
+
+    public String getHoursFrom() {
+    	String hhFrom;
+		hhFrom = workingFrom.substring(0, 2);
+		return hhFrom;
+	}
+
+	public String getMinutesFrom() {
+		String mmFrom;
+		mmFrom = workingFrom.substring(3, 5);
+		return mmFrom;
+
+	}
+
+	public String getHoursTo() {
+		String hhTo;
+		hhTo = workingTo.substring(0, 2);
+		return hhTo;
+
+	}
+
+	public String getMinutesTo() {
+		String mmFTo;
+		mmFTo = workingFrom.substring(3, 5);
+		return mmFTo;
+
+	}
+
 	public String getFirstName()
 	{
 		return firstName;

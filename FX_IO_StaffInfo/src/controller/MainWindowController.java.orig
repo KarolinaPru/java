@@ -1,7 +1,11 @@
 package controller;
 
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.regex.Pattern;
+=======
+import java.util.StringJoiner;
+>>>>>>> a2e8f6fccc33ac1838e0846496f80667ea0ec748
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -160,12 +164,21 @@ public class MainWindowController
 	@FXML
 	private void handleAddButtonClick()
 	{
+<<<<<<< HEAD
 		String validInput = ("[A-Za-z]+\\-{0,1}[A-Za-z]+");
 		
 		String firstName = firstNameTextField.getText();
 		String lastName = lastNameTextField.getText();
 
 		if(firstName.matches(validInput) && lastName.matches(validInput)) {
+
+=======
+		String firstName = firstNameTextField.getText();
+		String lastName = lastNameTextField.getText();
+
+		if (!isInteger(firstName) && !isInteger(lastName))
+		{
+>>>>>>> a2e8f6fccc33ac1838e0846496f80667ea0ec748
 			int officeNumber = officeNumberComboBox.getValue();
 			String workingFromHours = comboBoxHhFrom.getValue();
 			String workingFromMinutes = comboBoxMmFrom.getValue();
@@ -273,7 +286,11 @@ public class MainWindowController
 		ReportGenerator rg = new ReportGenerator();
 		ArrayList<StaffMember> listToSort = new ArrayList<StaffMember>();
 		ArrayList<StaffMember> sortedList;
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> a2e8f6fccc33ac1838e0846496f80667ea0ec748
 		for (StaffMember s : staffMemberList)
 		{
 			listToSort.add(s);
@@ -289,7 +306,12 @@ public class MainWindowController
 		return pathSelector.pathToReportFile == null;
 	}
 
+<<<<<<< HEAD
+	@FXML
+	private void closeStage()
+=======
 	private void makeCircleMarkingOfficeVisible()
+>>>>>>> a2e8f6fccc33ac1838e0846496f80667ea0ec748
 	{
 		int officeNumberSelected = staffTableView.getSelectionModel().getSelectedItem().getOfficeNumber();
 
