@@ -1,3 +1,4 @@
+import exceptions.NoCurrenciesPairFoundException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,10 +16,10 @@ public class MoneyTest {
 
     @Before
     public void setUp() throws Exception {
-        m12CHF = new Money(12, "CHF");
-        m14CHF = new Money(14, "CHF");
-        m10PLN = new Money(10, "PLN");
-        m10CHF = new Money(10, "CHF");
+        m12CHF = Money.produce(12, Currency.CHF);
+        m14CHF = Money.produce(14, Currency.CHF);
+        m10PLN = Money.produce(10, Currency.PLN);
+        m10CHF = Money.produce(10, Currency.CHF);
     }
 
     @After
@@ -26,8 +27,8 @@ public class MoneyTest {
     }
 
     @Test
-    public void testSimpleAdd2() {
-        Money expected = new Money(26, "CHF");
+    public void testSimpleAdd2() throws NoCurrenciesPairFoundException {
+        Money expected = Money.produce(26, Currency.CHF);
         Money result = m12CHF.add(m14CHF);
         assertTrue(expected.equals(result));
     }
@@ -36,27 +37,27 @@ public class MoneyTest {
     public void testEquals2() {
         assertTrue(!m12CHF.equals(null));
         assertEquals(m12CHF, m12CHF);
-        assertEquals(m12CHF, new Money(12, "CHF"));
+        assertEquals(m12CHF, Money.produce(12, Currency.CHF));
         assertTrue(!m12CHF.equals(m14CHF));
     }
 
     @Test
     public void givenMoney_WhenGettingCurrency_ThenAppropriateStringShouldBeReturned() {
-        assertEquals("CHF", Money.franc(1).getCurrency());
-        assertEquals("PLN", Money.zloty(1).getCurrency());
+        assertEquals(Currency.CHF, Money.produce(1, Currency.CHF).getCurrency());
+        assertEquals(Currency.PLN, Money.produce(1, Currency.PLN).getCurrency());
     }
 
     @Test
     public void givenMoneyFromFactory_WhenCheckedForEqualityWithCorrespondingAmount_ThenResultIsTrue()
     {
-        assertTrue(Money.zloty(1).equals(new Money(1, "PLN")));
-        assertEquals(Money.franc(12), m12CHF);
+        assertTrue(Money.produce(1, Currency.PLN).equals(Money.produce(1, Currency.PLN)));
+        assertEquals(Money.produce(12, Currency.CHF), m12CHF);
     }
 
     @Test
     public void givenAmountIs12_WhenMultipliedBy2_ThenResultShouldBe14()
     {
-        Money expected = new Money(24, "CHF");
+        Money expected = Money.produce(24, Currency.CHF);
         Money result = m12CHF.multiply(2);
         assertTrue(expected.equals(result));
     }
@@ -64,7 +65,7 @@ public class MoneyTest {
     @Test
     public void givenAmountIs14_WhenMultipliedByO_ThenResultShouldEqual0()
     {
-        Money expected = new Money(0, "CHF");
+        Money expected = Money.produce(0, Currency.CHF);
         Money result = m14CHF.multiply(0);
         assertEquals(expected, result);
     }
@@ -75,19 +76,36 @@ public class MoneyTest {
         assertFalse(m10PLN.equals(m10CHF));
     }
 
-    @Test (expected = IllegalArgumentException.class)
-    public void given2DifferentCurrencies_WhenAdding_ThenExceptionShouldBeThrown() throws IllegalArgumentException
-    {
-        // Jak tu dodamy coś, co się da dodać, to będzie czerwono, bo expected exception
-        m12CHF.add(m10PLN);
-
-    }
     @Test
-    public void given4PLNAnd1CHF_WhenAdded_ThenSumShouldBe5PLN()
+    public void given4PLN_When2PLNSubtracted_Then2ShouldBeReturned() throws Exception
     {
-        Exchange.exchangeRate("CHF", "PLN", 4);
-        assertEquals(Money.zloty(4).add(Money.franc(1)), Money.zloty(5));
+        Money m4PLN = Money.produce(4, Currency.PLN);
+        Money m2PLN = Money.produce(2, Currency.PLN);
+
+        Money result = m4PLN.subtract(m2PLN);
+
+        assertEquals(m2PLN, result);
     }
 
+    @Test
+    public void givenFourPLNAndOneCHF_WhenAdding_AndRateIsOneToFour_ThenTwoCHFShouldBeReturned() throws Exception {
+        Money expectedResult = Money.produce(2, Currency.CHF);
+        Money m4PLN = Money.produce(4, Currency.PLN);
+        Money m1CHF = Money.produce(1, Currency.CHF);
 
+        Money returnedResult = m4PLN.add(m1CHF);
+
+        assertEquals(expectedResult, returnedResult);
+    }
+
+    @Test
+    public void givenOneCHFAndFourPLN_WhenSubtracting_AndRateIsFourToOne_ThenZeroPLNShouldBeReturned() throws Exception {
+        Money expectedResult = Money.produce(0, Currency.PLN);
+        Money m1CHF = Money.produce(1, Currency.CHF);
+        Money m4PLN = Money.produce(4, Currency.PLN);
+
+        Money returnedResult = m1CHF.subtract(m4PLN);
+
+        assertEquals(expectedResult, returnedResult);
+    }
 }
