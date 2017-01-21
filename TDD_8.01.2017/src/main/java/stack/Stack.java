@@ -8,13 +8,12 @@ public class Stack
 
 	public Stack(int maxSize) throws NegativeStackSizeException
 	{
-		this.maxSize = maxSize;
-
 		if (maxSize < 0)
 		{
 			throw new NegativeStackSizeException();
 		}
-		values = new int[maxSize];
+        this.maxSize = maxSize;
+        values = new int[maxSize];
 	}
 
 	public boolean isEmpty()
@@ -45,7 +44,6 @@ public class Stack
 	{
 		values = new int[maxSize];
 		currentSize = 0;
-
 	}
 
 	public int getSize()
