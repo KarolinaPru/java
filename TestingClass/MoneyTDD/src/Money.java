@@ -1,15 +1,12 @@
+package src;
+
 import exceptions.NoCurrenciesPairFoundException;
 
-class Money {
+public class Money {
 
     private final int amount;
     private final String currency;
     private Exchange exchange;
-
-    public Money(int amount, String currency) {
-        this.amount = amount;
-        this.currency = currency;
-    }
 
     public Money(int amount, String currency, Exchange exchange) {
 
@@ -18,6 +15,13 @@ class Money {
         this.exchange = exchange;
     }
 
+    public static Money produce(int amount, String currency) {
+    	
+    	Exchange exchange = new Exchange(RateConfigurator.configureRatesMap());
+    	
+    	return new Money(amount, currency, exchange);
+    }
+    
     public int getAmount() {
         return amount;
     }
@@ -33,9 +37,9 @@ class Money {
             Money convertedAmount = exchange.convert(this.getAmount(), conversionPair);
 
             int addedAmount = convertedAmount.getAmount() + m.getAmount();
-            return new Money(addedAmount, convertedAmount.getCurrency());
+            return Money.produce(addedAmount, convertedAmount.getCurrency());
         }
-        return new Money(getAmount() + m.getAmount(), getCurrency());
+        return Money.produce(getAmount() + m.getAmount(), getCurrency());
     }
 
     public Money subtract(Money m) throws NoCurrenciesPairFoundException {
@@ -45,23 +49,15 @@ class Money {
             Money convertedAmount = exchange.convert(this.getAmount(), conversionPair);
 
             int subtractedAmount = convertedAmount.getAmount() - m.getAmount();
-            return new Money(subtractedAmount, convertedAmount.getCurrency());
+            return Money.produce(subtractedAmount, convertedAmount.getCurrency());
         }
 
-        return new Money(getAmount() - m.getAmount(), getCurrency());
+        return Money.produce(getAmount() - m.getAmount(), getCurrency());
     }
 
     public Money multiply(int multiplyBy)
     {
-        return new Money (getAmount() * multiplyBy, getCurrency());
-    }
-
-
-    public static Money produce(int amount, String currency) {
-
-        Exchange exchange = new Exchange(RateConfigurator.configureRatesMap());
-
-        return new Money(amount, currency, exchange);
+        return Money.produce(getAmount() * multiplyBy, getCurrency());
     }
 
     @Override

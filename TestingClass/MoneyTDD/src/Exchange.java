@@ -1,3 +1,5 @@
+package src;
+
 import exceptions.NoCurrenciesPairFoundException;
 
 import java.math.BigDecimal;
@@ -28,6 +30,7 @@ public class Exchange {
         int convertedAmount = new BigDecimal(amount).multiply(rate).intValue();
         String currency = currenciesPair.getCurrencyTo();
 
-        return new Money(convertedAmount, currency);
+        return Money.produce(convertedAmount, currency);
     }
+
 }
