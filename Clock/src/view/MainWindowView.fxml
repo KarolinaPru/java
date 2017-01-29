@@ -28,9 +28,11 @@
             <Line layoutY="-170.0" startY="20.0" />
             <Line layoutY="150.0" startY="20.0" />
             <Line endX="-16.0" endY="-124.0" layoutX="100.0" layoutY="-20.0" startX="-183.0" startY="164.0" />
-            <Line endX="40.0" endY="-70.0" layoutX="110.0" layoutY="-2.0" startX="-260.0" startY="75.0" />
+            <Line endX="38.0" endY="-76.0" layoutX="110.0" layoutY="-2.0" startX="-259.0" startY="82.0" />
             <Line endX="-198.0" endY="-132.0" layoutX="110.0" layoutY="-10.0" startX="-21.0" startY="154.0" />
             <Line endX="-274.0" endY="-73.0" layoutX="120.0" startX="30.0" startY="73.0" />
+            <Circle fill="#fcfcfc" radius="150.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle radius="8.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </Group>
    </children>
