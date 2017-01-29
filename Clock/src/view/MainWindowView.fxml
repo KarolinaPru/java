@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+
+
+<AnchorPane minHeight="600.0" minWidth="400.0" prefHeight="600.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="controller.MainWindowController">
+   <children>
+      <Group layoutX="50.0" layoutY="49.5" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
+         <children>
+            <Circle radius="170.0" stroke="BLACK" strokeType="INSIDE">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#c9c5cd" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Circle>
+            <Circle fill="#0c2e4d" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+            <Line endX="-80.0" layoutX="-70.0" startX="-100.0" />
+            <Line endX="60.0" layoutX="90.0" startX="80.0" />
+            <Line layoutY="-170.0" startY="20.0" />
+            <Line layoutY="150.0" startY="20.0" />
+         </children>
+      </Group>
+   </children>
+</AnchorPane>
