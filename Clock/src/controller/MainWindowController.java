@@ -35,6 +35,9 @@ public class MainWindowController {
 		this.primaryStage = primaryStage;
 	}
 	
+	// TODO: Bind hour hands to the current time - 00:00:00 > initial position
+	// other > changed by the appropriate angle
+	
 	
 	public void startClocks() {
 		setHandsInMotion();
@@ -46,7 +49,6 @@ public class MainWindowController {
 		setSecondsHandInMotion();
 		setMinutesHandInMotion();
 		setHoursHandInMotion();
-	
 	}
 
 	private void setSecondsHandInMotion() {
