@@ -10,6 +10,7 @@ import javafx.animation.Animation;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
+import javafx.animation.ParallelTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
@@ -38,28 +39,49 @@ public class MainWindowController {
 		this.main = main;
 		this.primaryStage = primaryStage;
 	}
+	
+	public void setHandsInMotion() {
+		
+		setSecondsHandInMotion();
+		setMinutesHandInMotion();
+		setHoursHandInMotion();
+	
+	}
 
-	public void setSecondsHandInMotion() {
+	private void setSecondsHandInMotion() {
 		RotateTransition rt = new RotateTransition();
 		rt.setNode(secondsHand);
 		rt.setInterpolator(Interpolator.LINEAR);
-		
 		rt.setByAngle(360);
 		rt.setDuration(Duration.seconds(60));
-		
-	
-		/*
-		Rotate secondsRotate = new Rotate(
-				6,
-				-100,
-				0);
-		secondsHand.getTransforms().add(secondsRotate);
-		*/
-		
 		rt.setCycleCount(Animation.INDEFINITE);
 		animation = rt;
 		rt.play();
 	}
+	
+	private void setMinutesHandInMotion() {
+		RotateTransition rt = new RotateTransition();
+		rt.setNode(minutesHand);
+		rt.setInterpolator(Interpolator.LINEAR);
+		rt.setByAngle(360);
+		rt.setDuration(Duration.minutes(60));
+		rt.setCycleCount(Animation.INDEFINITE);
+		animation = rt;
+		rt.play();
+	}
+	
+	private void setHoursHandInMotion() {
+		RotateTransition rt = new RotateTransition();
+		rt.setNode(hoursHand);
+		rt.setInterpolator(Interpolator.LINEAR);
+		rt.setByAngle(360);
+		rt.setDuration(Duration.hours(12));
+		rt.setCycleCount(Animation.INDEFINITE);
+		animation = rt;
+		rt.play();
+	}
+	
+	
 
 	void bindClockHandsToTime() {
 		
