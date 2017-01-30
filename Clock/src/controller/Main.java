@@ -32,7 +32,7 @@ public class Main extends Application {
 
 			Scene scene = new Scene(pane);
 
-			controller.setLongHandInMotion();
+			controller.setSecondsHandInMotion();
 			
 			primaryStage.setScene(scene);
 			primaryStage.show();

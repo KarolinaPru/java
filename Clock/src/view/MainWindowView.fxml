@@ -41,9 +41,10 @@
                   </RadialGradient>
                </fill></Circle>
             <Circle radius="8.0" stroke="BLACK" strokeType="INSIDE" />
-            <Line fx:id="longHand" endX="-100.0" endY="-140.0" layoutX="100.0" startX="-100.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="8.0" />
-            <Line endX="20.0" layoutX="100.0" startX="-100.0" stroke="#171515" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="10.0" />
          </children>
       </Group>
+      <Line fx:id="shortHand" endX="18.0" layoutX="301.0" layoutY="200.0" startX="-100.0" stroke="#171515" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="10.0" />
+      <Line fx:id="longHand" endX="-100.0" endY="-140.0" layoutX="300.0" layoutY="200.0" startX="-100.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="8.0" />
+      <Line fx:id="secondsHand" endX="-100.0" endY="125.0" layoutX="300.0" layoutY="200.0" startX="-100.0" strokeWidth="3.0" />
    </children>
 </AnchorPane>

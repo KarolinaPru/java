@@ -17,6 +17,10 @@ public class MainWindowController
 	@FXML
 	private Line longHand;
 	@FXML
+	private Line secondsHand;
+	@FXML
+	private Line shortHand;
+	@FXML
 	Animation animation;
 
 	public void setMain(Main main, Stage primaryStage)
@@ -25,12 +29,11 @@ public class MainWindowController
 		this.primaryStage = primaryStage;
 	}
 	
-	public void setLongHandInMotion() 
+	public void setSecondsHandInMotion() 
 	{
 		RotateTransition rt = new RotateTransition();
-		rt.setNode(longHand);
+		rt.setNode(secondsHand);
 		rt.setDuration(Duration.seconds(60));
-		rt.setAxis(new Point3D(-100, 0, 0));
 		rt.setFromAngle(0);
 		rt.setToAngle(360);
 		
