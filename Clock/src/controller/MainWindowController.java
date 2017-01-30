@@ -1,27 +1,20 @@
 package controller;
 
-import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Calendar;
-
-import com.sun.javafx.geom.Point2D;
 
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
-import javafx.animation.ParallelTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
 import javafx.fxml.FXML;
-import javafx.geometry.Point3D;
-import javafx.scene.Group;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Line;
-import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.DigitalClock;
 
 public class MainWindowController {
 	private Stage primaryStage;
@@ -33,11 +26,19 @@ public class MainWindowController {
 	@FXML
 	private VBox hoursHand;
 	@FXML
+	private Label digitalClockLabel;
+	@FXML
 	Animation animation;
 
 	public void setMain(Main main, Stage primaryStage) {
 		this.main = main;
 		this.primaryStage = primaryStage;
+	}
+	
+	
+	public void startClocks() {
+		setHandsInMotion();
+		new DigitalClock().bindToTime(digitalClockLabel);
 	}
 	
 	public void setHandsInMotion() {
@@ -80,8 +81,7 @@ public class MainWindowController {
 		animation = rt;
 		rt.play();
 	}
-	
-	
+		
 
 	void bindClockHandsToTime() {
 		

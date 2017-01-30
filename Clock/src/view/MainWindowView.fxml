@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -8,6 +9,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane minHeight="600.0" minWidth="400.0" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
    <children>
@@ -57,5 +59,10 @@
             <Line endX="-100.0" endY="125.0" startX="-100.0" strokeWidth="3.0" />
          </children>
       </VBox>
+      <Label fx:id="digitalClockLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="453.0" prefHeight="50.0" prefWidth="236.0" text="00:00:00" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
