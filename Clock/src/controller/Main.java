@@ -26,11 +26,14 @@ public class Main extends Application {
 			primaryStage.setMinWidth(400.0);
 			primaryStage.setMinHeight(600);
 			
-			MainWindowController mainWindowController = loader.getController();
+			MainWindowController controller = loader.getController();
 			
-			mainWindowController.setMain(this, primaryStage);
+			controller.setMain(this, primaryStage);
 
 			Scene scene = new Scene(pane);
+
+			controller.setLongHandInMotion();
+			
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			

@@ -3,12 +3,12 @@
 <?import javafx.scene.Group?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 
-
-<AnchorPane minHeight="600.0" minWidth="400.0" prefHeight="600.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="controller.MainWindowController">
+<AnchorPane minHeight="600.0" minWidth="400.0" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
    <children>
       <Group layoutX="50.0" layoutY="49.5" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
          <children>
@@ -31,8 +31,18 @@
             <Line endX="38.0" endY="-76.0" layoutX="110.0" layoutY="-2.0" startX="-259.0" startY="82.0" />
             <Line endX="-198.0" endY="-132.0" layoutX="110.0" layoutY="-10.0" startX="-21.0" startY="154.0" />
             <Line endX="-274.0" endY="-73.0" layoutX="120.0" startX="30.0" startY="73.0" />
-            <Circle fill="#fcfcfc" radius="150.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="clockFace" radius="150.0" stroke="BLACK" strokeType="INSIDE">
+               <fill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="#f8f8f8" />
+                        <Stop color="#0fc7ff" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill></Circle>
             <Circle radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+            <Line fx:id="longHand" endX="-100.0" endY="-140.0" layoutX="100.0" startX="-100.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="8.0" />
+            <Line endX="20.0" layoutX="100.0" startX="-100.0" stroke="#171515" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="10.0" />
          </children>
       </Group>
    </children>
