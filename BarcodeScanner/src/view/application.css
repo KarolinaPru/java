@@ -18,3 +18,7 @@
     -fx-font-size: 12px;
     -fx-padding: 8 10 8 10;
 }
+
+.pane {
+	-fx-background-color: #EAECEE;
+}
