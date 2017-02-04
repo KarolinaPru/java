@@ -1,65 +1,61 @@
 package model;
 
-public enum Barcode {
-	
-	ZERO ('0', new int[] {1, 1, 1, 2, 2, 1, 2, 1, 1}),
-	ONE ('1', new int[] {2, 1, 1, 2, 1, 1, 1, 1, 2}),
-	TWO ('2', new int[] {1, 1, 2, 2, 1, 1, 1, 1, 2}),
-	THREE ('3', new int[] {2, 1, 2, 2, 1, 1, 1, 1, 1}),
-	FOUR ('4', new int[] {1, 1, 1, 2, 2, 1, 1, 1, 2}),
-	FIVE ('5', new int[] {2, 1, 1, 2, 2, 1, 1, 1, 1}),
-	SIX ('6', new int[] {1, 1, 2, 2, 2, 1, 1, 1, 1}),
-	SEVEN ('7', new int[] {1, 1, 1, 2, 1, 1, 2, 1, 2}),
-	EIGHT ('8', new int[] {2, 1, 1, 2, 1, 1, 2, 1, 1}),
-	NINE ('9', new int[] {1, 1, 2, 2, 1, 1, 2, 1, 1}),
-	A ('A', new int[] {2, 1, 1, 1, 1, 2, 1, 1, 2}),
-	B ('B', new int[] {1, 1, 2, 1, 1, 2, 1, 1, 2}),
-	C ('C', new int[] {2, 1, 2, 1, 1, 2, 1, 1, 1}),
-	D ('D', new int[] {1, 1, 1, 1, 2, 2, 1, 1, 2}),
-	E ('E', new int[] {2, 1, 1, 1, 2, 2, 1, 1, 1}),
-	F ('F', new int[] {1, 1, 2, 1, 2, 2, 1, 1, 1}),
-	G ('G', new int[] {1, 1, 1, 1, 1, 2, 2, 1, 2}),
-	H ('H', new int[] {2, 1, 1, 1, 1, 2, 2, 1, 1}),
-	I ('I', new int[] {1, 1, 2, 1, 1, 2, 2, 1, 1}),
-	J ('J', new int[] {1, 1, 1, 1, 2, 2, 2, 1, 1}),
-	K ('K', new int[] {2, 1, 1, 1, 1, 1, 1, 2, 2}),
-	L ('L', new int[] {1, 1, 2, 1, 1, 1, 1, 2, 2}),
-	M ('M', new int[] {2, 1, 2, 1, 1, 1, 1, 2, 1}),
-	N ('N', new int[] {1, 1, 1, 1, 2, 1, 1, 2, 2}),
-	O ('O', new int[] {2, 1, 1, 1, 2, 1, 1, 2, 1}),
-	P ('P', new int[] {1, 1, 2, 1, 2, 1, 1, 2, 1}),
-	Q ('Q', new int[] {1, 1, 1, 1, 1, 1, 2, 2, 2}),
-	R ('R', new int[] {2, 1, 1, 1, 1, 1, 2, 2, 1}),
-	S ('S', new int[] {1, 1, 2, 1, 1, 1, 2, 2, 1}),
-	T ('T', new int[] {1, 1, 1, 1, 2, 1, 2, 2, 1}),
-	U ('U', new int[] {2, 2, 1, 1, 1, 1, 1, 1, 2}),
-	V ('V', new int[] {1, 2, 2, 1, 1, 1, 1, 1, 2}),
-	W ('W', new int[] {2, 2, 2, 1, 1, 1, 1, 1, 1}),
-	X ('X', new int[] {1, 2, 1, 1, 2, 1, 1, 1, 2}),
-	Y ('Y', new int[] {2, 2, 1, 1, 2, 1, 1, 1, 1}),
-	Z ('Z', new int[] {1, 2, 2, 1, 2, 1, 1, 1, 1}),
-	HYPHEN ('-', new int[] {1, 2, 1, 1, 1, 1, 2, 1, 2}),
-	FULL_STOP ('.', new int[] {2, 2, 1, 1, 1, 1, 2, 1, 1}),
-	SPACE (' ', new int[] {1, 2, 2, 1, 1, 1, 2, 1, 1}),
-	DOLLAR ('$', new int[] {1, 2, 1, 2, 1, 2, 1, 1, 1}),
-	SLASH ('/', new int[] {1, 2, 1, 2, 1, 1, 1, 2, 1}),
-	PLUS ('+', new int[] {1, 2, 1, 1, 1, 2, 1, 2, 1}),
-	MODULO ('%', new int[] {1, 1, 1, 2, 1, 2, 1, 2, 1}),
-	ASTERISK ('*', new int[] {1, 2, 1, 1, 2, 1, 2, 1, 1});
-	
-	private int[] barsWidth;
-	private char symbol;
-	
-	private Barcode(char symbol, int[] barsWidth) {
-		this.symbol = symbol;
-		this.barsWidth = barsWidth;
-	}
-	
-	public char getSymbol() {
-		return symbol;
-	}
+import java.util.HashMap;
+import java.util.Map;
 
-	public int[] getBarsWidth() {
-		return barsWidth;
+public class Barcode {
+
+	private Map<Integer, Character> codes;
+
+	private Map<Integer, Character> createBarcodeMap() {
+
+		codes = new HashMap<>();
+
+		codes.put(111221211, '0');
+		codes.put(211211112, '1');
+		codes.put(112211112, '2');
+		codes.put(212211111, '3');
+		codes.put(111221112, '4');
+		codes.put(211221111, '5');
+		codes.put(112221111, '6');
+		codes.put(111211212, '7');
+		codes.put(211211211, '8');
+		codes.put(112211211, '9');
+		codes.put(211112112, 'A');
+		codes.put(112112112, 'B');
+		codes.put(212112111, 'C');
+		codes.put(111122112, 'D');
+		codes.put(211122111, 'E');
+		codes.put(112122111, 'F');
+		codes.put(111112212, 'G');
+		codes.put(211112211, 'H');
+		codes.put(112112211, 'I');
+		codes.put(111122211, 'J');
+		codes.put(211111122, 'K');
+		codes.put(112111122, 'L');
+		codes.put(212111121, 'M');
+		codes.put(111121122, 'N');
+		codes.put(211121121, 'O');
+		codes.put(112121121, 'P');
+		codes.put(111111222, 'Q');
+		codes.put(211111221, 'R');
+		codes.put(112111221, 'S');
+		codes.put(111121221, 'T');
+		codes.put(221111112, 'U');
+		codes.put(122111112, 'V');
+		codes.put(222111111, 'W');
+		codes.put(121121112, 'X');
+		codes.put(221121111, 'Y');
+		codes.put(122121111, 'Z');
+		codes.put(121111212, '-');
+		codes.put(221111211, '.');
+		codes.put(122111211, ' ');
+		codes.put(121212111, '$');
+		codes.put(121211121, '/');
+		codes.put(121112121, '+');
+		codes.put(111212121, '%');
+		codes.put(121121211, '*');
+
+		return codes;
 	}
 }
