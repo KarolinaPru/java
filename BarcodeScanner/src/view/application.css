@@ -23,7 +23,6 @@
     -fx-background-color: gray;
     -fx-effect: dropshadow(gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
     -fx-font-weight: bold;
-	
 }
 
 .pane {

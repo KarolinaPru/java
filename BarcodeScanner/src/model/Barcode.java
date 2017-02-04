@@ -1,6 +1,7 @@
 package model;
 
-public enum BarcodeSymbol {
+public enum Barcode {
+	
 	ZERO ('0', new int[] {1, 1, 1, 2, 2, 1, 2, 1, 1}),
 	ONE ('1', new int[] {2, 1, 1, 2, 1, 1, 1, 1, 2}),
 	TWO ('2', new int[] {1, 1, 2, 2, 1, 1, 1, 1, 2}),
@@ -47,11 +48,18 @@ public enum BarcodeSymbol {
 	ASTERISK ('*', new int[] {1, 2, 1, 1, 2, 1, 2, 1, 1});
 	
 	private int[] barsWidth;
-	private char c;
+	private char symbol;
 	
-	private BarcodeSymbol(char c, int[] barsWidth) {
-		this.c = c;
+	private Barcode(char symbol, int[] barsWidth) {
+		this.symbol = symbol;
 		this.barsWidth = barsWidth;
 	}
+	
+	public char getSymbol() {
+		return symbol;
+	}
 
+	public int[] getBarsWidth() {
+		return barsWidth;
+	}
 }
