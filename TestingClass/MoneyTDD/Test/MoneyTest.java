@@ -1,3 +1,5 @@
+package Test;
+
 import exceptions.NoCurrenciesPairFoundException;
 import org.junit.After;
 import org.junit.Before;

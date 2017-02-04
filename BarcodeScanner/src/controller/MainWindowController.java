@@ -28,8 +28,8 @@ public class MainWindowController {
 	{
 		this.primaryStage = primaryStage;
 		this.main = main;
-		
 	}
+	
 	@FXML
 	private void loadBarcode() throws MalformedURLException {
 		
@@ -43,7 +43,12 @@ public class MainWindowController {
 			String imagePath = file.toURI().toURL().toString();
 			Image barcode = new Image(imagePath);
 			imageView.setImage(barcode);
-		}
+		}	
+	}
+	
+	@FXML
+	private void scanBarcode() {
 		
+		//TODO: Implement scanBarcode method
 	}
 }
