@@ -10,7 +10,7 @@ import javafx.scene.image.PixelReader;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import model.BarcodeReader;
+import model.BarcodeConversionController;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class MainWindowController {
@@ -38,6 +38,8 @@ public class MainWindowController {
 			Image barcode = new Image(imagePath);
 			barcodeImage.setImage(barcode);
 		}
+		
+		scanBarcode();
 	}
 
     private File getFileFromChooser() {
@@ -50,11 +52,10 @@ public class MainWindowController {
         return fileChooser.showOpenDialog(primaryStage);
     }
 
-    @FXML
 	private void scanBarcode() {
-		BarcodeReader br = new BarcodeReader();
+		BarcodeConversionController br = new BarcodeConversionController();
         String colors = readPixelColors();
-        String decodedBarcode = br.decodeBarcode(colors);
+        String decodedBarcode = br.convert(colors);
         barcodeTextField.setText(decodedBarcode);
 	}
 

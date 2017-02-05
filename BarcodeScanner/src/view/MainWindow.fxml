@@ -17,7 +17,6 @@
             <HBox alignment="TOP_RIGHT" prefHeight="25.0" prefWidth="394.0" spacing="15.0">
                <children>
                   <Button fx:id="loadButton" mnemonicParsing="false" onAction="#loadBarcode" prefHeight="25.0" prefWidth="99.0" text="Load barcode" />
-                  <Button fx:id="scanButton" mnemonicParsing="false" onAction="#scanBarcode" prefHeight="25.0" prefWidth="90.0" text="Scan" />
                </children>
                <padding>
                   <Insets left="170.0" right="20.0" />

@@ -2,7 +2,10 @@ package model;
 
 import java.util.ArrayList;
 
+//in -> [wwwbwbbb...]
+//out -> [w3, b1, w1, b3, ...]
 public class LetterCounter {
+	
     private ArrayList<String> countedLetters;
     private char lastChar;
     private int lastLetterCount;
