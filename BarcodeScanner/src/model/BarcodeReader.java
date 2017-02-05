@@ -6,156 +6,104 @@ import java.util.Map;
 import java.util.Collections;
 
 public class BarcodeReader {
+	private ArrayList<String> countedColors;
 
-	private String inputText;
-	private int lastLetterCount;
-	private char lastChar;
-
-	private ArrayList<String> barsList;
-	private ArrayList<Integer> values;
+	private ArrayList<Integer> barsWidthAsList;
 	private ArrayList<Integer> translatedValues;
 
-	private Map<Integer, ArrayList<String>> barsMap;
 	private Map<Integer, Integer> barsWidthMap;
 	private ArrayList<Integer> valuesList;
+	private ArrayList<ArrayList<String>> groupedColors;
 
+	private ArrayList<ArrayList<Integer>> barsWidthGrouped;
 
-	public void determineBarsInBarcode(String input) {
-		inputText = input;
-		barsList = prepareListOfBarsWithWidth(inputText);
-		barsMap = divideIntoSeparateArrays(barsList);
-		translatedValues = addValuesToList(barsMap);
-		
-	
+	public String decodeBarcode(String colors) {
+		countColors(colors);
+		groupColors();
+		addValuesToList();
 
+		return "Under construction";
 	}
 
-	public ArrayList<String> prepareListOfBarsWithWidth(String input) {
-		barsList = new ArrayList<String>();
+	private void countColors(String colors) {
+		LetterCounter lc = new LetterCounter();
+		countedColors = lc.countLettersToList(colors);
+	}
 
-		inputText = input;
-		lastChar = inputText.charAt(0);
-		lastLetterCount = 1;
+	private void groupColors() {
+		groupedColors = new ArrayList<>();
 
-		for (int i = 1; i < inputText.length(); i++) {
-			char currentChar = inputText.charAt(i);
+		int groupRange = 10;
+		for (int j = 0; j <= 10; j++) {
+			addGroupToGroupedColors(groupRange);
+			groupRange += 10;
+		}
 
-			if (currentChar == lastChar) {
-				lastLetterCount++;
-			} else {
-				addLastLetterWithNumberOfOccurrences();
-				lastLetterCount = 1;
-				lastChar = currentChar;
+		for (ArrayList<String> a : groupedColors) {
+
+			System.out.println(a);
+		}
+	}
+
+	private void addGroupToGroupedColors(int groupRange) {
+
+		ArrayList<String> group = new ArrayList<>();
+
+		if (isGroupRangeWithinBounds(groupRange)) {
+
+			for (int i = (groupRange - 9); i < groupRange; i++) {
+
+				group.add(countedColors.get(i));
 			}
 		}
-		addLastLetterWithNumberOfOccurrences();
-		return barsList;
+		groupedColors.add(group);
 	}
 
-	private void addLastLetterWithNumberOfOccurrences() {
-		if (lastLetterCount > 1) {
+	private boolean isGroupRangeWithinBounds(int range) {
+		return range < countedColors.size();
+	}
 
-			barsList.add(lastChar + Integer.toString(lastLetterCount));
+	private void addValuesToList() {
+		parseStringValuesIntoInts();
 
-		} else {
-
-			barsList.add(lastChar + "1");
+		for (ArrayList<Integer> a : barsWidthGrouped) {
+			System.out.println(a);
 		}
 	}
 
-	private ArrayList<Integer> addValuesToList(Map<Integer, ArrayList<String>> barsMap){
+	private void parseStringValuesIntoInts() {
 
-		parseStringValuesIntoInts(barsMap);
-		replaceValuesWith1sAnd2sAccordingly();
+		barsWidthGrouped = new ArrayList<>();
+		
+		for (int i = 0; i < groupedColors.size(); i++) {
+			int barWidth;
+			barsWidthAsList = new ArrayList<>();
 
-		for (int i : translatedValues)
-		{
-			System.out.println(i);
-		}
+			for (int j = 0; j < groupedColors.get(i).size(); j++) {
 
-		return translatedValues;	
-	}
-
-	private void parseStringValuesIntoInts(Map<Integer, ArrayList<String>> barsMap) {
-
-		for (int i = 0; i < barsMap.size(); i++) {
-			{
-				int value;
-				values = new ArrayList<>();
-
-				for (int j = 0; j <barsMap.get(i).size(); j++) {
-
-					String s = barsMap.get(i).get(j);
-					String sWidth = s.substring(1);
-					value = Integer.parseInt(sWidth);
-					values.add(value);		
-
-				}
-			}			
+				String color = groupedColors.get(i).get(j);
+				String sBarWidth = color.substring(1);
+				barWidth = Integer.parseInt(sBarWidth);
+				barsWidthAsList.add(barWidth);
+			}
+			replaceValuesWith1sAnd2sAccordingly();
+			barsWidthGrouped.add(translatedValues);
 		}
 	}
 
 	private void replaceValuesWith1sAnd2sAccordingly() {
-		int max = Collections.max(values);
+
+		int max = Collections.max(barsWidthAsList);
 		translatedValues = new ArrayList<>();
 
-		for (int k = 0; k < values.size(); k++)
-		{
-
-			if (values.get(k) == max) {
+		for (int k = 0; k < barsWidthAsList.size(); k++) {
+			if (barsWidthAsList.get(k) == max) {
 				translatedValues.add(2);
-			}
-			else {
+			} else {
 				translatedValues.add(1);
 			}
 		}
 	}
-
-	public Map<Integer, ArrayList<String>> divideIntoSeparateArrays(ArrayList<String> barsList) {
-		barsList = prepareListOfBarsWithWidth(inputText);
-
-		barsMap = new HashMap<>();
-
-		ArrayList<String> array1 = new ArrayList<>();
-		ArrayList<String> array2 = new ArrayList<>();
-		ArrayList<String> array3 = new ArrayList<>();
-		ArrayList<String> array4 = new ArrayList<>();
-		ArrayList<String> array5 = new ArrayList<>();
-		ArrayList<String> array6 = new ArrayList<>();
-		ArrayList<String> array7 = new ArrayList<>();
-		ArrayList<String> array8 = new ArrayList<>();
-		ArrayList<String> array9 = new ArrayList<>();
-		ArrayList<String> array10 = new ArrayList<>();
-		ArrayList<String> array11 = new ArrayList<>();
-
-		addListToMap(barsList, array1, 10);
-		addListToMap(barsList, array2, 20);
-		addListToMap(barsList, array3, 30);
-		addListToMap(barsList, array4, 40);
-		addListToMap(barsList, array5, 50);
-		addListToMap(barsList, array6, 60);
-		addListToMap(barsList, array7, 70);
-		addListToMap(barsList, array8, 80);
-		addListToMap(barsList, array9, 90);
-		addListToMap(barsList, array10, 100);
-		addListToMap(barsList, array11, 110);
-
-		barsMap.put(0, array1);
-		barsMap.put(1, array2);
-		barsMap.put(2, array3);
-		barsMap.put(3, array4);
-		barsMap.put(4, array5);
-		barsMap.put(5, array6);
-		barsMap.put(6, array7);
-		barsMap.put(7, array8);
-		barsMap.put(8, array9);
-		barsMap.put(9, array10);
-		barsMap.put(10, array11);	
-
-		System.out.println(barsMap.values());
-		return barsMap;
-	}
-
 
 	private Map<Integer, Integer> translateBarMapIntoIntegers(Map<Integer, ArrayList<String>> barsMap) {
 
@@ -178,31 +126,12 @@ public class BarcodeReader {
 				values.add(value);
 			}
 
-
-
-			//	String s = sb.toString();
-			//	barcodeAsNumber = Integer.parseInt(s);
-			//	barsWidthMap.put(i, barcodeAsNumber);
+			// String s = sb.toString();
+			// barcodeAsNumber = Integer.parseInt(s);
+			// barsWidthMap.put(i, barcodeAsNumber);
 		}
 
 		System.out.println(barsWidthMap.values());
 		return barsWidthMap;
 	}
-
-
-	private void addListToMap(ArrayList<String> barsList, ArrayList<String> array, int range) {
-
-		boolean isRangeWithinBounds = range < barsList.size();
-
-		if (isRangeWithinBounds) {
-
-			for (int i = (range-9); i < range; i++) {
-
-				array.add(barsList.get(i));
-			}
-		}
-	}
-
-
-
 }

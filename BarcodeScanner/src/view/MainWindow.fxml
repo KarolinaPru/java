@@ -29,7 +29,7 @@
             <Pane maxHeight="150.0" maxWidth="200.0" prefHeight="150.0" prefWidth="200.0" styleClass="pane">
                <children>
                   <Canvas fx:id="canvas" height="150.0" width="200.0" />
-                  <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="barcodeImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
             <TextField fx:id="barcodeTextField" disable="true" maxWidth="200.0" prefHeight="26.0" prefWidth="200.0">

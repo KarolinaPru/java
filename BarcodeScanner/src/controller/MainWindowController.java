@@ -19,7 +19,7 @@ public class MainWindowController {
 	private Main main;
 
 	@FXML
-	private ImageView imageView;
+	private ImageView barcodeImage;
 	@FXML
 	private TextField barcodeTextField;
 
@@ -31,51 +31,56 @@ public class MainWindowController {
 	@FXML
 	private void loadBarcode() throws MalformedURLException {
 
-		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Load a barcode to scan");
-		fileChooser.getExtensionFilters()
-		.addAll(new ExtensionFilter("Image Files", "*.jpg", "*.png", "*.gif", "*.bmp"));
-
-		File file = fileChooser.showOpenDialog(primaryStage);
+        File file = getFileFromChooser();
 
 		if (file != null) {
 			String imagePath = file.toURI().toURL().toString();
 			Image barcode = new Image(imagePath);
-			imageView.setImage(barcode);
+			barcodeImage.setImage(barcode);
 		}
 	}
 
-	@FXML
+    private File getFileFromChooser() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Load a barcode to scan");
+
+        ExtensionFilter extensionFilter = new ExtensionFilter("Image Files", "*.jpg", "*.png", "*.gif", "*.bmp");
+        fileChooser.getExtensionFilters().addAll(extensionFilter);
+
+        return fileChooser.showOpenDialog(primaryStage);
+    }
+
+    @FXML
 	private void scanBarcode() {
-	
 		BarcodeReader br = new BarcodeReader();
-		br.determineBarsInBarcode(readPixelColors());
-
-
+        String colors = readPixelColors();
+        String decodedBarcode = br.decodeBarcode(colors);
+        barcodeTextField.setText(decodedBarcode);
 	}
 
 	private String readPixelColors() {
-		Image image = imageView.getImage();
-		int width = (int) image.getWidth();
-		PixelReader reader = image.getPixelReader();
+		Image barcode = barcodeImage.getImage();
+		int barcodeWidth = (int) barcode.getWidth();
+		PixelReader pixelReader = barcode.getPixelReader();
 
-		StringBuilder sb = new StringBuilder();
+		StringBuilder colors = new StringBuilder();
 
-		for (int x = 0; x < width; x++) {
+		for (int x = 0; x < barcodeWidth; x++) {
 
-			Color currentColor = reader.getColor(x, 1);
+			Color currentColor = pixelReader.getColor(x, 1);
 
 			if(currentColor.equals(Color.WHITE)) {
-				sb.append('w');
+				colors.append('w');
 			}
 			else if (currentColor.equals(Color.BLACK))
 			{
-				sb.append('b');
+				colors.append('b');
 			}
 			else {
 				System.out.println("Scan a proper barcode");
 			}
-		}	
-		return sb.toString();	
+		}
+
+		return colors.toString();
 	}
 }
