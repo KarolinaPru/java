@@ -31,7 +31,7 @@
                   <ImageView fx:id="barcodeImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
-            <TextField fx:id="barcodeTextField" disable="true" maxWidth="200.0" prefHeight="26.0" prefWidth="200.0">
+            <TextField fx:id="barcodeTextField" disable="true" maxWidth="200.0" prefHeight="26.0" prefWidth="200.0" alignment="CENTER">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
