@@ -1,4 +1,4 @@
-package exceptions;
+package src.exceptions;
 
 /**
  * Created by karol_000 on 21.01.2017.
