@@ -5,7 +5,7 @@ namespace Feb20workshop
 {
     class Logic
     {
-        public static void Start()
+        public void Start()
         {
             Console.Write("Podaj x: ");
             var x = Convert.ToInt32(Console.ReadLine());
@@ -45,7 +45,7 @@ namespace Feb20workshop
             Console.ReadKey();
         }
 
-        private static bool IsFirstLetterCapital(string inputTransformed)
+        private bool IsFirstLetterCapital(string inputTransformed)
         {
             return char.IsUpper(inputTransformed[0]);
         }
