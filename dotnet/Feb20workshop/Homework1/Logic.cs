@@ -1,75 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design.Serialization;
 using System.Linq;
-using System.Runtime.Serialization.Formatters;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Homework1
 {
-    class Logic
+    internal class Logic
     {
-        private int a;
-        private int b;
-        private int c;
-        private int d;
+        private int _a;
+        private int _b;
+        private int _c;
+        private int _d;
+        private List<string> _allCombinations;
+
         public void Start()
         {
             ObtainFourParametersFromUser();
 
-            string mask = new String('X', a+b+c+d);
+            var mask = new string('X', _a + _b + _c + _d);
+
             Console.WriteLine("Wpisz tekst bez spacji o poprawnej długości: " + mask);
 
-            string inputText = Console.ReadLine();
-            string inputTransformed = inputText;
+            _allCombinations = GetAllCombinations();
 
-            List<string> allCombinations = new List<string>();
+            PrintUniqueCombinations();
 
-         //   do
-       //     {
-
-                for (int i = 0; i < 10; i++)
-                {
-                    string chunk1 = inputTransformed.Substring(0, a);
-                    string chunk2 = inputTransformed.Substring(a+1, b);
-                    string chunk3 = inputTransformed.Substring(b+1, c);
-                    string chunk4 = inputTransformed.Substring(c+1, d);
-
-                    inputTransformed = chunk2 + chunk4 + chunk1 + chunk3;
-
-                    Console.WriteLine(inputTransformed);
-                    //   allCombinations.Add(inputTransformed);
-                }
-                //    } while (inputText != inputTransformed);
-
-
-            Console.WriteLine(allCombinations.Distinct());
-
-            Console.WriteLine(inputText);
             Console.ReadKey();
         }
 
         private void ObtainFourParametersFromUser()
         {
             Console.Write("Podaj liczbę a: ");
-            a = ObtainProperInputFromUser();
+            _a = ObtainValidInputFromUser();
 
             Console.Write("Podaj liczbę b: ");
-            b = ObtainProperInputFromUser();
+            _b = ObtainValidInputFromUser();
 
             Console.Write("Podaj liczbę c: ");
-            c = ObtainProperInputFromUser();
+            _c = ObtainValidInputFromUser();
 
             Console.Write("Podaj liczbę d: ");
-            d = ObtainProperInputFromUser();
+            _d = ObtainValidInputFromUser();
         }
 
-        private int ObtainProperInputFromUser()
+        private int ObtainValidInputFromUser()
         {
-            string input = Console.ReadLine();
-            int i = 0;
-            bool isValid = validateInput(input);
+            var input = Console.ReadLine();
+            var i = 0;
+            var isValid = validateInput(input);
             if (isValid)
             {
                 i = int.Parse(input);
@@ -77,7 +54,7 @@ namespace Homework1
             else
             {
                 Console.Write("Podaj poprawną liczbę: ");
-                return ObtainProperInputFromUser();
+                return ObtainValidInputFromUser();
             }
             return i;
         }
@@ -85,8 +62,39 @@ namespace Homework1
         private bool validateInput(string s)
         {
             int i;
-            bool isInteger = int.TryParse(s, out i);
+            var isInteger = int.TryParse(s, out i);
             return isInteger;
+        }
+
+        private List<string> GetAllCombinations()
+        {
+            var inputText = Console.ReadLine();
+            var inputTransformed = inputText;
+
+            var allCombinations = new List<string>();
+
+            do
+            {
+                var chunk1 = inputTransformed.Substring(0, _a);
+                var chunk2 = inputTransformed.Substring(_a, _b);
+                var chunk3 = inputTransformed.Substring(_a + _b, _c);
+                var chunk4 = inputTransformed.Substring(_a + _b + _c, _d);
+
+                inputTransformed = chunk2 + chunk4 + chunk1 + chunk3;
+
+                allCombinations.Add(inputTransformed);
+
+            } while (inputText != inputTransformed);
+
+            return allCombinations;
+        }
+        
+        private void PrintUniqueCombinations()
+        {
+            IEnumerable<string> uniqueCombinations = _allCombinations.Distinct();
+
+            foreach (var s in uniqueCombinations)
+                Console.WriteLine(s);
         }
     }
 }
