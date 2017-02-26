@@ -1,0 +1,5 @@
+C:\src\projects\java\dotnet\Feb20workshop\Homework2\bin\Debug\Homework2.exe.config
+C:\src\projects\java\dotnet\Feb20workshop\Homework2\bin\Debug\Homework2.exe
+C:\src\projects\java\dotnet\Feb20workshop\Homework2\bin\Debug\Homework2.pdb
+C:\src\projects\java\dotnet\Feb20workshop\Homework2\obj\Debug\Homework2.exe
+C:\src\projects\java\dotnet\Feb20workshop\Homework2\obj\Debug\Homework2.pdb
