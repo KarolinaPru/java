@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page import="java.util.Map" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <html>
@@ -19,26 +20,32 @@
 <%
     Map map = request.getParameterMap();
     Object[] keys = map.keySet().toArray();
+
     StringBuilder display = new StringBuilder();
+    String displayedValue = "0";
+    boolean isOperation;
+    String operation = "(\\+|\\-|\\*|\\/|\\%|\\.|\\sqrt){1}";
+    String currentParam;
 
 
     for (int k = 0; k < keys.length; k++) {
         String[] pars = request.getParameterValues((String) keys[k]);
 
         for (int j = 0; j < pars.length; j++) {
-            String currentParam = pars[j];
+            currentParam = pars[j];
+            isOperation = currentParam.matches(operation);
 
             if (currentParam.equals("C")) {
                 display = new StringBuilder();
                 display.append('0');
-            } else {
 
+            } else {
                 display.append(pars[j]);
             }
         }
     }
 
-    String displayedValue = display.toString();
+    displayedValue = display.toString();
 %>
 
 
