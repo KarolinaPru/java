@@ -1,37 +1,38 @@
-table, th, td {
-    border: 1px solid #BC0E38;
-    border-radius: 6px;
-    text-alignment: center;
-}
-
-th {
-    height: 50px;
-    width: 50px;
-}
-
-td {
-    height: 50px;
-    width: 50px;
-}
 
 input[type=submit] {
-    height: 50px;
-    width: 50px;
+    height: 55px;
+    width: 55px;
 }
 
 input[type=text] {
-    height: 50px;
-    width: 215px;
+    height: 55px;
+    width: 225px;
+    font-size: larger;
     text-align: right;
+    padding: 4px;
+    border-radius: 5px;
+    border-color: #BC0E38;
+    background-color: whitesmoke;
 }
 
-.button {
-    background-color: white;
+.btn.outline {
+    background: none;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    padding: 12px 12px;
+}
+
+.btn-danger.outline {
+    border: 2px solid #BC0E38;
     color: #BC0E38;
-    text-align: center;
+}
+
+.btn-danger.outline:hover, .btn-danger.outline:focus, .btn-danger.outline:active {
+    background: #BC0E38;
+    border: #BC0E38;
 }
 
 #equals {
-    height: 100px;
-    width: 50px;
+    height: 110px;
+    width: 55px;
 }
