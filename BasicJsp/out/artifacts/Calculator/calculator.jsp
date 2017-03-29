@@ -14,39 +14,39 @@
     <title>Calculator</title>
 </head>
 <body>
-
+<jsp:useBean class="com.karolina.CalculatorInterface" id="gui" scope="session"/>
 <form action="calculatorServlet" method="POST">
     <table>
         <tr>
-            <td colspan="4"><input type="text" name="txtField" disabled value="${sessionScope.gui.txtField == null ? "" : sessionScope.gui.txtField }" /></td>
+            <td colspan="4"><input type="text" name="txtField" disabled value="${gui.txtField == null ? "" : gui.txtField }" /></td>
             <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="C" /></td>
         </tr>
         <tr>
-            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="7"${sessionScope.gui.sevenEnabled}/></td>
-            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="8" ${sessionScope.gui.eightEnabled} /></td>
-            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="9" ${sessionScope.gui.nineEnabled} /></td>
-            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="/" ${sessionScope.gui.divisionEnabled} /></td>
-            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="sqrt"  ${sessionScope.gui.squareRootEnabled}/></td>
+            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="7"${gui.sevenEnabled}/></td>
+            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="8" ${gui.eightEnabled} /></td>
+            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="9" ${gui.nineEnabled} /></td>
+            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="/" ${gui.divisionEnabled} /></td>
+            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="sqrt"  ${gui.squareRootEnabled}/></td>
         </tr>
         <tr>
-            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="4" ${sessionScope.gui.fourEnabled} /></td>
-            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="5" ${sessionScope.gui.fiveEnabled} /></td>
-            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="6" ${sessionScope.gui.sixEnabled} /></td>
-            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="*" ${sessionScope.gui.multiplicationEnabled} /></td>
-            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="%" ${sessionScope.gui.percentEnabled} /></td>
+            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="4" ${gui.fourEnabled} /></td>
+            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="5" ${gui.fiveEnabled} /></td>
+            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="6" ${gui.sixEnabled} /></td>
+            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="*" ${gui.multiplicationEnabled} /></td>
+            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="%" ${gui.percentEnabled} /></td>
         </tr>
         <tr>
-            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="1" ${sessionScope.gui.oneEnabled} /></td>
-            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="2" ${sessionScope.gui.twoEnabled} /></td>
-            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="3" ${sessionScope.gui.threeEnabled} /></td>
-            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="-" ${sessionScope.gui.subtractionEnabled} /></td>
-            <td rowspan="2"><input name="btn" id="equals" type="submit" class="btn btn-danger btn-lg outline" value="=" ${sessionScope.gui.equalsSignEnabled} /></td>
+            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="1" ${gui.oneEnabled} /></td>
+            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="2" ${gui.twoEnabled} /></td>
+            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="3" ${gui.threeEnabled} /></td>
+            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="-" ${gui.subtractionEnabled} /></td>
+            <td rowspan="2"><input name="btn" id="equals" type="submit" class="btn btn-danger btn-lg outline" value="=" ${gui.equalsSignEnabled} /></td>
         </tr>
         <tr>
-            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="0" ${sessionScope.gui.zeroEnabled} /></td>
-            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="." ${sessionScope.gui.decimalSeparatorEnabled} /></td>
-            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="+/-" ${sessionScope.gui.negationEnabled} /></td>
-            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="+" ${sessionScope.gui.additionEnabled} /></td>
+            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="0" ${gui.zeroEnabled} /></td>
+            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="." ${gui.decimalSeparatorEnabled} /></td>
+            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="+/-" ${gui.negationEnabled} /></td>
+            <td><input name="btn" type="submit" class="btn btn-danger btn-lg outline" value="+" ${gui.additionEnabled} /></td>
         </tr>
     </table>
 </form>
