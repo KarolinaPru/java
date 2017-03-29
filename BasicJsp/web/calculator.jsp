@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="styles-red.css">
     <meta charset="UTF-8">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -15,7 +15,7 @@
 </head>
 <body>
 <jsp:useBean class="com.karolina.CalculatorInterface" id="gui" scope="session"/>
-<div class="calculator">
+<div class="calc-container">
 <form action="calculatorServlet" method="POST">
     <table>
         <tr>
@@ -53,6 +53,6 @@
 </form>
 <br>
 </div>
-    <div class="link"><a href="#" class="btn btn-default btn-lg" role="button">Zmień ustawienia</a></div>
+    <div class="link"><a href="/Calculator/settings.jsp" class="btn btn-link btn-lg" role="button">Zmień ustawienia</a></div>
 </body>
 </html>

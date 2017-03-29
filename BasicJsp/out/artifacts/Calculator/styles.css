@@ -1,33 +1,18 @@
-.calculator {
+.container {
     display: flex;
-    align-items: center;
+    align-content: center;
     justify-content: center;
-    height: 80%;
-}
-.link {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    height: auto;
 }
 
-input[type=submit] {
-    height: 55px;
-    width: 55px;
-}
-
-input[type=text] {
-    height: 55px;
-    width: 225px;
-    font-size: larger;
-    text-align: right;
-    padding: 4px;
-    border-radius: 5px;
-    border-color: #BC0E38;
-    background-color: whitesmoke;
+.btns-group {
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
 
 .btn.outline {
+    width: 90px;
+    height: 50px;
     background: none;
     margin-top: 1px;
     margin-bottom: 1px;
@@ -42,13 +27,35 @@ input[type=text] {
 .btn-danger.outline:hover, .btn-danger.outline:focus, .btn-danger.outline:active {
     background: #BC0E38;
     border: #BC0E38;
+    border: 2px solid;
 }
 
-.btn.btn-default {
-    margin-left: ;
+.btn-info.outline {
+    border: 2px solid #5bc0de;
+    color: #5bc0de;
 }
 
-#equals {
-    height: 110px;
-    width: 55px;
+.btn-info.outline:hover, .btn-info.outline:focus, .btn-info.outline:active {
+    background: #5bc0de;
+    border: #5bc0de;
+}
+
+.btn-warning.outline {
+    border: 2px solid #f0ad4e;
+    color: #f0ad4e;
+}
+
+.btn-warning.outline:hover, .btn-warning.outline:focus, .btn-warning.outline:active {
+    background: #f0ad4e;
+    border: #f0ad4e;
+}
+
+.btn-success.outline {
+    border: 2px solid #5cb85c;
+    color: #5cb85c;
+}
+
+.btn-success.outline:hover, .btn-success.outline:focus, .btn-success.outline:active {
+    background: #5cb85c;
+    border: #5cb85c;
 }
