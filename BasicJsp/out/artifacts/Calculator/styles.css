@@ -1,3 +1,15 @@
+.calculator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+}
+.link {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: auto;
+}
 
 input[type=submit] {
     height: 55px;
@@ -30,6 +42,10 @@ input[type=text] {
 .btn-danger.outline:hover, .btn-danger.outline:focus, .btn-danger.outline:active {
     background: #BC0E38;
     border: #BC0E38;
+}
+
+.btn.btn-default {
+    margin-left: ;
 }
 
 #equals {

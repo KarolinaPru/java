@@ -15,6 +15,7 @@
 </head>
 <body>
 <jsp:useBean class="com.karolina.CalculatorInterface" id="gui" scope="session"/>
+<div class="calculator">
 <form action="calculatorServlet" method="POST">
     <table>
         <tr>
@@ -50,5 +51,8 @@
         </tr>
     </table>
 </form>
+<br>
+</div>
+    <div class="link"><a href="#" class="btn btn-default btn-lg" role="button">Zmień ustawienia</a></div>
 </body>
 </html>
