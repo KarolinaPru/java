@@ -63,6 +63,90 @@ public class CalculatorServlet extends HttpServlet {
         enteredText = gui.txtField;
 
         String btn = request.getParameter("btn");
+        obtainNumericValue(btn);
+        obtainOperationSign(btn);
+
+        if (btn.equals("sqrt"))
+        {
+            if (logic.lastValidInput.isEmpty())
+            {
+                return;
+            }
+
+            double number = Double.parseDouble(logic.lastValidInput);
+            String result = String.valueOf(Math.sqrt(number));
+
+            gui.txtField = (result);
+            numbers.clear();
+            logic.lastValidInput = result;
+        }
+
+        handleClickOnEquals(btn);
+
+        saveInSession();
+        request.getRequestDispatcher("/calculator.jsp").forward(request, response);
+    }
+
+    private void handleClickOnEquals(String btn) {
+        if (btn.equals("="))
+        {
+            handleEquals();
+        }
+    }
+
+    private void obtainOperationSign(String btn) {
+        if (btn.equals("."))
+        {
+            if (logic.validateIfIsNumberAndSaveAsLastValidInput("."))
+            {
+                gui.txtField = (enteredText + ".");
+                gui.disableDecimalSeparator();
+            }
+        }
+
+        if (btn.equals("+/-"))
+        {
+            logic.negateLastValidInput();
+
+            gui.txtField = (logic.lastValidInput);
+
+            if (numbers.size() == 1)
+            {
+                gui.txtField = (numbers.get(0) + getOperationSign() + logic.lastValidInput);
+            }
+        }
+
+        if (btn.equals("C"))
+        {
+            clearState();
+        }
+
+        if (btn.equals("+"))
+        {
+            handleOperationClick(Operation.ADD, "+");
+        }
+        if (btn.equals("-"))
+        {
+            handleOperationClick(Operation.SUBTRACT, "-");
+        }
+
+        if (btn.equals("*"))
+        {
+            handleOperationClick(Operation.MULTIPLY, "*");
+        }
+
+        if (btn.equals("/"))
+        {
+            handleOperationClick(Operation.DIVIDE, "/");
+        }
+
+        if (btn.equals("%"))
+        {
+            handleOperationClick(Operation.PERCENT, "%");
+        }
+    }
+
+    private void obtainNumericValue(String btn) {
         if (btn.equals("1"))
         {
             if (logic.validateIfIsNumberAndSaveAsLastValidInput("1"))
@@ -121,79 +205,6 @@ public class CalculatorServlet extends HttpServlet {
             if (logic.validateIfIsNumberAndSaveAsLastValidInput("0"))
                 gui.txtField = (enteredText + "0");
         }
-
-        if (btn.equals("."))
-        {
-            if (logic.validateIfIsNumberAndSaveAsLastValidInput("."))
-            {
-                gui.txtField = (enteredText + ".");
-                gui.disableDecimalSeparator();
-            }
-        }
-
-        if (btn.equals("+/-"))
-        {
-            logic.negateLastValidInput();
-
-            gui.txtField = (logic.lastValidInput);
-
-            if (numbers.size() == 1)
-            {
-                gui.txtField = (numbers.get(0) + getOperationSign() + logic.lastValidInput);
-            }
-        }
-
-        if (btn.equals("C"))
-        {
-            clearState();
-        }
-
-        if (btn.equals("+"))
-        {
-            handleOperationClick(Operation.ADD, "+");
-        }
-        if (btn.equals("-"))
-        {
-            handleOperationClick(Operation.SUBTRACT, "-");
-        }
-
-        if (btn.equals("*"))
-        {
-            handleOperationClick(Operation.MULTIPLY, "*");
-        }
-
-        if (btn.equals("/"))
-        {
-            handleOperationClick(Operation.DIVIDE, "/");
-        }
-
-        if (btn.equals("%"))
-        {
-            handleOperationClick(Operation.PERCENT, "%");
-        }
-
-        if (btn.equals("sqrt"))
-        {
-            if (logic.lastValidInput.isEmpty())
-            {
-                return;
-            }
-
-            double number = Double.parseDouble(logic.lastValidInput);
-            String result = String.valueOf(Math.sqrt(number));
-
-            gui.txtField = (result);
-            numbers.clear();
-            logic.lastValidInput = result;
-        }
-
-        if (btn.equals("="))
-        {
-            handleEquals();
-        }
-
-        saveInSession();
-        request.getRequestDispatcher("/calculator.jsp").forward(request, response);
     }
 
     private String getOperationSign()
@@ -258,7 +269,7 @@ public class CalculatorServlet extends HttpServlet {
 
         numbers.clear();
 
-        if (result.equals("NaN") || result.equals("Infinity"))
+        if (result.equals("NaN") || result.equals("Infinity") || result.equals("-Infinity"))
         {
             gui.txtField = ("Error");
             gui.disableControls();

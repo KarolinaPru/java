@@ -1,13 +1,14 @@
-.container {
+.heading {
     display: flex;
-    align-content: center;
     justify-content: center;
+    align-content: center;
+    margin-top: 10%;
 }
 
 .btns-group {
     display: flex;
-    align-content: center;
     justify-content: center;
+    align-content: center;
 }
 
 .btn.outline {

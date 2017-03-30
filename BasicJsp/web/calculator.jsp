@@ -3,6 +3,10 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="styles-red.css">
+    <link rel="stylesheet" type="text/css" href="styles-blue.css">
+    <link rel="stylesheet" type="text/css" href="styles-green.css">
+    <link rel="stylesheet" type="text/css" href="styles-yellow.css">
+
     <meta charset="UTF-8">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

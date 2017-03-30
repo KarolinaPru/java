@@ -2,6 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="styles.css">
+
     <meta charset="UTF-8">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -12,18 +13,18 @@
 
     <title>Ustawienia</title>
 </head>
-<body>
-<div class="container">
+
+<form action="/calculatorServlet" method="post">
+<div class="heading">
     <h2>Wybierz styl</h2>
 </div>
-
+    <br>
     <div class="btns-group">
-    <button type="button" class="btn btn-danger outline">1</button>
-    <button type="button" class="btn btn-success outline">2</button>
-    <button type="button" class="btn btn-info outline">3</button>
-    <button type="button" class="btn btn-warning outline">4</button>
+        <div class="link"><a href="/Calculator/calculator.jsp" class="btn btn-danger outline" value="styles-red" role="button">1</a></div>
+        <div class="link"><a href="/Calculator/calculator.jsp" class="btn btn-success outline" value="styles-green" role="button">2</a></div>
+        <div class="link"><a href="/Calculator/calculator.jsp" class="btn btn-info outline" value="styles-blue" role="button">3</a></div>
+        <div class="link"><a href="/Calculator/calculator.jsp" class="btn btn-warning outline" value="styles-yellow" role="button">4</a></div>
     </div>
-
-
+</form>
 </body>
 </html>
