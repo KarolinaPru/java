@@ -2,10 +2,11 @@
 
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="styles-red.css">
-    <link rel="stylesheet" type="text/css" href="styles-blue.css">
-    <link rel="stylesheet" type="text/css" href="styles-green.css">
-    <link rel="stylesheet" type="text/css" href="styles-yellow.css">
+    <link rel="stylesheet" type="text/css" href="styles-red.css" title="red">
+    <link rel="alternate stylesheet" type="text/css" href="styles-blue.css" title="blue">
+    <link rel="alternate stylesheet" type="text/css" href="styles-green.css" title="green">
+    <link rel="alternate stylesheet" type="text/css" href="styles-yellow.css" title="yellow">
+    <meta http-equiv="Default-Style" content="red">
 
     <meta charset="UTF-8">
     <!-- Latest compiled and minified CSS -->

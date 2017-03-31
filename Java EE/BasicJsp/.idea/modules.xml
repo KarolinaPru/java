@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CalculatorJsp.iml" filepath="$PROJECT_DIR$/CalculatorJsp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BasicJsp.iml" filepath="$PROJECT_DIR$/BasicJsp.iml" />
     </modules>
   </component>
 </project>

@@ -2,12 +2,13 @@
   <artifact type="exploded-war" name="Calculator">
     <output-path>$PROJECT_DIR$/out/artifacts/Calculator</output-path>
     <root id="root">
-      <element id="javaee-facet-resources" facet="CalculatorJsp/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="CalculatorJsp" />
+          <element id="module-output" name="BasicJsp" />
         </element>
       </element>
+      <element id="javaee-facet-resources" facet="BasicJsp/web/Web" />
+      <element id="javaee-facet-resources" facet="BasicJsp/web/Web2" />
     </root>
   </artifact>
 </component>

@@ -20,10 +20,10 @@
 </div>
     <br>
     <div class="btns-group">
-        <div class="link"><a href="/Calculator/calculator.jsp" class="btn btn-danger outline" value="styles-red" role="button">1</a></div>
-        <div class="link"><a href="/Calculator/calculator.jsp" class="btn btn-success outline" value="styles-green" role="button">2</a></div>
-        <div class="link"><a href="/Calculator/calculator.jsp" class="btn btn-info outline" value="styles-blue" role="button">3</a></div>
-        <div class="link"><a href="/Calculator/calculator.jsp" class="btn btn-warning outline" value="styles-yellow" role="button">4</a></div>
+        <div class="link"><a href="/Calculator/calculator.jsp" class="btn btn-danger outline" value="red" role="button">1</a></div>
+        <div class="link"><a href="/Calculator/calculator.jsp" class="btn btn-success outline" value="green" role="button">2</a></div>
+        <div class="link"><a href="/Calculator/calculator.jsp" class="btn btn-info outline" value="blue" role="button">3</a></div>
+        <div class="link"><a href="/Calculator/calculator.jsp" class="btn btn-warning outline" value="yellow" role="button">4</a></div>
     </div>
 </form>
 </body>
