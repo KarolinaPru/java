@@ -1,0 +1,22 @@
+
+#v-box {
+	  -fx-background-color: #ecebe9;
+}
+.root {
+	    -fx-background-color: #A3E4D7;
+	          	
+	}
+
+.labels {
+    -fx-font-size: 20px;
+}
+
+.buttons {
+	-fx-background-color: #AF7AC5;
+
+    -fx-padding: 10.0 25.0 10.0 25.0;
+    -fx-font-family: "Helvetica";
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 16.0px;
+}
