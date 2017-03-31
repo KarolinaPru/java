@@ -3,6 +3,7 @@ package com.karolina;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -54,6 +55,10 @@ public class CalculatorServlet extends HttpServlet {
         session.setAttribute("numbers", numbers);
         session.setAttribute("operation", operation);
         session.setAttribute("enteredText", enteredText);
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/calculator.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

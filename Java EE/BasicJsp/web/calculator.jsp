@@ -2,10 +2,7 @@
 
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="styles-red.css" title="red">
-    <link rel="alternate stylesheet" type="text/css" href="styles-blue.css" title="blue">
-    <link rel="alternate stylesheet" type="text/css" href="styles-green.css" title="green">
-    <link rel="alternate stylesheet" type="text/css" href="styles-yellow.css" title="yellow">
+    <link rel="stylesheet" type="text/css" href="styles-${param.getOrDefault("color", "red")}.css">
 
     <meta charset="UTF-8">
     <!-- Latest compiled and minified CSS -->
@@ -20,7 +17,7 @@
 <body>
 <jsp:useBean class="com.karolina.CalculatorInterface" id="gui" scope="session"/>
 <div class="calc-container">
-<form action="calculatorServlet" method="POST">
+<form action="calculatorServlet?color=${param.getOrDefault("color", "red")}" method="POST">
     <table>
         <tr>
             <td colspan="4"><input type="text" name="txtField" disabled value="${gui.txtField == null ? "" : gui.txtField }" /></td>
