@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>VERY simple JSF2.2 cities</title>
+    <link href="/styles.css" rel="stylesheet" type="text/css"/>
+
+</h:head>
+
+<h:body>
+    <h1 class="title">Kalkulator JSF</h1>
+    <div align="center">
+
+        <fieldset>
+            <legend>Kalkulator JSF</legend>
+            <h:form>
+
+                <br/>
+                Liczba 1: <h:inputText id="nubmer" value="#{calculator.arg1}"
+                                       required="true" requiredMessage=""/>
+
+                <h:selectOneMenu value="#{calculator.operation}" onchange="this.form.submit()">
+                    <f:selectItems value="#{calculator.operations}" var="c"
+                                   itemLabel="#{c.symbol}"
+                                   itemValue="#{c.symbol}"/>
+                </h:selectOneMenu>
+
+                <br/>
+                Liczba 2: <h:inputText id="number" value="#{calculator.arg2}"
+                                       required="true" requiredMessage=""/>
+                <!--<f:convertNumber minFractionDigits="1" />-->
+                <h:message for="number"/>
+                <br/><br/>
+                <h:outputText value="Wynik: "
+                              rendered="#{calculator.result}" />
+                <h:commandButton value="Przejdz do wyniku" action="#{navigationController.moveToResultPage}"  />
+                <br/><br/>
+                <!--<h:outputText value="Podaj poprawne wartosci."-->
+                              <!--rendered="#{not empty facesContext.messageList}"  styleClass="error"/>-->
+                <br/>
+            </h:form>
+        </fieldset>
+    </div>
+    <hr style="margin-top: 100px"/>
+</h:body>
+</html>

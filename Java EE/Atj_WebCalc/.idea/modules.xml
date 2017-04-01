@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Atj_WebCalc.iml" filepath="$PROJECT_DIR$/Atj_WebCalc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web_calc/web_calc.iml" filepath="$PROJECT_DIR$/web_calc/web_calc.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+<title>VERY simple JSF2.2 calculator</title>
+<link href="./css/styles.css" rel="stylesheet" type="text/css"/>
+</h:head>
+<h:body>
+  <h1 class="title">VERY simple JSF2.2 calculator</h1>
+
+  <div align="center">
+  <fieldset>
+    <legend>calkulator form</legend>
+    <h2>"#{firstBean.arg1}"+"#{firstBean.arg2}"="#{firstBean.result}"</h2>
+    <h2><h:outputText value="&quot;#{firstBean.arg1}+#{firstBean.arg2}
+                                         =#{firstBean.result}&quot; "/></h2>
+    <h:form>
+      <h:commandButton value="TryAgain"
+                       action="#{firstBean.enterArgumentsActionControllerMethod}"/>
+    </h:form>
+  </fieldset>
+  </div>
+<hr style="margin-top: 100px"/>
+ATJ 2016
+</h:body>
+</html>

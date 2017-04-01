@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="cities">
+    <output-path>$PROJECT_DIR$/out/artifacts/cities</output-path>
+    <root id="archive" name="cities.war">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Atj_4" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Mojarra-2.2.1.3" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="Atj_4/web/Web" />
+    </root>
+  </artifact>
+</component>

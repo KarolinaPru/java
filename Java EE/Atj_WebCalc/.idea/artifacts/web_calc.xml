@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="web_calc">
+    <output-path>$PROJECT_DIR$/out/artifacts/web_calc</output-path>
+    <root id="archive" name="web_calc.war">
+      <element id="javaee-facet-resources" facet="Atj_WebCalc/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Atj_WebCalc" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

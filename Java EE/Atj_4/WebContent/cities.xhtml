@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>VERY simple JSF2.2 cities</title>
+	<link href="./css/styles.css" rel="stylesheet" type="text/css" />
+
+	<style type="text/css">
+.error {
+	color: red;
+}
+</style>
+</h:head>
+
+<h:body>
+	<h1 class="title">JSF Cities: menus, validation messages</h1>
+	<div align="center">
+
+		<fieldset>
+			<legend>City bean 2 form</legend>
+			<h:form>
+		City: <h:outputText value="#{cityBean2.city}" />
+				<br />
+				<h:selectOneMenu value="#{cityBean2.city}">
+					<f:selectItems value="#{cityBean2.cityList}" var="c"
+						itemLabel="#{c.name}" itemValue="#{c.id}" />
+
+				</h:selectOneMenu>
+				<h:commandButton value="Wybierz" action="cities" />
+			</h:form>
+		</fieldset>
+
+
+
+		<fieldset>
+			<legend>City bean 2 form</legend>
+			<h:form>
+				<h:outputText value="Submit required values."
+					rendered="#{not empty facesContext.messageList}" styleClass="error" />
+				<br />
+			City: <h:outputText value="#{cityBean2.city}" />
+				<br />
+
+				<h:selectOneMenu value="#{cityBean2.city}"
+					onchange="this.form.submit()">
+					<f:selectItems value="#{cityBean2.cityList}" var="c"
+						itemLabel="#{c.name}" itemValue="#{c.id}" />
+				</h:selectOneMenu>
+				<br />
+				Country: <h:inputText id="state" value="#{cityBean2.state}"
+					required="true" requiredMessage="Enter country:" />
+
+				<h:message for="state" />
+			</h:form>
+		</fieldset>
+	</div>
+	<hr style="margin-top: 100px" />
+  ATJ 2016
+</h:body>
+</html>
