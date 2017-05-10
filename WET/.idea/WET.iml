@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <output url="file:///production/WET" />
+    <output-test url="file:///test/WET" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Concurrency1/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Concurrency2/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Security_Z2016/Security1/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
