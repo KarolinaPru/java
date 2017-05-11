@@ -29,6 +29,7 @@ public class BankInterest2Test
                         int toAccount = (int) (bank.size() * Math.random());
                         double amount = MAX_AMOUNT * Math.random();
                         bank.transfer(fromAccount, toAccount, amount);
+
                         double interestRate = (double)(10 * Math.random());
                         bank.addInterest(fromAccount, interestRate, REQUIRED_FUNDS);
                         Thread.sleep((int) (DELAY * Math.random()));
@@ -41,8 +42,6 @@ public class BankInterest2Test
             // Tyle wątków, ile kont
             Thread t = new Thread(r);
             t.start();
-
-
 
         }
     }
