@@ -1,12 +1,9 @@
-package bank;
+package bank.homework;
 
-/**
- * This program shows how multiple threads can safely access a data structure.
- * @version 1.31 2015-06-21
- * @author Cay Horstmann
- */
-public class BankInterest2Test
-{
+import bank.homework.BankInterestSync2;
+
+public class BankInterestSync2Test {
+
     public static final int NACCOUNTS = 100;
     public static final double INITIAL_BALANCE = 1000;
     public static final double MAX_AMOUNT = 1000;
@@ -15,7 +12,7 @@ public class BankInterest2Test
 
     public static void main(String[] args)
     {
-        BankInterest2 bank = new BankInterest2(NACCOUNTS, INITIAL_BALANCE);
+        BankInterestSync2 bank = new BankInterestSync2(NACCOUNTS, INITIAL_BALANCE);
         for (int i = 0; i < NACCOUNTS; i++)
         {
             int fromAccount = i;
@@ -27,6 +24,8 @@ public class BankInterest2Test
                         int toAccount = (int) (bank.size() * Math.random());
                         double amount = MAX_AMOUNT * Math.random();
                         bank.transfer(fromAccount, toAccount, amount);
+                        Thread.sleep((int) (DELAY * Math.random()));
+
                         double interestRate = (double)(10 * Math.random());
                         bank.addInterest(fromAccount, interestRate, REQUIRED_FUNDS);
                         Thread.sleep((int) (DELAY * Math.random()));
@@ -36,12 +35,9 @@ public class BankInterest2Test
                 {
                 }
             };
-            // Tyle wątków, ile kont
             Thread t = new Thread(r);
             t.start();
-
-
-
         }
     }
+
 }

@@ -1,4 +1,4 @@
-package bank;
+package bank.homework;
 
 import java.util.Arrays;
 import java.util.concurrent.locks.Condition;
@@ -52,7 +52,7 @@ public class BankInterest2 {
         try
         {
             while(accounts[account] < requiredFunds) {
-                System.out.println("Account " + account + ": minimum balance not met. Current funds: " + accounts[account]);
+                System.out.println("Account " + account + ": minimum balance is not reached. Current funds: " + accounts[account]);
                 minimumBalance.await();
             }
             System.out.println("Account number: " + account + " Amount before: " + accounts[account]);
