@@ -9,7 +9,7 @@ public class BankInterestTimeout2Test {
     public static final double MAX_AMOUNT = 1000;
     public static final int DELAY = 10;
     public static final double REQUIRED_FUNDS = 600;
-    public static final int TIMEOUT_IN_MILLISECONDS = 500;
+    public static final int TIMEOUT_IN_MILLISECONDS = 1000;
 
     public static void main(String[] args) {
         BankInterestTimeout2 bank = new BankInterestTimeout2(NACCOUNTS, INITIAL_BALANCE);
@@ -20,7 +20,8 @@ public class BankInterestTimeout2Test {
                     while (true) {
                         int toAccount = (int) (bank.size() * Math.random());
                         double amount = MAX_AMOUNT * Math.random();
-                        bank.transfer(fromAccount, toAccount, amount, TIMEOUT_IN_MILLISECONDS);
+                        bank.transfer(fromAccount, toAccount, amount, 1000);
+                        Thread.sleep(500);
                     }
                 } catch (InterruptedException e) {
                 }
@@ -34,7 +35,7 @@ public class BankInterestTimeout2Test {
                         int account = (int) (bank.size() * Math.random());
                         double interestRate = (double) (500 * Math.random());
                         bank.addInterest(account, interestRate, REQUIRED_FUNDS, TIMEOUT_IN_MILLISECONDS);
-                        Thread.sleep(1000);
+                        Thread.sleep(500);
                     }
                 } catch (InterruptedException e) {
                 }

@@ -1,11 +1,8 @@
-package bank.homework;
+package bank.homework.wait_synchronized;
 
 import java.util.Arrays;
-import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.*;
-import java.util.concurrent.locks.*;
 
 public class BankInterestSync2 {
 
@@ -32,14 +29,13 @@ public class BankInterestSync2 {
     }
 
     public synchronized void addInterest(int account, double interestRate, double requiredFunds) throws InterruptedException {
+        double currentBalance = accounts[account];
 
-
-        while(accounts[account] < requiredFunds) {
-            System.out.println("Account " + account + ": minimum balance is not reached. Current funds: " + accounts[account]);
+        while(currentBalance < requiredFunds) {
+            System.out.println("Account " + account + ": minimum balance is not reached. Current funds: " + currentBalance);
             wait();
         }
 
-        double currentBalance =  accounts[account];
         System.out.println("Account number: " + account + " Amount before: " + currentBalance);
         currentBalance += currentBalance * interestRate / 100;
         System.out.println("Amount after: " + currentBalance + " at " + interestRate/100 + "%");

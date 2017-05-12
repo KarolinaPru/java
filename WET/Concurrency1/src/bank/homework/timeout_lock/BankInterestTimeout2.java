@@ -20,16 +20,18 @@ public class BankInterestTimeout2 {
 
     public void transfer(int from, int to, double amount, long timeout) throws InterruptedException {
         long currentThread = Thread.currentThread().getId();
+
         if (bankLock.tryLock(200, TimeUnit.MILLISECONDS)) {
             try {
                 while (accounts[from] < amount) {
-                    System.out.println("Thread " + currentThread + "Account no " + from + " has insufficient funds. Waiting for transfer.");
+                    System.out.println("Thread " + currentThread + " Account no " + from + " has insufficient funds. Waiting for transfer.");
 
                     boolean timedOut = sufficientFunds.await(timeout, TimeUnit.MILLISECONDS);
                     if (timedOut)
                         System.out.println("Thread " + currentThread + " timed out on transfer.");
                 }
                 System.out.print("Thread " + currentThread);
+
                 accounts[from] -= amount;
                 System.out.printf(" %10.2f from %d to %d", amount, from, to);
 
@@ -47,21 +49,20 @@ public class BankInterestTimeout2 {
     }
 
     public void addInterest(int account, double interestRate, double requiredFunds, long timeout) throws InterruptedException {
-        double currentBalance = accounts[account];
         long currentThread = Thread.currentThread().getId();
 
         if (bankLock.tryLock(200, TimeUnit.MILLISECONDS)) {
             try {
-                while (currentBalance < requiredFunds) {
-                    System.out.println("Thread " + currentThread + ": minimum balance is not reached. Current funds: " + currentBalance + " Waiting.");
+                while (accounts[account] < requiredFunds) {
+                    System.out.println("Thread " + currentThread + ": minimum balance is not reached. Current funds: " + accounts[account] + " Waiting.");
 
                     boolean timedOut = sufficientFunds.await(timeout, TimeUnit.MILLISECONDS);
                     if (timedOut)
                         System.out.println("Thread " + currentThread + " timed out on interest.");
                 }
-                System.out.println("Account number: " + account + " Amount before: " + currentBalance);
-                currentBalance += currentBalance * interestRate / 100;
-                System.out.println("Amount after: " + currentBalance + " at " + interestRate / 100 + "%");
+                System.out.println("Account number: " + account + " Amount before: " + accounts[account]);
+                accounts[account] += accounts[account] * interestRate / 100;
+                System.out.println("Amount after: " + accounts[account] + " at " + interestRate / 100 + "%");
 
                 sufficientFunds.signalAll();
             } finally {

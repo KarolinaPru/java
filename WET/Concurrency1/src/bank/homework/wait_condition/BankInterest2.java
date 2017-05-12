@@ -1,4 +1,4 @@
-package bank.homework;
+package bank.homework.wait_condition;
 
 import java.util.Arrays;
 import java.util.concurrent.locks.Condition;
