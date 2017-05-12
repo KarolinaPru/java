@@ -2,12 +2,12 @@ package bank.homework;
 
 public class BankInterestTimeoutTest {
 
-    public static final int NACCOUNTS = 100;
+    public static final int NACCOUNTS = 50;
     public static final double INITIAL_BALANCE = 1000;
     public static final double MAX_AMOUNT = 1000;
     public static final int DELAY = 10;
     public static final double REQUIRED_FUNDS = 500;
-    public static final int TIMEOUT_IN_MILLISECONDS = 1000;
+    public static final int TIMEOUT_IN_MILLISECONDS = 3000;
 
     public static void main(String[] args) {
         BankInterestTimeout bank = new BankInterestTimeout(NACCOUNTS, INITIAL_BALANCE);
@@ -22,7 +22,7 @@ public class BankInterestTimeoutTest {
 
                         double interestRate = (double) (500 * Math.random());
                         int account = (int) (bank.size() * Math.random());
-                        bank.addInterest(account, interestRate, REQUIRED_FUNDS, TIMEOUT_IN_MILLISECONDS);
+                        bank.addInterest(toAccount, interestRate, REQUIRED_FUNDS, TIMEOUT_IN_MILLISECONDS);
                         Thread.sleep((int) (DELAY * Math.random()));
                     }
                 } catch (InterruptedException e) {
