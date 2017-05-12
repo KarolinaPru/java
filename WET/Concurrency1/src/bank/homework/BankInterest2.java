@@ -16,7 +16,6 @@ public class BankInterest2 {
         Arrays.fill(accounts, initialBalance);
         bankLock = new ReentrantLock();
         sufficientFunds = bankLock.newCondition();
-        minimumBalance = bankLock.newCondition();
     }
 
     /**
@@ -39,7 +38,6 @@ public class BankInterest2 {
             accounts[to] += amount;
             System.out.printf(" Total Balance: %10.2f%n", getTotalBalance());
             sufficientFunds.signalAll();
-            minimumBalance.signalAll();
         }
         finally
         {
@@ -53,11 +51,12 @@ public class BankInterest2 {
         {
             while(accounts[account] < requiredFunds) {
                 System.out.println("Account " + account + ": minimum balance is not reached. Current funds: " + accounts[account]);
-                minimumBalance.await();
+                sufficientFunds.await();
             }
-            System.out.println("Account number: " + account + " Amount before: " + accounts[account]);
-            accounts[account] += interestRate/100;
-            System.out.println("Amount after: " + accounts[account] + " at " + interestRate/100 + "%");
+            double currentBalance =  accounts[account];
+            System.out.println("Account number: " + account + " Amount before: " + currentBalance);
+            currentBalance += currentBalance * interestRate / 100;
+            System.out.println("Amount after: " + currentBalance + " at " + interestRate/100 + "%");
 
             sufficientFunds.signalAll();
         }

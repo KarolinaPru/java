@@ -11,15 +11,12 @@ public class BankInterestSync2 {
 
     private final double[] accounts;
     private Lock bankLock;
-    private Condition sufficientFunds;
-    private Condition minimumBalance;
+
 
     public BankInterestSync2(int n, double initialBalance) {
         accounts = new double[n];
         Arrays.fill(accounts, initialBalance);
         bankLock = new ReentrantLock();
-        sufficientFunds = bankLock.newCondition();
-        minimumBalance = bankLock.newCondition();
     }
 
     public synchronized void transfer(int from, int to, double amount) throws InterruptedException {
@@ -42,9 +39,10 @@ public class BankInterestSync2 {
             wait();
         }
 
-        System.out.println("Account number: " + account + " Amount before: " + accounts[account]);
-        accounts[account] += interestRate / 100;
-        System.out.println("Account number: " + account + " Amount after: " + accounts[account]);
+        double currentBalance =  accounts[account];
+        System.out.println("Account number: " + account + " Amount before: " + currentBalance);
+        currentBalance += currentBalance * interestRate / 100;
+        System.out.println("Amount after: " + currentBalance + " at " + interestRate/100 + "%");
         notifyAll();
     }
 

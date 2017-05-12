@@ -1,4 +1,4 @@
-package bank.homework;
+package bank.homework.timeout_lock;
 
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
@@ -6,9 +6,6 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- * Created by karol on 11.05.2017.
- */
 public class BankInterestTimeout {
     private final double[] accounts;
     private Lock bankLock;
@@ -20,7 +17,6 @@ public class BankInterestTimeout {
         Arrays.fill(accounts, initialBalance);
         bankLock = new ReentrantLock();
         sufficientFunds = bankLock.newCondition();
-        minimumBalance = bankLock.newCondition();
     }
 
     public void transfer(int from, int to, double amount, long timeout) throws InterruptedException
@@ -39,7 +35,6 @@ public class BankInterestTimeout {
             accounts[to] += amount;
             System.out.printf(" Total Balance: %10.2f%n", getTotalBalance());
 
-            minimumBalance.signalAll();
             sufficientFunds.signalAll();
         }
         finally
@@ -49,17 +44,18 @@ public class BankInterestTimeout {
     }
 
     public void addInterest(int account, double interestRate, double requiredFunds, long timeout) throws InterruptedException {
+        double currentBalance =  accounts[account];
         bankLock.lock();
         try {
-            while (accounts[account] < requiredFunds) {
-                System.out.print("Account " + account + ": minimum balance is not reached. Current funds: " + accounts[account] + " ");
+            while (currentBalance < requiredFunds) {
+                System.out.print("Account " + account + ": minimum balance is not reached. Current funds: " + currentBalance+ " ");
                 System.out.println("Waiting " + timeout + " milliseconds.");
 
-                minimumBalance.await(timeout, TimeUnit.MILLISECONDS);
+                sufficientFunds.await(timeout, TimeUnit.MILLISECONDS);
             }
-            System.out.println("Account number: " + account + " Amount before: " + accounts[account]);
-            accounts[account] += interestRate / 100;
-            System.out.println("Amount after: " + accounts[account] + " at " + interestRate/100 + "%");
+            System.out.println("Account number: " + account + " Amount before: " + currentBalance);
+            currentBalance += currentBalance * interestRate / 100;
+            System.out.println("Amount after: " + currentBalance + " at " + interestRate/100 + "%");
 
             sufficientFunds.signalAll();
         }
