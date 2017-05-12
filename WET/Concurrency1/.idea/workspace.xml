@@ -78,8 +78,8 @@
       <file leaf-file-name="BankInterestTimeoutTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/bank/homework/BankInterestTimeoutTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="4" column="41" lean-forward="false" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+            <state relative-caret-position="440">
+              <caret line="22" column="77" lean-forward="false" selection-start-line="22" selection-start-column="77" selection-end-line="22" selection-end-column="77" />
               <folding />
             </state>
           </provider>
@@ -139,8 +139,8 @@
         <option value="$PROJECT_DIR$/src/bank/homework/BankInterestSync2.java" />
         <option value="$PROJECT_DIR$/src/bank/homework/BankInterest2.java" />
         <option value="$PROJECT_DIR$/src/bank/homework/BankInterest2Test.java" />
-        <option value="$PROJECT_DIR$/src/bank/homework/BankInterestTimeoutTest.java" />
         <option value="$PROJECT_DIR$/src/bank/homework/BankInterestTimeout.java" />
+        <option value="$PROJECT_DIR$/src/bank/homework/BankInterestTimeoutTest.java" />
       </list>
     </option>
   </component>
@@ -799,12 +799,12 @@
       <updated>1494442956499</updated>
       <workItem from="1494442962599" duration="85000" />
       <workItem from="1494524554177" duration="9724000" />
-      <workItem from="1494590053274" duration="942000" />
+      <workItem from="1494590053274" duration="1006000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10885000" />
+    <option name="totallyTimeSpent" value="10949000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-339" y="1072" width="2576" height="1416" extended-state="6" />
@@ -1154,8 +1154,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/bank/homework/BankInterestTimeoutTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="41" lean-forward="false" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+        <state relative-caret-position="440">
+          <caret line="22" column="77" lean-forward="false" selection-start-line="22" selection-start-column="77" selection-end-line="22" selection-end-column="77" />
           <folding />
         </state>
       </provider>

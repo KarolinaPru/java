@@ -21,7 +21,6 @@ public class BankInterestTimeoutTest {
                         bank.transfer(fromAccount, toAccount, amount, TIMEOUT_IN_MILLISECONDS);
 
                         double interestRate = (double) (500 * Math.random());
-                        int account = (int) (bank.size() * Math.random());
                         bank.addInterest(toAccount, interestRate, REQUIRED_FUNDS, TIMEOUT_IN_MILLISECONDS);
                         Thread.sleep((int) (DELAY * Math.random()));
                     }
