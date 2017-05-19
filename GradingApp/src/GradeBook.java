@@ -1,98 +1,63 @@
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-/**
- * Created by karol on 19.05.2017.
- */
 public class GradeBook {
-    private List<Character> gradeTypes = new ArrayList<>();
-    private List<String> gradeDescriptions = new ArrayList<>();
-    private List<Integer> grades = new ArrayList<>();
-    private List<Integer> teacherIds = new ArrayList<>();
-    private List<Integer> studentIds = new ArrayList<>();
-    private List<Integer> gradeIds = new ArrayList<>();
-    private List<Integer> subjectIds = new ArrayList<>();
 
     protected List getGradeTypes() {
-        gradeTypes.add('S');    // ocena semestralna
+        List<Character> gradeTypes = new ArrayList<>();
         gradeTypes.add('C');    // ocena cząstkowa
+        gradeTypes.add('K');    // ocena końcowa
         return gradeTypes;
     }
 
-    protected List getTeacherById(Connection connection, int teacherId) throws SQLException {
-        String query = "SELECT n.idn FROM nauczyciel n WHERE idn = teacherId";
-        Statement statement = connection.createStatement();
-        ResultSet results = statement.executeQuery(query);
-        //if (results)
-        results.close();
-        return teacherIds;
+    protected boolean doesTeacherExist(Connection connection, int teacherId) throws SQLException {
+        String query = "SELECT COUNT(*) FROM nauczyciel n WHERE n.idn = " + teacherId;
+        return findOutIfRecordExists(connection, query);
     }
 
-    protected List getStudentIds(Connection connection) throws SQLException {
-        String query = "SELECT u.idu FROM uczen u";
+    protected boolean doesStudentExist(Connection connection, int studentId) throws SQLException {
+        String query = "SELECT COUNT(*) FROM uczen u WHERE u.idu = " + studentId;
+        return findOutIfRecordExists(connection, query);
+    }
+
+    protected boolean doesSubjectExist(Connection connection, int subjectId) throws SQLException {
+        String query = "SELECT COUNT(*) FROM przedmiot p WHERE p.idp = " + subjectId;
+        return findOutIfRecordExists(connection, query);
+    }
+
+    protected boolean doesGradeExist(Connection connection, int gradeId) throws SQLException {
+        String query = "SELECT COUNT(*) FROM ocena o WHERE o.ido = " + gradeId;
+        return findOutIfRecordExists(connection, query);
+    }
+
+    protected boolean doesGradeDescriptionExist(Connection connection, String description) throws SQLException {
+        String query = "SELECT COUNT(*) FROM ocena o WHERE o.wartosc_opisowa = " + description;
+        return findOutIfRecordExists(connection, query);
+    }
+
+    private boolean findOutIfRecordExists(Connection connection, String query) throws SQLException {
         Statement statement = connection.createStatement();
         ResultSet results = statement.executeQuery(query);
 
-        while (results.next()) {
-            int studentId = results.getInt("idu");
-            studentIds.add(studentId);
+        boolean recordExists = false;
+        if (results.next()) {
+            String result = results.getString("count(*)");
+            int count = Integer.parseInt(result);
+            System.out.println("Liczba znalezionych rekordow: " + count);
+
+            if (count > 0) {
+                recordExists = true;
+            } else {
+                recordExists = false;
+            }
         }
         results.close();
-        return studentIds;
+        return recordExists;
     }
 
-    protected List getSubjectIds(Connection connection) throws SQLException {
-        String query = "SELECT p.idp FROM przedmiot p";
-        Statement statement = connection.createStatement();
-        ResultSet results = statement.executeQuery(query);
-
-        while (results.next()) {
-            int subjectId = results.getInt("idp");
-            subjectIds.add(subjectId);
-        }
-        results.close();
-        return subjectIds;
-    }
-
-    protected List getGradeIds(Connection connection) throws SQLException {
-        String query = "SELECT o.ido FROM ocena o";
-        Statement statement = connection.createStatement();
-        ResultSet results = statement.executeQuery(query);
-
-        while (results.next()) {
-            int gradeId = results.getInt("ido");
-            gradeIds.add(gradeId);
-        }
-        results.close();
-        return gradeIds;
-    }
-
-    protected List getGradeDescriptions(Connection connection) throws SQLException {
-        String query = "SELECT o.wartosc_opisowa FROM ocena o";
-        Statement statement = connection.createStatement();
-        ResultSet results = statement.executeQuery(query);
-
-        while (results.next()) {
-            String description = results.getString("wartosc_opisowa");
-            gradeDescriptions.add(description);
-        }
-        results.close();
-        return gradeDescriptions;
-    }
-
-    protected List getGrades(Connection connection) throws SQLException {
-        String query = "SELECT o.wartosc_numeryczna FROM ocena o";
-        Statement statement = connection.createStatement();
-        ResultSet results = statement.executeQuery(query);
-
-        while (results.next()) {
-            int grade = results.getInt("wartosc_numeryczna");
-            grades.add(grade);
-        }
-        results.close();
-        return grades;
-    }
 
 }
