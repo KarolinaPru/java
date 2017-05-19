@@ -1,45 +1,42 @@
-package bank.homework;
+package bank.homework.wait_condition;
 
 import java.util.Arrays;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- * Created by karol on 11.05.2017.
- */
-public class BankInterestTimeout {
+public class BankInterest2 {
     private final double[] accounts;
     private Lock bankLock;
     private Condition sufficientFunds;
     private Condition minimumBalance;
 
-    public BankInterestTimeout(int n, double initialBalance) {
+    public BankInterest2(int n, double initialBalance) {
         accounts = new double[n];
         Arrays.fill(accounts, initialBalance);
         bankLock = new ReentrantLock();
         sufficientFunds = bankLock.newCondition();
-        minimumBalance = bankLock.newCondition();
     }
 
-    public void transfer(int from, int to, double amount, long timeout) throws InterruptedException
+    /**
+     * Transfers money from one account to another.
+     * @param from the account to transfer from
+     * @param to the account to transfer to
+     * @param amount the amount to transfer
+     */
+    public void transfer(int from, int to, double amount) throws InterruptedException
     {
         bankLock.lock();
         try
         {
             while (accounts[from] < amount) {
-                System.out.println("Account no " + from + " has insufficient funds. Waiting for transfer.");
-                sufficientFunds.await(timeout, TimeUnit.MILLISECONDS);
+                sufficientFunds.await();
             }
             System.out.print(Thread.currentThread());
             accounts[from] -= amount;
             System.out.printf(" %10.2f from %d to %d", amount, from, to);
-
             accounts[to] += amount;
             System.out.printf(" Total Balance: %10.2f%n", getTotalBalance());
-
-            minimumBalance.signalAll();
             sufficientFunds.signalAll();
         }
         finally
@@ -48,24 +45,25 @@ public class BankInterestTimeout {
         }
     }
 
-    public void addInterest(int account, double interestRate, double requiredFunds, long timeout) throws InterruptedException {
+    public void addInterest(int account, double interestRate, double requiredFunds) throws InterruptedException {
         bankLock.lock();
-        try {
-            while (accounts[account] < requiredFunds) {
-                System.out.print("Account " + account + ": minimum balance is not reached. Current funds: " + accounts[account] + " ");
-                System.out.println("Waiting " + timeout + " milliseconds.");
-
-                minimumBalance.await(timeout, TimeUnit.MILLISECONDS);
+        try
+        {
+            while(accounts[account] < requiredFunds) {
+                System.out.println("Account " + account + ": minimum balance is not reached. Current funds: " + accounts[account]);
+                sufficientFunds.await();
             }
-            System.out.println("Account number: " + account + " Amount before: " + accounts[account]);
-            accounts[account] += interestRate / 100;
-            System.out.println("Amount after: " + accounts[account] + " at " + interestRate/100 + "%");
+            double currentBalance =  accounts[account];
+            System.out.println("Account number: " + account + " Amount before: " + currentBalance);
+            currentBalance += currentBalance * interestRate / 100;
+            System.out.println("Amount after: " + currentBalance + " at " + interestRate/100 + "%");
 
             sufficientFunds.signalAll();
         }
         finally
         {
             bankLock.unlock();
+
         }
     }
 

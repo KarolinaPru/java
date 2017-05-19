@@ -1,9 +1,12 @@
-package bank.homework;
+package bank.homework.wait_condition;
 
-import bank.homework.BankInterestSync2;
-
-public class BankInterestSync2Test {
-
+/**
+ * This program shows how multiple threads can safely access a data structure.
+ * @version 1.31 2015-06-21
+ * @author Cay Horstmann
+ */
+public class BankInterest2Test
+{
     public static final int NACCOUNTS = 100;
     public static final double INITIAL_BALANCE = 1000;
     public static final double MAX_AMOUNT = 1000;
@@ -12,7 +15,7 @@ public class BankInterestSync2Test {
 
     public static void main(String[] args)
     {
-        BankInterestSync2 bank = new BankInterestSync2(NACCOUNTS, INITIAL_BALANCE);
+        BankInterest2 bank = new BankInterest2(NACCOUNTS, INITIAL_BALANCE);
         for (int i = 0; i < NACCOUNTS; i++)
         {
             int fromAccount = i;
@@ -25,10 +28,6 @@ public class BankInterestSync2Test {
                         double amount = MAX_AMOUNT * Math.random();
                         bank.transfer(fromAccount, toAccount, amount);
                         Thread.sleep((int) (DELAY * Math.random()));
-
-                        double interestRate = (double)(10 * Math.random());
-                        bank.addInterest(fromAccount, interestRate, REQUIRED_FUNDS);
-                        Thread.sleep((int) (DELAY * Math.random()));
                     }
                 }
                 catch (InterruptedException e)
@@ -37,7 +36,25 @@ public class BankInterestSync2Test {
             };
             Thread t = new Thread(r);
             t.start();
+
+            Runnable r2 = () -> {
+                try
+                {
+                    while (true)
+                    {
+                        int account = (int) (bank.size() * Math.random());
+                        double interestRate = (double)(10 * Math.random());
+                        bank.addInterest(account, interestRate, REQUIRED_FUNDS);
+                        Thread.sleep((int) (DELAY * Math.random()));
+                    }
+                }
+                catch (InterruptedException e)
+                {
+                }
+            };
+            Thread t2 = new Thread(r2);
+            t2.start();
+
         }
     }
-
 }

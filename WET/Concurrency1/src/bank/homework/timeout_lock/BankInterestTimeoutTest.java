@@ -1,4 +1,6 @@
-package bank.homework;
+package bank.homework.timeout_lock;
+
+import bank.homework.timeout_lock.BankInterestTimeout;
 
 public class BankInterestTimeoutTest {
 
@@ -6,7 +8,7 @@ public class BankInterestTimeoutTest {
     public static final double INITIAL_BALANCE = 1000;
     public static final double MAX_AMOUNT = 1000;
     public static final int DELAY = 10;
-    public static final double REQUIRED_FUNDS = 500;
+    public static final double REQUIRED_FUNDS = 600;
     public static final int TIMEOUT_IN_MILLISECONDS = 1000;
 
     public static void main(String[] args) {
@@ -19,17 +21,27 @@ public class BankInterestTimeoutTest {
                         int toAccount = (int) (bank.size() * Math.random());
                         double amount = MAX_AMOUNT * Math.random();
                         bank.transfer(fromAccount, toAccount, amount, TIMEOUT_IN_MILLISECONDS);
+                        Thread.sleep((int) (DELAY * Math.random()));
+                }
+                } catch (InterruptedException e) {
+                }
+            };
+            Thread t = new Thread(r);
+            t.start();
 
-                        double interestRate = (double) (500 * Math.random());
+            Runnable r2 = () -> {
+                try {
+                    while (true) {
                         int account = (int) (bank.size() * Math.random());
+                        double interestRate = (double) (500 * Math.random());
                         bank.addInterest(account, interestRate, REQUIRED_FUNDS, TIMEOUT_IN_MILLISECONDS);
                         Thread.sleep((int) (DELAY * Math.random()));
                     }
                 } catch (InterruptedException e) {
                 }
             };
-            Thread t = new Thread(r);
-            t.start();
+            Thread t2 = new Thread(r2);
+            t2.start();
         }
     }
 }
