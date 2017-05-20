@@ -1,3 +1,5 @@
+package gradeBook;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -5,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GradeBook {
+public class DataSearcher {
 
     protected List getGradeTypes() {
         List<Character> gradeTypes = new ArrayList<>();
@@ -31,11 +33,6 @@ public class GradeBook {
 
     protected boolean doesGradeExist(Connection connection, int gradeId) throws SQLException {
         String query = "SELECT COUNT(*) FROM ocena o WHERE o.ido = " + gradeId;
-        return findOutIfRecordExists(connection, query);
-    }
-
-    protected boolean doesGradeDescriptionExist(Connection connection, String description) throws SQLException {
-        String query = "SELECT COUNT(*) FROM ocena o WHERE o.wartosc_opisowa = " + description;
         return findOutIfRecordExists(connection, query);
     }
 

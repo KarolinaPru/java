@@ -1,3 +1,5 @@
+package gradeBook;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -6,36 +8,42 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public class GradeBookRunner {
+public class GradeBook {
+    int idn, idu, ido, idp;
+    char gradeType;
 
     public static void main(String[] args) {
-        GradeBookRunner runner = new GradeBookRunner();
         GradeBook gradeBook = new GradeBook();
+        DataSearcher dataSearcher = new DataSearcher();
+        DataInserter dataInserter = new DataInserter();
         Scanner in = new Scanner(System.in);
 
         try {
-            Connection connection = runner.establishConnection();
+            Connection connection = gradeBook.establishConnection();
             List<Character> gradeTypes = new ArrayList<>();
-            gradeTypes = gradeBook.getGradeTypes();
+            gradeTypes = dataSearcher.getGradeTypes();
 
             boolean isTeacherIdValid;
             boolean isStudentIdValid = false;
             boolean isSubjectIdValid = false;
             boolean isGradeIdValid = false;
-            boolean isGradeTypeValid;
+            boolean isGradeTypeValid = false;
 
-            isTeacherIdValid = getTeacherId(gradeBook, in, connection);
+            isTeacherIdValid = gradeBook.getTeacherId(dataSearcher, in, connection);
             if (isTeacherIdValid) {
-                isStudentIdValid = getStudentId(gradeBook, in, connection);
+                isStudentIdValid = gradeBook.getStudentId(dataSearcher, in, connection);
             }
             if (isStudentIdValid) {
-                isSubjectIdValid = getSubjectId(gradeBook, in, connection);
+                isSubjectIdValid = gradeBook.getSubjectId(dataSearcher, in, connection);
             }
             if (isSubjectIdValid) {
-                isGradeIdValid = getGradeId(gradeBook, in, connection);
+                isGradeIdValid = gradeBook.getGradeId(dataSearcher, in, connection);
             }
             if (isGradeIdValid) {
-                isGradeTypeValid = getTypeOfGrade(in, gradeTypes);
+                isGradeTypeValid = gradeBook.getTypeOfGrade(in, gradeTypes);
+            }
+            if (isGradeTypeValid) {
+                dataInserter.addGradingInstance(connection, gradeBook.idu, gradeBook.idn, gradeBook.idp, gradeBook.ido, gradeBook.gradeType);
             }
 
             in.close();
@@ -46,13 +54,18 @@ public class GradeBookRunner {
 
     }
 
-    private static boolean getTeacherId(GradeBook gradeBook, Scanner in, Connection connection) throws SQLException {
+    private boolean getTeacherId(DataSearcher dataSearcher, Scanner in, Connection connection) throws SQLException {
         System.out.print("Podaj id nauczyciela: idn = ");
         boolean recordExists;
 
+        if(in.nextLine().isEmpty()) {
+            System.out.println("Nie wprowadzono danych.");
+            return false;
+        }
+
         if (in.hasNextInt()) {
-            int idn = in.nextInt();
-            recordExists = gradeBook.doesTeacherExist(connection, idn);
+            idn = in.nextInt();
+            recordExists = dataSearcher.doesTeacherExist(connection, idn);
             if (recordExists == false) {
                 System.out.println("Nauczyciel o podanym ID nie istnieje.");
                 return recordExists;
@@ -64,13 +77,18 @@ public class GradeBookRunner {
         return recordExists;
     }
 
-    private static boolean getStudentId(GradeBook gradeBook, Scanner in, Connection connection) throws SQLException {
+    private boolean getStudentId(DataSearcher dataSearcher, Scanner in, Connection connection) throws SQLException {
         System.out.print("Podaj id ucznia: idu = ");
         boolean recordExists;
 
+        if(in.nextLine().isEmpty()) {
+            System.out.println("Nie wprowadzono danych.");
+            return false;
+        }
+
         if (in.hasNextInt()) {
-            int idu = in.nextInt();
-            recordExists = gradeBook.doesStudentExist(connection, idu);
+            idu = in.nextInt();
+            recordExists = dataSearcher.doesStudentExist(connection, idu);
             if (recordExists == false) {
                 System.out.println("Uczen o podanym ID nie istnieje.");
                 return recordExists;
@@ -82,13 +100,18 @@ public class GradeBookRunner {
         return recordExists;
     }
 
-    private static boolean getSubjectId(GradeBook gradeBook, Scanner in, Connection connection) throws SQLException {
+    private boolean getSubjectId(DataSearcher dataSearcher, Scanner in, Connection connection) throws SQLException {
         System.out.print("Podaj id przedmiotu: idp = ");
         boolean recordExists;
 
+        if(in.nextLine().isEmpty()) {
+            System.out.println("Nie wprowadzono danych.");
+            return false;
+        }
+
         if (in.hasNextInt()) {
-            int idp = in.nextInt();
-            recordExists = gradeBook.doesSubjectExist(connection, idp);
+            idp = in.nextInt();
+            recordExists = dataSearcher.doesSubjectExist(connection, idp);
             if (recordExists == false) {
                 System.out.println("Przedmiot o podanym ID nie istnieje.");
                 return recordExists;
@@ -100,13 +123,18 @@ public class GradeBookRunner {
         return recordExists;
     }
 
-    private static boolean getGradeId(GradeBook gradeBook, Scanner in, Connection connection) throws SQLException {
+    private boolean getGradeId(DataSearcher dataSearcher, Scanner in, Connection connection) throws SQLException {
         System.out.print("Podaj id oceny: ido = ");
         boolean recordExists;
 
+        if(in.nextLine().isEmpty()) {
+            System.out.println("Nie wprowadzono danych.");
+            return false;
+        }
+
         if (in.hasNextInt()) {
-            int ido = in.nextInt();
-            recordExists = gradeBook.doesGradeExist(connection, ido);
+            ido = in.nextInt();
+            recordExists = dataSearcher.doesGradeExist(connection, ido);
             if (recordExists == false) {
                 System.out.println("Ocena o podanym ID nie istnieje.");
                 return recordExists;
@@ -118,12 +146,17 @@ public class GradeBookRunner {
         return recordExists;
     }
 
-    private static boolean getTypeOfGrade (Scanner in, List gradeTypes) {
+    private boolean getTypeOfGrade(Scanner in, List gradeTypes) {
         System.out.print("Podaj rodzaj oceny (C = cząstkowa, K = koncowa): ");
         boolean isValueValid;
 
+        if(in.nextLine().isEmpty()) {
+            System.out.println("Nie wprowadzono danych.");
+            return false;
+        }
+
         if (in.hasNext()) {
-            char  gradeType = in.next().charAt(0);
+            gradeType = in.next().charAt(0);
             isValueValid = gradeTypes.contains(Character.toUpperCase(gradeType));
 
             if (isValueValid) {
@@ -139,12 +172,18 @@ public class GradeBookRunner {
         }
     }
 
-    private Connection establishConnection() throws SQLException {
-        String url = "jdbc:oracle:thin:@ora3.elka.pw.edu.pl:1521:ora3inf";
-        String username = "xkprusac";
-        String password = "xkprusac";
-        Connection connection = DriverManager.getConnection(url, username, password);
-        System.out.println("Connection established successfully.");
-        return connection;
+    private Connection establishConnection() {
+        try {
+            String url = "jdbc:oracle:thin:@ora3.elka.pw.edu.pl:1521:ora3inf";
+            String username = "xkprusac";
+            String password = "xkprusac";
+            Connection connection = DriverManager.getConnection(url, username, password);
+            System.out.println("Nawiazano polaczenie.");
+            return connection;
+
+        } catch (SQLException e) {
+            System.out.println("Nie udalo sie nawiazac polaczenia.");
+            return null;
+        }
     }
 }
