@@ -10,7 +10,7 @@ public class DataInserter {
                                          int subjectId, int gradeId, char gradeType) {
 
         String insertGrade = "INSERT INTO ocenianie VALUES (" + studentId + ", "
-                            + teacherId +", " + subjectId + ", " + gradeId + ", " + gradeType + ");";
+                            + teacherId + ", " + subjectId + ", " + gradeId + ", " + "'" + Character.toUpperCase(gradeType) + "'" + ")";
 
         try {
             Statement statement = connection.createStatement();

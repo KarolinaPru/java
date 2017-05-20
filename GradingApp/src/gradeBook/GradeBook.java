@@ -23,45 +23,48 @@ public class GradeBook {
             List<Character> gradeTypes = new ArrayList<>();
             gradeTypes = dataSearcher.getGradeTypes();
 
-            boolean isTeacherIdValid;
-            boolean isStudentIdValid = false;
-            boolean isSubjectIdValid = false;
-            boolean isGradeIdValid = false;
-            boolean isGradeTypeValid = false;
+            System.out.println("Wprowadz kolejno poprawne dane, aby dodac nowa ocene do dziennika. " +
+                    "Wpisanie slowa \"koniec\" konczy dzialanie programu.");
 
-            isTeacherIdValid = gradeBook.getTeacherId(dataSearcher, in, connection);
-            if (isTeacherIdValid) {
-                isStudentIdValid = gradeBook.getStudentId(dataSearcher, in, connection);
-            }
-            if (isStudentIdValid) {
-                isSubjectIdValid = gradeBook.getSubjectId(dataSearcher, in, connection);
-            }
-            if (isSubjectIdValid) {
-                isGradeIdValid = gradeBook.getGradeId(dataSearcher, in, connection);
-            }
-            if (isGradeIdValid) {
-                isGradeTypeValid = gradeBook.getTypeOfGrade(in, gradeTypes);
-            }
-            if (isGradeTypeValid) {
-                dataInserter.addGradingInstance(connection, gradeBook.idu, gradeBook.idn, gradeBook.idp, gradeBook.ido, gradeBook.gradeType);
-            }
+            while (true) {
+                boolean isTeacherIdValid;
+                boolean isStudentIdValid = false;
+                boolean isSubjectIdValid = false;
+                boolean isGradeIdValid = false;
+                boolean isGradeTypeValid = false;
 
+                isTeacherIdValid = gradeBook.getTeacherId(dataSearcher, in, connection);
+                if (isTeacherIdValid) {
+                    isStudentIdValid = gradeBook.getStudentId(dataSearcher, in, connection);
+                }
+                if (isStudentIdValid) {
+                    isSubjectIdValid = gradeBook.getSubjectId(dataSearcher, in, connection);
+                }
+                if (isSubjectIdValid) {
+                    isGradeIdValid = gradeBook.getGradeId(dataSearcher, in, connection);
+                }
+                if (isGradeIdValid) {
+                    isGradeTypeValid = gradeBook.getTypeOfGrade(in, gradeTypes);
+                }
+                if (isGradeTypeValid) {
+                    dataInserter.addGradingInstance(connection, gradeBook.idu, gradeBook.idn, gradeBook.idp, gradeBook.ido, gradeBook.gradeType);
+                }
+
+                if(in.nextLine().equals("koniec".toLowerCase())) {
+                    System.out.println("Koniec dzialania programu.");
+                    break;
+                }
+            }
             in.close();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     private boolean getTeacherId(DataSearcher dataSearcher, Scanner in, Connection connection) throws SQLException {
         System.out.print("Podaj id nauczyciela: idn = ");
         boolean recordExists;
-
-        if(in.nextLine().isEmpty()) {
-            System.out.println("Nie wprowadzono danych.");
-            return false;
-        }
 
         if (in.hasNextInt()) {
             idn = in.nextInt();
@@ -74,17 +77,13 @@ public class GradeBook {
             System.out.println("Wprowadzono nieprawidlowe dane.");
             return false;
         }
+
         return recordExists;
     }
 
     private boolean getStudentId(DataSearcher dataSearcher, Scanner in, Connection connection) throws SQLException {
         System.out.print("Podaj id ucznia: idu = ");
         boolean recordExists;
-
-        if(in.nextLine().isEmpty()) {
-            System.out.println("Nie wprowadzono danych.");
-            return false;
-        }
 
         if (in.hasNextInt()) {
             idu = in.nextInt();
@@ -104,11 +103,6 @@ public class GradeBook {
         System.out.print("Podaj id przedmiotu: idp = ");
         boolean recordExists;
 
-        if(in.nextLine().isEmpty()) {
-            System.out.println("Nie wprowadzono danych.");
-            return false;
-        }
-
         if (in.hasNextInt()) {
             idp = in.nextInt();
             recordExists = dataSearcher.doesSubjectExist(connection, idp);
@@ -127,10 +121,10 @@ public class GradeBook {
         System.out.print("Podaj id oceny: ido = ");
         boolean recordExists;
 
-        if(in.nextLine().isEmpty()) {
-            System.out.println("Nie wprowadzono danych.");
-            return false;
-        }
+//        if (in.nextLine().isEmpty()) {
+//            System.out.println("Nie wprowadzono danych.");
+//            return false;
+//        }
 
         if (in.hasNextInt()) {
             ido = in.nextInt();
@@ -149,11 +143,6 @@ public class GradeBook {
     private boolean getTypeOfGrade(Scanner in, List gradeTypes) {
         System.out.print("Podaj rodzaj oceny (C = cząstkowa, K = koncowa): ");
         boolean isValueValid;
-
-        if(in.nextLine().isEmpty()) {
-            System.out.println("Nie wprowadzono danych.");
-            return false;
-        }
 
         if (in.hasNext()) {
             gradeType = in.next().charAt(0);
