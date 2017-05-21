@@ -64,7 +64,7 @@ public class GradeBook {
 
     private boolean getTeacherId(DataSearcher dataSearcher, Scanner in, Connection connection) throws SQLException {
         System.out.print("Podaj id nauczyciela: idn = ");
-        boolean recordExists;
+        boolean recordExists = false;
 
         if (in.hasNextInt()) {
             idn = in.nextInt();
