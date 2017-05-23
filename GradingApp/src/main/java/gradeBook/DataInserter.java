@@ -68,16 +68,16 @@ public class DataInserter {
                 numberOfRecords = resultSet.getInt(1);
             }
             if(numberOfRecords == 0) {
-                statement.executeLargeUpdate(insertStudent1);
-                statement.executeLargeUpdate(insertStudent2);
-                statement.executeLargeUpdate(insertStudent3);
-                statement.executeLargeUpdate(insertStudent4);
-                statement.executeLargeUpdate(insertStudent5);
-                statement.executeLargeUpdate(insertStudent6);
-                statement.executeLargeUpdate(insertStudent7);
-                statement.executeLargeUpdate(insertStudent8);
-                statement.executeLargeUpdate(insertStudent9);
-                statement.executeLargeUpdate(insertStudent10);
+                statement.executeUpdate(insertStudent1);
+                statement.executeUpdate(insertStudent2);
+                statement.executeUpdate(insertStudent3);
+                statement.executeUpdate(insertStudent4);
+                statement.executeUpdate(insertStudent5);
+                statement.executeUpdate(insertStudent6);
+                statement.executeUpdate(insertStudent7);
+                statement.executeUpdate(insertStudent8);
+                statement.executeUpdate(insertStudent9);
+                statement.executeUpdate(insertStudent10);
                 System.out.println("Dodano dane do tabeli Uczen.");
             }
 
@@ -96,11 +96,11 @@ public class DataInserter {
                 numberOfRecords = resultSet.getInt(1);
             }
             if(numberOfRecords == 0) {
-                statement.executeLargeUpdate(insertTeacher1);
-                statement.executeLargeUpdate(insertTeacher2);
-                statement.executeLargeUpdate(insertTeacher3);
-                statement.executeLargeUpdate(insertTeacher4);
-                statement.executeLargeUpdate(insertTeacher5);
+                statement.executeUpdate(insertTeacher1);
+                statement.executeUpdate(insertTeacher2);
+                statement.executeUpdate(insertTeacher3);
+                statement.executeUpdate(insertTeacher4);
+                statement.executeUpdate(insertTeacher5);
                 System.out.println("Dodano dane do tabeli Nauczyciel.");
             }
 
@@ -119,13 +119,13 @@ public class DataInserter {
                 numberOfRecords = resultSet.getInt(1);
             }
             if(numberOfRecords == 0) {
-                statement.executeLargeUpdate(insertSubject1);
-                statement.executeLargeUpdate(insertSubject2);
-                statement.executeLargeUpdate(insertSubject3);
-                statement.executeLargeUpdate(insertSubject4);
-                statement.executeLargeUpdate(insertSubject5);
-                statement.executeLargeUpdate(insertSubject6);
-                statement.executeLargeUpdate(insertSubject7);
+                statement.executeUpdate(insertSubject1);
+                statement.executeUpdate(insertSubject2);
+                statement.executeUpdate(insertSubject3);
+                statement.executeUpdate(insertSubject4);
+                statement.executeUpdate(insertSubject5);
+                statement.executeUpdate(insertSubject6);
+                statement.executeUpdate(insertSubject7);
                 System.out.println("Dodano dane do tabeli Przedmiot.");
             }
 
@@ -144,12 +144,12 @@ public class DataInserter {
                 numberOfRecords = resultSet.getInt(1);
             }
             if(numberOfRecords == 0) {
-                statement.executeLargeUpdate(insertGrade1);
-                statement.executeLargeUpdate(insertGrade2);
-                statement.executeLargeUpdate(insertGrade3);
-                statement.executeLargeUpdate(insertGrade4);
-                statement.executeLargeUpdate(insertGrade5);
-                statement.executeLargeUpdate(insertGrade6);
+                statement.executeUpdate(insertGrade1);
+                statement.executeUpdate(insertGrade2);
+                statement.executeUpdate(insertGrade3);
+                statement.executeUpdate(insertGrade4);
+                statement.executeUpdate(insertGrade5);
+                statement.executeUpdate(insertGrade6);
                 System.out.println("Dodano dane do tabeli Ocena.");
             }
 
