@@ -51,7 +51,6 @@ public class DataSearcher {
         int rowCount = results.last() ? results.getRow() : 0;
 
         if(rowCount > 0) {
-            System.out.println("Znaleziono rekord");
             recordExists = true;
         }
         results.close();
