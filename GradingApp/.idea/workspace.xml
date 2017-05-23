@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="917238f2-c0a8-4a2e-8d22-1a78807e99c0" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,95 +43,101 @@
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="@ora3.elka.pw.edu.pl" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="XKPRUSAC" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="NAUCZYCIEL" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+  </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="data.sql" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/main/java/resources/data.sql">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="612">
+                    <caret line="34" column="26" lean-forward="false" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="JdbcDriver.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/JdbcDriver.java">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="5" column="61" lean-forward="false" selection-start-line="5" selection-start-column="61" selection-end-line="5" selection-end-column="61" />
+            <state relative-caret-position="144">
+              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="DataSearcher.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gradeBook/DataSearcher.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gradeBook/DataSearcher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="39" column="59" lean-forward="false" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="59" />
+            <state relative-caret-position="542">
+              <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
               <folding>
-                <marker date="1495264511808" expanded="true" signature="563:596" ph="SELECT n.idn... nauczyciel" />
-                <marker date="1495264511808" expanded="true" signature="563:610" ph="SELECT n.idn... nauczyciel" />
-                <marker date="1495264511808" expanded="true" signature="563:611" ph="SELECT n.idn... nauczyciel" />
-                <marker date="1495264511808" expanded="true" signature="813:841" ph="SELECT u.idu... uczen" />
-                <marker date="1495264511808" expanded="true" signature="813:856" ph="SELECT u.idu... uczen" />
-                <marker date="1495264511808" expanded="true" signature="1058:1090" ph="SELECT p.idp... przedmiot" />
-                <marker date="1495264511808" expanded="true" signature="1058:1104" ph="SELECT p.idp... przedmiot" />
-                <marker date="1495264511808" expanded="true" signature="1303:1331" ph="SELECT o.ido... ocena" />
-                <marker date="1495264511808" expanded="true" signature="1303:1346" ph="SELECT FROM ocena" />
+                <element signature="e#328#329#0" expanded="true" />
+                <element signature="e#372#373#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="DataInserter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gradeBook/DataInserter.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gradeBook/DataInserter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="12" column="131" lean-forward="false" selection-start-line="12" selection-start-column="131" selection-end-line="12" selection-end-column="131" />
+            <state relative-caret-position="360">
+              <caret line="20" column="33" lean-forward="true" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1495294922175" expanded="true" signature="347:478" ph="INSERT INTO ocenianie... " />
-                <marker date="1495294922175" expanded="true" signature="347:479" ph="INSERT INTO ocenianie... " />
-                <marker date="1495294922175" expanded="true" signature="347:485" ph="INSERT INTO ocenianie... " />
-                <marker date="1495294922175" expanded="true" signature="347:526" ph="INSERT INTO ocenianie... " />
-                <marker date="1495294922175" expanded="true" signature="347:530" ph="INSERT INTO ocenianie... " />
-                <marker date="1495294922175" expanded="true" signature="347:532" ph="INSERT INTO ocenianie... " />
-                <marker date="1495294922175" expanded="true" signature="347:533" ph="INSERT INTO ocenianie... " />
+                <marker date="1495572203526" expanded="true" signature="619:804" ph="INSERT INTO ocenianie... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="XKPRUSAC.OCENIANIE" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.OCENIANIE">
-          <provider editor-type-id="text-editor">
+      <file leaf-file-name="GradeBook.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gradeBook/GradeBook.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/43f62d90-6041-4e38-99a9-31218c7375f8/console.sql">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-              <column-attributes>
-                <column name="ROWID" enabled="false" />
-              </column-attributes>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GradeBook.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/gradeBook/GradeBook.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="16" column="43" lean-forward="false" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1495296703280" expanded="true" signature="4581:4720" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="data.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resources/data.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="4" column="134" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="134" />
+              <caret line="0" column="32" lean-forward="true" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -155,12 +162,23 @@
       <find>teacherExists</find>
       <find>Exists</find>
       <find>podaj</find>
+      <find>COUNT(*)</find>
+      <find>Connection connection,</find>
+      <find>connection,</find>
+      <find>(connection,</find>
     </findStrings>
     <replaceStrings>
       <replace>'</replace>
       <replace>recordExists</replace>
       <replace>Podaj</replace>
+      <replace>1</replace>
+      <replace>(</replace>
     </replaceStrings>
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -172,13 +190,19 @@
         <option value="dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.PRZEDMIOT" />
         <option value="dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.UCZEN" />
         <option value="$PROJECT_DIR$/src/resources/data.sql" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/43f62d90-6041-4e38-99a9-31218c7375f8/console.sql" />
         <option value="$PROJECT_DIR$/src/GradeBookRunner.java" />
         <option value="$PROJECT_DIR$/src/GradeBook.java" />
         <option value="$PROJECT_DIR$/src/gradeBook/GradeBookRunner.java" />
         <option value="$PROJECT_DIR$/src/gradeBook/DataSearcher.java" />
         <option value="$PROJECT_DIR$/src/gradeBook/DataInserter.java" />
         <option value="$PROJECT_DIR$/src/gradeBook/GradeBook.java" />
+        <option value="$PROJECT_DIR$/src/main/java/JdbcDriver.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/gradeBook/DataSearcher.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/43f62d90-6041-4e38-99a9-31218c7375f8/console.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/gradeBook/DataInserter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gradeBook/GradeBook.java" />
+        <option value="$PROJECT_DIR$/src/main/java/resources/data.sql" />
       </list>
     </option>
   </component>
@@ -188,11 +212,18 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1048" />
+    <option name="x" value="-339" />
+    <option name="y" value="1072" />
+    <option name="width" value="2576" />
+    <option name="height" value="1416" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -203,13 +234,12 @@
       <hideEmptyPackages />
       <abbreviatePackageNames />
       <autoscrollToSource />
-      <autoscrollFromSource />
+      <autoscrollFromSource ProjectPane="true" />
       <sortByType />
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -219,20 +249,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="GradingApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GradingApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GradingApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -272,22 +288,56 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GradingApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GradingApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GradingApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GradingApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="database.data.csv.formats" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../OBD" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ojdbc6_g.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.splitter.proportion" value="0.22823529" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="Oracle&#10;DDL Data Source" />
+    <property name="aspect.path.notification.shown" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -305,21 +355,6 @@
     <configuration default="false" name="JdbcDriver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="JdbcDriver" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="GradingApp" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="JdbcConnection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="JdbcConnection" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -354,6 +389,61 @@
       <predefined_log_file id="idea.log" enabled="true" />
       <method />
     </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <method />
+    </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -375,6 +465,65 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
       <method />
     </configuration>
     <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
@@ -446,6 +595,31 @@
       </option>
       <option name="moduleName" value="" />
       <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -589,21 +763,28 @@
       <envs />
       <method />
     </configuration>
-    <list size="3">
+    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
+      <method />
+    </configuration>
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Application.JdbcDriver" />
-      <item index="1" class="java.lang.String" itemvalue="Application.JdbcConnection" />
-      <item index="2" class="java.lang.String" itemvalue="Application.GradeBook" />
+      <item index="1" class="java.lang.String" itemvalue="Application.GradeBook" />
     </list>
     <recent_temporary>
-      <list size="3">
+      <list size="2">
         <item index="0" class="java.lang.String" itemvalue="Application.GradeBook" />
-        <item index="1" class="java.lang.String" itemvalue="Application.JdbcConnection" />
-        <item index="2" class="java.lang.String" itemvalue="Application.JdbcDriver" />
+        <item index="1" class="java.lang.String" itemvalue="Application.JdbcDriver" />
       </list>
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -616,40 +797,48 @@
       <workItem from="1495203724941" duration="21771000" />
       <workItem from="1495260890363" duration="10389000" />
       <workItem from="1495397847362" duration="142000" />
+      <workItem from="1495566867543" duration="1640000" />
+      <workItem from="1495568551649" duration="3797000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33059000" />
+    <option name="totallyTimeSpent" value="38496000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-339" y="1072" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5229167" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.47708333" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14322917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20260416" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20234375" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39956093" sideWeight="0.48125" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924962" sideWeight="0.47708333" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34992343" sideWeight="0.49375" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14296874" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924962" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35126236" sideWeight="0.49375" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -664,8 +853,68 @@
     </breakpoint-manager>
     <watches-manager />
   </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/JdbcDriver.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="4" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/JdbcDriver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="61" lean-forward="false" selection-start-line="5" selection-start-column="61" selection-end-line="5" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gradeBook/DataSearcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="39" column="59" lean-forward="false" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="59" />
+          <folding>
+            <element signature="e#328#329#0" expanded="true" />
+            <element signature="e#372#373#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gradeBook/DataInserter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="131" lean-forward="false" selection-start-line="12" selection-start-column="131" selection-end-line="12" selection-end-column="131" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1495572203526" expanded="true" signature="619:804" ph="INSERT INTO ocenianie... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/resources/data.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="134" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="134" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gradeBook/GradeBook.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="16" column="43" lean-forward="false" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/JdbcDriver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="5" column="61" lean-forward="false" selection-start-line="5" selection-start-column="61" selection-end-line="5" selection-end-column="61" />
@@ -673,63 +922,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gradeBook/DataSearcher.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gradeBook/DataSearcher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="936">
           <caret line="39" column="59" lean-forward="false" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="59" />
           <folding>
-            <marker date="1495264511808" expanded="true" signature="563:596" ph="SELECT n.idn... nauczyciel" />
-            <marker date="1495264511808" expanded="true" signature="563:610" ph="SELECT n.idn... nauczyciel" />
-            <marker date="1495264511808" expanded="true" signature="563:611" ph="SELECT n.idn... nauczyciel" />
-            <marker date="1495264511808" expanded="true" signature="813:841" ph="SELECT u.idu... uczen" />
-            <marker date="1495264511808" expanded="true" signature="813:856" ph="SELECT u.idu... uczen" />
-            <marker date="1495264511808" expanded="true" signature="1058:1090" ph="SELECT p.idp... przedmiot" />
-            <marker date="1495264511808" expanded="true" signature="1058:1104" ph="SELECT p.idp... przedmiot" />
-            <marker date="1495264511808" expanded="true" signature="1303:1331" ph="SELECT o.ido... ocena" />
-            <marker date="1495264511808" expanded="true" signature="1303:1346" ph="SELECT FROM ocena" />
+            <element signature="e#328#329#0" expanded="true" />
+            <element signature="e#372#373#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gradeBook/DataInserter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gradeBook/DataInserter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="12" column="131" lean-forward="false" selection-start-line="12" selection-start-column="131" selection-end-line="12" selection-end-column="131" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1495294922175" expanded="true" signature="347:478" ph="INSERT INTO ocenianie... " />
-            <marker date="1495294922175" expanded="true" signature="347:479" ph="INSERT INTO ocenianie... " />
-            <marker date="1495294922175" expanded="true" signature="347:485" ph="INSERT INTO ocenianie... " />
-            <marker date="1495294922175" expanded="true" signature="347:526" ph="INSERT INTO ocenianie... " />
-            <marker date="1495294922175" expanded="true" signature="347:530" ph="INSERT INTO ocenianie... " />
-            <marker date="1495294922175" expanded="true" signature="347:532" ph="INSERT INTO ocenianie... " />
-            <marker date="1495294922175" expanded="true" signature="347:533" ph="INSERT INTO ocenianie... " />
+            <marker date="1495572203526" expanded="true" signature="619:804" ph="INSERT INTO ocenianie... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.OCENIANIE">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/PrusaczykKarolina.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="22" column="35" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/data.sql">
+    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.OCENIANIE" />
+    <entry file="file://$USER_HOME$/Downloads/PrusaczykKarolina.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/resources/data.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
           <caret line="4" column="134" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="134" />
@@ -737,18 +954,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gradeBook/GradeBook.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gradeBook/GradeBook.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="672">
           <caret line="33" column="49" lean-forward="false" selection-start-line="33" selection-start-column="49" selection-end-line="33" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1495296703280" expanded="true" signature="4581:4720" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/JdbcDriver.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/JdbcDriver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="5" column="61" lean-forward="false" selection-start-line="5" selection-start-column="61" selection-end-line="5" selection-end-column="61" />
@@ -757,45 +973,30 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/JdbcConnection.java" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/43f62d90-6041-4e38-99a9-31218c7375f8/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="50" lean-forward="false" selection-start-line="0" selection-start-column="50" selection-end-line="0" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gradeBook/DataSearcher.java">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/43f62d90-6041-4e38-99a9-31218c7375f8/console.sql" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/gradeBook/DataSearcher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="960">
           <caret line="45" column="36" lean-forward="false" selection-start-line="45" selection-start-column="36" selection-end-line="45" selection-end-column="36" />
           <folding>
-            <marker date="1495264511808" expanded="true" signature="563:596" ph="SELECT n.idn... nauczyciel" />
-            <marker date="1495264511808" expanded="true" signature="563:610" ph="SELECT n.idn... nauczyciel" />
-            <marker date="1495264511808" expanded="true" signature="563:611" ph="SELECT n.idn... nauczyciel" />
-            <marker date="1495264511808" expanded="true" signature="813:841" ph="SELECT u.idu... uczen" />
-            <marker date="1495264511808" expanded="true" signature="813:856" ph="SELECT u.idu... uczen" />
-            <marker date="1495264511808" expanded="true" signature="1058:1090" ph="SELECT p.idp... przedmiot" />
-            <marker date="1495264511808" expanded="true" signature="1058:1104" ph="SELECT p.idp... przedmiot" />
-            <marker date="1495264511808" expanded="true" signature="1303:1331" ph="SELECT o.ido... ocena" />
-            <marker date="1495264511808" expanded="true" signature="1303:1346" ph="SELECT FROM ocena" />
+            <element signature="e#328#329#0" expanded="true" />
+            <element signature="e#372#373#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gradeBook/GradeBook.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gradeBook/GradeBook.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1128">
           <caret line="52" column="25" lean-forward="false" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1495296703280" expanded="true" signature="4581:4720" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/data.properties" />
-    <entry file="file://$PROJECT_DIR$/src/JdbcDriver.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/JdbcDriver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="5" column="61" lean-forward="false" selection-start-line="5" selection-start-column="61" selection-end-line="5" selection-end-column="61" />
@@ -803,41 +1004,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/3200b7ef-6f20-4a14-84b8-7c7184404403/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.EMP">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.UCZEN">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-          <column-attributes>
-            <column name="ROWID" enabled="false" />
-          </column-attributes>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/data.sql">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/3200b7ef-6f20-4a14-84b8-7c7184404403/console.sql" />
+    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.EMP" />
+    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.UCZEN" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/resources/data.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="38" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
@@ -845,210 +1015,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.NAUCZYCIEL">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-          <column-attributes>
-            <column name="ROWID" enabled="false" />
-          </column-attributes>
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.OCENA">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-          <column-attributes>
-            <column name="ROWID" enabled="false" />
-          </column-attributes>
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.OCENIANIE">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-          <column-attributes>
-            <column name="ROWID" enabled="false" />
-          </column-attributes>
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.PRZEDMIOT">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-          <column-attributes>
-            <column name="ROWID" enabled="false" />
-          </column-attributes>
-        </state>
-      </provider>
-    </entry>
+    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.NAUCZYCIEL" />
+    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.OCENA" />
+    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.OCENIANIE" />
+    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.PRZEDMIOT" />
     <entry file="file://$PROJECT_DIR$/src/JdbcConnection.java" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/43f62d90-6041-4e38-99a9-31218c7375f8/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="50" lean-forward="false" selection-start-line="0" selection-start-column="50" selection-end-line="0" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gradeBook/DataSearcher.java">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/43f62d90-6041-4e38-99a9-31218c7375f8/console.sql" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/gradeBook/DataSearcher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1080">
           <caret line="45" column="36" lean-forward="false" selection-start-line="45" selection-start-column="36" selection-end-line="45" selection-end-column="36" />
           <folding>
-            <marker date="1495264511808" expanded="true" signature="563:596" ph="SELECT n.idn... nauczyciel" />
-            <marker date="1495264511808" expanded="true" signature="563:610" ph="SELECT n.idn... nauczyciel" />
-            <marker date="1495264511808" expanded="true" signature="563:611" ph="SELECT n.idn... nauczyciel" />
-            <marker date="1495264511808" expanded="true" signature="813:841" ph="SELECT u.idu... uczen" />
-            <marker date="1495264511808" expanded="true" signature="813:856" ph="SELECT u.idu... uczen" />
-            <marker date="1495264511808" expanded="true" signature="1058:1090" ph="SELECT p.idp... przedmiot" />
-            <marker date="1495264511808" expanded="true" signature="1058:1104" ph="SELECT p.idp... przedmiot" />
-            <marker date="1495264511808" expanded="true" signature="1303:1331" ph="SELECT o.ido... ocena" />
-            <marker date="1495264511808" expanded="true" signature="1303:1346" ph="SELECT FROM ocena" />
+            <element signature="e#328#329#0" expanded="true" />
+            <element signature="e#372#373#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gradeBook/GradeBook.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gradeBook/GradeBook.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
           <caret line="52" column="25" lean-forward="false" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1495296703280" expanded="true" signature="4581:4720" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/data.properties" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/3200b7ef-6f20-4a14-84b8-7c7184404403/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.EMP">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.UCZEN">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-          <column-attributes>
-            <column name="ROWID" enabled="false" />
-          </column-attributes>
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.NAUCZYCIEL">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-          <column-attributes>
-            <column name="ROWID" enabled="false" />
-          </column-attributes>
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.OCENA">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-          <column-attributes>
-            <column name="ROWID" enabled="false" />
-          </column-attributes>
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.PRZEDMIOT">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-          <column-attributes>
-            <column name="ROWID" enabled="false" />
-          </column-attributes>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/3200b7ef-6f20-4a14-84b8-7c7184404403/console.sql" />
+    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.EMP" />
+    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.UCZEN" />
+    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.NAUCZYCIEL" />
+    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.OCENA" />
+    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.PRZEDMIOT" />
     <entry file="file://$PROJECT_DIR$/src/JdbcConnection.java" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/43f62d90-6041-4e38-99a9-31218c7375f8/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="50" lean-forward="false" selection-start-line="0" selection-start-column="50" selection-end-line="0" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/JdbcDriver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" column="61" lean-forward="false" selection-start-line="5" selection-start-column="61" selection-end-line="5" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/data.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="4" column="134" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="134" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/util/Scanner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -1057,15 +1058,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Downloads/PrusaczykKarolina.java">
+    <entry file="file://$USER_HOME$/Downloads/PrusaczykKarolina.java" />
+    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.OCENIANIE" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/JdbcDriver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="22" column="35" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="35" />
+        <state relative-caret-position="324">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/f445877c/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.OCENIANIE">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/75b69af8/43f62d90-6041-4e38-99a9-31218c7375f8/XKPRUSAC.NAUCZYCIEL">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1081,49 +1092,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gradeBook/DataSearcher.java">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/43f62d90-6041-4e38-99a9-31218c7375f8/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="39" column="59" lean-forward="false" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="59" />
+        <state relative-caret-position="0">
+          <caret line="0" column="32" lean-forward="true" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gradeBook/DataSearcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="542">
+          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding>
-            <marker date="1495264511808" expanded="true" signature="563:596" ph="SELECT n.idn... nauczyciel" />
-            <marker date="1495264511808" expanded="true" signature="563:610" ph="SELECT n.idn... nauczyciel" />
-            <marker date="1495264511808" expanded="true" signature="563:611" ph="SELECT n.idn... nauczyciel" />
-            <marker date="1495264511808" expanded="true" signature="813:841" ph="SELECT u.idu... uczen" />
-            <marker date="1495264511808" expanded="true" signature="813:856" ph="SELECT u.idu... uczen" />
-            <marker date="1495264511808" expanded="true" signature="1058:1090" ph="SELECT p.idp... przedmiot" />
-            <marker date="1495264511808" expanded="true" signature="1058:1104" ph="SELECT p.idp... przedmiot" />
-            <marker date="1495264511808" expanded="true" signature="1303:1331" ph="SELECT o.ido... ocena" />
-            <marker date="1495264511808" expanded="true" signature="1303:1346" ph="SELECT FROM ocena" />
+            <element signature="e#328#329#0" expanded="true" />
+            <element signature="e#372#373#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gradeBook/DataInserter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gradeBook/GradeBook.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="12" column="131" lean-forward="false" selection-start-line="12" selection-start-column="131" selection-end-line="12" selection-end-column="131" />
+        <state relative-caret-position="252">
+          <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1495294922175" expanded="true" signature="347:478" ph="INSERT INTO ocenianie... " />
-            <marker date="1495294922175" expanded="true" signature="347:479" ph="INSERT INTO ocenianie... " />
-            <marker date="1495294922175" expanded="true" signature="347:485" ph="INSERT INTO ocenianie... " />
-            <marker date="1495294922175" expanded="true" signature="347:526" ph="INSERT INTO ocenianie... " />
-            <marker date="1495294922175" expanded="true" signature="347:530" ph="INSERT INTO ocenianie... " />
-            <marker date="1495294922175" expanded="true" signature="347:532" ph="INSERT INTO ocenianie... " />
-            <marker date="1495294922175" expanded="true" signature="347:533" ph="INSERT INTO ocenianie... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gradeBook/GradeBook.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gradeBook/DataInserter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="16" column="43" lean-forward="false" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+        <state relative-caret-position="360">
+          <caret line="20" column="33" lean-forward="true" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1495296703280" expanded="true" signature="4581:4720" ph="..." />
+            <marker date="1495572203526" expanded="true" signature="619:804" ph="INSERT INTO ocenianie... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/resources/data.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="34" column="26" lean-forward="false" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1191,6 +1204,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>Maven: oracle:ojdbc6:unknown</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
