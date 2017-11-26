@@ -12,26 +12,33 @@ public class Node {
         this.parent = parent;
     }
 
-    public static Node firstCommonAncestor(Node a, Node b) {
-        if (a.parent == null || b.parent == null) {
+    public static Node firstCommonAncestor(Node left, Node right) {
+        if (left.parent == null || right.parent == null) {
             return null;
         }
-        if (a.parent.equals(b.parent)) {
-            return a.parent;
+        if (left.parent.equals(right.parent)) {
+            return left.parent;
         }
 
         Set visitedAncestors = new HashSet<Node>();
-        Node temp = a;
-        while (temp.parent != null) {
-            visitedAncestors.add(temp.parent);
-            temp = temp.parent;
-        }
-        temp = b;
-        while (!visitedAncestors.contains(temp.parent)) {
-            temp = b.parent;
-        }
+        collectAllAncestorsOfOneNode(visitedAncestors, left);
+        Node ancestor = findFirstCommonAncestorInSet(visitedAncestors, right);
+        return ancestor;
+    }
 
-        return temp.parent;
+    private static void collectAllAncestorsOfOneNode(Set visitedAncestors, Node temp) {
+        if (temp.parent != null) {
+            visitedAncestors.add(temp.parent);
+            collectAllAncestorsOfOneNode(visitedAncestors, temp.parent);
+        }
+    }
+
+    private static Node findFirstCommonAncestorInSet(Set visitedAncestors, Node temp) {
+        if (!visitedAncestors.contains(temp.parent)) {
+            return findFirstCommonAncestorInSet(visitedAncestors, temp.parent);
+        } else {
+            return temp.parent;
+        }
     }
 }
 
