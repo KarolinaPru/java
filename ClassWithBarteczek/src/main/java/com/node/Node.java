@@ -21,9 +21,38 @@ public class Node {
         }
 
         Set visitedAncestors = new HashSet<Node>();
-        collectAllAncestorsOfOneNode(visitedAncestors, left);
-        Node ancestor = findFirstCommonAncestorInSet(visitedAncestors, right);
-        return ancestor;
+        return getAncestor(visitedAncestors, left, right);
+//        collectAllAncestorsOfOneNode(visitedAncestors, left);
+//        return findFirstCommonAncestorInSet(visitedAncestors, right);
+    }
+
+
+    private static Node getAncestor(Set visitedAncestors, Node left, Node right) {
+        if (left.parent != null) {
+            if (!visitedAncestors.contains(left.parent)){
+                visitedAncestors.add(left.parent);
+            } else {
+                return left.parent;
+            }
+        }
+
+        if (right.parent != null) {
+            if (!visitedAncestors.contains(right.parent)){
+                visitedAncestors.add(right.parent);
+            } else {
+                return right.parent;
+            }
+        }
+
+        if (left.parent != null && right.parent != null) {
+            return getAncestor(visitedAncestors, left.parent, right.parent);
+        } else if (left.parent != null) {
+            return getAncestor(visitedAncestors, left.parent, right);
+        } else {
+            return getAncestor(visitedAncestors, left, right.parent);
+        }
+
+
     }
 
     private static void collectAllAncestorsOfOneNode(Set visitedAncestors, Node temp) {

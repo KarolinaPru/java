@@ -16,8 +16,8 @@
       <file leaf-file-name="Node.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/node/Node.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="378">
+              <caret line="48" column="34" lean-forward="false" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -28,8 +28,8 @@
       <file leaf-file-name="NodeTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/node/NodeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="972">
+              <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -52,6 +52,7 @@
     <findStrings>
       <find>nums</find>
       <find>indices</find>
+      <find>i</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -415,28 +416,16 @@
       <updated>1510402510178</updated>
       <workItem from="1510402513777" duration="8952000" />
       <workItem from="1510411493475" duration="2428000" />
-      <workItem from="1511707208939" duration="7570000" />
+      <workItem from="1511707208939" duration="9197000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="NodeTest_givenTwoNodesWithCommonAncestor_whenFirstCommonAncestorIsCalled_thenParentIsReturned - 2017.11.26 at 17h 34m 32s.xml">
-      <configuration name="NodeTest.givenTwoNodesWithCommonAncestor_whenFirstCommonAncestorIsCalled_thenParentIsReturned" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="NodeTest_givenTwoNodesWithCommonAncestor_whenFirstCommonAncestorIsCalled_thenParentIsReturned - 2017.11.26 at 17h 34m 56s.xml">
-      <configuration name="NodeTest.givenTwoNodesWithCommonAncestor_whenFirstCommonAncestorIsCalled_thenParentIsReturned" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="NodeTest_givenTwoNodesWithCommonAncestor_whenFirstCommonAncestorIsCalled_thenParentIsReturned - 2017.11.26 at 17h 37m 35s.xml">
-      <configuration name="NodeTest.givenTwoNodesWithCommonAncestor_whenFirstCommonAncestorIsCalled_thenParentIsReturned" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="NodeTest_givenTwoNodesWithCommonAncestor_whenFirstCommonAncestorIsCalled_thenParentIsReturned - 2017.11.26 at 17h 39m 09s.xml">
       <configuration name="NodeTest.givenTwoNodesWithCommonAncestor_whenFirstCommonAncestorIsCalled_thenParentIsReturned" configurationId="JUnit" />
     </history-entry>
     <history-entry file="NodeTest_givenTwoNodesWithCommonAncestor_whenFirstCommonAncestorIsCalled_thenParentIsReturned - 2017.11.26 at 17h 47m 04s.xml">
       <configuration name="NodeTest.givenTwoNodesWithCommonAncestor_whenFirstCommonAncestorIsCalled_thenParentIsReturned" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Unnamed - 2017.11.26 at 17h 37m 41s.xml">
-      <configuration name="Unnamed" configurationId="JUnit" />
     </history-entry>
     <history-entry file="Unnamed - 2017.11.26 at 17h 38m 01s.xml">
       <configuration name="Unnamed" configurationId="JUnit" />
@@ -450,9 +439,21 @@
     <history-entry file="Unnamed - 2017.11.26 at 17h 46m 57s.xml">
       <configuration name="Unnamed" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="Unnamed - 2017.11.26 at 17h 56m 46s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Unnamed - 2017.11.26 at 17h 58m 37s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Unnamed - 2017.11.26 at 18h 09m 33s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Unnamed - 2017.11.26 at 18h 13m 06s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18950000" />
+    <option name="totallyTimeSpent" value="20577000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -634,8 +635,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/node/NodeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="972">
+          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -644,8 +645,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/node/Node.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="378">
+          <caret line="48" column="34" lean-forward="false" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
