@@ -12,43 +12,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Solution.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ArraysLeftRotation/karo/Solution.java">
+      <file leaf-file-name="Solution.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Staircase/karo/Solution.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="31" lean-forward="false" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Fibo.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Fibonacci/karo/Fibo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="29" column="25" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+            <state relative-caret-position="470">
+              <caret line="40" column="5" lean-forward="true" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FiboTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Fibonacci/karo/FiboTest.java">
+      <file leaf-file-name="Fibo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Fibonacci/karo/Fibo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+            <state relative-caret-position="314">
+              <caret line="29" column="52" lean-forward="false" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="SolutionTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ArraysLeftRotation/karo/SolutionTest.java">
+        <entry file="file://$PROJECT_DIR$/src/Staircase/karo/SolutionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="620">
-              <caret line="35" column="21" lean-forward="false" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+            <state relative-caret-position="446">
+              <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -82,6 +70,8 @@
         <option value="$PROJECT_DIR$/src/ArraysLeftRotation/karo/Solution.java" />
         <option value="$PROJECT_DIR$/src/Fibonacci/karo/FiboTest.java" />
         <option value="$PROJECT_DIR$/src/Fibonacci/karo/Fibo.java" />
+        <option value="$PROJECT_DIR$/src/Staircase/karo/Solution.java" />
+        <option value="$PROJECT_DIR$/src/Staircase/karo/SolutionTest.java" />
       </list>
     </option>
   </component>
@@ -92,8 +82,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="180" />
-    <option name="y" value="8" />
+    <option name="x" value="266" />
+    <option name="y" value="49" />
     <option name="width" value="1400" />
     <option name="height" value="1005" />
   </component>
@@ -125,6 +115,12 @@
               <item name="HackerRank" type="b2602c69:ProjectViewProjectNode" />
               <item name="HackerRank" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HackerRank" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HackerRank" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="karo" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HackerRank" type="b2602c69:ProjectViewProjectNode" />
@@ -188,6 +184,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="Staircase.karo" />
       <recent name="Fibonacci.karo" />
       <recent name="com.karo" />
     </key>
@@ -207,7 +204,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.FiboTest.fibonacciTest6">
+  <component name="RunManager" selected="JUnit.SolutionTest.permutationsFor4">
     <configuration name="FiboTest.fibonacciTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -274,6 +271,31 @@
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
     </configuration>
+    <configuration name="SolutionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="Staircase.karo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="HackerRank" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="Staircase.karo" />
+      <option name="MAIN_CLASS_NAME" value="Staircase.karo.SolutionTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
     <configuration name="SolutionTest.applyLeftRotationsTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -324,6 +346,31 @@
       <envs />
       <patterns />
     </configuration>
+    <configuration name="SolutionTest.permutationsFor4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="Staircase.karo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="HackerRank" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="Staircase.karo" />
+      <option name="MAIN_CLASS_NAME" value="Staircase.karo.SolutionTest" />
+      <option name="METHOD_NAME" value="permutationsFor4" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -339,23 +386,30 @@
       <envs />
       <method />
     </configuration>
-    <list size="5">
+    <list size="7">
       <item index="0" class="java.lang.String" itemvalue="JUnit.SolutionTest.applyLeftRotationsTest" />
       <item index="1" class="java.lang.String" itemvalue="Application.Main" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.SolutionTest.applyLeftRotationsTest2" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.FiboTest.fibonacciTest" />
       <item index="4" class="java.lang.String" itemvalue="JUnit.FiboTest.fibonacciTest6" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.SolutionTest" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.SolutionTest.permutationsFor4" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.FiboTest.fibonacciTest6" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.FiboTest.fibonacciTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.SolutionTest.applyLeftRotationsTest2" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.SolutionTest.permutationsFor4" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.SolutionTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.FiboTest.fibonacciTest6" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.FiboTest.fibonacciTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.SolutionTest.applyLeftRotationsTest2" />
       </list>
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -366,28 +420,25 @@
       <updated>1517671587658</updated>
       <workItem from="1517671590839" duration="100000" />
       <workItem from="1517671778500" duration="11003000" />
-      <workItem from="1517773882483" duration="219000" />
+      <workItem from="1517773882483" duration="3001000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FiboTest_fibonacciTest - 2018.02.04 at 19h 03m 33s.xml">
-      <configuration name="FiboTest.fibonacciTest" configurationId="JUnit" />
+    <history-entry file="SolutionTest - 2018.02.04 at 21h 28m 00s.xml">
+      <configuration name="SolutionTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FiboTest_fibonacciTest6 - 2018.02.04 at 19h 05m 09s.xml">
-      <configuration name="FiboTest.fibonacciTest6" configurationId="JUnit" />
+    <history-entry file="SolutionTest - 2018.02.04 at 21h 29m 04s.xml">
+      <configuration name="SolutionTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FiboTest_fibonacciTest6 - 2018.02.04 at 19h 05m 28s.xml">
-      <configuration name="FiboTest.fibonacciTest6" configurationId="JUnit" />
+    <history-entry file="SolutionTest - 2018.02.04 at 21h 30m 34s.xml">
+      <configuration name="SolutionTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SolutionTest_applyLeftRotationsTest - 2018.02.04 at 18h 00m 35s.xml">
-      <configuration name="SolutionTest.applyLeftRotationsTest" configurationId="JUnit" />
+    <history-entry file="SolutionTest - 2018.02.04 at 21h 31m 07s.xml">
+      <configuration name="SolutionTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SolutionTest_applyLeftRotationsTest - 2018.02.04 at 18h 05m 36s.xml">
-      <configuration name="SolutionTest.applyLeftRotationsTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SolutionTest_applyLeftRotationsTest - 2018.02.04 at 18h 05m 57s.xml">
-      <configuration name="SolutionTest.applyLeftRotationsTest" configurationId="JUnit" />
+    <history-entry file="SolutionTest - 2018.02.04 at 21h 39m 28s.xml">
+      <configuration name="SolutionTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="SolutionTest_applyLeftRotationsTest - 2018.02.04 at 18h 06m 06s.xml">
       <configuration name="SolutionTest.applyLeftRotationsTest" configurationId="JUnit" />
@@ -401,26 +452,31 @@
     <history-entry file="SolutionTest_applyLeftRotationsTest2 - 2018.02.04 at 18h 05m 53s.xml">
       <configuration name="SolutionTest.applyLeftRotationsTest2" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="SolutionTest_permutationsFor4 - 2018.02.04 at 21h 40m 10s.xml">
+      <configuration name="SolutionTest.permutationsFor4" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11322000" />
+    <option name="totallyTimeSpent" value="14104000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1013" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32855567" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32707182" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3263506" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18229167" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18229167" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -432,7 +488,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
@@ -510,13 +565,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ArraysLeftRotation/karo/SolutionTest.java">
+    <entry file="file://$PROJECT_DIR$/src/Fibonacci/karo/FiboTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="35" column="21" lean-forward="false" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="360">
+          <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -530,18 +583,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Fibonacci/karo/FiboTest.java">
+    <entry file="file://$PROJECT_DIR$/src/ArraysLeftRotation/karo/SolutionTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-          <folding />
+        <state relative-caret-position="346">
+          <caret line="35" column="21" lean-forward="false" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Fibonacci/karo/Fibo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="29" column="25" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+        <state relative-caret-position="314">
+          <caret line="29" column="52" lean-forward="false" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Staircase/karo/SolutionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Staircase/karo/Solution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="40" column="5" lean-forward="true" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
           <folding />
         </state>
       </provider>
