@@ -5,21 +5,21 @@ import static java.lang.Integer.valueOf;
 
 public class Solution {
     public List applyLeftRotations(int[] input, int rotations) {
-        List<Integer> inputAsList = new ArrayList<>();
-        for (int i = 0; i < input.length; i++) {
-            inputAsList.add(valueOf(input[i]));
-        }
-
-        if (rotations == input.length) {
-            return inputAsList;
-        }
-
-        List secondPart = inputAsList.subList( 0, rotations);
-        List firstPart = inputAsList.subList(rotations, input.length);
-
         List<Integer> output = new ArrayList<>();
-        output.addAll(firstPart);
-        output.addAll(secondPart);
+        List<Integer> tail = new ArrayList<>();
+        if (rotations == input.length) {
+            return output;
+        }
+
+        for (int i = 0; i < input.length; i++) {
+            if ( i < rotations) {
+                tail.add(valueOf(input[i]));
+            } else {
+                output.add(valueOf(input[i]));
+            }
+        }
+
+        output.addAll(tail);
 
         for (int i : output) {
             System.out.print(i + " ");
