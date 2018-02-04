@@ -16,7 +16,7 @@ Sample Output:
 44
  */
 public class Solution {
-    public int calculatePermutations(int height) {
+    public static int calculatePermutations(int height) {
         if (height == 1) {
             return 1;
         }
@@ -35,8 +35,13 @@ public class Solution {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int numberOfStaircases = in.nextInt();
-        for (int a0 = 0; a0 < numberOfStaircases; a0++){
+        int[] heights = new int[numberOfStaircases];
+        for (int i = 0; i < numberOfStaircases; i++){
             int height = in.nextInt();
+            heights[i] = height;
+        }
+        for (int height: heights) {
+            System.out.println(calculatePermutations(height));
         }
     }
 }
