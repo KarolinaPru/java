@@ -16,7 +16,35 @@ Sample Output:
 44
  */
 public class Solution {
-    public static int calculatePermutations(int height) {
+    private final int MAX = 36;
+    private int[] cachedResults = new int[MAX + 1];
+
+
+    public int[] initializeCache() {
+        this.cachedResults[0] = 0;
+        this.cachedResults[1] = 1;
+        this.cachedResults[2] = 2;
+        this.cachedResults[3] = 4;
+        for (int i = 4; i <= MAX; i++) {
+            this.cachedResults[i] = -1;
+        }
+        return this.cachedResults;
+    }
+
+    // Memoization --> Top Down
+    public int calculatePermutationsDynamically(int height, int[] cachedResults) {
+        if (cachedResults[height] != -1) {
+            return cachedResults[height];
+        } else {
+            cachedResults[height]
+                = calculatePermutationsDynamically(height - 1, cachedResults)
+                + calculatePermutationsDynamically(height - 2, cachedResults)
+                + calculatePermutationsDynamically(height - 3, cachedResults);
+            return cachedResults[height];
+        }
+    }
+
+    public static int calculatePermutationsRecursively(int height) {
         if (height == 1) {
             return 1;
         }
@@ -27,21 +55,48 @@ public class Solution {
             return 4;
         }
         int permutations =
-            calculatePermutations(height - 1) + calculatePermutations(height - 2) + calculatePermutations(height - 3);
+            calculatePermutationsRecursively(height - 1)
+                + calculatePermutationsRecursively(height - 2)
+                + calculatePermutationsRecursively(height - 3);
 
         return permutations;
     }
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+
+        System.out.println("Choose the number of staircases [up to 5]:");
         int numberOfStaircases = in.nextInt();
+
+        System.out.println("What's each staircases height? [up to 36]");
         int[] heights = new int[numberOfStaircases];
-        for (int i = 0; i < numberOfStaircases; i++){
+        for (int i = 0; i < numberOfStaircases; i++) {
             int height = in.nextInt();
             heights[i] = height;
         }
-        for (int height: heights) {
-            System.out.println(calculatePermutations(height));
+
+        runDynamicVersion(heights);
+        runPlainRecursiveVersion(heights);
+
+    }
+
+    private static void runDynamicVersion(int[] heights) {
+        Solution s = new Solution();
+        long startDynamic = System.currentTimeMillis();
+        s.initializeCache();
+        for (int height : heights) {
+            System.out.println(s.calculatePermutationsDynamically(height, s.cachedResults));
         }
+        long stopDynamic = System.currentTimeMillis();
+        System.out.println("Dynamic: " + (stopDynamic - startDynamic) + " ms");
+    }
+
+    private static void runPlainRecursiveVersion(int[] heights) {
+        long start = System.currentTimeMillis();
+        for (int height : heights) {
+            System.out.println(calculatePermutationsRecursively(height));
+        }
+        long stop = System.currentTimeMillis();
+        System.out.println("Recursive: " + (stop - start) + " ms");
     }
 }
